@@ -1,0 +1,30 @@
+:local(.wrap){
+
+}
+:local(.header){
+    padding: 0 15px;
+    padding-top: 24px;
+}
+:local(.htitle){
+    font-size: 24px;
+    color: #3b3d40;
+    margin-bottom: 10px;
+}
+:local(.description){
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+    font-size: 15px;
+    color: #656b6f;
+    border-bottom: 1px solid #dfdce4;
+}
+:local(.content){
+    padding: 0 15px;
+    padding-top: 10px;
+}
+:local(.content)>p{
+    font-size: 12px;
+    line-height: 22px;
+    color: #656b6f;
+    margin-bottom: 27px;
+}

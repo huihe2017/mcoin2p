@@ -1,0 +1,15 @@
+:local(.header){
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+:local(.title){
+    font-size: 12px;
+    line-height: 24px;
+    color: #aaa;
+}
+:local(.state){
+    font-size: 12px;
+    line-height: 24px;
+    color: #5262ff;
+}

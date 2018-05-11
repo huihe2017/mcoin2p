@@ -1,0 +1,30 @@
+:local(.new){
+    width: 24px;
+    height: 24px;
+    background: url("./images/new.png") center center /  24px 24px no-repeat;
+}
+:local(.newA){
+    width: 24px;
+    height: 24px;
+    background: url("./images/newA.png") center center /  24px 24px no-repeat;
+}
+:local(.home){
+    width: 24px;
+    height: 24px;
+    background: url("./images/home.png") center center /  24px 24px no-repeat;
+}
+:local(.homeA){
+    width: 24px;
+    height: 24px;
+    background: url("./images/homeA.png") center center /  24px 24px no-repeat;
+}
+:local(.person){
+    width: 24px;
+    height: 24px;
+    background: url("./images/person.png") center center /  24px 24px no-repeat;
+}
+:local(.personA){
+    width: 24px;
+    height: 24px;
+    background: url("./images/personA.png") center center /  24px 24px no-repeat;
+}

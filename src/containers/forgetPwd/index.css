@@ -1,0 +1,76 @@
+
+:local(.content){
+    padding: 0 15px;
+}
+:local(.title){
+    font-size: 18px;
+    color: #3b3d40;
+    line-height: 36px;
+    font-weight: bold;
+}
+:local(.selphone){
+    overflow: hidden;
+    height: 44px;
+    width: 100%;
+    border: 1px solid #dfdce4;
+    border-radius: 5px ;
+    position: relative;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+:local(.line){
+    line-height: 44px;
+    color: #dfdce4;
+
+}
+:local(.qh){
+    position: absolute;
+    left: -12px;
+    z-index: 5;
+    width: 150px;
+}
+:local(.phone){
+    position: absolute;
+    left: 80px;
+    top: -1px;
+    z-index: 7;
+}
+:local(.tu){
+    width: 100%;
+    position: absolute;
+    top:-1px;
+}
+:local(.tuxing){
+    width: 100px;
+    height: 43px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+:local(.button){
+    margin-top: 20px;
+}
+:local(.line){
+    width: 1px;
+    height: 20px;
+    background-color: #dfdce4;
+    position: absolute;
+    top: 12px;
+    left: 82px;
+    z-index: 20;
+
+}
+:local(.lline){
+    width: 1px;
+    height: 20px;
+    background-color: #dfdce4;
+    position: absolute;
+    top: 12px;
+    right: 100px;
+    z-index: 20;
+
+}
+.am-list-item .am-input-control input{
+    font-size: 14px!important;
+}
+

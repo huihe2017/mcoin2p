@@ -1,0 +1,111 @@
+
+.header {
+    height: 68px;
+    padding-left: 36px;
+    border-bottom: 1px solid rgba(59,61,64,0.5);
+    position: absolute;
+    width: 100%;
+    z-index: 26;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 50px;
+   
+}
+
+.header.fixed {
+    /*color: #656b6f;*/
+    /*background: #fff;*/
+    position: fixed;
+
+}
+
+.header.absolute {
+    position: absolute;
+}
+.header.relative {
+    position: relative;
+}
+.header.otherStyle {
+    color: #656b6f;
+    background: #fff;
+}
+.logo {
+    float: left;
+    padding-top: 12px;
+
+}
+.logo img{
+    height: 30px;
+}
+.line{
+    float: left;
+    margin-left: 50px;
+    margin-top: 19px;
+    border-left: 1px solid #3b3d40;
+    width: 1px;
+    height: 30px;
+}
+.nav{
+
+    margin-left: 25px;
+    margin-top: 14px;
+    float: left;
+
+}
+.personCenter{
+    float: left;
+}
+.headerRight {
+    float: right;
+    line-height: 67px;
+}
+.headerRight > a {
+    font-size: 18px;
+}
+.headerRight > a:first-child {
+    margin-right: 45px;
+}
+.headerRight > a:hover {
+    color: #5262ff;
+    cursor: pointer;
+}
+
+.headerRight > a.checked:hover {
+    color: #fff;
+    background: #5262ff;
+    border: 1px solid #5262ff;
+}
+.headerRight > a.isPand:hover {
+    color: #fff;
+}
+.login {
+    padding: 0 30px;
+}
+
+.checked {
+    padding: 10px;
+    border: 1px solid #656b6f;
+    border-radius: 5px;
+}
+
+.headerRight .isPand {
+    height: 67px;
+    display: inline-block;
+    width: 175px;
+    text-align: center;
+    margin-right: 0;
+    background: #5262ff;
+    color: #fff;
+    margin-left: 20px;
+    position: relative;
+    z-index: 28;
+}
+
+@media screen and (max-width: 750px){
+    .nav{
+        display: none;
+    }
+    .login{
+        display: none;
+    }
+}

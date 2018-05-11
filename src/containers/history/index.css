@@ -1,0 +1,31 @@
+:local(.item){
+    padding: 0 15px;
+    background-color: #fff;
+    padding-top: 18px;
+    padding-bottom: 10px;
+}
+:local(.title){
+    font-size: 18px;
+}
+:local(.icontent){
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: #3b3d40;
+}
+:local(.icontent)>div{
+    width: 50%;
+    font-size: 14px;
+}
+:local(.icontent) span{
+    color: #aaaaaa;
+    line-height: 24px;
+    margin-left: 10px;
+}
+:local(.state){
+    text-align: right;
+}
+:local(.way){
+    text-align: right;
+}

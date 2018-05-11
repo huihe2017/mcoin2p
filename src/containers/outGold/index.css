@@ -1,0 +1,21 @@
+/*:local(.Apphh) {*/
+    /*color:red*/
+/*}*/
+:local(.part1){
+    margin-bottom: 12px;
+}
+:local(.tip){
+    line-height: 28px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    padding: 0 15px;
+    color: #aaa;
+}
+:local(.forpass){
+      color: #5262ff;
+}
+:local(.button){
+    margin-top: 60px;
+}

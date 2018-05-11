@@ -1,0 +1,53 @@
+:local(.wrap) {
+    height: 44px;
+    z-index: 2;
+}
+
+:local(.logo) {
+     float: left;
+    margin-left: 12px;
+    margin-top: 7px;
+}
+:local(.logo) img{
+    height: 30px;
+}
+:local(.sider) {
+    float: right;
+    width: 70px;
+    height: 44px;
+    background: #5262ff;
+    background-image: url("./menu.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+:local(.navlist){
+    width: 160px;
+    height: 40px;
+
+
+}
+:local(.navlist a){
+    display: block;
+    color: #fff;
+    background-color: #656b6f;
+    font-size: 16px;
+    text-align: center;
+}
+:local(.wrap.absolute) {
+    position: absolute;
+    width: 100%;
+}
+:local(.wrap.relative) {
+    position: relative;
+}
+:local(.wrap.otherStyle) {
+    color: #656b6f;
+    background: #fff;
+}
+:local(.wrap.fixed) {
+
+    position: fixed;
+    width:100%
+}

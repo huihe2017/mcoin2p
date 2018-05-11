@@ -1,0 +1,183 @@
+:local(.wrap){
+
+}
+:local(.header){
+    width: 100%;
+    height:180px;
+    background-image: url("./images/Your-trustworthy-business-partner@2x.png");
+    background-size: cover;
+
+    padding-top: 120px;
+}
+:local(.button){
+    width: 130px;
+    height: 50px;
+    margin: 0 auto;
+}
+:local(.content){
+    height: auto;
+    background-color: #fff;
+    width: 100%;
+}
+:local(.advantage){
+    height: auto;
+}
+:local(.advantage)>ul{
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+:local(.adv){
+    height: 90px;
+    display: flex;
+    padding: 15px 0;
+    padding-left: 15px;
+}
+:local(.advi1){
+    height: 60px;
+    width: 60px;
+    background-image: url("./images/zizhi@3x.png");
+    background-size: cover;
+
+}
+:local(.advi2){
+    height:60px;
+    width: 60px;
+    background-image: url("./images/shili@3x.png");
+    background-size: cover;
+}
+:local(.advi3){
+    height: 60px;
+    width: 60px;
+    background-image: url("./images/yongjin@3x.png");
+    background-size: cover;
+}
+:local(.advtitle){
+    padding-left: 30px;
+    color: #3b3d40;
+}
+:local(.mt4){
+    height: 130px;
+    background-image: url("./images/MT4bg3X.png");
+    background-size: cover;
+    padding: 0 15px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+:local(.mt4logo){
+    height: 100px;
+    width: 100px;
+    background-image: url("./images/MT4@3x.png");
+    background-size: cover;
+}
+:local(.but){
+
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: transparent;
+    border: 1px solid;
+    border-color: #fff;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0 10px;
+    display: flex;
+}
+:local(.but):last-child{
+    margin-top: 20px;
+}
+:local(.phlogo1){
+    width: 25px;
+    height: 25px;
+    background-image: url("./images/apple@3x.png");
+    background-size: cover;
+
+    margin-top: 7px;
+}
+:local(.phlogo2){
+    width: 25px;
+    height: 25px;
+    background-image: url("./images/android@3x.png");
+    background-size: cover;
+
+    margin-top: 7px;
+}
+:local(.but)>span{
+    flex: 1;
+    float: left;
+    font-size: 14px;
+}
+:local(.partner){
+    padding: 0 15px;
+    padding-top: 20px;
+}
+:local(.partitle){
+    font-size: 18px;
+    color: #3b3d40;
+}
+:local(.partner)>ul{
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-bottom: 50px;
+}
+:local(.parlogo){
+    width: 26%;
+    height: 60px;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+:local(.parlogo):first-child{
+     background-image: url("./images/111@3x.png");
+}
+:local(.parlogo):nth-child(2){
+     background-image: url("./images/2@3x.png");
+}
+:local(.parlogo):nth-child(3){
+     background-image: url("./images/3@3x.png");
+}
+:local(.parlogo):nth-child(4){
+     background-image: url("./images/4@3x.png");
+}
+:local(.parlogo):nth-child(5){
+     background-image: url("./images/5@3x.png");
+}
+:local(.parlogo):nth-child(6){
+     background-image: url("./images/6@3x.png");
+}
+:local(.footer){
+    padding: 0 15px;
+    width: 100%;
+    border-top: 6px solid #5262ff;
+    background-color: #3b3d40;
+    padding-bottom: 20px;
+}
+:local(.fnav)>ul{
+
+
+    display: flex;
+    justify-content: space-between;
+}
+:local(.fnav) li{
+    line-height: 60px;
+    font-size: 15px;
+}
+:local(.fnav) a{
+    color: #fff;
+}
+:local(.fcontent)>p{
+    font-size: 12px;
+    color: #aaa;
+    line-height: 18px;
+}
+:local(.fline){
+    width: 100%;
+    height: 1px;
+    background-color: #656b6f;
+    margin: 10px 0;
+}
