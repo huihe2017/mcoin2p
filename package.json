@@ -6,6 +6,7 @@
     "@navjobs/upload": "^3.0.10",
     "antd-mobile": "next",
     "axios": "^0.16.2",
+    "rc-form": "^2.2.0",
     "react": "15.5.4",
     "react-dom": "15.5.0",
     "react-fileupload": "^2.4.0",

@@ -29,16 +29,16 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount(){
-        this.props.getBaseUserMsg({
-
-        }, (errorText) => {
-            Toast.hide()
-            if (errorText) {
-                Toast.fail(errorText, 3, null, false)
-            } else {
-                //hashHistory.push('/')
-            }
-        })
+        // this.props.getBaseUserMsg({
+        //
+        // }, (errorText) => {
+        //     Toast.hide()
+        //     if (errorText) {
+        //         Toast.fail(errorText, 3, null, false)
+        //     } else {
+        //         //hashHistory.push('/')
+        //     }
+        // })
     }
 
     render() {
@@ -63,7 +63,7 @@ class BaseUserMsg extends React.Component {
                                         大大飞机
                                     </span>
                                     <span className={style.userTime}>
-                                        2018/05/08
+                                        上次登录时间：2018/05/08 12：00
                                     </span>
                                 </div>
                                 <img className={style.userArrow} src={require('./images/arrowW.png')} alt=""/>
@@ -87,11 +87,11 @@ class BaseUserMsg extends React.Component {
                         </List>
                         <List className={style.partUl}>
                             <a className={style.partLi} href="javascript:void(0)">
-                                <span className={style.itemTitle}>活期余币（元</span>
+                                <span className={style.itemTitle}>活动余币（元</span>
                                 <span className={style.itemContent}>0.00</span>
                             </a>
                             <a className={style.partLi} href="javascript:void(0)">
-                                <span className={style.itemTitle}>活期币额（元</span>
+                                <span className={style.itemTitle}>活期存币（元</span>
                                 <span className={style.itemContent}>0.00</span>
                             </a>
                             <a className={style.partLi} href="javascript:void(0)">

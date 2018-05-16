@@ -1,0 +1,19 @@
+:local(.header){
+    font-size: 18px;
+    font-weight: bold;
+    color: #3B3D40;
+    padding: 0 16px;
+
+}
+:local(.wrapContent){
+   padding-top: 10px;
+
+}
+:local(.content){
+    height: 194px;
+    width: 100%;
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 0 16px;
+    padding-top: 14px;
+}
