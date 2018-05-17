@@ -1,0 +1,187 @@
+:local(.wrap){
+    margin-bottom: 52px;
+}
+:local(.part){
+    margin-bottom: 10px;
+
+}
+:local(.ensure1){
+    display: block;
+    height: 30px;
+    width: 100%;
+    background-color: #eee;
+    color: #989898;
+    padding: 1px 16px;
+    border-bottom: 1px solid #eee;
+
+}
+
+
+:local(.ensure):after,:local(.partLi):after,:local(.partTotal):after,:local(.headerTop):after,:local(.headerBottom):after{
+    display: block;
+    clear: both;
+    content: '';
+}
+
+:local(.itemWordBox1){
+
+}
+
+:local(.itemWord1){
+    color: #989898;
+    font-size: 12px;
+    line-height: 26px;
+    display: block;
+
+}
+:local(.itemMoney11){
+    color: #989898;
+    font-size: 12px;
+    line-height: 26px;
+    float: left;
+    width: 50%;
+}
+:local(.itemMoney1){
+    color: #989898;
+    font-size: 16px;
+    line-height: 26px;
+    float: right;
+    width: 50%;
+}
+:local(.itemMoney111){
+    color: #989898;
+    font-size: 12px;
+    line-height: 26px;
+    float: right;
+    text-align: right;
+    width: 50%;
+}
+
+:local(.header){
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to right,#3ca3fd, #5262ff);
+    padding: 0 16px;
+    padding-top: 10px;
+}
+:local(.headerTop){
+    margin-bottom: 10px;
+}
+:local(.headerTopW){
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    float: left;
+}
+:local(.headerTopI){
+    height: 10px;
+    padding-right: 5px;
+}
+:local(.headerTopR){
+    float: right;
+    font-size: 10px;
+    height: 16px;
+    color: #fff;
+    margin-top: 4px;
+
+}
+:local(.user){
+    float: left;
+}
+:local(.userImg){
+    width: 44px;
+    height: 44px;
+    float: left;
+    background-color: #1abc9c;
+}
+:local(.userData){
+
+    color: #fff;
+}
+:local(.userMoney){
+    width: 166px;
+    float: right;
+    color: #fff;
+    padding-top: 12px;
+}
+:local(.userMoneyT){
+    display: block;
+    font-size: 10px;
+    line-height: 20px;
+    margin-top: 20px;
+}
+:local(.userMoneyC){
+    font-weight: bold;
+}
+:local(.userName){
+    display: block;
+    font-size: 12px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+:local(.userTime){
+    display: block;
+    font-size: 24px;
+}
+
+:local(.contentHeader)>span{
+    font-size: 12px;
+    color: #3B3D40;
+    padding-left: 16px;
+    line-height: 30px;
+}
+:local(.contentHeader):after{
+    display: block;
+    clear: both;
+    content: '';
+}
+:local(.contentTitle1){
+    float: left;
+    width: 100px;
+}
+:local(.contentTitle2){
+    float: left;
+    width: 160px;
+}
+:local(.contentTitle3){
+    float: left;
+    width: 100px;
+}
+:local(.contentPart){
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+:local(.contentContent) :local(.contentPart):last-child{
+    margin-bottom: 0;
+}
+:local(.contentPart)>span{
+    font-size: 16px;
+    color: #3B3D40;
+    padding-left: 16px;
+    line-height: 64px;
+
+}
+:local(.contentPart):after{
+    display: block;
+    clear: both;
+    content: '';
+}
+:local(.contentPart1){
+    float: left;
+    width: 100px;
+}
+:local(.contentPart2){
+    float: left;
+    width: 160px;
+}
+:local(.contentPart3){
+    float: left;
+    width: 100px;
+}
+:local(.contentImg){
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    margin-top: 24px;
+    float: left;
+}

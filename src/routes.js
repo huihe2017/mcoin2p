@@ -19,6 +19,10 @@ import BaseUserMsg from './containers/baseUserMsg/'
 import MoneyDetail from './containers/moneyDetail/'
 import SetPerson from './containers/setPerson/'
 import RiskType from './containers/riskType/'
+import SelectRisk from './containers/selectRisk/'
+import YesterdayEarnings from './containers/yesterdayEarnings/'
+import FriendAward from './containers/friendAward/'
+import ActivityBalance from './containers/activityBalance/'
 
 import SetName from './containers/setName/'
 
@@ -47,6 +51,10 @@ export default () => {
             <Route path="/setName" component={SetName}/>
             <Route path="/moneyDetail" component={MoneyDetail}/>
             <Route path="/riskType" component={RiskType}/>
+            <Route path="/selectRisk" component={SelectRisk}/>
+            <Route path="/yesterdayEarnings" component={YesterdayEarnings}/>
+            <Route path="/friendAward" component={FriendAward}/>
+            <Route path="/activityBalance" component={ActivityBalance}/>
 
         </Router>
     )
