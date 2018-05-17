@@ -15,9 +15,20 @@ class AboutUs extends React.Component {
     render() {
         return (
             <div className={style.wrap}>
-                <Header/>
+                {/*<Header/>*/}
                 <div className={style.content}>
+                    <div className={style.qcodeBox}>
+                        <div className={style.header}>
+                            <img src="" className={style.avator} alt=""/>
+                            <span className={style.name}>大大大飞机</span>
+                        </div>
+                        <div className={style.qcode}>
 
+                        </div>
+                        <div className={style.footer}>
+                            扫一扫二维码图案，在点点数字基金关注我
+                        </div>
+                    </div>
                 </div>
             </div>
         )

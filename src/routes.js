@@ -23,6 +23,7 @@ import SelectRisk from './containers/selectRisk/'
 import YesterdayEarnings from './containers/yesterdayEarnings/'
 import FriendAward from './containers/friendAward/'
 import ActivityBalance from './containers/activityBalance/'
+import QCode from './containers/qcode/'
 
 import SetName from './containers/setName/'
 
@@ -55,6 +56,7 @@ export default () => {
             <Route path="/yesterdayEarnings" component={YesterdayEarnings}/>
             <Route path="/friendAward" component={FriendAward}/>
             <Route path="/activityBalance" component={ActivityBalance}/>
+            <Route path="/qCode" component={QCode}/>
 
         </Router>
     )
