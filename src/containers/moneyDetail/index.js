@@ -82,7 +82,7 @@ class BaseUserMsg extends React.Component {
                                 <img className={style.ico} src={require('./images/coin.png')} alt=""/>
                                 <div className={style.itemWordBox}>
                                     <span className={style.itemWord}>
-                                        APP下载与入口找回
+                                        活动余币额资产
                                     </span>
                                     <span className={style.itemMoney}>
                                         金额 484.82

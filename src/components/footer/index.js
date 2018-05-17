@@ -53,7 +53,7 @@ class Footer extends React.Component {
     render() {
 
         return (
-            <div style={ { position: 'fixed', height: '100%', width: '100%', top: 0 } }>
+            <div >
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"

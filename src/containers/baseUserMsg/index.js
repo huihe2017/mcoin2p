@@ -5,7 +5,7 @@ import {List, InputItem, Toast} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
+import {hashHistory,Link} from 'react-router'
 import {logout,getBaseUserMsg} from '../../actions/user'
 
 class BaseUserMsg extends React.Component {
@@ -56,40 +56,56 @@ class BaseUserMsg extends React.Component {
                             </a>
                         </div>
                         <div className={style.headerBottom}>
-                            <a className={style.user} href="javascript:void (0)">
-                                <img className={style.userImg} src="" alt=""/>
-                                <div className={style.userData}>
-                                    <span className={style.userName}>
-                                        大大飞机
-                                    </span>
-                                    <span className={style.userTime}>
-                                        上次登录时间：2018/05/08 12：00
-                                    </span>
-                                </div>
-                                <img className={style.userArrow} src={require('./images/arrowW.png')} alt=""/>
-                                <img className={style.userQcode} src={require('./images/qcode.png')} alt=""/>
-                            </a>
+                            <Link to={'/setPerson'}>
+                                <a className={style.user}  href="javascript:void (0)">
+                                    <img className={style.userImg} src="" alt=""/>
+                                    <div className={style.userData}>
+                                        <span className={style.userName}>
+                                            大大飞机
+                                        </span>
+                                        <span className={style.userTime}>
+                                            上次登录时间：2018/05/08 12：00
+                                        </span>
+                                    </div>
+                                    <img className={style.userArrow} src={require('./images/arrowW.png')} alt=""/>
+                                    <img className={style.userQcode} src={require('./images/qcode.png')} alt=""/>
+                                </a>
+                            </Link>
                         </div>
                     </div>
                     <div className={style.part}>
                         <List>
                             <a className={style.partTotal} href="javascript:void(0)">
-                                <div className={style.totalL}>
-                                <span className={style.totalLT}>
-                                    总金额 （元）<img className={style.see} src={require('./images/see.png')} alt=""/>
-                                </span>
-                                    <span className={style.totalLB}>
-                                    317.556.02
-                                </span>
-                                </div>
+                                <Link to={'/moneyDetail'}>
+                                    <div className={style.totalL}>
+                                        <span className={style.totalLT}>
+                                            总金额 （元）<img className={style.see} src={require('./images/see.png')} alt=""/>
+                                        </span>
+                                            <span className={style.totalLB}>
+                                            317.556.02
+                                        </span>
+                                    </div>
+                                </Link>
+                                <Link to={'/yesterdayEarnings'}>
+                                    <div className={style.totalL1}>
+                                        <span className={style.totalLT}>
+                                            昨日收益 （元）
+                                        </span>
+                                        <span className={style.totalLB1}>
+                                            +0.39
+                                        </span>
+                                    </div>
+                                </Link>
                                 <img className={style.totalR} src={require('./images/arrow.png')} alt=""/>
                             </a>
                         </List>
                         <List className={style.partUl}>
-                            <a className={style.partLi} href="javascript:void(0)">
-                                <span className={style.itemTitle}>活动余币（元</span>
-                                <span className={style.itemContent}>0.00</span>
+                            <Link to={'/activityBalance'}>
+                                <a className={style.partLi} href="javascript:void(0)">
+                                    <span className={style.itemTitle}>活动余币（元</span>
+                                    <span className={style.itemContent}>0.00</span>
                             </a>
+                            </Link>
                             <a className={style.partLi} href="javascript:void(0)">
                                 <span className={style.itemTitle}>活期存币（元</span>
                                 <span className={style.itemContent}>0.00</span>
@@ -98,10 +114,12 @@ class BaseUserMsg extends React.Component {
                                 <span className={style.itemTitle}>基金（元）</span>
                                 <span className={style.itemContent}>0.00</span>
                             </a>
-                            <a className={style.partLi} href="javascript:void(0)">
-                                <span className={style.itemTitle}>累计好友奖励（元）</span>
-                                <span className={style.itemContent}>0.00</span>
-                            </a>
+                            <Link to={'/friendAward'}>
+                                <a className={style.partLi} href="javascript:void(0)">
+                                    <span className={style.itemTitle}>累计好友奖励（元）</span>
+                                    <span className={style.itemContent}>0.00</span>
+                                </a>
+                            </Link>
                         </List>
                     </div>
                     <div className={style.part}>

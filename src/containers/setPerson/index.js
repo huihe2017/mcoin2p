@@ -5,7 +5,7 @@ import {List, InputItem, Toast} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
+import {hashHistory,Link} from 'react-router'
 import {logout,getBaseUserMsg} from '../../actions/user'
 
 class BaseUserMsg extends React.Component {
@@ -59,16 +59,20 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
-                                <span className={style.itemWord}>邀请好友</span>
+                            <Link to={'/qcode'}>
+                                <a className={style.ensure} href="javascript:void(0)">
+                                    <span className={style.itemWord}>邀请好友</span>
+                                        <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
+                                    <img className={style.qcpde} src={require('./images/qcode.png')} alt=""/>
+                                </a>
+                            </Link>
+                            <Link to={'/setName'}>
+                                <a className={style.ensure} href="javascript:void(0)">
+                                    <span className={style.itemWord}>昵称设置</span>
                                     <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                                <img className={style.qcpde} src={require('./images/qcode.png')} alt=""/>
-                            </a>
-                            <a className={style.ensure} href="javascript:void(0)">
-                                <span className={style.itemWord}>昵称设置</span>
-                                <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                                <span className={style.itemWordR}>大大大飞机</span>
-                            </a>
+                                    <span className={style.itemWordR}>大大大飞机</span>
+                                </a>
+                            </Link>
                             <a className={style.ensure} href="javascript:void(0)">
                                 <span className={style.itemWord}>绑定手机</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
@@ -77,12 +81,14 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
-                                <span className={style.itemWord}>风险选择
-</span>
-                                <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                                <span className={style.itemWordR}>成长性</span>
-                            </a>
+                            <Link to={'/riskType'}>
+                                <a className={style.ensure} href="javascript:void(0)">
+                                    <span className={style.itemWord}>风险选择
+    </span>
+                                    <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
+                                    <span className={style.itemWordR}>成长性</span>
+                                </a>
+                            </Link>
                             <a className={style.ensure} href="javascript:void(0)">
                                 <span className={style.itemWord}>我的客服
 </span>

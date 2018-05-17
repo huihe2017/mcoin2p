@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import { RefreshControl, ListView } from 'antd-mobile';
 import Header from '../../components/header'
 import ReactDOM from 'react-dom'
-import {hashHistory} from 'react-router'
+import {hashHistory,Link} from 'react-router'
 import {setAuthFrom} from '../../actions/authFrom'
 import {bindActionCreators} from 'redux'
 
@@ -80,9 +80,11 @@ class History extends React.Component {
                         </div>
                     </div>
                     <div className={style.but}>
-                        <button className={style.button}>
-                            重新选择
-                        </button>
+                        <Link to={'/selectRisk'}>
+                            <button className={style.button}>
+                                重新选择
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
