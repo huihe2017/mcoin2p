@@ -259,7 +259,7 @@ function mapDispatchToProps(dispatch) {
     return {
         login: bindActionCreators(login, dispatch),
         register: bindActionCreators(register, dispatch),
-        setResultsPage:bindActionCreators(setResultsPage, dispatch)
+
     }
 }
 

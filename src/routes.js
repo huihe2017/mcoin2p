@@ -24,12 +24,16 @@ import YesterdayEarnings from './containers/yesterdayEarnings/'
 import FriendAward from './containers/friendAward/'
 import ActivityBalance from './containers/activityBalance/'
 import QCode from './containers/qcode/'
+import PrivateKey from './containers/privateKey/'
+import AddressList from './containers/addressList/'
+import AddAddress from './containers/addAddress/'
+import ForwardBTC from './containers/forwardBTC/'
+import SafeSet from './containers/safeSet/'
+import CustomCost from './containers/customCost/'
 
 import SetName from './containers/setName/'
 
 export default () => {
-
-
     return (
         <Router history={hashHistory}>
             <Route path="/" component={Home}/>
@@ -57,7 +61,12 @@ export default () => {
             <Route path="/friendAward" component={FriendAward}/>
             <Route path="/activityBalance" component={ActivityBalance}/>
             <Route path="/qCode" component={QCode}/>
-
+            <Route path="/privateKey" component={PrivateKey}/>
+            <Route path="/addressList" component={AddressList}/>
+            <Route path="/addAddress" component={AddAddress}/>
+            <Route path="/forwardBTC" component={ForwardBTC}/>
+            <Route path="/safeSet" component={SafeSet}/>
+            <Route path="/customCost" component={CustomCost}/>
         </Router>
     )
 }

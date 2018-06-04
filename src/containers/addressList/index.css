@@ -1,0 +1,115 @@
+:local(.tab) .am-tabs-default-bar-tab{
+    color: #989898!important;
+}
+:local(.tab) .am-tabs-default-bar-tab:after{
+    background-color: #fff!important;
+}
+:local(.tab) .am-tabs-default-bar-tab-active{
+    font-weight: bold!important;
+    color: #5262FF!important;
+}
+
+:local(.tab) .am-tabs-default-bar-underline{
+    border: none!important;
+}
+:local(.tab) .am-tabs-tab-bar-wrap{
+    margin-bottom: 10px!important;
+}
+:local(.tab) .am-tabs-pane-wrap>div{
+
+}
+:local(.item){
+    padding-left: 16px;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+:local(.itemContent){
+
+    height: 64px;
+    padding-right: 16px;
+    border-bottom: 1px solid #eee;
+
+}
+
+:local(.itemAdressBox){
+    padding: 9px 0;
+
+}
+:local(.itemAdressBox):after{
+    clear: both;
+    content: '';
+    display: block;
+}
+:local(.itemAdressT){
+    line-height: 34px;
+    color: #989898;
+    font-size: 12px;
+    float: left;
+    width: 14%;
+}
+:local(.itemAdress){
+    width: 86%;
+    float: left;
+    word-wrap: break-word;
+    word-break: normal;
+    padding-right: 16px;
+    color: #989898;
+    font-size: 12px;
+    line-height: 18px;
+}
+:local(.itemCoin){
+    font-size: 13px;
+    line-height: 64px;
+    color: #3B3D40;
+    width: 100px;
+    float: left;
+}
+:local(.itemName){
+    font-size: 13px;
+    line-height: 64px;
+    color: #3B3D40;
+    float: left;
+}
+:local(.itemDo){
+    font-size: 13px;
+    line-height: 64px;
+    color: #3B3D40;
+    float: right;
+}
+:local(.itemImg){
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-top: 22px;
+    margin-right: 10px;
+}
+:local(.iconImg){
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-top: 22px;
+    margin-right: 6px;
+}
+:local(.itemDo)>a{
+    color: #DFDCE4;
+    float: right;
+    margin-left: 10px;
+}
+:local(.showImg){
+
+    width: 90px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 90px;
+}
+:local(.showTip){
+    color: #DFDCE4;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}

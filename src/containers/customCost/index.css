@@ -1,0 +1,102 @@
+:local(.wrap){
+    height: 100%;
+    background-color: #fff;
+}
+:local(.itemUl){
+    padding-top: 10px;
+}
+:local(.itemBox){
+
+    margin-bottom: 10px;
+}
+:local(.itemBoxT){
+    font-size: 14px;
+    line-height: 32px;
+    color: #3B3D40;
+
+}
+:local(.itemB){
+    padding: 0 16px;
+}
+:local(.itemBoxT1){
+    font-size: 14px;
+    line-height: 32px;
+    color: #3B3D40;
+    float: left;
+}
+:local(.itemB):after{
+    display: block;
+    clear: both;
+    content: '';
+}
+:local(.itemBoxTT){
+    font-size: 10px;
+
+    color: #3B3D40;
+}
+:local(.itemBoxTT1){
+    font-size: 10px;
+    line-height: 32px;
+    color: #3B3D40;
+    float: right;
+}
+:local(.itemBox) .am-list-item{
+    background-color: #eee!important;
+
+}
+
+:local(.button){
+    margin: 0 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(to right,#3ca3fd,#5262ff);
+    border-radius: 5px;
+    margin-top: 30px;
+}
+:local(.itemBoxC){
+    font-size: 14px;
+    color: #BBBBBB;
+}
+:local(.itemBox) .am-list-arrow{
+    transform:rotate(90deg);
+}
+:local(.itemBox) .am-list-item .am-input-extra{
+    color: #989898!important;
+}
+:local(.silderBoxB):after{
+    display: block;
+    clear: both;
+    content: '';
+}
+:local(.silderBoxB){
+    padding: 0 16px;
+}
+:local(.silderBox){
+    padding-top: 20px;
+    height: 44px;
+    float: left;
+    width: 94%;
+    margin: 0 -10px;
+}
+:local(.silderBox) .am-slider-handle{
+    border: none!important;
+    background: #989898!important;
+}
+:local(.sip){
+    float: left;
+    line-height: 44px;
+}
+:local(.sip1){
+    float: right;
+    line-height: 44px;
+}
+/*
+<div className={style.text}>
+                        <span className={style.L}>0.007BTC</span>
+                        <span className={style.R}>更快（到账大于1小时）</span>
+                    </div>
+
+*/

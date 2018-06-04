@@ -1,0 +1,43 @@
+:local(.wrap){
+    height: 100%;
+    background-color: #fff;
+}
+:local(.itemUl){
+    padding-top: 10px;
+}
+:local(.itemBox){
+    padding: 0 16px;
+    margin-bottom: 10px;
+}
+:local(.itemBoxT){
+    font-size: 12px;
+    line-height: 32px;
+    color: #3B3D40;
+}
+:local(.itemBox) .am-list-item{
+    background-color: #eee!important;
+    border-radius: 5px!important;
+}
+:local(.tip){
+    margin-left: 16px;
+    font-size: 10px;
+    color: #989898;
+}
+:local(.button){
+    margin: 0 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(to right,#3ca3fd,#5262ff);
+    border-radius: 5px;
+    margin-top: 60px;
+}
+:local(.itemBoxC){
+    font-size: 14px;
+    color: #BBBBBB;
+}
+:local(.itemBox) .am-list-arrow{
+    transform:rotate(90deg);
+}

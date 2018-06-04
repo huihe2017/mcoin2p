@@ -77,7 +77,7 @@ class BaseUserMsg extends React.Component {
                                 数量
                             </span>
                             <span className={style.contentTitle3}>
-                                市场价
+                                市值（CNY）
                             </span>
                         </div>
                         <div className={style.contentContent}>

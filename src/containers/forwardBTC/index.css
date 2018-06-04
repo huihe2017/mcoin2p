@@ -1,0 +1,101 @@
+:local(.wrap){
+    height: 100%;
+    background-color: #fff;
+}
+:local(.itemUl){
+    padding-top: 10px;
+}
+:local(.itemBox){
+    padding: 0 16px;
+    margin-bottom: 10px;
+}
+:local(.itemBoxT){
+    font-size: 14px;
+    line-height: 32px;
+    color: #3B3D40;
+
+}
+:local(.itemBoxT1){
+    font-size: 14px;
+    line-height: 32px;
+    color: #3B3D40;
+    float: left;
+}
+:local(.itemB):after{
+    display: block;
+    clear: both;
+    content: '';
+}
+:local(.itemBoxTT){
+    font-size: 10px;
+
+    color: #3B3D40;
+}
+:local(.itemBoxTT1){
+    font-size: 10px;
+    line-height: 32px;
+    color: #3B3D40;
+    float: right;
+}
+:local(.itemBox) .am-list-item{
+    background-color: #eee!important;
+    border-radius: 5px!important;
+}
+:local(.tip){
+    margin-left: 16px;
+    font-size: 10px;
+    color: #989898;
+}
+:local(.button){
+    margin: 0 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(to right,#3ca3fd,#5262ff);
+    border-radius: 5px;
+    margin-top: 60px;
+}
+:local(.itemBoxC){
+    font-size: 14px;
+    color: #BBBBBB;
+}
+:local(.itemBox) .am-list-arrow{
+    transform:rotate(90deg);
+}
+:local(.itemBox) .am-list-item .am-input-extra{
+    color: #989898!important;
+}
+.am-list-item :local(.img){
+    width: 16px;
+    height: 14px;
+}
+:local(.text){
+    padding: 0 16px;
+}
+:local(.text):after{
+    display: block;
+    content: '';
+    clear: both;
+}
+:local(.L){
+    float: left;
+    font-size: 14px;
+}
+:local(.R){
+    float: right;
+    font-size: 14px;
+}
+:local(.R1){
+    float: right;
+    font-size: 14px;
+    color: #5262ff;
+}
+/*
+<div className={style.text}>
+                        <span className={style.L}>0.007BTC</span>
+                        <span className={style.R}>更快（到账大于1小时）</span>
+                    </div>
+
+*/

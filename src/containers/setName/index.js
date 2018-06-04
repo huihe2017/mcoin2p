@@ -39,7 +39,12 @@ class BaseUserMsg extends React.Component {
                 <div className={style.part}>
                     <List>
                         <InputItem
-                        >姓名</InputItem>
+                            {...getFieldProps('autofocus')}
+                            clear
+                            // type={'number'}
+                            placeholder="请输入平时成绩"
+                            ref={el => this.autoFocusInst = el}
+                        ></InputItem>
                     </List>
                 </div>
                 <Footer/>
