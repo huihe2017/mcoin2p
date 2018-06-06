@@ -131,3 +131,21 @@ export function getDetailMsg(data, callback) {
             });
     }
 }
+
+export function getUserDetailMsg(data, callback) {
+    return dispatch => {
+        axios.post('https://www.easy-mock.com/mock/5b174f2bcbe2f85929997e75/api/fund/myinfo', {
+
+        })
+            .then(function (response) {
+                if (response.data.code === 0) {
+                    dispatch({type: 'GET_USER_DETAIL_MSG', data:response.data})
+                } else {
+                    callback(response.data.msg)
+                }
+            })
+            .catch(function (error) {
+                alert(error);
+            });
+    }
+}
