@@ -32,6 +32,7 @@ import SafeSet from './containers/safeSet/'
 import CustomCost from './containers/customCost/'
 import OutQcode from './containers/outQcode/'
 import WalletIndex from './containers/walletIndex/'
+import DealDetails from './containers/dealDetails/'
 
 import SetName from './containers/setName/'
 
@@ -71,6 +72,7 @@ export default () => {
             <Route path="/customCost" component={CustomCost}/>
             <Route path="/outQcode" component={OutQcode}/>
             <Route path="/walletIndex" component={WalletIndex}/>
+            <Route path="/dealDetails" component={DealDetails}/>
         </Router>
     )
 }
