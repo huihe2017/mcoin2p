@@ -164,10 +164,11 @@
 }
 :local(.header){
     width: 100%;
-    height: 100px;
+
     background: linear-gradient(to right,#3ca3fd, #5262ff);
     padding: 0 16px;
-    padding-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 :local(.headerTop){
     margin-bottom: 10px;
