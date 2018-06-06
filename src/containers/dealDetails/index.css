@@ -64,12 +64,13 @@
     margin-left: 16px;
 }
 :local(.item){
+    margin-bottom: 10px;
+}
+:local(.itemH){
     background-color: #fff;
     padding: 10px 16px;
 }
-:local(.itemHead){
 
-}
 :local(.itemCoin){
     position: relative;
 }
@@ -78,6 +79,8 @@
     font-weight: bold;
     color: #3B3D40;
 }
+
+
 :local(.itemDataBox):after{
     display: block;
     content: '';
@@ -87,6 +90,14 @@
     width: 16px;
     height: 16px;
     margin-right: 10px;
+}
+:local(.itemImg1){
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    margin-top: 14px;
+    margin-left: 50px;
 }
 :local(.itemLeft){
 
@@ -124,4 +135,80 @@
     font-size: 12px;
     color: #989898;
     line-height: 16px;
+}
+:local(.itemC){
+
+    padding: 0 16px;
+    display: flex;
+    justify-content:flex-start;
+}
+
+:local(.itemAdressBox){
+    padding: 6px 0;
+    padding-left: 16px;
+    background-color: #eee;
+}
+:local(.itemAdressBox):after{
+    clear: both;
+    content: '';
+    display: block;
+}
+:local(.itemAdressT){
+    line-height: 34px;
+    color: #989898;
+    font-size: 12px;
+    float: left;
+    width: 14%;
+}
+:local(.itemAdress){
+    width: 86%;
+    float: left;
+    word-wrap: break-word;
+    word-break: normal;
+    padding-right: 16px;
+    color: #989898;
+    font-size: 12px;
+    line-height: 18px;
+}
+:local(.showImg){
+
+    width: 90px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 90px;
+}
+:local(.showTip){
+    color: #DFDCE4;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+:local(.footer){
+    position: fixed;
+    height: 44px;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+}
+:local(.footerL){
+    height: 44px;
+    width: 50%;
+    line-height: 44px;
+    /*text-align: center;*/
+    font-weight: bold;
+    background-color: #fff;
+    color: #5262ff;
+}
+:local(.footerR){
+    height: 44px;
+    width: 50%;
+    line-height: 44px;
+    /*text-align: center;*/
+    color: #fff;
+    font-weight: bold;
+    background-color: #5262ff;
 }

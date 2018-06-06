@@ -82,35 +82,45 @@ class BaseUserMsg extends React.Component {
                 data.map(i => (
 
                     <div className={style.item} key={i.num} >
-
-                        <div className={style.itemHead}>
-                            <div className={style.itemCoin}>
-                                {i.out?<div  className={style.itemT}>
-                                    <img className={style.itemImg} src={require('./images/out.png')} alt=""/>转入
-                                </div>:<div style={{color:'#5262ff'}} className={style.itemT}>
-                                    <img  className={style.itemImg} src={require('./images/in.png')} alt=""/>转出
-                                </div>}
-                                {i.commission?
-                                <span className={style.commission}>
+                        <div className={style.itemH}>
+                            <div className={style.itemHead}>
+                                <div className={style.itemCoin}>
+                                    {i.out?<div  className={style.itemT}>
+                                        <img className={style.itemImg} src={require('./images/out.png')} alt=""/>转入
+                                    </div>:<div style={{color:'#5262ff'}} className={style.itemT}>
+                                        <img  className={style.itemImg} src={require('./images/in.png')} alt=""/>转出
+                                    </div>}
+                                    {i.commission?
+                                        <span className={style.commission}>
                                     手续费：{i.commission}BTC
                                 </span>:''
-                                }
+                                    }
+                                </div>
+                            </div>
+                            <div className={style.itemDataBox}>
+                                <div className={style.itemLeft}>
+                                    数量 {i.out?<span style={{color: '#3B3D40',marginLeft:10}}>-{i.number}</span>:<span style={{color: '#3B3D40',marginLeft:10}}>+{i.number}</span>}
+                                </div>
+                                <div className={style.itemRight}>
+                                    <span className={style.itemLeftC}>状态</span> {i.out?<span className={style.itemRightC}>{i.do}</span>:<span className={style.itemRightC}>{i.do}</span>}
+                                </div>
+                                <div className={style.itemLeft}>
+                                    {i.out?'发起':''}{i.out?<span style={{color: '#3B3D40',marginLeft:10}}>{i.time1}</span>:<span style={{color: '#3B3D40',marginLeft:10}}></span>}
+                                </div>
+                                <div className={style.itemRight}>
+                                    <span className={style.itemLeftC}>完成</span> <span className={style.itemRightC}>{i.time}</span>
+                                </div>
                             </div>
                         </div>
-                        <div className={style.itemDataBox}>
-                            <div className={style.itemLeft}>
-                                数量 {i.out?<span style={{color: '#3B3D40',marginLeft:10}}>-{i.number}</span>:<span style={{color: '#3B3D40',marginLeft:10}}>+{i.number}</span>}
+                        <div className={style.itemAdressBox}>
+                            <div className={style.itemAdressT}>
+                                地址
                             </div>
-                            <div className={style.itemRight}>
-                                <span className={style.itemLeftC}>状态</span> {i.out?<span className={style.itemRightC}>{i.do}</span>:<span className={style.itemRightC}>{i.do}</span>}
-                            </div>
-                            <div className={style.itemLeft}>
-                                {i.out?'发起':''}{i.out?<span style={{color: '#3B3D40',marginLeft:10}}>{i.time1}</span>:<span style={{color: '#3B3D40',marginLeft:10}}></span>}
-                            </div>
-                            <div className={style.itemRight}>
-                                <span className={style.itemLeftC}>完成</span> <span className={style.itemRightC}>{i.time}</span>
+                            <div className={style.itemAdress}>
+                                {i.address}
                             </div>
                         </div>
+
                     </div>
                 ))
             )
@@ -153,12 +163,18 @@ class BaseUserMsg extends React.Component {
                             {this.show()}
                         </div>
                     </div>
-
+                    <div className={style.footer}>
+                        <div className={style.footerL} onClick={()=>alert('转出')}>
+                            <img  className={style.itemImg1} src={require('./images/ino.png')} alt=""/>转出
+                        </div>
+                        <div className={style.footerR} onClick={()=>alert('转入')}>
+                            <img  className={style.itemImg1} src={require('./images/outi.png')} alt=""/>转入
+                        </div>
+                    </div>
                 </div>
-                <Footer/>
+
             </div>
         )
-
     }
 
 
