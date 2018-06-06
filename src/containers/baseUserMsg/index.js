@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory,Link} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {logout,getBaseUserMsg,getUserDetailMsg} from '../../actions/user'
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -29,6 +29,7 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount(){
+        this.props.getUserDetailMsg()
         // this.props.getBaseUserMsg({
         //
         // }, (errorText) => {
@@ -42,6 +43,9 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
+        if(!this.props.user.userInfo){
+            return null
+        }
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
@@ -58,13 +62,13 @@ class BaseUserMsg extends React.Component {
                         <div className={style.headerBottom}>
                             <Link to={'/setPerson'}>
                                 <a className={style.user}  href="javascript:void (0)">
-                                    <img className={style.userImg} src="" alt=""/>
+                                    <img className={style.userImg} src={this.props.user.userInfo.portraitUrl} alt=""/>
                                     <div className={style.userData}>
                                         <span className={style.userName}>
-                                            大大飞机
+                                            {this.props.user.userInfo.userName}
                                         </span>
                                         <span className={style.userTime}>
-                                            上次登录时间：2018/05/08 12：00
+                                            上次登录时间：{this.props.user.userInfo.loginTime}
                                         </span>
                                     </div>
                                     <img className={style.userArrow} src={require('./images/arrowW.png')} alt=""/>
@@ -82,7 +86,7 @@ class BaseUserMsg extends React.Component {
                                             总金额 （元）<img className={style.see} src={require('./images/see.png')} alt=""/>
                                         </span>
                                             <span className={style.totalLB}>
-                                            317.556.02
+                                            {this.props.user.totalAmount}
                                         </span>
                                     </div>
                                 </Link>
@@ -92,7 +96,7 @@ class BaseUserMsg extends React.Component {
                                             昨日收益 （元）
                                         </span>
                                         <span className={style.totalLB1}>
-                                            +0.39
+                                            +{this.props.user.yesterdayProfit}
                                         </span>
                                     </div>
                                 </Link>
@@ -103,21 +107,21 @@ class BaseUserMsg extends React.Component {
                             <Link to={'/activityBalance'}>
                                 <a className={style.partLi} href="javascript:void(0)">
                                     <span className={style.itemTitle}>活动余币（元</span>
-                                    <span className={style.itemContent}>0.00</span>
+                                    <span className={style.itemContent}>{this.props.user.activeAmount}</span>
                             </a>
                             </Link>
                             <a className={style.partLi} href="javascript:void(0)">
                                 <span className={style.itemTitle}>活期存币（元</span>
-                                <span className={style.itemContent}>0.00</span>
+                                <span className={style.itemContent}>{this.props.user.currentAmount}</span>
                             </a>
                             <a className={style.partLi} href="javascript:void(0)">
                                 <span className={style.itemTitle}>基金（元）</span>
-                                <span className={style.itemContent}>0.00</span>
+                                <span className={style.itemContent}>{this.props.user.fundAmount}</span>
                             </a>
                             <Link to={'/friendAward'}>
                                 <a className={style.partLi} href="javascript:void(0)">
                                     <span className={style.itemTitle}>累计好友奖励（元）</span>
-                                    <span className={style.itemContent}>0.00</span>
+                                    <span className={style.itemContent}>{this.props.user.totalAward}</span>
                                 </a>
                             </Link>
                         </List>
@@ -188,7 +192,8 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
     return {
         logout: bindActionCreators(logout, dispatch),
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
+        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch),
+        getUserDetailMsg:bindActionCreators(getUserDetailMsg,dispatch)
     }
 }
 

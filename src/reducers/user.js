@@ -2,20 +2,17 @@ let initialState = {
     token: localStorage.token,
     userName: localStorage.userName,
     status: localStorage.status,//0:注册了  1:极速开户了  2:已绑定银行卡了（走完传统开户流程）
-    MT4:localStorage.MT4,
-    floating:'',
-    balance:'',
-    netWorth:'',
-    realName:'',
-    id:'',
-    email:'',
-    address:'',
-    bankNo:'',
-    bankName:'',
-    branch:''
-
-
-
+    MT4: localStorage.MT4,
+    floating: '',
+    balance: '',
+    netWorth: '',
+    realName: '',
+    id: '',
+    email: '',
+    address: '',
+    bankNo: '',
+    bankName: '',
+    branch: ''
 
 
 }
@@ -26,7 +23,7 @@ export default function sign(state = initialState, action = {}) {
 
         case 'LOGIN':
 
-            const {phone,mt4_live_id,status,address,email} = action.data
+            const {phone, mt4_live_id, status, address, email} = action.data
             state.userName = phone
             localStorage.setItem('token', true)
             localStorage.setItem('userName', phone)
@@ -57,15 +54,15 @@ export default function sign(state = initialState, action = {}) {
             return Object.assign({}, state, {})
 
         case 'GET_BASEUSERMSG':
-            const {balance,total_withdraw,total_position_profit} = action.data
+            const {balance, total_withdraw, total_position_profit} = action.data
             state.balance = balance
             state.netWorth = total_withdraw
             state.floating = total_position_profit
             return Object.assign({}, state, {})
 
         case 'GET_DETAILMSG':
-            console.log("ttt",action.data)
-            const {branch_name,bank_card,real_name,id_card,bank_name} = action.data
+            console.log("ttt", action.data)
+            const {branch_name, bank_card, real_name, id_card, bank_name} = action.data
             state.branch = branch_name
             state.bankNo = bank_card
             state.realName = real_name
@@ -74,7 +71,9 @@ export default function sign(state = initialState, action = {}) {
 
             return Object.assign({}, state, {})
 
+        case 'GET_USER_DETAIL_MSG':
 
+            return action.data
         default:
             return state
     }
