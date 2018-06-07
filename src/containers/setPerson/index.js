@@ -52,7 +52,7 @@ class BaseUserMsg extends React.Component {
                             <a className={style.ensureH} href="javascript:void(0)">
                                <span className={style.itemWordH}>我的头像</span>
                                 <img className={style.arrowH} src={require('./images/arrow.png')} alt=""/>
-                                <img src="" className={style.avator} alt=""/>
+                                <img src={this.props.user.userInfo.portraitUrl} className={style.avator} alt=""/>
                             </a>
 
                         </List>
@@ -70,7 +70,7 @@ class BaseUserMsg extends React.Component {
                                 <a className={style.ensure} href="javascript:void(0)">
                                     <span className={style.itemWord}>昵称设置</span>
                                     <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                                    <span className={style.itemWordR}>大大大飞机</span>
+                                    <span className={style.itemWordR}>{this.props.user.userInfo.userName}</span>
                                 </a>
                             </Link>
                             <a className={style.ensure} href="javascript:void(0)">
@@ -86,7 +86,7 @@ class BaseUserMsg extends React.Component {
                                     <span className={style.itemWord}>风险选择
     </span>
                                     <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                                    <span className={style.itemWordR}>成长性</span>
+                                    <span className={style.itemWordR}>{this.props.user.userInfo.riskType}</span>
                                 </a>
                             </Link>
                             <a className={style.ensure} href="javascript:void(0)">

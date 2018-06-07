@@ -6,11 +6,13 @@ import foreignExchange from './foreignExchange'
 import user from './user'
 import authFrom from './authFrom'
 import resultsPage from './resultsPage'
+import asset from './asset'
 let states = {
     foreignExchange,
     user,
     authFrom,
-    resultsPage
+    resultsPage,
+    asset
 }
 
 let _states = {}

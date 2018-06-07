@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {} from '../../actions/user'
+import {getAssetDetail} from '../../actions/asset'
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -29,6 +29,7 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount(){
+        this.props.getAssetDetail()
         // this.props.getBaseUserMsg({
         //
         // }, (errorText) => {
@@ -42,6 +43,9 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
+        if(this.props.asset.totalAmount===undefined){
+            return null
+        }
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
@@ -62,16 +66,16 @@ class BaseUserMsg extends React.Component {
                                         总金额 （元）
                                     </span>
                                     <span className={style.userTime}>
-                                        317.556.02
+                                        {this.props.asset.totalAmount}
                                     </span>
                                 </div>
                             </a>
                             <div className={style.userMoney}>
                                 <span className={style.userMoneyT}>
-                                    昨日收益（元）<span className={style.userMoneyC}> 0.00</span>
+                                    昨日收益（元）<span className={style.userMoneyC}> {this.props.asset.yesterdayProfit}</span>
                                 </span>
                                 <span className={style.userMoneyT}>
-                                    累计收益（元）<span className={style.userMoneyC}> 0.00</span>
+                                    累计收益（元）<span className={style.userMoneyC}> {this.props.asset.totalProfit}</span>
                                 </span>
                             </div>
                         </div>
@@ -85,7 +89,7 @@ class BaseUserMsg extends React.Component {
                                         活动余币额资产
                                     </span>
                                     <span className={style.itemMoney}>
-                                        金额 484.82
+                                        金额 {this.props.asset.activeAmount}
                                     </span>
                                 </div>
 
@@ -98,7 +102,7 @@ class BaseUserMsg extends React.Component {
                                         累积好友奖励资产
                                     </span>
                                     <span className={style.itemMoney}>
-                                        金额 0.00
+                                        金额 {this.props.asset.totalAward}
                                     </span>
                                 </div>
 
@@ -111,10 +115,10 @@ class BaseUserMsg extends React.Component {
                                         活期币额资产
                                     </span>
                                     <span className={style.itemMoney}>
-                                        金额 0.00
+                                        金额 {this.props.asset.currentAmount}
                                     </span>
                                     <span className={style.itemMoney1}>
-                                        昨日收益 0.00
+                                        昨日收益 {this.props.asset.currentProfit}
                                     </span>
                                 </div>
 
@@ -132,10 +136,10 @@ class BaseUserMsg extends React.Component {
                                         基金资产
                                     </span>
                                     <span className={style.itemMoney}>
-                                        金额 0.00
+                                        金额 {this.props.asset.fundAmount}
                                     </span>
                                     <span className={style.itemMoney1}>
-                                        昨日收益 0.00
+                                        昨日收益 {this.props.asset.fundYesterdayProfit}
                                     </span>
                                 </div>
 
@@ -146,45 +150,23 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div>
                         <List>
-                            <span className={style.ensure1}>
+                            {this.props.asset.fundList.map((value)=>{
+                                return (
+                                    <span className={style.ensure1}>
                                 <div className={style.itemWordBox1}>
                                     <span className={style.itemWord1}>
-                                        XXX基金1期
+                                        {value.title}
                                     </span>
                                     <span className={style.itemMoney11}>
-                                        币额：0.12546545 BTC
+                                        币额：{value.amount} {value.currency}
                                     </span>
                                     <span className={style.itemMoney111}>
-                                        昨日收益：0.12546545 BTC
+                                        昨日收益：{value.yesterdayProfit} {value.currency}
                                     </span>
                                 </div>
                             </span>
-                            <span className={style.ensure1}>
-                                <div className={style.itemWordBox1}>
-                                    <span className={style.itemWord1}>
-                                        XXX基金1期
-                                    </span>
-                                    <span className={style.itemMoney11}>
-                                        币额：0.12546545 BTC
-                                    </span>
-                                    <span className={style.itemMoney111}>
-                                        昨日收益：0.12546545 BTC
-                                    </span>
-                                </div>
-                            </span>
-                            <span className={style.ensure1}>
-                                <div className={style.itemWordBox1}>
-                                    <span className={style.itemWord1}>
-                                        XXX基金1期
-                                    </span>
-                                    <span className={style.itemMoney11}>
-                                        币额：0.12546545 BTC
-                                    </span>
-                                    <span className={style.itemMoney111}>
-                                        昨日收益：0.12546545 BTC
-                                    </span>
-                                </div>
-                            </span>
+                                )
+                            })}
 
                         </List>
                     </div>
@@ -202,13 +184,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user:state.user
+        asset:state.asset
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-
+        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
     }
 }
 
