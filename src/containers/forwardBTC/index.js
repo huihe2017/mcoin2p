@@ -5,7 +5,7 @@ import {List, InputItem, Toast,Picker,Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
+import {hashHistory,Link} from 'react-router'
 import {logout,getBaseUserMsg} from '../../actions/user'
 
 class BaseUserMsg extends React.Component {
@@ -78,7 +78,7 @@ class BaseUserMsg extends React.Component {
                             </span>
                             <InputItem onChange={(value) => {
                                 this.setState({classNumber: value})
-                            }} placeholder="安全码设置（6位数字）" type="text" extra={<a href=""><img className={style.img} src={require('./images/add.png')} alt=""/></a>}></InputItem>
+                            }} placeholder="安全码设置（6位数字）" type="text" extra={<Link to={'/safeSet'}><img className={style.img} src={require('./images/add.png')} alt=""/></Link>}></InputItem>
                         </li>
                         <li className={style.itemBox}>
                             <div className={style.itemB}>

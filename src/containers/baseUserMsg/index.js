@@ -132,10 +132,12 @@ class BaseUserMsg extends React.Component {
                                 <img className={style.itemEmoji} src={require('./images/list.png')} alt=""/><span className={style.itemWord}>账单</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                             </a>
-                            <a className={style.ensure} href="javascript:void(0)">
-                                <img className={style.itemEmoji} src={require('./images/out.png')} alt=""/><span className={style.itemWord}>转入与转出</span>
-                                <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                            </a>
+                            <Link to={'/walletIndex'}>
+                                <a className={style.ensure} href="javascript:void(0)">
+                                    <img className={style.itemEmoji} src={require('./images/wallet.png')} alt=""/><span className={style.itemWord}>点点钱包</span>
+                                    <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
+                                </a>
+                            </Link>
                             <a className={style.ensure} href="javascript:void(0)">
                                 <img className={style.itemEmoji} src={require('./images/lock.png')} alt=""/><span className={style.itemWord}>安全设置</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>

@@ -5,7 +5,7 @@ import {List, InputItem, Toast} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
+import {hashHistory,Link} from 'react-router'
 import {logout,getBaseUserMsg} from '../../actions/user'
 
 const data = [
@@ -164,12 +164,17 @@ class BaseUserMsg extends React.Component {
                         </div>
                     </div>
                     <div className={style.footer}>
-                        <div className={style.footerL} onClick={()=>alert('转出')}>
+                        <div className={style.footerL} onClick={()=>hashHistory.push('/forwardBTC')}>
+
                             <img  className={style.itemImg1} src={require('./images/ino.png')} alt=""/>转出
+
                         </div>
-                        <div className={style.footerR} onClick={()=>alert('转入')}>
+                        <div className={style.footerR} onClick={()=>hashHistory.push('/outQcode')}>
+
                             <img  className={style.itemImg1} src={require('./images/outi.png')} alt=""/>转入
+
                         </div>
+
                     </div>
                 </div>
 

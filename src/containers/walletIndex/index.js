@@ -1,11 +1,11 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast} from 'antd-mobile';
+import {List, InputItem, Toast,NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
+import {hashHistory,Link} from 'react-router'
 import {logout,getBaseUserMsg} from '../../actions/user'
 
 class BaseUserMsg extends React.Component {
@@ -45,6 +45,16 @@ class BaseUserMsg extends React.Component {
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left" />}
+                    onLeftClick={() => console.log('onLeftClick')}
+                    rightContent={[
+                        <Link to={'/walletSetting'}>
+                            <Icon key="1" type="ellipsis" />
+                        </Link>,
+                    ]}
+                >点点数字基金</NavBar>
                 <div>
                     <div className={style.header}>
                         <div className={style.headerTop}>
@@ -87,41 +97,41 @@ class BaseUserMsg extends React.Component {
                             </span>
                         </div>
                         <div className={style.contentContent}>
-                            <div className={style.contentPart}>
-                                <span className={style.contentPart1}>
-                                    <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
-                                </span>
-                                    <span className={style.contentPart2}>
-                                    14.2123411231
-                                </span>
-                                    <span className={style.contentPart3}>
-                                    51.000CNY
-                                        <span className={style.contentPartTip}>
-                                           市场价：￥51.000
-                                        </span>
-                                </span>
-                            </div>
-                            <div className={style.contentPart}>
-                                <span className={style.contentPart1}>
-                                   <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
-                                </span>
-                                    <span className={style.contentPart2}>
-                                    14.2123411231
-                                </span>
-                                    <span className={style.contentPart3}>
-                                    51.000CNY
-                                        <span className={style.contentPartTip}>
-                                           市场价：￥51.000
-                                        </span>
-                                </span>
-                            </div>
+                            <Link to={'/dealDetails'}>
+                                <div className={style.contentPart}>
+                                    <span className={style.contentPart1}>
+                                        <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
+                                    </span>
+                                        <span className={style.contentPart2}>
+                                        14.2123411231
+                                    </span>
+                                        <span className={style.contentPart3}>
+                                        51.000CNY
+                                            <span className={style.contentPartTip}>
+                                               市场价：￥51.000
+                                            </span>
+                                    </span>
+                                </div>
+                            </Link>
+                            <Link to={'/dealDetails'}>
+                                <div className={style.contentPart}>
+                                    <span className={style.contentPart1}>
+                                       <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
+                                    </span>
+                                        <span className={style.contentPart2}>
+                                        14.2123411231
+                                    </span>
+                                        <span className={style.contentPart3}>
+                                        51.000CNY
+                                            <span className={style.contentPartTip}>
+                                               市场价：￥51.000
+                                            </span>
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
                     </div>
-                    {/*<div>*/}
-                    {/*<a onTouchEnd={this.logout.bind(this)} className={style.ensure} href="javascript:void(0)">*/}
-                    {/*退出登录*/}
-                    {/*</a>*/}
-                    {/*</div>*/}
+
                 </div>
                 <Footer/>
             </div>

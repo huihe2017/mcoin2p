@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast} from 'antd-mobile';
+import {List, InputItem, Toast,NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -47,14 +47,26 @@ class BaseUserMsg extends React.Component {
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left" />}
+                    onLeftClick={() => console.log('onLeftClick')}
+                    rightContent={[
+
+                        <Link to={'/addAddress'}>+
+                        </Link>,
+                    ]}
+                >添加常用地址</NavBar>
                 <div>
 
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
-                                <img className={style.itemEmoji} src={require('./images/address.png')} alt=""/><span className={style.itemWord}>常用地址</span>
-                                <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                            </a>
+                            <Link to={'/addressList'}>
+                                <a className={style.ensure} href="javascript:void(0)">
+                                    <img className={style.itemEmoji} src={require('./images/address.png')} alt=""/><span className={style.itemWord}>常用地址</span>
+                                    <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
+                                </a>
+                            </Link>
                             <a className={style.ensure} href="javascript:void(0)">
                                 <img className={style.itemEmoji} src={require('./images/coin.png')} alt=""/><span className={style.itemWord}>币种设置</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
@@ -64,10 +76,12 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
-                                <img className={style.itemEmoji} src={require('./images/locked.png')} alt=""/><span className={style.itemWord}>安全中心</span>
-                                <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                            </a>
+                            <Link to={'/safeCenter'}>
+                                <a className={style.ensure} href="javascript:void(0)">
+                                    <img className={style.itemEmoji} src={require('./images/locked.png')} alt=""/><span className={style.itemWord}>安全中心</span>
+                                    <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
+                                </a>
+                            </Link>
                             <a className={style.ensure} href="javascript:void(0)">
                                 <img className={style.itemEmoji} src={require('./images/safe.png')} alt=""/><span className={style.itemWord}>安全保障</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
