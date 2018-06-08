@@ -76,12 +76,16 @@ class BaseUserMsg extends React.Component {
                                     </span>
                                 </div>
                             </a>
-                            <a href="" className={style.user1}>
-                                <img src={require('./images/add.png')} alt=""/>
-                            </a>
-                            <a href="" className={style.user1}>
+
+                                <a href="javascript:void (0)" className={style.user1}>
+                                    <img src={require('./images/add.png')} alt=""/>
+                                </a>
+
+                        <Link to={'/outAddressList'}>
+                            <a href="javascript:void (0)" className={style.user1}>
                                 <img src={require('./images/fadd.png')} alt=""/>
                             </a>
+                        </Link>
                         </div>
                     </div>
                     <div className={style.content}>
