@@ -3,7 +3,7 @@ import style from "./index.css"
 import {InputItem,Toast} from 'antd-mobile';
 import {connect} from 'react-redux'
 import axios from '../../common/axiosConf'
-
+import config from '../../config'
 
 class Countdown extends React.Component {
     constructor(props) {
@@ -21,10 +21,10 @@ class Countdown extends React.Component {
             }
 
             let _this = this
-            axios.post('http://47.91.236.245:4030/user/sms-captcha', {
-                business: this.props.business,
-                image_captcha: this.props.picCode,
-                phone: this.props.phone
+            axios.post(config.api_url+'reg/sendmobilecode', {
+                // business: this.props.business,
+                checkCode: this.props.picCode,
+                mobile: this.props.phone
             }).then(function (response) {
                 console.log(response);
                 if (response.data.code === 0) {

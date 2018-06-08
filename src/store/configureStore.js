@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import {createLogger} from 'redux-logger'
 // import api from '../middleware/api';
-import config from '../config/index.default.js'
+import config from '../config/index.js'
 
 
 let middleware = [

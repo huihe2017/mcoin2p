@@ -79,8 +79,8 @@ class Header extends React.Component {
 
     render() {
         const Array = [{
-            label: this.props.user.userName ? this.props.user.userName : '登录与注册',
-            link:  this.props.user.userName ? '/baseUserMsg' : '/auth'
+            label: this.props.user.token ? '退出' : '登录与注册',
+            link:  this.props.user.token ? '/auth' : '/auth'
         }, {label: '首页', link: '/'}, {label: '产品交易', link: '/forexPresentation'}, {
             label: '交易平台',
             link: '/tradingPlatform'

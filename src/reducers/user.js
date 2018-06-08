@@ -23,15 +23,15 @@ export default function sign(state = initialState, action = {}) {
 
         case 'LOGIN':
 
-            const {phone, mt4_live_id, status, address, email} = action.data
+            const {phone, mt4_live_id, status, address, email,token} = action.data
             state.userName = phone
-            localStorage.setItem('token', true)
+            localStorage.setItem('token', token)
             localStorage.setItem('userName', phone)
             localStorage.setItem('MT4', mt4_live_id)
             localStorage.setItem('status', status)
             localStorage.setItem('address', address)
             localStorage.setItem('email', email)
-            state.token = true
+            state.token = token
             state.status = status
             // state.MT4 = mt4_live_id
             return Object.assign({}, state, {})
