@@ -106,7 +106,7 @@ class BaseUserMsg extends React.Component {
                                 value={this.state.sValue}
                                 onChange={v => this.setState({ sValue: v })}
                                 onOk={v => this.setState({ sValue: v },()=>{
-                                    if(this.state.sValue=='custom'){hashHistory.push('/safeSet')}})}
+                                    if(this.state.sValue=='custom'){hashHistory.push('/customCost')}})}
                                 okText={<Icon type={'check'} />}
                                 dismissText={<Icon type={'cross'} />}
                             >
@@ -120,7 +120,7 @@ class BaseUserMsg extends React.Component {
                         下一步
                     </div>
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
 

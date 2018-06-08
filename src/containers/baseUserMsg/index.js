@@ -83,7 +83,7 @@ class BaseUserMsg extends React.Component {
                                 <Link to={'/moneyDetail'}>
                                     <div className={style.totalL}>
                                         <span className={style.totalLT}>
-                                            总金额 （元）<img className={style.see} src={require('./images/see.png')} alt=""/>
+                                            总金额 （元）<img className={style.see} src={require('./images/wen.png')} alt=""/>
                                         </span>
                                             <span className={style.totalLB}>
                                             {this.props.user.totalAmount}
@@ -106,12 +106,12 @@ class BaseUserMsg extends React.Component {
                         <List className={style.partUl}>
                             <Link to={'/activityBalance'}>
                                 <a className={style.partLi} href="javascript:void(0)">
-                                    <span className={style.itemTitle}>活动余币（元</span>
+                                    <span className={style.itemTitle}>活动余币（元）</span>
                                     <span className={style.itemContent}>{this.props.user.activeAmount}</span>
                             </a>
                             </Link>
                             <a className={style.partLi} href="javascript:void(0)">
-                                <span className={style.itemTitle}>活期存币（元</span>
+                                <span className={style.itemTitle}>活期存币（元）</span>
                                 <span className={style.itemContent}>{this.props.user.currentAmount}</span>
                             </a>
                             <a className={style.partLi} href="javascript:void(0)">
@@ -163,18 +163,14 @@ class BaseUserMsg extends React.Component {
 </span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                             </a>
-                            <a className={style.ensure} href="javascript:void(0)">
-                                <img className={style.itemEmoji} src={require('./images/set.png')} alt=""/><span className={style.itemWord}>系统设置
-</span>
-                                <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                            </a>
+                            {/*<a className={style.ensure} href="javascript:void(0)">*/}
+                                {/*<img className={style.itemEmoji} src={require('./images/set.png')} alt=""/><span className={style.itemWord}>系统设置*/}
+{/*</span>*/}
+                                {/*<img className={style.arrow} src={require('./images/arrow.png')} alt=""/>*/}
+                            {/*</a>*/}
                         </List>
                     </div>
-                    {/*<div>*/}
-                    {/*<a onTouchEnd={this.logout.bind(this)} className={style.ensure} href="javascript:void(0)">*/}
-                    {/*退出登录*/}
-                    {/*</a>*/}
-                    {/*</div>*/}
+
                 </div>
                 <Footer/>
             </div>

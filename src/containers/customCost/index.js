@@ -121,7 +121,7 @@ class BaseUserMsg extends React.Component {
                         确定
                     </div>
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
 

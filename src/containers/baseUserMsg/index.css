@@ -110,9 +110,12 @@
     padding-top: 6px;
 }
 :local(.see){
-    width: 16px;
-    height: 11px;
+    width: 14px;
+    height: 14px;
     margin-left: 16px;
+    margin-top: 5px;
+    display: block;
+    float: right;
 }
 :local(.header){
     width: 100%;

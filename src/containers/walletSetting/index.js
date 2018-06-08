@@ -47,16 +47,7 @@ class BaseUserMsg extends React.Component {
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
-                <NavBar
-                    mode="light"
-                    icon={<Icon type="left" />}
-                    onLeftClick={() => console.log('onLeftClick')}
-                    rightContent={[
 
-                        <Link to={'/addAddress'}>+
-                        </Link>,
-                    ]}
-                >添加常用地址</NavBar>
                 <div>
 
                     <div className={style.part}>
@@ -104,7 +95,7 @@ class BaseUserMsg extends React.Component {
                     {/*</a>*/}
                     {/*</div>*/}
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
 

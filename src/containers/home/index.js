@@ -3,6 +3,7 @@ import style from './index.css'
 import {Button} from 'antd-mobile'
 import Header from '../../components/header'
 import {hashHistory} from 'react-router'
+import Footer from '../../components/footer'
 import {connect} from 'react-redux'
 
 class Home extends React.Component {
@@ -112,6 +113,7 @@ class Home extends React.Component {
                         <p>地址：Flat Bush, Auckland, 2016, NZ</p>
                     </section>
                 </footer>
+                <Footer/>
             </div>
         )
     }

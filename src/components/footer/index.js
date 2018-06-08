@@ -74,6 +74,8 @@ class Footer extends React.Component {
                         onPress={() => {
                             this.setState({
                                 selectedTab: 'redTab',
+                            },()=>{
+                                hashHistory.push('/')
                             });
                         }}
                         data-seed="logId1"
@@ -109,6 +111,8 @@ class Footer extends React.Component {
                         onPress={() => {
                             this.setState({
                                 selectedTab: 'yellowTab',
+                            },()=>{
+                                hashHistory.push('/baseUserMsg')
                             });
                         }}
                     >

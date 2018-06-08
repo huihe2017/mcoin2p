@@ -176,7 +176,7 @@ class BaseUserMsg extends React.Component {
                     {/*</a>*/}
                     {/*</div>*/}
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
     }

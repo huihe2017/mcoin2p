@@ -1,11 +1,11 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast, Tabs, WhiteSpace } from 'antd-mobile';
+import {List, Icon,InputItem, Toast, Tabs, WhiteSpace,NavBar } from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
+import {hashHistory,Link} from 'react-router'
 import {getBaseUserMsg} from '../../actions/user'
 import { createForm } from 'rc-form';
 import { StickyContainer, Sticky } from 'react-sticky';
@@ -118,7 +118,16 @@ class BaseUserMsg extends React.Component {
         ];
         return (
             <div className={style.wrap}>
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left" />}
+                    onLeftClick={() => console.log('onLeftClick')}
+                    rightContent={[
 
+                        <Link to={'/addAddress'}>+
+                        </Link>,
+                    ]}
+                >添加常用地址</NavBar>
                 <div className={style.tab}>
                     <StickyContainer>
                         <Tabs tabs={tabs}
@@ -144,7 +153,7 @@ class BaseUserMsg extends React.Component {
                         </Tabs>
                     </StickyContainer>
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
     }

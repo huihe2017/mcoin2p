@@ -47,7 +47,7 @@ class BaseUserMsg extends React.Component {
                         ></InputItem>
                     </List>
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
     }

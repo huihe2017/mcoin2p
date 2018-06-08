@@ -77,7 +77,7 @@ class BaseUserMsg extends React.Component {
                     </ul>
 
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
 
