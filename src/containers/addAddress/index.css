@@ -41,3 +41,54 @@
 :local(.itemBox) .am-list-arrow{
     transform:rotate(90deg);
 }
+.am-modal-header{
+    padding-top: 0!important;
+}
+:local(.alTip){
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
+    color: #989898;
+}
+:local(.alTip1){
+    display: block;
+    float: left;
+    width: 34%;
+}
+:local(.alTip2){
+    display: block;
+    float: left;
+    width: 66%;
+    word-wrap:break-word;
+}
+:local(.alTip):after{
+    clear: both;
+    content: '';
+    display: block;
+}
+:local(.alertTip){
+    padding-top: 5px;
+    color: #5262ff;
+    font-size: 12px;
+    word-wrap:break-word;
+    display: block;
+}
+:local(.checkTip){
+    margin-top: 10px;
+}
+:local(.checkTip) .am-list-item .am-list-line .am-list-content{
+    overflow: visible!important;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+}
+:local(.checkTip) .am-list-item{
+    padding-left: 0!important;
+    display: block!important;
+}
+:local(.checkTip) .am-list-thumb{
+    float: left;
+}
+:local(.checkTip) .am-list-item .am-list-thumb:first-child {
+    margin-right: 5px!important;
+}

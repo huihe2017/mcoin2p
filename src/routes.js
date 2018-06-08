@@ -34,6 +34,10 @@ import OutQcode from './containers/outQcode/'
 import WalletIndex from './containers/walletIndex/'
 import DealDetails from './containers/dealDetails/'
 import OutAddressList from './containers/outAddressList/'
+import WalletSetting from './containers/walletSetting/'
+import SafeCenter from './containers/safeCenter/'
+import CommonAddress from './containers/commonAddress/'
+import AmendSafe from './containers/amendSafe/'
 
 import SetName from './containers/setName/'
 
@@ -75,6 +79,10 @@ export default () => {
             <Route path="/walletIndex" component={WalletIndex}/>
             <Route path="/dealDetails" component={DealDetails}/>
             <Route path="/outAddressList" component={OutAddressList}/>
+            <Route path="/walletSetting" component={WalletSetting}/>
+            <Route path="/safeCenter" component={SafeCenter}/>
+            <Route path="/commonAddress" component={CommonAddress}/>
+            <Route path="/amendSafe" component={AmendSafe}/>
         </Router>
     )
 }
