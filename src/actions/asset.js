@@ -2,7 +2,7 @@ import axios from '../common/axiosConf'
 
 export function getAssetDetail(step, params) {
     return dispatch => {
-        axios.post('https://www.easy-mock.com/mock/5b174f2bcbe2f85929997e75/api/fund/detail', {
+        axios.post('https://www.easy-mock.com/mock/5b174f2bcbe2f85929997e75/api/user/assetdetail', {
 
         })
             .then(function (response) {
