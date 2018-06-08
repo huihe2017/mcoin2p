@@ -1,17 +1,31 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Picker} from 'antd-mobile';
+import {List, InputItem, Toast,Picker,Modal,Checkbox} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
 import {logout,getBaseUserMsg} from '../../actions/user'
 
+function closest(el, selector) {
+    const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+    while (el) {
+        if (matchesSelector.call(el, selector)) {
+            return el;
+        }
+        el = el.parentElement;
+    }
+    return null;
+}
+const CheckboxItem = Checkbox.CheckboxItem;
+
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            modal1: false,
+        }
     }
 
     logout() {
@@ -39,6 +53,23 @@ class BaseUserMsg extends React.Component {
         //         //hashHistory.push('/')
         //     }
         // })
+    }
+    submit = key => () => {
+        if(!this.state.check){
+            alert('阅读后方可')
+            return
+        }
+        alert(1)
+    }
+    onWrapTouchStart = (e) => {
+        // fix touch to scroll background page on iOS
+        if (!/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
+            return;
+        }
+        const pNode = closest(e.target, '.am-modal-content');
+        if (!pNode) {
+            e.preventDefault();
+        }
     }
 
     render() {
@@ -98,9 +129,59 @@ class BaseUserMsg extends React.Component {
                             提示：1至20个字符，支持中英文以常见标点符号
                         </span>
                     </ul>
-                    <div className={style.button}>
+                    <div className={style.button} onClick={()=>this.setState({
+                            modal1: true,
+                        })}>
                         保存地址
                     </div>
+                    <Modal
+                        visible={this.state.modal1}
+                        transparent
+                        maskClosable={true}
+                        onClose={()=>this.setState({modal1: false})}
+                        title="提示"
+                        closable={true}
+                        footer={[
+                            { text: '取消', onPress: () => { this.setState({modal1: false}) } }
+                            ,{ text: '完成', onPress: () => {  this.submit('modal1')(); }}
+                            ]}
+                        wrapProps={{ onTouchStart: this.onWrapTouchStart }}
+                    >
+                        <div style={{ height: 230}}>
+                            <span className={style.alTip}>
+                                请再次确认消息
+                            </span>
+                            <span className={style.alTip}>
+                                确认无误，请点击完成
+                            </span>
+                            <span className={style.alTip} style={{marginTop:12}}>
+                                备注名称：
+                                <span style={{color:'#3B3D40'}}>
+                                    飞机
+                                </span>
+                            </span>
+                            <span className={style.alTip}>
+                                货币类型：
+                                <span style={{color:'#3B3D40'}}>
+                                    BTC
+                                </span>
+                            </span>
+                            <span className={style.alTip}>
+                                <span className={style.alTip1}>钱包地址：</span>
+                                <span className={style.alTip2} style={{color:'#3B3D40'}}>
+                                    ABABABBABAABABAABABABABABAB
+                                </span>
+                            </span>
+
+                            <div className={style.checkTip}>
+                                <CheckboxItem onChange={() => this.setState({check:true})}>
+                                    <span className={style.alertTip}>
+                                        数字货币转入其他地址后，将无法取消<br/>和追回，请保证目标地址的安全性与正<br/>确性
+                                    </span>
+                                </CheckboxItem>
+                            </div>
+                        </div>
+                    </Modal>
                 </div>
                 <Footer/>
             </div>
