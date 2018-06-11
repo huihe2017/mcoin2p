@@ -38,6 +38,9 @@ import WalletSetting from './containers/walletSetting/'
 import SafeCenter from './containers/safeCenter/'
 import CommonAddress from './containers/commonAddress/'
 import AmendSafe from './containers/amendSafe/'
+import FundIndex from './containers/fundIndex/'
+import EarningsDetail from './containers/earningsDetail/'
+import RecordDetail from './containers/recordDetail/'
 
 import SetName from './containers/setName/'
 
@@ -83,6 +86,9 @@ export default () => {
             <Route path="/safeCenter" component={SafeCenter}/>
             <Route path="/commonAddress" component={CommonAddress}/>
             <Route path="/amendSafe" component={AmendSafe}/>
+            <Route path="/fundIndex" component={FundIndex}/>
+            <Route path="/earningsDetail" component={EarningsDetail}/>
+            <Route path="/recordDetail" component={RecordDetail}/>
         </Router>
     )
 }

@@ -1,0 +1,92 @@
+:local(.wrap){
+    margin-bottom: 52px;
+    height: 100%;
+}
+:after,:local(.headerTop):after,:local(.headerBottom):after{
+    display: block;
+    clear: both;
+    content: '';
+}
+:local(.header){
+    width: 100%;
+    background: linear-gradient(to right,#3ca3fd, #5262ff);
+    padding: 0 16px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+:local(.headerTop){
+    margin-bottom: 10px;
+}
+:local(.headerTopW){
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    float: left;
+}
+:local(.user){
+    float: left;
+}
+:local(.userImg){
+    width: 44px;
+    height: 44px;
+    float: left;
+    background-color: #1abc9c;
+}
+:local(.userData){
+
+    color: #fff;
+}
+:local(.userName){
+    display: block;
+    font-size: 12px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+:local(.userTime){
+    display: block;
+    font-size: 24px;
+}
+:local(.content){
+    padding-left: 16px;
+    background-color: #fff;
+    height: 100%;
+}
+:local(.contentItem){
+    padding-top: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+:local(.contentItem):last-child{
+    border-bottom:none;
+}
+:local(.contentItemT){
+    margin-bottom: 20px;
+    display: block;
+    font-size: 12px;
+    color: #3B3D40;
+}
+:local(.contentItemBox)>span{
+    display: block;
+}
+:local(.contentItemBox){
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #989898;
+    font-size: 12px;
+}
+:local(.contentItemBoxT){
+    text-align: left;
+    display: block;
+    width: 30%;
+
+}
+:local(.contentItemBoxC){
+    text-align: right;
+    display: block;
+    width: 70%;
+    padding-right: 16px;
+}
+
+
+

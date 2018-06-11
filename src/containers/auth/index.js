@@ -33,7 +33,7 @@ class Auth extends React.Component {
 
     submitFn() {
         if (this.state.login) {
-            if (!/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
+            if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[1-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
                 Toast.fail('请输入正确的手机格式', 3, null, false)
                 return false
             }
@@ -65,7 +65,7 @@ class Auth extends React.Component {
                 }
             })
         } else {
-            if (!/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
+            if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[1-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
                 Toast.fail('请输入正确的手机格式', 3, null, false)
                 return false
             }

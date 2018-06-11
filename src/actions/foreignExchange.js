@@ -38,7 +38,7 @@ export function getAccounded(data, callback) {
 
 export function getBankList(data, callback) {
     return dispatch => {
-        axios.get('http://47.91.236.245:4030/user/bank-code', {
+        axios.post('http://47.91.236.245:4030/user/bank-code', {
 
         })
             .then(function (response) {
