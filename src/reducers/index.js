@@ -7,12 +7,14 @@ import user from './user'
 import authFrom from './authFrom'
 import resultsPage from './resultsPage'
 import asset from './asset'
+import wallet from './wallet'
 let states = {
     foreignExchange,
     user,
     authFrom,
     resultsPage,
-    asset
+    asset,
+    wallet
 }
 
 let _states = {}

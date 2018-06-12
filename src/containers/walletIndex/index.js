@@ -1,12 +1,14 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,NavBar,Icon} from 'antd-mobile';
+import {List, InputItem, Toast, NavBar, Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory,Link} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {hashHistory, Link} from 'react-router'
+import {logout, getBaseUserMsg} from '../../actions/user'
+import {getWalletIndexData} from '../../actions/wallet'
+import SafeSet from '../../containers/safeSet'
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -16,9 +18,7 @@ class BaseUserMsg extends React.Component {
 
     logout() {
         Toast.loading('正在退出', 0)
-        this.props.logout({
-
-        }, (errorText) => {
+        this.props.logout({}, (errorText) => {
             Toast.hide()
             if (errorText) {
                 Toast.fail(errorText, 3, null, false)
@@ -28,7 +28,8 @@ class BaseUserMsg extends React.Component {
         })
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        this.props.getWalletIndexData()
         // this.props.getBaseUserMsg({
         //
         // }, (errorText) => {
@@ -42,16 +43,22 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
+        if (this.props.wallet.loading) {
+            return null
+        }
+        if (!this.props.wallet.isSetSaveCode) {
+            return <SafeSet></SafeSet>
+        }
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
                 <NavBar
                     mode="light"
-                    icon={<Icon type="left" />}
+                    icon={<Icon type="left"/>}
                     onLeftClick={() => console.log('onLeftClick')}
                     rightContent={[
                         <Link to={'/walletSetting'}>
-                            <Icon key="1" type="ellipsis" />
+                            <Icon key="1" type="ellipsis"/>
                         </Link>,
                     ]}
                 >点点数字基金</NavBar>
@@ -72,20 +79,20 @@ class BaseUserMsg extends React.Component {
                                         可活动资产
                                     </span>
                                     <span className={style.userTime}>
-                                        ￥317.556.02
+                                        {this.props.wallet.totalAmount}
                                     </span>
                                 </div>
                             </a>
 
-                                <a href="javascript:void (0)" className={style.user1}>
-                                    <img src={require('./images/add.png')} alt=""/>
-                                </a>
-
-                        <Link to={'/outAddressList'}>
                             <a href="javascript:void (0)" className={style.user1}>
-                                <img src={require('./images/fadd.png')} alt=""/>
+                                <img src={require('./images/add.png')} alt=""/>
                             </a>
-                        </Link>
+
+                            <Link to={'/outAddressList'}>
+                                <a href="javascript:void (0)" className={style.user1}>
+                                    <img src={require('./images/fadd.png')} alt=""/>
+                                </a>
+                            </Link>
                         </div>
                     </div>
                     <div className={style.content}>
@@ -101,38 +108,27 @@ class BaseUserMsg extends React.Component {
                             </span>
                         </div>
                         <div className={style.contentContent}>
-                            <Link to={'/dealDetails'}>
-                                <div className={style.contentPart}>
-                                    <span className={style.contentPart1}>
-                                        <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
-                                    </span>
-                                        <span className={style.contentPart2}>
-                                        14.2123411231
-                                    </span>
-                                        <span className={style.contentPart3}>
-                                        51.000CNY
-                                            <span className={style.contentPartTip}>
-                                               市场价：￥51.000
+                            {
+                                this.props.wallet.list.map((value,index)=>{
+                                    return <Link to={'/dealDetails'}>
+                                        <div className={style.contentPart}>
+                                            <span className={style.contentPart1}>
+                                                <img src={require('./images/BTC.png')} className={style.contentImg}
+                                                     alt=""/>{value.currency}
                                             </span>
-                                    </span>
-                                </div>
-                            </Link>
-                            <Link to={'/dealDetails'}>
-                                <div className={style.contentPart}>
-                                    <span className={style.contentPart1}>
-                                       <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
-                                    </span>
-                                        <span className={style.contentPart2}>
-                                        14.2123411231
-                                    </span>
-                                        <span className={style.contentPart3}>
-                                        51.000CNY
-                                            <span className={style.contentPartTip}>
-                                               市场价：￥51.000
+                                            <span className={style.contentPart2}>
+                                                {value.amount}
                                             </span>
-                                    </span>
-                                </div>
-                            </Link>
+                                            <span className={style.contentPart3}>
+                                                {value.realAmount}
+                                                    <span className={style.contentPartTip}>
+                                                       市场价：￥{value.marketPrice}
+                                                    </span>
+                                            </span>
+                                        </div>
+                                    </Link>
+                                })
+                            }
                         </div>
                     </div>
 
@@ -148,14 +144,16 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user:state.user
+        user: state.user,
+        wallet: state.wallet
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         logout: bindActionCreators(logout, dispatch),
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
+        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch),
+        getWalletIndexData: bindActionCreators(getWalletIndexData, dispatch)
     }
 }
 
