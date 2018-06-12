@@ -1,69 +1,25 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Icon,RefreshControl, ListView} from 'antd-mobile';
+import {List, InputItem, Toast,Icon,RefreshControl, Tabs,Carousel} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
 import {getAssetDetail} from '../../actions/asset'
 import ReactDOM from "react-dom";
+import { StickyContainer, Sticky } from 'react-sticky';
+import echarts from 'echarts/lib/echarts';
 
-//if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[1-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
-const data = [
-    // {
-    //     title: '基金A',
-    //     time: 'Meet hotel',
-    //     number: '1860684651644',
-    //     state:'入金失败',
-    //     way:'网银支付'
-    // },
-    // {
-    //     title: '基金B',
-    //     time: 'Meet hotel',
-    //     number: '1.000000',
-    //     state:'+0.000003',
-    //     way:'4.23%'
-    // },
-    // {
-    //     title: '基金C',
-    //     time: 'Meet hotel',
-    //     number: '1.000000',
-    //     state:'+0.000003',
-    //     way:'4.23%'
-    // },{
-    //     title: '基金D',
-    //     time: 'Meet hotel',
-    //     number: '1.000000',
-    //     state:'+0.000003',
-    //     way:'4.23%'
-    // }
-];
-let index = data.length - 1;
-
-const NUM_ROWS = data.length;
-let pageIndex = 0;
-
-function genData(pIndex = 0) {
-    const dataArr = [];
-    for (let i = 0; i < NUM_ROWS; i++) {
-        dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-    }
-    console.log(dataArr);
-    return dataArr;
-}
+import  'echarts/lib/chart/line';
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/title';
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
-        const dataSource = new ListView.DataSource({
-            rowHasChanged: (row1, row2) => row1 !== row2,
-        });
-
         this.state = {
-            dataSource,
-            refreshing: true,
-            height: document.documentElement.clientHeight,
+            data: ['1', '2', '3'],
         };
     }
 
@@ -89,154 +45,75 @@ class BaseUserMsg extends React.Component {
         // }
     }
     componentDidMount() {
-        // if(!this.props.user.token){
-        //     return false
-        // }
-        this.props.getAssetDetail()
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
-        // Set the appropriate height
-        setTimeout(() => this.setState({
-            height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
-        }), 0);
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        // 绘制图表
+        myChart.setOption({
+            title: {
+                text: '累计盈亏',
+                subtext: '累计收益：14.47'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['最高气温','最低气温']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {readOnly: false},
+                    magicType: {type: ['line', 'bar']},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis:  {
+                type: 'category',
+                boundaryGap: false,
+                data: ['05-01','05-05','05-10','05-15','05-20']
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: false,
 
-        // handle https://github.com/ant-design/ant-design-mobile/issues/1588
-        this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
-            this.tsPageY = e.touches[0].pageY;
+            },
+            series: [
+                {
+                    name:'买入价格',
+                    type:'line',
+                    data:[11, 13, 13.5, 14, 14.5],
+                    markPoint: {
+                        data: [
+                            {type: 'max', name: '最大值'},
+                            {type: 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
+                },
+
+            ]
         });
-        // In chrome61 `document.body.scrollTop` is invalid
-        const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
-        this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
-            this.tmPageY = e.touches[0].pageY;
-            if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
-                console.log('start pull to refresh');
-                this.domScroller.options.preventDefaultOnTouchMove = false;
-            } else {
-                this.domScroller.options.preventDefaultOnTouchMove = undefined;
-            }
-        });
-    }
-
-    componentWillUnmount() {
-        this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
-        this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
-    }
-
-    onScroll = (e) => {
-        this.scrollerTop = e.scroller.getValues().top;
-        this.domScroller = e;
-    };
-
-    onRefresh = () => {
-        console.log('onRefresh');
-        if (!this.manuallyRefresh) {
-            this.setState({ refreshing: true });
-        } else {
-            this.manuallyRefresh = false;
-        }
-
-        // simulate initial Ajax
-        setTimeout(() => {
-            this.rData = genData();
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
-                refreshing: false,
-                showFinishTxt: true,
-            });
-            if (this.domScroller) {
-                this.domScroller.scroller.options.animationDuration = 500;
-            }
-        }, 600);
-    };
-
-    onEndReached = (event) => {
-        // load new data
-        // hasMore: from backend data, indicates whether it is the last page, here is false
-        if (this.state.isLoading && !this.state.hasMore) {
-            return;
-        }
-        console.log('reach end', event);
-        this.setState({ isLoading: true });
-        setTimeout(() => {
-            this.rData = [...this.rData,];
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
-                isLoading: false,
-            });
-        }, 1000);
-    };
-
-    scrollingComplete = () => {
-        // In general, this.scrollerTop should be 0 at the end, but it may be -0.000051 in chrome61.
-        if (this.scrollerTop >= -1) {
-            this.setState({ showFinishTxt: false });
-        }
-    }
-
-    renderCustomIcon() {
-        return [
-            <div key="0" className="am-refresh-control-pull">
-                <span>{this.state.showFinishTxt ? '刷新完毕' : '下拉可以刷新'}</span>
-            </div>,
-            <div key="1" className="am-refresh-control-release">
-                <span>松开立即刷新</span>
-            </div>,
-        ];
     }
 
 
     render() {
-        const separator = (sectionID, rowID) => (
-            <div
-                key={`${sectionID}-${rowID}`}
-                style={{
-                    backgroundColor: '#F5F5F9',
-                    height: 10,
-                    borderTop: '1px solid #ECECED',
-                    borderBottom: '1px solid #ECECED',
-                }}
-            />
-        );
-        const row = (rowData, sectionID, rowID) => {
-            if (index < 0) {
-                index = data.length - 1;
-            }
-            const obj = data[index--];
-            return (
-                <div className={style.item} key={rowID}>
-                    <span className={style.title} >
-                        {obj.title}
-                        <div className={style.time}>
-                            封闭期还剩7天
-                        </div>
-                    </span>
-                    <div className={style.icontent}>
-
-                        <div className={style.state}>
-                            <span>币额</span>
-                            <span style={{color:'#3b3d40'}}>{obj.number}</span>
-                        </div>
-                        <div className={style.number}>
-                            <span>昨日收益</span>
-                            <span style={{color:'#F49193'}}>{obj.state}</span>
-                        </div>
-                        <div className={style.way}>
-                            <span>七日年化</span>
-                            <span style={{color:'#F49193'}}>{obj.way}</span>
-                        </div>
-                        <img className={style.arrImg} src={require('./images/arrow.png')} alt=""/>
-                    </div>
-                </div>
-            );
-        };
+        const tabs = [
+            { title: '累计盈亏' },
+            { title: '七日年化收益走势' },
+        ];
+        function renderTabBar(props) {
+            return (<Sticky>
+                {({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
+            </Sticky>);
+        }
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
@@ -244,11 +121,11 @@ class BaseUserMsg extends React.Component {
                     <div className={style.header}>
                         <div className={style.headerTop}>
                             <span className={style.headerTopW}>
-                                总币额
+                                持有币额
                             </span>
-                            <a className={style.headerTopR} href="javascript:void (0)">
-                                切换币种 >
-                            </a>
+                            <span className={style.headerTopR}>
+                                收益率 3.43%
+                            </span>
                         </div>
                         <div className={style.headerBottom}>
                             <a className={style.user} href="javascript:void (0)">
@@ -283,42 +160,131 @@ class BaseUserMsg extends React.Component {
                             交易记录
                         </a>
                     </div>
-                    <div hidden={data.length>0}>
-                        <img className={style.z} src={require('../addressList/images/zero.png')} alt=""/>
-                        <span className={style.s} >
-                            快去 <a href="javascript:void (0)">基金市场</a> 挑一下吧
-                        </span>
-                    </div>
-                    <div hidden={!data.length>0}>
-                        <ListView
-                            ref={el => this.lv = el}
-                            dataSource={this.state.dataSource}
+                    <div className={style.banner}>
+                        <Carousel
+                            autoplay={false}
+                            infinite
+                            beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+                            afterChange={index => console.log('slide to', index)}
+                        >
 
-                            renderFooter={() => (<div style={{ padding: '0.3rem', textAlign: 'center' }}>
-                                {this.state.isLoading ? '加载中...' : '加载完成'}
-                            </div>)}
-                            renderRow={row}
-                            renderSeparator={separator}
-                            initialListSize={5}
-                            pageSize={5}
-                            style={{
-                                height: this.state.height,
-                                margin: '0.05rem 0',
-                            }}
-                            scrollerOptions={{ scrollbars: true, scrollingComplete: this.scrollingComplete }}
-                            refreshControl={<RefreshControl
-                                refreshing={this.state.refreshing}
-                                onRefresh={this.onRefresh}
-                                icon={this.renderCustomIcon()}
-                            />}
-                            onScroll={this.onScroll}
-                            scrollRenderAheadDistance={200}
-                            scrollEventThrottle={20}
-                            onEndReached={this.onEndReached}
-                            onEndReachedThreshold={10}
-                        />
-                    </div>
+                                <div className={style.bannerItem}
+                                    key={1}
+                                    style={{ display: 'inline-block', width: '100%', height: 117 }}
+                                >
+                                    <a className={style.bannerA} href="javascript:void (0)">
+                                        <span className={style.bannerAL}>
+                                           06-02买入的将在14天后到期
+                                        </span>
+                                        <span className={style.bannerAR}>
+                                           自动续期
+                                            <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
+                                        </span>
+                                    </a>
+                                    <a className={style.bannerA} href="javascript:void (0)">
+                                        <span className={style.bannerAL}>
+                                           06-02买入的将在14天后到期
+                                        </span>
+                                        <span className={style.bannerAR}>
+                                           自动续期
+                                            <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
+                                        </span>
+                                    </a>
+                                    <a className={style.bannerA} href="javascript:void (0)">
+                                        <span className={style.bannerAL}>
+                                           06-02买入的将在14天后到期
+                                        </span>
+                                        <span className={style.bannerAR}>
+                                           自动续期
+                                            <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div className={style.bannerItem}
+                                    key={2}
+                                    style={{ display: 'inline-block', width: '100%', height: 117 }}
+                                >
+                                    <a className={style.bannerA} href="javascript:void (0)">
+                                        <span className={style.bannerAL}>
+                                           06-02买入的将在14天后到期
+                                        </span>
+                                        <span className={style.bannerAR}>
+                                           自动续期
+                                            <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
+                                        </span>
+                                    </a>
+                                    <a className={style.bannerA} href="javascript:void (0)">
+                                        <span className={style.bannerAL}>
+                                           06-02买入的将在14天后到期
+                                        </span>
+                                        <span className={style.bannerAR}>
+                                           自动续期
+                                            <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
+                                        </span>
+                                    </a>
+                                    <a className={style.bannerA} href="javascript:void (0)">
+                                        <span className={style.bannerAL}>
+                                           06-02买入的将在14天后到期
+                                        </span>
+                                        <span className={style.bannerAR}>
+                                           自动续期
+                                            <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div className={style.bannerItem}
+                                    key={3}
+                                    style={{ display: 'inline-block', width: '100%', height: 117 }}
+                                >
+                                    <a className={style.bannerA} href="javascript:void (0)">
+                                        <span className={style.bannerAL}>
+                                           06-02买入的将在14天后到期
+                                        </span>
+                                        <span className={style.bannerAR}>
+                                           自动续期
+                                            <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
+                                        </span>
+                                    </a>
+                                    <a className={style.bannerA} href="javascript:void (0)">
+                                        <span className={style.bannerAL}>
+                                           06-02买入的将在14天后到期
+                                        </span>
+                                        <span className={style.bannerAR}>
+                                           自动续期
+                                            <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
+                                        </span>
+                                    </a>
+                                    <a className={style.bannerA} href="javascript:void (0)">
+                                        <span className={style.bannerAL}>
+                                           06-02买入的将在14天后到期
+                                        </span>
+                                        <span className={style.bannerAR}>
+                                           自动续期
+                                            <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
+                                        </span>
+                                    </a>
+                                </div>
 
+                        </Carousel>
+                    </div>
+                    <div className={style.chart}>
+                        <StickyContainer>
+                            <Tabs tabs={tabs}
+                                  initalPage={'t2'}
+                                  renderTabBar={renderTabBar}
+                            >
+                                <div style={{ backgroundColor: '#fff' }}>
+                                    <div id="main" style={{ width: '100%', height: 230 ,padding:'0 16px'}}></div>
+                                    <a href="" className={style.bottomA}>
+                                        查看基金详情
+                                    </a>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
+                                    Content of second tab
+                                </div>
+                            </Tabs>
+                        </StickyContainer>
+                    </div>
                 </div>
                 {/*<Footer/>*/}
             </div>

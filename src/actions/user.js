@@ -125,7 +125,7 @@ export function register(data, callback) {
 
 export function getBaseUserMsg(data, callback) {
     return dispatch => {
-        axios.get('http://47.91.236.245:4030/user/customer/trade-info', {})
+        axios.post('http://47.91.236.245:4030/user/customer/trade-info', {})
             .then(function (response) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_BASEUSERMSG', data: response.data.data[0]})
@@ -145,7 +145,7 @@ export function getBaseUserMsg(data, callback) {
 
 export function getDetailMsg(data, callback) {
     return dispatch => {
-        axios.get('http://47.91.236.245:4030/user/customer/bank-card', {})
+        axios.post('http://47.91.236.245:4030/user/customer/bank-card', {})
             .then(function (response) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_DETAILMSG', data: response.data.data})

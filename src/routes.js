@@ -42,6 +42,7 @@ import FundIndex from './containers/fundIndex/'
 import EarningsDetail from './containers/earningsDetail/'
 import RecordDetail from './containers/recordDetail/'
 import DealRecord from './containers/dealRecord/'
+import FundName from './containers/fundName/'
 
 import SetName from './containers/setName/'
 
@@ -91,6 +92,7 @@ export default () => {
             <Route path="/earningsDetail" component={EarningsDetail}/>
             <Route path="/recordDetail" component={RecordDetail}/>
             <Route path="/dealRecord" component={DealRecord}/>
+            <Route path="/fundName" component={FundName}/>
         </Router>
     )
 }
