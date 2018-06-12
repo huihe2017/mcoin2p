@@ -1,0 +1,68 @@
+:local(.wrap){
+    margin-bottom: 52px;
+    /*background-color: #fff;*/
+}
+:local(.wrap) .am-tabs-default-bar-tab-active{
+    color: #5262ff;
+    font-weight: bold;
+}
+:local(.itemBox){
+    padding-left: 16px;
+    background-color: #fff;
+}
+:local(.item){
+
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    padding-right: 16px;
+}
+:local(.itemLeft){
+    float: left;
+}
+:local(.itemLeftTime){
+    color: #989898;
+    margin-right: 20px;
+}
+:local(.itemLeftH){
+    display: flex;
+    font-size: 12px;
+}
+:local(.itemLeftB){
+    font-size: 16px;
+    margin-top: 10px;
+    color: #3B3D40;
+}
+:local(.itemRight){
+    text-align: right;
+    float: right;
+}
+:local(.itemRightT){
+    font-size: 12px;
+    color: #989898;
+    display: block;
+}
+
+:local(.itemRightC){
+    display: block;
+    font-size: 16px;
+    color: #3B3D40;
+    margin-top: 10px;
+}
+:local(.showImg){
+    width: 90px;
+    height: 110px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+:local(.showTip){
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+:local(.tagBox){
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+}

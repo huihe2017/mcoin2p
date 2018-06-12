@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router';
 import Header from '../../components/header'
 import Countdown from '../../components/countdown'
-
+import {checkPhone} from '../../common/util'
 class Auth extends React.Component {
     constructor(props) {
         super(props);
@@ -33,7 +33,7 @@ class Auth extends React.Component {
 
     submitFn() {
         if (this.state.login) {
-            if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[1-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
+            if (!/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
                 Toast.fail('请输入正确的手机格式', 3, null, false)
                 return false
             }
@@ -65,7 +65,7 @@ class Auth extends React.Component {
                 }
             })
         } else {
-            if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[1-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
+            if (!/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
                 Toast.fail('请输入正确的手机格式', 3, null, false)
                 return false
             }
@@ -113,17 +113,7 @@ class Auth extends React.Component {
     }
 
 
-    checkPhone() {
-        if (!/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
-            Toast.fail('请输入正确的手机格式', 3, null, false)
-            return false
-        }
-        if (!this.state.picCode) {
-            Toast.fail('请输入验证码', 3, null, false)
-            return false
-        }
-        return true
-    }
+
 
     render() {
         const quhao = [
@@ -191,7 +181,7 @@ class Auth extends React.Component {
                         <div className={style.tu}>
                             <List>
                                 <Countdown
-                                    beforeClick={this.checkPhone.bind(this)}
+                                    beforeClick={checkPhone.bind(this)}
                                     phone={this.state.phone}
                                     picCode={this.state.picCode}
                                     business='REGISTER'
