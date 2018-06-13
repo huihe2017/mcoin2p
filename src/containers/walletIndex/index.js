@@ -110,7 +110,7 @@ class BaseUserMsg extends React.Component {
                         <div className={style.contentContent}>
                             {
                                 this.props.wallet.list.map((value,index)=>{
-                                    return <Link to={'/dealDetails'}>
+                                    return <Link to={'/dealDetails/'+value.currency}>
                                         <div className={style.contentPart}>
                                             <span className={style.contentPart1}>
                                                 <img src={require('./images/BTC.png')} className={style.contentImg}
