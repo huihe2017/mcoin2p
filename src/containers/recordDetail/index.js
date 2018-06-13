@@ -89,7 +89,7 @@ class BaseUserMsg extends React.Component {
                         </div>
                     </div>
                 <div className={style.content}>
-                        <div className={style.contentItem}>
+                    <div className={style.contentItem}>
                             <span className={style.contentItemT}>
                                 买入信息
                             </span>
@@ -118,7 +118,7 @@ class BaseUserMsg extends React.Component {
                                 </span>
                             </div>
                         </div>
-                        <div className={style.contentItem}>
+                    <div className={style.contentItem}>
                             <span className={style.contentItemT}>
                                 确认消息
                             </span>
@@ -155,17 +155,17 @@ class BaseUserMsg extends React.Component {
                                 </span>
                             </div>
                         </div>
-                        <div className={style.contentItem}>
-                            <div className={style.contentItemBox}>
-                                <span className={style.contentItemBoxT}>
-                                    订单号
-                                </span>
-                                <span className={style.contentItemBoxC}>
-                                    12813246451684135486461654
-                                </span>
-                            </div>
+                    <div className={style.contentItem}>
+                        <div className={style.contentItemBox}>
+                            <span className={style.contentItemBoxT}>
+                                订单号
+                            </span>
+                            <span className={style.contentItemBoxC}>
+                                12813246451684135486461654
+                            </span>
                         </div>
                     </div>
+                </div>
             </div>
         )
     }

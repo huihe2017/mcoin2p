@@ -2,7 +2,7 @@
     margin-bottom: 52px;
     height: 100%;
 }
-:after,:local(.headerTop):after,:local(.headerBottom):after{
+:local(.headerTop):after,:local(.headerBottom):after{
     display: block;
     clear: both;
     content: '';

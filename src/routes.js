@@ -44,6 +44,8 @@ import RecordDetail from './containers/recordDetail/'
 import DealRecord from './containers/dealRecord/'
 import FundName from './containers/fundName/'
 import FriendAwardDetail from './containers/friendAwardDetail/'
+import ProductDetails from './containers/productDetails/'
+import ProductBuying from './containers/productBuying/'
 
 import SetName from './containers/setName/'
 
@@ -95,6 +97,8 @@ export default () => {
             <Route path="/dealRecord" component={DealRecord}/>
             <Route path="/fundName" component={FundName}/>
             <Route path="/friendAwardDetail" component={FriendAwardDetail}/>
+            <Route path="/productDetails" component={ProductDetails}/>
+            <Route path="/productBuying" component={ProductBuying}/>
         </Router>
     )
 }
