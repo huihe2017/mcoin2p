@@ -9,42 +9,12 @@ import {hashHistory} from 'react-router'
 import {getAssetDetail} from '../../actions/asset'
 import ReactDOM from "react-dom";
 
-const data = [
-    // {
-    //     title: '基金A',
-    //     time: 'Meet hotel',
-    //     number: '1860684651644',
-    //     state:'入金失败',
-    //     way:'网银支付'
-    // },
-    // {
-    //     title: '基金B',
-    //     time: 'Meet hotel',
-    //     number: '1.000000',
-    //     state:'+0.000003',
-    //     way:'4.23%'
-    // },
-    // {
-    //     title: '基金C',
-    //     time: 'Meet hotel',
-    //     number: '1.000000',
-    //     state:'+0.000003',
-    //     way:'4.23%'
-    // },{
-    //     title: '基金D',
-    //     time: 'Meet hotel',
-    //     number: '1.000000',
-    //     state:'+0.000003',
-    //     way:'4.23%'
-    // }
-];
-
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            percent: 50,
+            percent: 100,
         };
     }
 
@@ -121,7 +91,7 @@ class BaseUserMsg extends React.Component {
                             </span>
                         </div>
                     </div>
-                    <div className={style.button}>
+                    <div className={style.button} onClick={()=>{alert(1)}}>
                         查看基金明细
                     </div>
                 </div>

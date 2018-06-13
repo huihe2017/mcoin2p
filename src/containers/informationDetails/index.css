@@ -1,0 +1,28 @@
+:local(.wrap){
+    height: 100%;
+    background-color: #fff;
+    padding-top: 12px;
+}
+:local(.header){
+    display: block;
+    padding: 0 16px;
+    font-size: 16px;
+    line-height: 25px;
+    color: #3B3D40;
+}
+:local(.time){
+    display: block;
+    padding: 0 16px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #989898;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+:local(.content){
+    display: block;
+    padding: 0 16px;
+    font-size: 12px;
+    line-height: 18px;
+    color: #989898;
+}

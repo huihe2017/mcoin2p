@@ -1,5 +1,4 @@
 :local(.wrap){
-    margin-bottom: 52px;
     height: 100%;
 }
 :local(.headerTop):after,:local(.headerBottom):after{

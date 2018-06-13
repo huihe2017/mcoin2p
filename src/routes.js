@@ -47,6 +47,7 @@ import FriendAwardDetail from './containers/friendAwardDetail/'
 import ProductDetails from './containers/productDetails/'
 import ProductBuying from './containers/productBuying/'
 import BuyResult from './containers/buyResult/'
+import InformationDetails from './containers/informationDetails/'
 
 import SetName from './containers/setName/'
 
@@ -101,6 +102,7 @@ export default () => {
             <Route path="/productDetails" component={ProductDetails}/>
             <Route path="/productBuying" component={ProductBuying}/>
             <Route path="/buyResult" component={BuyResult}/>
+            <Route path="/informationDetails" component={InformationDetails}/>
         </Router>
     )
 }
