@@ -43,6 +43,10 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
+        if(!this.props.user.token){
+            hashHistory.push('/auth')
+            return null
+        }
         if(!this.props.user.userInfo){
             return null
         }

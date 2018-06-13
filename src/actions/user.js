@@ -10,7 +10,6 @@ export function login(data, callback) {
 
         })
             .then(function (response) {
-                debugger
                 if (response.data.code === 0) {
                     dispatch({type: 'LOGIN', data: response.data})
                     callback()
@@ -29,7 +28,7 @@ export function login(data, callback) {
 
 export function logout(data, callback) {
     return dispatch => {
-        axios.post('http://47.91.236.245:4030/user/customer/log-out', {})
+        axios.post(config.api_url+'login/logout', {})
             .then(function (response) {
                 if (response.data.code === 0) {
                     dispatch({type: 'LOGOUT'})
