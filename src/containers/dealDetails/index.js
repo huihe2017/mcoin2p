@@ -70,7 +70,8 @@ class BaseUserMsg extends React.Component {
     }
 
     show(){
-        if(data.length==0){
+        let data = this.props.wallet.current
+        if(data.list.length==0){
             return(
                 <div>
                     <img className={style.showImg} src={require('../addressList/images/zero.png')} alt=""/>
@@ -81,36 +82,36 @@ class BaseUserMsg extends React.Component {
             )
         }else {
             return(
-                data.map(i => (
+                data.list.map((i,index) => (
 
-                    <div className={style.item} key={i.num} >
+                    <div className={style.item} key={index} >
                         <div className={style.itemH}>
                             <div className={style.itemHead}>
                                 <div className={style.itemCoin}>
-                                    {i.out?<div  className={style.itemT}>
+                                    {i.type==='转出'?<div  className={style.itemT}>
                                         <img className={style.itemImg} src={require('./images/out.png')} alt=""/>转入
                                     </div>:<div style={{color:'#5262ff'}} className={style.itemT}>
                                         <img  className={style.itemImg} src={require('./images/in.png')} alt=""/>转出
                                     </div>}
-                                    {i.commission?
+                                    {i.minerFee?
                                         <span className={style.commission}>
-                                    手续费：{i.commission}BTC
+                                    手续费：{i.minerFee}BTC
                                 </span>:''
                                     }
                                 </div>
                             </div>
                             <div className={style.itemDataBox}>
                                 <div className={style.itemLeft}>
-                                    数量 {i.out?<span style={{color: '#3B3D40',marginLeft:10}}>-{i.number}</span>:<span style={{color: '#3B3D40',marginLeft:10}}>+{i.number}</span>}
+                                    数量 {i.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>-{i.amount}</span>:<span style={{color: '#3B3D40',marginLeft:10}}>+{i.amount}</span>}
                                 </div>
                                 <div className={style.itemRight}>
-                                    <span className={style.itemLeftC}>状态</span> {i.out?<span className={style.itemRightC}>{i.do}</span>:<span className={style.itemRightC}>{i.do}</span>}
+                                    <span className={style.itemLeftC}>状态</span> {i.out?<span className={style.itemRightC}>{i.status}</span>:<span className={style.itemRightC}>{i.status}</span>}
                                 </div>
                                 <div className={style.itemLeft}>
-                                    {i.out?'发起':''}{i.out?<span style={{color: '#3B3D40',marginLeft:10}}>{i.time1}</span>:<span style={{color: '#3B3D40',marginLeft:10}}></span>}
+                                    {i.type==='转出'?'发起':''}{i.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>{i.beginTime}</span>:<span style={{color: '#3B3D40',marginLeft:10}}></span>}
                                 </div>
                                 <div className={style.itemRight}>
-                                    <span className={style.itemLeftC}>完成</span> <span className={style.itemRightC}>{i.time}</span>
+                                    <span className={style.itemLeftC}>完成</span> <span className={style.itemRightC}>{i.completeTime}</span>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +120,7 @@ class BaseUserMsg extends React.Component {
                                 地址
                             </div>
                             <div className={style.itemAdress}>
-                                {i.address}
+                                {i.fromAddress}
                             </div>
                         </div>
 
@@ -132,6 +133,10 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
+        if(!this.props.wallet.current){
+            return null
+        }
+        let data = this.props.wallet.current.balance
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
@@ -145,12 +150,12 @@ class BaseUserMsg extends React.Component {
                                     <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
                                 </span>
                                     <span className={style.contentPart2}>
-                                    14.2123411231
+                                        {data.amount}
                                 </span>
                                     <span className={style.contentPart3}>
-                                    51.000CNY
+                                    {data.realAmount}CNY
                                         <span className={style.contentPartTip}>
-                                           市场价：￥51.000
+                                           市场价：￥{data.marketPrice}
                                         </span>
                                 </span>
                             </div>
