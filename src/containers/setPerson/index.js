@@ -96,11 +96,11 @@ class BaseUserMsg extends React.Component {
                             </a>
                         </List>
                     </div>
-                    {/*<div>*/}
-                    {/*<a onTouchEnd={this.logout.bind(this)} className={style.ensure} href="javascript:void(0)">*/}
-                    {/*退出登录*/}
-                    {/*</a>*/}
-                    {/*</div>*/}
+                    <div>
+                    <a onTouchEnd={this.logout.bind(this)} className={style.ensure} href="javascript:void(0)">
+                        退出登录
+                    </a>
+                    </div>
                 </div>
                 <Footer/>
             </div>

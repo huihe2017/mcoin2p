@@ -80,36 +80,42 @@ class BaseUserMsg extends React.Component {
                     <div className={style.part}>
                         <List>
                             <a className={style.partTotal} href="javascript:void(0)">
-                                <Link to={'/moneyDetail'}>
+
                                     <div className={style.totalL}>
+                                        <Link to={'/moneyDetail'}>
                                         <span className={style.totalLT}>
                                             总金额 （元）<img className={style.see} src={require('./images/wen.png')} alt=""/>
                                         </span>
                                             <span className={style.totalLB}>
                                             {this.props.user.totalAmount}
                                         </span>
+                                        </Link>
                                     </div>
-                                </Link>
-                                <Link to={'/yesterdayEarnings'}>
+
+
                                     <div className={style.totalL1}>
+                                        <Link to={'/yesterdayEarnings'}>
                                         <span className={style.totalLT}>
                                             昨日收益 （元）
                                         </span>
                                         <span className={style.totalLB1}>
                                             +{this.props.user.yesterdayProfit}
                                         </span>
+                                        </Link>
                                     </div>
-                                </Link>
+
                                 <img className={style.totalR} src={require('./images/arrow.png')} alt=""/>
                             </a>
                         </List>
                         <List className={style.partUl}>
-                            <Link to={'/activityBalance'}>
+
                                 <a className={style.partLi} href="javascript:void(0)">
+                                    <Link to={'/activityBalance'}>
                                     <span className={style.itemTitle}>活动余币（元）</span>
                                     <span className={style.itemContent}>{this.props.user.activeAmount}</span>
+                                    </Link>
                             </a>
-                            </Link>
+
                             <a className={style.partLi} href="javascript:void(0)">
                                 <span className={style.itemTitle}>活期存币（元）</span>
                                 <span className={style.itemContent}>{this.props.user.currentAmount}</span>
@@ -118,12 +124,14 @@ class BaseUserMsg extends React.Component {
                                 <span className={style.itemTitle}>基金（元）</span>
                                 <span className={style.itemContent}>{this.props.user.fundAmount}</span>
                             </a>
-                            <Link to={'/friendAward'}>
+
                                 <a className={style.partLi} href="javascript:void(0)">
+                                    <Link to={'/friendAward'}>
                                     <span className={style.itemTitle}>累计好友奖励（元）</span>
                                     <span className={style.itemContent}>{this.props.user.totalAward}</span>
+                                    </Link>
                                 </a>
-                            </Link>
+
                         </List>
                     </div>
                     <div className={style.part}>

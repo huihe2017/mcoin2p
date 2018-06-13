@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Icon,RefreshControl, Tabs,Carousel} from 'antd-mobile';
+import {List, InputItem, Toast,Icon,RefreshControl, Tabs,Carousel,Modal,Button} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -20,6 +20,7 @@ class BaseUserMsg extends React.Component {
         super(props);
         this.state = {
             data: ['1', '2', '3'],
+            modal2: false,
         };
     }
 
@@ -51,7 +52,7 @@ class BaseUserMsg extends React.Component {
         myChart.setOption({
             title: {
                 text: '累计盈亏',
-                subtext: '累计收益：14.47'
+                subtext: `累计收益：${14.47}`
             },
             tooltip: {
                 trigger: 'axis'
@@ -176,7 +177,9 @@ class BaseUserMsg extends React.Component {
                                         <span className={style.bannerAL}>
                                            06-02买入的将在14天后到期
                                         </span>
-                                        <span className={style.bannerAR}>
+                                        <span className={style.bannerAR} onClick={()=>this.setState({
+                                            modal2: true,
+                                        })}>
                                            自动续期
                                             <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
                                         </span>
@@ -199,6 +202,25 @@ class BaseUserMsg extends React.Component {
                                             <img src={require('./images/arrow.png')} className={style.bannerARI} alt=""/>
                                         </span>
                                     </a>
+                                    <Modal
+                                        popup
+                                        visible={this.state.modal2}
+                                        onClose={()=>this.setState({
+                                            modal2: false,
+                                        })}
+                                        animationType="slide-up"
+                                    >
+                                        <List className="popup-list">
+                                            {['股票名称', '股票代码', '买入价格'].map((i, index) => (
+                                                <List.Item key={index}>{i}</List.Item>
+                                            ))}
+                                            <List.Item>
+                                                <Button type="primary" onClick={()=>this.setState({
+                                                    modal2: false,
+                                                })}>买入</Button>
+                                            </List.Item>
+                                        </List>
+                                    </Modal>
                                 </div>
                                 <div className={style.bannerItem}
                                     key={2}
@@ -273,8 +295,8 @@ class BaseUserMsg extends React.Component {
                                   initalPage={'t2'}
                                   renderTabBar={renderTabBar}
                             >
-                                <div style={{ backgroundColor: '#fff' }}>
-                                    <div id="main" style={{ width: '100%', height: 230 ,padding:'0 16px'}}></div>
+                                <div className={style.box}>
+                                    <div id="main" style={{ width: '100%', height: 230 ,padding:'0 16px',marginBottom:'-20px',paddingTop:10}}></div>
                                     <a href="" className={style.bottomA}>
                                         查看基金详情
                                     </a>
