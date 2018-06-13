@@ -98,7 +98,7 @@ class BaseUserMsg extends React.Component {
                                     产品名称
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    产品名称>
+                                    产品名称 <img className={style.contentItemBoxCI} src={require('./images/arrow.png')} alt=""/>
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>

@@ -1,0 +1,134 @@
+:local(.wrap){
+    margin-bottom: 52px;
+    height: 100%;
+}
+:local(.headerTop):after,:local(.headerBottom):after{
+    display: block;
+    clear: both;
+    content: '';
+}
+:local(.header){
+    width: 100%;
+    background: linear-gradient(to right,#3ca3fd, #5262ff);
+    padding: 0 16px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+:local(.headerTop){
+    margin-bottom: 10px;
+}
+:local(.headerTopW){
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    float: left;
+}
+:local(.user){
+    float: left;
+}
+:local(.userImg){
+    width: 44px;
+    height: 44px;
+    float: left;
+    background-color: #1abc9c;
+}
+:local(.userData){
+
+    color: #fff;
+}
+:local(.userName){
+    display: block;
+    font-size: 12px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+:local(.userTime){
+    display: block;
+    font-size: 24px;
+}
+:local(.content){
+
+    background-color: #fff;
+    height: 134px;
+    position: relative;
+    padding-top: 47px;
+}
+:local(.plan){
+    padding: 0 16px;
+}
+:local(.contentC){
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+:local(.contentItem1){
+    width: 33%;
+    text-align: left;
+}
+:local(.contentItem2){
+    width: 33%;
+    text-align: center;
+}
+:local(.contentItem3){
+    width: 33%;
+    text-align: right;
+
+}
+:local(.itemTitle){
+    font-size: 12px;
+    color: #3B3D40;
+    margin-bottom: 10px;
+    display: block;
+}
+:local(.itemTitle2){
+    font-size: 12px;
+    color: #3B3D40;
+    margin-bottom: 10px;
+    display: block;
+    text-align: right;
+}
+:local(.itemCircle){
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #5262ff;
+    margin-left: 7px;
+    background-color: #fff;
+}
+:local(.itemCircle1){
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #5262ff;
+    margin: 0 auto;
+    background-color: #fff;
+}
+:local(.itemCircle2){
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #5262ff;
+    float: right;
+    margin-right: 7px;
+    background-color: #fff;
+}
+:local(.itemTime){
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #989898;
+}
+:local(.button){
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    line-height: 42px;
+    text-align: center;
+    color: #5262ff;
+    font-size: 16px;
+}
