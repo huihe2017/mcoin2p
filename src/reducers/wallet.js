@@ -19,7 +19,8 @@ export default function wallet(state = initialState, action = {}) {
             state.totalAmount = totalAmount
             state.list = list
             return Object.assign({}, state, {})
-
+        case 'GET_WALLET_TRADE_RECORD':
+            return action.data
         default:
             return state
     }

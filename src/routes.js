@@ -82,7 +82,7 @@ export default () => {
             <Route path="/customCost" component={CustomCost}/>
             <Route path="/outQcode" component={OutQcode}/>
             <Route path="/walletIndex" component={WalletIndex}/>
-            <Route path="/dealDetails" component={DealDetails}/>
+            <Route path="/dealDetails/:currency" component={DealDetails}/>
             <Route path="/outAddressList" component={OutAddressList}/>
             <Route path="/walletSetting" component={WalletSetting}/>
             <Route path="/safeCenter" component={SafeCenter}/>

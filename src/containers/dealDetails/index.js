@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {List, InputItem, Toast} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
+import {getWalletTradeRecord} from '../../actions/wallet'
 import {bindActionCreators} from 'redux'
 import {hashHistory,Link} from 'react-router'
 import {logout,getBaseUserMsg} from '../../actions/user'
@@ -55,6 +56,7 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount(){
+        this.props.getWalletTradeRecord()
         // this.props.getBaseUserMsg({
         //
         // }, (errorText) => {
@@ -187,14 +189,14 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user:state.user
+        wallet:state.wallet
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         logout: bindActionCreators(logout, dispatch),
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
+        getWalletTradeRecord: bindActionCreators(getWalletTradeRecord, dispatch)
     }
 }
 
