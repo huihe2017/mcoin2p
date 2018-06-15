@@ -5,7 +5,7 @@ import {List, InputItem, Toast, Tabs, WhiteSpace} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
+import {hashHistory, Link} from 'react-router'
 import {getBaseUserMsg} from '../../actions/user'
 import {getCommonAddress} from '../../actions/wallet'
 import {createForm} from 'rc-form';
@@ -63,32 +63,34 @@ class BaseUserMsg extends React.Component {
         return (
             <div className={style.wrap}>
                 {
-                    this.props.wallet.commonAddress.map((obj,index) => {
-                        debugger
-                        return <div className={style.tab}>
-                            <div className={style.item} key={index}>
+                    this.props.wallet.commonAddress.map((obj, index) => {
+                        return <Link to={'/forwardBTC'}>
+                            <div className={style.tab}>
+                                <div className={style.item} key={index}>
 
-                                <div className={style.itemContent}>
-                                    <div className={style.itemCoin}>
-                                        <img className={style.itemImg}
-                                             src={require('../activityBalance/images/BTC.png')}
-                                             alt=""/>{obj.currency}
+                                    <div className={style.itemContent}>
+                                        <div className={style.itemCoin}>
+                                            <img className={style.itemImg}
+                                                 src={require('../activityBalance/images/BTC.png')}
+                                                 alt=""/>{obj.currency}
+                                        </div>
+                                        <div className={style.itemName}>
+                                            {obj.tag}
+                                        </div>
                                     </div>
-                                    <div className={style.itemName}>
-                                        {obj.tag}
+                                    <div className={style.itemAdressBox}>
+                                        <div className={style.itemAdressT}>
+                                            地址
+                                        </div>
+                                        <div className={style.itemAdress}>
+                                            {obj.address}
+                                        </div>
                                     </div>
                                 </div>
-                                <div className={style.itemAdressBox}>
-                                    <div className={style.itemAdressT}>
-                                        地址
-                                    </div>
-                                    <div className={style.itemAdress}>
-                                        {obj.address}
-                                    </div>
-                                </div>
+
                             </div>
+                        </Link>
 
-                        </div>
                     })
                 }
 
