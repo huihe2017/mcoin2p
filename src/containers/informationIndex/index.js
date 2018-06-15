@@ -79,9 +79,9 @@ class BaseUserMsg extends React.Component {
                         <div className={style.item} >
                             {i.bottom?
                                 <div>
-                            <span className={style.itemTitle}>
+                            <p className={style.itemTitle1}>
                                 {i.title}
-                            </span>
+                            </p>
                                     {i.img?<img className={style.itemImgB} src={i.img} alt=""/>:''}
 
                             <span className={style.itemTerrace}>
@@ -89,9 +89,9 @@ class BaseUserMsg extends React.Component {
                             </span></div>
                                 :<div className={style.Lbox}>
                                     <div className={style.Left}>
-                                        <span className={style.itemTitle1}>
+                                        <p className={style.itemTitle1}>
                                             {i.title}
-                                        </span>
+                                        </p>
                                         <span className={style.itemTerrace}>
                                             {i.terrace}
                                         </span>
