@@ -62,7 +62,7 @@ class Footer extends React.Component {
                 >
                     <TabBar.Item
                         icon={
-                            <div className={style.home}/>
+                            <div className={this.props.home?style.homeA:style.home}/>
                         }
                         selectedIcon={
                             <div className={style.homeA}/>
@@ -84,7 +84,7 @@ class Footer extends React.Component {
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
-                            <div className={style.new}/>
+                            <div className={this.props.information?style.newA:style.new}/>
                         }
 
                         selectedIcon={
@@ -97,13 +97,15 @@ class Footer extends React.Component {
                         onPress={() => {
                             this.setState({
                                 selectedTab: 'greenTab',
+                            },()=>{
+                                hashHistory.push('/informationIndex')
                             });
                         }}
                     >
                         {/*{this.renderContent('Friend')}*/}
                     </TabBar.Item>
                     <TabBar.Item
-                        icon={<div className={style.person}/>}
+                        icon={<div className={this.props.person?style.personA:style.person}/>}
                         selectedIcon={<div className={style.personA}/>}
                         title="我的"
                         key="my"
