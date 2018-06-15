@@ -64,7 +64,7 @@ class BaseUserMsg extends React.Component {
             <div className={style.wrap}>
                 {
                     this.props.wallet.commonAddress.map((obj, index) => {
-                        return <Link to={'/forwardBTC'}>
+                        return <Link to={'/forwardBTC/'+obj.address}>
                             <div className={style.tab}>
                                 <div className={style.item} key={index}>
 

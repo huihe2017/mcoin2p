@@ -171,7 +171,7 @@ class BaseUserMsg extends React.Component {
                         </div>
                     </div>
                     <div className={style.footer}>
-                        <div className={style.footerL} onClick={()=>hashHistory.push('/forwardBTC')}>
+                        <div className={style.footerL} onClick={()=>hashHistory.push('/forwardBTC/null')}>
 
                             <img  className={style.itemImg1} src={require('./images/ino.png')} alt=""/>转出
 

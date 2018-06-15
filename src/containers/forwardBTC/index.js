@@ -32,6 +32,9 @@ class BaseUserMsg extends React.Component {
 
     componentDidMount() {
         this.props.getMinerFee()
+        if(this.props.params.address!=='null'){
+            this.setState({classNumber:this.props.params.address})
+        }
         // this.props.getBaseUserMsg({
         //
         // }, (errorText) => {
@@ -46,50 +49,11 @@ class BaseUserMsg extends React.Component {
 
 
     render() {
-        const seasons = [
-            [
-                {
-                    label: '1.008(推111荐)',
-                    value: '0.002'
-                },
-                {
-                    label: '0.0荐01荐',
-                    value: '00围观.0围观01'
-                },
-                {
-                    label: '0.荐00荐7',
-                    value: '0.00围观010围观荐17'
-                },
-                {
-                    label: 'custom',
-                    value: 'cus0围观0围观tom'
-                },
-            ],
-
-        ];
-        const gg = [
-            [
-                {
-                    label: '0.002(推荐)',
-                    value: '0.006',
-                },
-                {
-                    label: '0.001',
-                    value: '0.001',
-                },
-                {
-                    label: '0.007',
-                    value: '0.007',
-                },
-                {
-                    label: 'custom',
-                    value: 'custom',
-                },
-            ],
-
-        ]
         if (!this.props.wallet.minerFeeList) {
             return null
+        }
+        if(!this.props.wallet.current){
+            hashHistory.push('/walletIndex')
         }
         return (
 
@@ -106,8 +70,12 @@ class BaseUserMsg extends React.Component {
                                 this.setState({classNumber: value})
                             }} placeholder="输入或双击粘贴地址" type="text"
                                        extra={<Link to={'/commonAddress'}><img className={style.img}
-                                                                         src={require('./images/add.png')}
-                                                                         alt=""/></Link>}></InputItem>
+                                                                               src={require('./images/add.png')}
+                                                                               alt=""/></Link>}
+                                       value={this.state.classNumber}
+                            >
+                            </InputItem>
+
                         </li>
                         <li className={style.itemBox}>
                             <div className={style.itemB}>
@@ -115,7 +83,7 @@ class BaseUserMsg extends React.Component {
                                     填写数额
                                 </span>
                                 <span className={style.itemBoxTT1}>
-                                    可转 <span style={{color: '#5262FF'}}>0 BTC</span>
+                                    可转 <span style={{color: '#5262FF'}}>{this.props.wallet.current.balance.amount} BTC</span>
                                 </span>
                             </div>
 
@@ -128,7 +96,7 @@ class BaseUserMsg extends React.Component {
                                 矿工费
                             </span>
                             <Picker
-                                data={changeJson(this.props.wallet.minerFeeList,'tips','minerFee')}
+                                data={changeJson(this.props.wallet.minerFeeList, 'tips', 'minerFee')}
                                 // data={seasons}
                                 // data={seasons}
                                 title="选择矿工费"
