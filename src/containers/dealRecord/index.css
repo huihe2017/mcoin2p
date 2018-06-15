@@ -16,7 +16,10 @@
     border-bottom: 1px solid #eee;
     padding: 10px 0;
     padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
 }
+
 :local(.itemLeft){
     float: left;
 }

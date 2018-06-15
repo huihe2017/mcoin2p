@@ -1,0 +1,107 @@
+:local(.tab) .am-tabs-default-bar-tab{
+    color: #989898!important;
+
+}
+:local(.tab) .am-tabs-default-bar-tab:after{
+    background-color: #fff!important;
+}
+:local(.tab) .am-tabs-default-bar-tab-active{
+    font-weight: bold!important;
+    color: #5262FF!important;
+}
+
+:local(.tab) .am-tabs-tab-bar-wrap{
+    margin-bottom: 1px!important;
+}
+:local(.tab) .am-tabs-pane-wrap>div{
+
+}
+:local(.itemBox){
+    padding: 0 16px;
+    background-color: #fff;
+}
+:local(.item){
+    padding-top: 16px;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+:local(.item):last-child{
+    border-bottom: none;
+}
+:local(.itemTitle){
+    font-size: 16px;
+    line-height: 25px;
+    display: block;
+}
+:local(.itemTitle1){
+    font-size: 16px;
+    line-height: 25px;
+    position:relative;
+    height:50px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+:local(.itemTitle1)::after {
+    content:" ";
+    position:absolute;
+    width: 16px;
+    height: 25px;
+    bottom:0;
+    right:0;
+    padding:0 20px 1px 0px;
+    background: -webkit-linear-gradient(left, transparent, #fff 65%);
+    background: -o-linear-gradient(right, transparent, #fff 65%);
+    background: -moz-linear-gradient(right, transparent, #fff 65%);
+    background: linear-gradient(to right, transparent, #fff 65%);
+ }
+:local(.itemTerrace){
+    font-size: 12px;
+    line-height: 12px;
+    color: #989898;
+    display: block;
+    margin-top: 20px;
+}
+:local(.showImg){
+
+    width: 90px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 90px;
+}
+:local(.showTip){
+    color: #DFDCE4;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+:local(.itemImgB){
+    width: 100%;
+    height: 150px;
+    margin-top: 5px;
+}
+:local(.itemImgB1){
+    width: 110px;
+    height: 75px;
+    margin-top: 5px;
+    display: block;
+}
+:local(.Lbox){
+    display: flex;
+    flex-wrap:nowrap;
+    justify-content: space-between;
+}
+:local(.Left){
+    width: 65%;
+}
+@media screen and (max-width: 320px) {
+    :local(.Left){
+        width: 60%;
+    }
+}

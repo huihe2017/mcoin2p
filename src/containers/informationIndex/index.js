@@ -12,16 +12,21 @@ import { StickyContainer, Sticky } from 'react-sticky';
 
 const data = [
     {
-        num:1,
-        title: 'BTC',
-        name: '大大大飞机',
-        address: '1LezCq1NAfdsfbsdkjfksdsasdddddddddsddddddddddsadfsafsadasdasdas',
+        title: '八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...',
+        terrace: '点点平台',
+        bottom:true,
     },
     {
-        num:2,
-        title: 'BTC',
-        name: '大大大飞机',
-        address: '1LezCq1NAfdsfbsdkjfksdsasdddddddddsddddddddddsadfsafsadasdasdas',
+        title: '八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...',
+        terrace: '点点平台',
+        bottom:false,
+        img:require('./images/small.png')
+    },
+    {
+        title: '八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...',
+        terrace: '点点平台',
+        bottom:true,
+        img:require('./images/big.png')
     },
 
 
@@ -60,7 +65,7 @@ class BaseUserMsg extends React.Component {
         if(data.length==0){
             return(
                 <div>
-                    <img className={style.showImg} src={require('./images/zero.png')} alt=""/>
+                    <img className={style.showImg} src={require('../addressList/images/zero.png')} alt=""/>
                     <span className={style.showTip}>
                         暂无数据
                     </span>
@@ -68,38 +73,35 @@ class BaseUserMsg extends React.Component {
             )
         }else {
             return(
-                data.map(i => (
+                <div className={style.itemBox} >
+                    {data.map(i => (
 
-                    <div className={style.item} key={i.num} >
+                        <div className={style.item} >
+                            {i.bottom?
+                                <div>
+                            <p className={style.itemTitle1}>
+                                {i.title}
+                            </p>
+                                    {i.img?<img className={style.itemImgB} src={i.img} alt=""/>:''}
 
-                        <div className={style.itemContent}>
-                            <div className={style.itemCoin}>
-                                <img className={style.itemImg} src={require('../activityBalance/images/BTC.png')} alt=""/>{i.title}
-                            </div>
-                            <div className={style.itemName}>
-                                {i.name}
-                            </div>
-                            <div className={style.itemDo}>
-                                <a href="javascript:void (0)">
-                                    <img className={style.iconImg} src={require('./images/delete.png')} alt=""/>删除
-                                </a>
-                                <a href="javascript:void (0)">
-                                    <img className={style.iconImg} src={require('./images/editor.png')} alt=""/>修改
-                                </a>
-
-                            </div>
-
+                            <span className={style.itemTerrace}>
+                                {i.terrace}
+                            </span></div>
+                                :<div className={style.Lbox}>
+                                    <div className={style.Left}>
+                                        <p className={style.itemTitle1}>
+                                            {i.title}
+                                        </p>
+                                        <span className={style.itemTerrace}>
+                                            {i.terrace}
+                                        </span>
+                                    </div>
+                                    <img className={style.itemImgB1} src={i.img} alt=""/>
+                                </div>}
                         </div>
-                        <div className={style.itemAdressBox}>
-                            <div className={style.itemAdressT}>
-                                地址
-                            </div>
-                            <div className={style.itemAdress}>
-                                {i.address}
-                            </div>
-                        </div>
-                    </div>
-                ))
+
+                    ))}
+                </div>
             )
         }
 
@@ -109,27 +111,17 @@ class BaseUserMsg extends React.Component {
     render() {
 
         const tabs = [
-            { title: '全部' },
-            { title: 'TOKEN' },
-            { title: 'BCH' },
-            { title: 'ETC' },
-            { title: 'ETH' },{ title: 'BCH' },
-            { title: 'ETC' },
-            { title: 'ETH' },
-
+            { title: '推荐' },
+            { title: '区块链' },
+            { title: '区块链1' },
+            { title: '区块链2' },
+            { title: '区块链3' },
+            { title: '区块链4' },
+            { title: '区块链5' },
+            { title: '区块链6' },
         ];
         return (
             <div className={style.wrap}>
-                <NavBar
-                    mode="light"
-                    icon={<Icon type="left" />}
-                    onLeftClick={() => console.log('onLeftClick')}
-                    rightContent={[
-
-                        <Link to={'/addAddress'}>+
-                        </Link>,
-                    ]}
-                >添加常用地址</NavBar>
                 <div className={style.tab}>
                     <StickyContainer>
                         <Tabs tabs={tabs}
@@ -151,11 +143,20 @@ class BaseUserMsg extends React.Component {
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
                                 5
                             </div>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
+                                6
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
+                                7
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
+                                8
+                            </div>
 
                         </Tabs>
                     </StickyContainer>
                 </div>
-                {/*<Footer/>*/}
+                <Footer information={true}/>
             </div>
         )
     }
