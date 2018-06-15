@@ -1,26 +1,26 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Picker,Icon} from 'antd-mobile';
+import {List, InputItem, Toast, Picker, Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory,Link} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {hashHistory, Link} from 'react-router'
+import {logout, getBaseUserMsg} from '../../actions/user'
+import {getMinerFee} from '../../actions/wallet'
+import {changeJson} from '../../common/util'
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sValue:['0.002']
+            sValue: ['0.002']
         }
     }
 
     logout() {
         Toast.loading('正在退出', 0)
-        this.props.logout({
-
-        }, (errorText) => {
+        this.props.logout({}, (errorText) => {
             Toast.hide()
             if (errorText) {
                 Toast.fail(errorText, 3, null, false)
@@ -30,7 +30,8 @@ class BaseUserMsg extends React.Component {
         })
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        this.props.getMinerFee()
         // this.props.getBaseUserMsg({
         //
         // }, (errorText) => {
@@ -48,8 +49,29 @@ class BaseUserMsg extends React.Component {
         const seasons = [
             [
                 {
+                    label: '1.008(推111荐)',
+                    value: '0.002'
+                },
+                {
+                    label: '0.0荐01荐',
+                    value: '00围观.0围观01'
+                },
+                {
+                    label: '0.荐00荐7',
+                    value: '0.00围观010围观荐17'
+                },
+                {
+                    label: 'custom',
+                    value: 'cus0围观0围观tom'
+                },
+            ],
+
+        ];
+        const gg = [
+            [
+                {
                     label: '0.002(推荐)',
-                    value: '0.002',
+                    value: '0.006',
                 },
                 {
                     label: '0.001',
@@ -65,8 +87,12 @@ class BaseUserMsg extends React.Component {
                 },
             ],
 
-        ];
+        ]
+        if (!this.props.wallet.minerFeeList) {
+            return null
+        }
         return (
+
             <div className={style.wrap}>
                 {/*<Header/>*/}
                 <div>
@@ -78,7 +104,10 @@ class BaseUserMsg extends React.Component {
                             </span>
                             <InputItem onChange={(value) => {
                                 this.setState({classNumber: value})
-                            }} placeholder="安全码设置（6位数字）" type="text" extra={<Link to={'/safeSet'}><img className={style.img} src={require('./images/add.png')} alt=""/></Link>}></InputItem>
+                            }} placeholder="输入或双击粘贴地址" type="text"
+                                       extra={<Link to={'/safeSet'}><img className={style.img}
+                                                                         src={require('./images/add.png')}
+                                                                         alt=""/></Link>}></InputItem>
                         </li>
                         <li className={style.itemBox}>
                             <div className={style.itemB}>
@@ -86,7 +115,7 @@ class BaseUserMsg extends React.Component {
                                     填写数额
                                 </span>
                                 <span className={style.itemBoxTT1}>
-                                    可转 <span style={{color:'#5262FF'}}>0 BTC</span>
+                                    可转 <span style={{color: '#5262FF'}}>0 BTC</span>
                                 </span>
                             </div>
 
@@ -99,16 +128,22 @@ class BaseUserMsg extends React.Component {
                                 矿工费
                             </span>
                             <Picker
-                                data={seasons}
+                                data={changeJson(this.props.wallet.minerFeeList,'tips','minerFee')}
+                                // data={seasons}
+                                // data={seasons}
                                 title="选择矿工费"
                                 cascade={false}
                                 extra=" "
+                                cols={1}
                                 value={this.state.sValue}
-                                onChange={v => this.setState({ sValue: v })}
-                                onOk={v => this.setState({ sValue: v },()=>{
-                                    if(this.state.sValue=='custom'){hashHistory.push('/customCost')}})}
-                                okText={<Icon type={'check'} />}
-                                dismissText={<Icon type={'cross'} />}
+                                onChange={v => this.setState({sValue: v})}
+                                onOk={v => this.setState({sValue: v}, () => {
+                                    if (this.state.sValue == 'custom') {
+                                        hashHistory.push('/customCost')
+                                    }
+                                })}
+                                okText={<Icon type={'check'}/>}
+                                dismissText={<Icon type={'cross'}/>}
                             >
                                 <List.Item arrow="horizontal"><span className={style.itemBoxC}>
                                 请选择币种
@@ -131,12 +166,14 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user:state.user
+        user: state.user,
+        wallet: state.wallet
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
+        getMinerFee: bindActionCreators(getMinerFee, dispatch),
         logout: bindActionCreators(logout, dispatch),
         getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
     }
