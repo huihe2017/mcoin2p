@@ -13,7 +13,6 @@ export function checkPhone() {
 }
 
 export function changeJson(json,label,value) {
-    debugger
     json[0].map((obj)=>{
         for(var key in obj){
             if(key===label){

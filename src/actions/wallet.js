@@ -66,3 +66,25 @@ export function getMinerFee(data, callback) {
             });
     }
 }
+
+export function getCommonAddress(data, callback) {
+    return dispatch => {
+        axios.post(config.api_url+'wallet/addresslist', {
+        })
+            .then(function (response) {
+
+                if (response.data.code === 0) {
+                    dispatch({type: 'GET_COMMON_ADDRESS', data: response.data})
+                    //callback()
+                    // localStorage.userName = response.data.data.phone
+                    // localStorage.token = response.data.data.token
+                    // localStorage.id = response.data.data.id
+                }else {
+                    alert(response.data.msg)
+                }
+            })
+            .catch(function (error) {
+                alert(error);
+            });
+    }
+}

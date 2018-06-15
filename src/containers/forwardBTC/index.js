@@ -105,7 +105,7 @@ class BaseUserMsg extends React.Component {
                             <InputItem onChange={(value) => {
                                 this.setState({classNumber: value})
                             }} placeholder="输入或双击粘贴地址" type="text"
-                                       extra={<Link to={'/safeSet'}><img className={style.img}
+                                       extra={<Link to={'/commonAddress'}><img className={style.img}
                                                                          src={require('./images/add.png')}
                                                                          alt=""/></Link>}></InputItem>
                         </li>
