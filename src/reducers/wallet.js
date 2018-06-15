@@ -22,6 +22,12 @@ export default function wallet(state = initialState, action = {}) {
         case 'GET_WALLET_TRADE_RECORD':
             state.current = action.data
             return Object.assign({}, state, {})
+        case 'GET_MINER_FEE':
+            state.minerFeeList = action.data.feeList
+            return Object.assign({}, state, {})
+        case 'GET_COMMON_ADDRESS':
+            state.commonAddress = action.data.list
+            return Object.assign({}, state, {})
         default:
             return state
     }

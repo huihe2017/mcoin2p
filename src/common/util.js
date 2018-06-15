@@ -11,3 +11,20 @@ export function checkPhone() {
     }
     return true
 }
+
+export function changeJson(json,label,value) {
+    json[0].map((obj)=>{
+        for(var key in obj){
+            if(key===label){
+                obj['label'] = obj[key]
+                delete obj[key]
+            }
+            if(key===value){
+                obj['value'] = obj[key]
+                delete obj[key]
+            }
+        }
+    })
+
+    return json
+}
