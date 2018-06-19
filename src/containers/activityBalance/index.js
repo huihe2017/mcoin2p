@@ -59,10 +59,10 @@ class BaseUserMsg extends React.Component {
                             <a className={style.user} href="javascript:void (0)">
                                 <div className={style.userData}>
                                     <span className={style.userName}>
-                                        市值 （元）
+                                        市值
                                     </span>
                                     <span className={style.userTime}>
-                                        317.556.02
+                                        ￥317.556.02
                                     </span>
                                 </div>
                             </a>
@@ -77,7 +77,7 @@ class BaseUserMsg extends React.Component {
                                 数量
                             </span>
                             <span className={style.contentTitle3}>
-                                市值（CNY）
+                                市值
                             </span>
                         </div>
                         <div className={style.contentContent}>
@@ -85,31 +85,26 @@ class BaseUserMsg extends React.Component {
                                 <span className={style.contentPart1}>
                                     <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
                                 </span>
-                                    <span className={style.contentPart2}>
-                                    14.2123411231
+                                <span className={style.contentPart2}>
+                                    14.21234112
                                 </span>
-                                    <span className={style.contentPart3}>
-                                    51.000CNY
+                                <span className={style.contentPart3}>
+                                    ￥51.000
                                 </span>
                             </div>
                             <div className={style.contentPart}>
                                 <span className={style.contentPart1}>
                                    <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
                                 </span>
-                                    <span className={style.contentPart2}>
-                                    14.2123411231
+                                <span className={style.contentPart2}>
+                                    14.21234112
                                 </span>
-                                    <span className={style.contentPart3}>
-                                    51.000CNY
+                                <span className={style.contentPart3}>
+                                    ￥51.000
                                 </span>
                             </div>
                         </div>
                     </div>
-                    {/*<div>*/}
-                    {/*<a onTouchEnd={this.logout.bind(this)} className={style.ensure} href="javascript:void(0)">*/}
-                    {/*退出登录*/}
-                    {/*</a>*/}
-                    {/*</div>*/}
                 </div>
                 {/*<Footer/>*/}
             </div>

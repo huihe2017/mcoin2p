@@ -137,15 +137,16 @@
 }
 :local(.contentTitle1){
     float: left;
-    width: 100px;
+    width: 27%;
 }
 :local(.contentTitle2){
     float: left;
-    width: 160px;
+    width: 44%;
 }
 :local(.contentTitle3){
     float: left;
-    width: 100px;
+    width: 27%;
+    padding-left: 0!important;
 }
 :local(.contentPart){
     background-color: #fff;
@@ -168,15 +169,16 @@
 }
 :local(.contentPart1){
     float: left;
-    width: 100px;
+    width: 27%;
 }
 :local(.contentPart2){
     float: left;
-    width: 160px;
+    width: 44%;
 }
 :local(.contentPart3){
     float: left;
-    width: 100px;
+    width: 27%;
+    padding-left: 0!important;
 }
 :local(.contentImg){
     width: 16px;

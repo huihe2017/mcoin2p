@@ -86,7 +86,7 @@ class BaseUserMsg extends React.Component {
                                     <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
                                 </span>
                                     <span className={style.contentPart2}>
-                                    14.2123411231
+                                    14.21234112
                                 </span>
                                     <span className={style.contentPart3}>
                                     51.000CNY
@@ -97,7 +97,7 @@ class BaseUserMsg extends React.Component {
                                     <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
                                 </span>
                                     <span className={style.contentPart2}>
-                                    14.2123411231
+                                    14.21234112
                                 </span>
                                     <span className={style.contentPart3}>
                                     51.000CNY
