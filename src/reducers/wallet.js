@@ -28,6 +28,15 @@ export default function wallet(state = initialState, action = {}) {
         case 'GET_COMMON_ADDRESS':
             state.commonAddress = action.data.list
             return Object.assign({}, state, {})
+        case 'CONFIRM_WITHDRAW_MSG':
+            state.applyId = action.data.applyId
+            return Object.assign({}, state, {})
+        case 'CHECK_SAFE_CODE':
+            state.isSaveCodeChecked = true
+            return Object.assign({}, state, {})
+        case 'CHECK_MOBILE_CODE':
+            state.isMobileCodeChecked = true
+            return Object.assign({}, state, {})
         default:
             return state
     }

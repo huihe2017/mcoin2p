@@ -97,8 +97,6 @@ class BaseUserMsg extends React.Component {
                             </span>
                             <Picker
                                 data={changeJson(this.props.wallet.minerFeeList, 'tips', 'minerFee')}
-                                // data={seasons}
-                                // data={seasons}
                                 title="选择矿工费"
                                 cascade={false}
                                 extra=" "
