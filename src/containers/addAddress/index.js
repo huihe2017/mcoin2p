@@ -25,22 +25,10 @@ class BaseUserMsg extends React.Component {
         super(props);
         this.state = {
             modal1: false,
+            can:false
         }
     }
 
-    logout() {
-        Toast.loading('正在退出', 0)
-        this.props.logout({
-
-        }, (errorText) => {
-            Toast.hide()
-            if (errorText) {
-                Toast.fail(errorText, 3, null, false)
-            } else {
-                hashHistory.push('/')
-            }
-        })
-    }
 
     componentDidMount(){
         // this.props.getBaseUserMsg({
@@ -55,7 +43,7 @@ class BaseUserMsg extends React.Component {
         // })
     }
     submit = key => () => {
-        if(!this.state.check){
+        if(!this.state.can){
             alert('阅读后方可')
             return
         }
@@ -70,6 +58,18 @@ class BaseUserMsg extends React.Component {
         if (!pNode) {
             e.preventDefault();
         }
+    }
+
+    can(){
+        if(this.state.can){
+            this.setState({
+                can:false
+            })
+            return false
+        }
+        this.setState({
+            can:true
+        })
     }
 
     render() {
@@ -175,8 +175,8 @@ class BaseUserMsg extends React.Component {
 
                             <div className={style.checkTip}>
                                 <span className={style.alertTip}>
-                                        数字货币转入其他地址后，将无法取消<br/>和追回，请保证目标地址的安全性与正<br/>确性
-                                    </span>
+                                    <img className={style.footerI} onClick={()=>{this.can()}} src={require(`../productBuying/images/${this.state.can}.png`)} alt=""/>数字货币转入其他地址后，将无法取消和追回，请保证目标地址的安全性与正确性
+                                </span>
                             </div>
                         </div>
                     </Modal>

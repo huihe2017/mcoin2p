@@ -67,10 +67,12 @@
     content: '';
     display: block;
 }
+/*onChange={() => this.setState({check:true})}*/
 :local(.alertTip){
     padding-top: 5px;
     color: #5262ff;
     font-size: 12px;
+    text-align: left;
     word-wrap:break-word;
     display: block;
 }
@@ -91,4 +93,12 @@
 }
 :local(.checkTip) .am-list-item .am-list-thumb:first-child {
     margin-right: 5px!important;
+}
+:local(.footerI){
+    width: 12px;
+    height: 12px;
+    display: block;
+    float: left;
+    margin-top: 3px;
+    margin-right: 5px;
 }
