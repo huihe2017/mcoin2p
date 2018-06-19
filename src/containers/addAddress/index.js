@@ -174,11 +174,9 @@ class BaseUserMsg extends React.Component {
                             </span>
 
                             <div className={style.checkTip}>
-                                <CheckboxItem onChange={() => this.setState({check:true})}>
-                                    <span className={style.alertTip}>
+                                <span className={style.alertTip}>
                                         数字货币转入其他地址后，将无法取消<br/>和追回，请保证目标地址的安全性与正<br/>确性
                                     </span>
-                                </CheckboxItem>
                             </div>
                         </div>
                     </Modal>
