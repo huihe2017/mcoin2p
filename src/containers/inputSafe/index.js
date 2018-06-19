@@ -7,6 +7,7 @@ import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
 import {logout,getBaseUserMsg} from '../../actions/user'
+import {checkSafeCode,sentMobileCode,checkMobileCode} from '../../actions/wallet'
 import {Checkbox} from "antd-mobile/lib/index";
 
 function closest(el, selector) {
@@ -84,12 +85,20 @@ class BaseUserMsg extends React.Component {
     }
 
 
-    submit(){
-        if(!this.state.classNumber){
+    submitCode(){
+        if(!this.state.safeCode){
             alert('安全码不得为空')
             return false
         }
-        alert('提交成功')
+        this.props.checkSafeCode({
+            applyId:this.props.wallet.applyId,
+            safeCode:this.state.safeCode,
+            type:1
+        },()=>{
+            this.props.sentMobileCode()
+            this.modalshow()
+        })
+
     }
 
 
@@ -106,11 +115,11 @@ class BaseUserMsg extends React.Component {
                         <li className={style.itemBox}>
 
                             <InputItem onChange={(value) => {
-                                this.setState({classNumber: value})
+                                this.setState({safeCode: value})
                             }} placeholder="请输入安全码" type={this.state.show?"text":"password"} extra={<img style={{width:16,height:16}} onClick={()=>this.show()} src={require(`./images/${this.state.show}.png`)} alt=""/>}></InputItem>
                         </li>
                     </ul>
-                    <div className={style.button} onClick={this.modalshow.bind(this)}>
+                    <div className={style.button} onClick={this.submitCode.bind(this)}>
                         下一步
                     </div>
                     <Modal
@@ -157,7 +166,12 @@ class BaseUserMsg extends React.Component {
                                 <li className={style.inputLi}>
                                     <InputItem maxLength={1} id={'input4'} onChange={(value) => {
                                         this.setState({code4: value},()=>{if(this.state.code4.length==1){
-                                            alert('提交')
+                                            this.props.checkMobileCode({
+                                                checkCode:this.state.code4,
+                                                applyId:this.props.wallet.applyId
+                                            },()=>{
+                                                alert('提币成功')
+                                            })
                                         }})
                                     }} type={"text"} ></InputItem>
                                 </li>
@@ -175,12 +189,16 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
+        wallet:state.wallet,
         user:state.user
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
+        checkMobileCode: bindActionCreators(checkMobileCode, dispatch),
+        sentMobileCode: bindActionCreators(sentMobileCode, dispatch),
+        checkSafeCode: bindActionCreators(checkSafeCode, dispatch),
         logout: bindActionCreators(logout, dispatch),
         getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
     }

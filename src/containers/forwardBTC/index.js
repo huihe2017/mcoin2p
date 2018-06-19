@@ -7,7 +7,7 @@ import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
 import {logout, getBaseUserMsg} from '../../actions/user'
-import {getMinerFee} from '../../actions/wallet'
+import {getMinerFee,confirmWithdrawMsg} from '../../actions/wallet'
 import {changeJson} from '../../common/util'
 
 function closest(el, selector) {
@@ -55,7 +55,15 @@ class BaseUserMsg extends React.Component {
             alert('阅读后方可')
             return
         }
-        hashHistory.push('/inputSafe')
+        this.props.confirmWithdrawMsg({
+            currency:'BTC',
+            amount:this.state.amount,
+            minerFee:this.state.sValue,
+            address:this.state.classNumber
+        },()=>{
+            hashHistory.push('/inputSafe')
+        })
+
     }
 
     onWrapTouchStart = (e) => {
@@ -123,7 +131,7 @@ class BaseUserMsg extends React.Component {
                             </div>
 
                             <InputItem onChange={(value) => {
-                                this.setState({classNumber: value})
+                                this.setState({amount: value})
                             }} placeholder="请填写数额" type="text" extra="BTC"></InputItem>
                         </li>
                         <li className={style.itemBox}>
@@ -186,13 +194,13 @@ class BaseUserMsg extends React.Component {
                             <span className={style.alTip}>
                                 转出币量：
                                 <span style={{color:'#3B3D40'}}>
-                                    0.09564
+                                    {this.state.amount}
                                 </span>
                             </span>
                             <span className={style.alTip}>
                                 &nbsp;&nbsp; 矿工费：
                                 <span style={{color:'#3B3D40'}}>
-                                    0.002
+                                    {this.state.sValue}
                                 </span>
                             </span>
                             <span className={style.alTip}>
@@ -204,7 +212,7 @@ class BaseUserMsg extends React.Component {
                             <span className={style.alTip}>
                                 <span className={style.alTip1}>钱包地址：</span>
                                 <span className={style.alTip2} style={{color:'#3B3D40'}}>
-                                    ABABABBABAABABAABABABABABAB
+                                    {this.state.classNumber}
                                 </span>
                             </span>
 
@@ -233,6 +241,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        confirmWithdrawMsg: bindActionCreators(confirmWithdrawMsg, dispatch),
         getMinerFee: bindActionCreators(getMinerFee, dispatch),
         logout: bindActionCreators(logout, dispatch),
         getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)

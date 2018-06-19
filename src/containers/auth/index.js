@@ -132,12 +132,15 @@ class Auth extends React.Component {
                 value: 86,
                 label: "中国大陆  +86"
             }, {
-                value: 87,
-                label: "中国台湾  +87"
+                value: 886,
+                label: "中国台湾  +886"
             }, {
-                value: 88,
-                label: "中国香港  +88"
-            },
+                value: 852,
+                label: "中国香港  +852"
+            }, {
+                value: 853,
+                label: "中国澳门  +853"
+            }
 
         ]
         let show = {

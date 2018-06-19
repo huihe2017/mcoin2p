@@ -89,12 +89,11 @@ export function getCommonAddress(data, callback) {
 
 export function confirmWithdrawMsg(data, callback) {
     return dispatch => {
-        axios.post(config.api_url + 'wallet/withdraw', {})
+        axios.post(config.api_url + 'wallet/withdraw', {...data})
             .then(function (response) {
-
                 if (response.data.code === 0) {
                     dispatch({type: 'CONFIRM_WITHDRAW_MSG', data: response.data})
-                    //callback()
+                    callback()
                     // localStorage.userName = response.data.data.phone
                     // localStorage.token = response.data.data.token
                     // localStorage.id = response.data.data.id
@@ -110,12 +109,12 @@ export function confirmWithdrawMsg(data, callback) {
 
 export function checkSafeCode(data, callback) {
     return dispatch => {
-        axios.post(config.api_url + 'wallet/checksafecode', {})
+        axios.post(config.api_url + 'wallet/checksafecode', {...data})
             .then(function (response) {
 
                 if (response.data.code === 0) {
                     dispatch({type: 'CHECK_SAFE_CODE', data: response.data})
-                    //callback()
+                    callback()
                     // localStorage.userName = response.data.data.phone
                     // localStorage.token = response.data.data.token
                     // localStorage.id = response.data.data.id
@@ -164,10 +163,9 @@ export function checkMobileCode(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/checkmobilecode', {})
             .then(function (response) {
-
                 if (response.data.code === 0) {
                     dispatch({type: 'CHECK_MOBILE_CODE', data: response.data})
-                    //callback()
+                    callback()
                     // localStorage.userName = response.data.data.phone
                     // localStorage.token = response.data.data.token
                     // localStorage.id = response.data.data.id
