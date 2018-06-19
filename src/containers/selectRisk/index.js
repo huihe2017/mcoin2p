@@ -43,7 +43,10 @@ class History extends React.Component {
                                         收益与风险并存，投资收益相对较高，整体波动较大
                                     </span>
                                 </div>
-                                <img className={style.aImg} src={require('../setPerson/images/arrow.png')} alt=""/>
+                                <div className={style.aR}>
+                                    <img className={style.aImg} src={require('../setPerson/images/arrow.png')} alt=""/>
+                                </div>
+
                             </a>
                         </Link>
                         <Link to={'/riskType'}>
@@ -56,7 +59,9 @@ class History extends React.Component {
                                         收益中等，可承受少量风险，稳中求涨
                                     </span>
                                 </div>
-                                <img className={style.aImg} src={require('../setPerson/images/arrow.png')} alt=""/>
+                                <div className={style.aR}>
+                                    <img className={style.aImg} src={require('../setPerson/images/arrow.png')} alt=""/>
+                                </div>
                             </a>
                         </Link>
                         <Link to={'/riskType'}>
@@ -69,7 +74,9 @@ class History extends React.Component {
                                         收益较低，稳保本金为主
                                     </span>
                                 </div>
-                                <img className={style.aImg} src={require('../setPerson/images/arrow.png')} alt=""/>
+                                <div className={style.aR}>
+                                    <img className={style.aImg} src={require('../setPerson/images/arrow.png')} alt=""/>
+                                </div>
                             </a>
                         </Link>
                     </div>

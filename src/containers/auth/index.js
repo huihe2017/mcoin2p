@@ -33,7 +33,7 @@ class Auth extends React.Component {
 
     submitFn() {
         if (this.state.login) {
-            if (!/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
+            if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[1-9]{1})|(18[0-9]{1})|(19[8-9]{1}))+\d{8})$/.test(this.state.phone)) {
                 Toast.fail('请输入正确的手机格式', 3, null, false)
                 return false
             }
@@ -41,13 +41,24 @@ class Auth extends React.Component {
                 Toast.fail('请输入验证码', 3, null, false)
                 return false
             }
-            if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,21}$/.test(this.state.pwd)) {
+            //数字+字母
+            // if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,21}$/.test(this.state.pwd)) {
+            //     Toast.fail('密码格式错误', 3, null, false)
+            //     return false
+            // }
+            if (!/^(?!\d+$)(?![a-zA-Z]+$)(?![@#$%^&]+$)[\da-zA-Z@#$%^&]{6,21}$/.test(this.state.pwd)) {
+                alert(222)
                 Toast.fail('密码格式错误', 3, null, false)
                 return false
             }
+            // if (!/((?=.*[a-z])(?=.*\d)|(?=[a-z])(?=.*[#@!~%^&*])|(?=.*\d)(?=.*[#@!~%^&*]))[a-z\d#@!.~%^&*]{6,21}/.test(this.state.pwd)) {
+            //     alert(222)
+            //     Toast.fail('密码格式错误', 3, null, false)
+            //     return false
+            // }
             Toast.loading('登录中', 3, null, false)
             this.props.login({
-                phone: this.state.areaCode + " " + this.state.phone,
+                phone: this.state.areaCode+this.state.phone,
                 pwd: this.state.pwd,
                 picCode: this.state.picCode
             }, (errorText) => {
@@ -65,7 +76,7 @@ class Auth extends React.Component {
                 }
             })
         } else {
-            if (!/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
+            if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[1-9]{1})|(18[0-9]{1})|(19[8-9]{1}))+\d{8})$/.test(this.state.phone)) {
                 Toast.fail('请输入正确的手机格式', 3, null, false)
                 return false
             }
@@ -77,13 +88,13 @@ class Auth extends React.Component {
                 Toast.fail('请输入短信验证码', 3, null, false)
                 return false
             }
-            if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,21}$/.test(this.state.pwd)) {
+            if (!/^(?!\d+$)(?![a-zA-Z]+$)(?![@#$%^&]+$)[\da-zA-Z@#$%^&]{6,21}$/.test(this.state.pwd)) {
                 Toast.fail('密码格式错误', 3, null, false)
                 return false
             }
             Toast.loading('注册中', 3, null, false)
             this.props.register({
-                phone: this.state.areaCode + " " + this.state.phone,
+                phone: this.state.areaCode+ this.state.phone,
                 pwd: this.state.pwd,
                 code: this.state.code
             }, (errorText) => {
@@ -182,7 +193,7 @@ class Auth extends React.Component {
                             <List>
                                 <Countdown
                                     beforeClick={checkPhone.bind(this)}
-                                    phone={this.state.phone}
+                                    phone={this.state.areaCode+this.state.phone}
                                     picCode={this.state.picCode}
                                     business='REGISTER'
                                     failCallback={()=>{this.setState({picImg: this.getPicImg()})}}

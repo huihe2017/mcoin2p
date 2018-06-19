@@ -11,7 +11,7 @@
     display: block;
 }
 :local(.ensure){
-    display: block;
+    display: flex;
     height: 64px;
     width: 100%;
     background-color: #fff;

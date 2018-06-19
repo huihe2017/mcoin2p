@@ -134,39 +134,39 @@ class BaseUserMsg extends React.Component {
                             <span className={style.ensure1}>
                                 <div className={style.itemWordBox1}>
                                     <span className={style.itemWord1}>
-                                        XXX基金1期
+                                        XXX基金1期 [BTC]
                                     </span>
                                     <span className={style.itemMoney11}>
-                                        币额：0.12546545 BTC
+                                        币额：0.12546545
                                     </span>
                                     <span className={style.itemMoney111}>
-                                        昨日收益：0.12546545 BTC
+                                        昨日收益：0.12546545
                                     </span>
                                 </div>
                             </span>
                             <span className={style.ensure1}>
                                 <div className={style.itemWordBox1}>
                                     <span className={style.itemWord1}>
-                                        XXX基金1期
+                                        XXX基金1期 [BTC]
                                     </span>
                                     <span className={style.itemMoney11}>
-                                        币额：0.12546545 BTC
+                                        币额：0.12546545
                                     </span>
                                     <span className={style.itemMoney111}>
-                                        昨日收益：0.12546545 BTC
+                                        昨日收益：0.12546545
                                     </span>
                                 </div>
                             </span>
                             <span className={style.ensure1}>
                                 <div className={style.itemWordBox1}>
                                     <span className={style.itemWord1}>
-                                        XXX基金1期
+                                        XXX基金1期 [BTC]
                                     </span>
                                     <span className={style.itemMoney11}>
-                                        币额：0.12546545 BTC
+                                        币额：0.12546545
                                     </span>
                                     <span className={style.itemMoney111}>
-                                        昨日收益：0.12546545 BTC
+                                        昨日收益：0.12546545
                                     </span>
                                 </div>
                             </span>

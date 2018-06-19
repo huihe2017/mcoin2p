@@ -11,7 +11,7 @@
     display: block;
 }
 :local(.ensure){
-    display: block;
+    display: flex;
     height: 64px;
     width: 100%;
     background-color: #fff;
@@ -43,7 +43,9 @@
 :local(.partLi):first-child,:local(.partLi):nth-child(3){
     border-right: 1px solid #eee;
 }
-
+:local(.headerBottom){
+    display: flex;
+}
 :local(.ensure):after,:local(.partLi):after,:local(.partTotal):after,:local(.headerTop):after,:local(.headerBottom):after{
     display: block;
     clear: both;
@@ -193,6 +195,7 @@
 }
 :local(.user){
     float: left;
+    width: 50%;
 }
 :local(.userImg){
     width: 44px;
@@ -209,6 +212,7 @@
     float: right;
     color: #fff;
     padding-top: 12px;
+    padding-left: 5px;
 }
 :local(.userMoneyT){
     display: block;
