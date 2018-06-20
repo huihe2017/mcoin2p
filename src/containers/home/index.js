@@ -74,7 +74,7 @@ class Home extends React.Component {
                         <span className={style.fundHeaderT}>
                             精选基金推荐
                         </span>
-                        <a className={style.fundHeaderA} href="javascript:void (0)">查看更多 <img
+                        <a className={style.fundHeaderA} href="javascript:void (0)" onClick={()=>hashHistory.push('/selectedFunds')}>查看更多 <img
                             className={style.fundHeaderImg} src={require('../moneyDetail/images/arrow.png')} alt=""/>
                         </a>
                     </div>

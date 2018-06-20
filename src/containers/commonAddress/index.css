@@ -18,7 +18,8 @@
 
 :local(.itemAdressBox){
     padding: 9px 0;
-
+    display: flex;
+    align-items: center;
 }
 :local(.itemAdressBox):after{
     clear: both;
