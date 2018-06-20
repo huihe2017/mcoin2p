@@ -1,9 +1,9 @@
 import React from 'react'
 import style from './index.css'
-import {Button,Carousel} from 'antd-mobile'
+import {Button, Carousel} from 'antd-mobile'
 import Header from '../../components/header'
 import {getIndexData} from '../../actions/indexPage'
-import {hashHistory} from 'react-router'
+import {hashHistory, Link} from 'react-router'
 import Footer from '../../components/footer'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
@@ -47,7 +47,7 @@ class Home extends React.Component {
                             公告
                         </span>
                             <span className={style.headerItemContent}>
-                            <b>{obj.title}</b>
+                                <Link to={'/informationDetails'}><b>{obj.title}</b></Link>
                         </span>
                         </div>
                     })}
@@ -59,12 +59,14 @@ class Home extends React.Component {
                         autoplay={true}
                         infinite
                     >
-                        <div className={style.banner}>
+                        {this.props.indexPage.banners.map(() => {
+                            return <Link to={'/informationDetails'}>
+                                <div className={style.banner}>
 
-                        </div>
-                        <div className={style.banner}>
+                                </div>
+                            </Link>
+                        })}
 
-                        </div>
                     </Carousel>
                 </div>
                 <div className={style.fund}>
@@ -78,7 +80,7 @@ class Home extends React.Component {
                     </div>
                     <div className={style.fundContent}>
                         {
-                            data.map(i => (
+                            this.props.indexPage.funds.map(i => (
                                 <div className={style.contentItem}>
                                     <div className={style.contentItemHeader}>
 
@@ -86,7 +88,7 @@ class Home extends React.Component {
 
                                             <div className={style.yieldRateBox}>
                                                 <span className={style.yieldRate}>
-                                                    {i.yieldRate}
+                                                    {i.rateSeven}
                                                 </span>%
                                             </div>
                                             <div className={style.yieldRateTip}>
@@ -95,20 +97,22 @@ class Home extends React.Component {
                                         </div>
                                         <div className={style.contentItemName1}>
                                             <span className={style.yieldRate1}>
-                                                {i.name}
+                                                {i.title}
                                             </span>
                                             <div className={style.yieldRateTip}>
-                                                最低申购份额 {i.share}
+                                                最低申购份额 {i.limitLowAmount}
                                             </div>
                                         </div>
                                     </div>
                                     <div className={style.contentItemContent}>
-                                        <div className={style.span}>
-                                            7天赎回
-                                        </div>
-                                        <div className={style.span}>
-                                            零费率
-                                        </div>
+                                        {
+                                            i.tag.map((obj)=>{
+                                                return <div className={style.span}>
+                                                    {obj}
+                                                </div>
+                                            })
+                                        }
+
                                     </div>
                                 </div>
                             ))
