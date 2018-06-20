@@ -8,13 +8,15 @@ import authFrom from './authFrom'
 import resultsPage from './resultsPage'
 import asset from './asset'
 import wallet from './wallet'
+import indexPage from './indexPage'
 let states = {
     foreignExchange,
     user,
     authFrom,
     resultsPage,
     asset,
-    wallet
+    wallet,
+    indexPage
 }
 
 let _states = {}

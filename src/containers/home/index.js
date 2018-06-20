@@ -2,59 +2,57 @@ import React from 'react'
 import style from './index.css'
 import {Button,Carousel} from 'antd-mobile'
 import Header from '../../components/header'
+import {getIndexData} from '../../actions/indexPage'
 import {hashHistory} from 'react-router'
 import Footer from '../../components/footer'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-const data=[
-        {
-            yieldRate:15.98,
-            name:'新手特权基金',
-            share:1
-        },{
-            yieldRate:14.98,
-            name:'基金一号',
-            share:100
-        },{
-            yieldRate:11.98,
-            name:'基金二号',
-            share:40
-        },
-    ]
+const data = [
+    {
+        yieldRate: 15.98,
+        name: '新手特权基金',
+        share: 1
+    }, {
+        yieldRate: 14.98,
+        name: '基金一号',
+        share: 100
+    }, {
+        yieldRate: 11.98,
+        name: '基金二号',
+        share: 40
+    },
+]
 
 class Home extends React.Component {
-    speedAccound() {console.log('444',this.props.user)
+    speedAccound() {
+        console.log('444', this.props.user)
         this.props.user.token ? hashHistory.push('/speedAccount') : hashHistory.push('/auth')
     }
 
+    componentDidMount() {
+        this.props.getIndexData()
+    }
+
     render() {
+        if (!this.props.indexPage.notices) {
+            return null
+        }
         return (
             <div className={style.wrap}>
                 <div className={style.header}>
-                    <div className={style.headerItem}>
+                    {this.props.indexPage.notices.map((obj) => {
+                        return <div className={style.headerItem}>
                         <span className={style.headerItemImg}>
                             公告
                         </span>
-                        <span className={style.headerItemContent}>
-                            <b>标题内容：</b>内容哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈...
+                            <span className={style.headerItemContent}>
+                            <b>{obj.title}</b>
                         </span>
-                    </div>
-                    <div className={style.headerItem}>
-                        <span className={style.headerItemImg}>
-                            公告
-                        </span>
-                        <span className={style.headerItemContent}>
-                            <b>标题内容：</b>内容哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈...
-                        </span>
-                    </div>
-                    <div className={style.headerItem}>
-                        <span className={style.headerItemImg}>
-                            公告
-                        </span>
-                        <span className={style.headerItemContent}>
-                            <b>标题内容：</b>内容哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈...
-                        </span>
-                    </div>
+                        </div>
+                    })}
+
+
                 </div>
                 <div className={style.banner1}>
                     <Carousel
@@ -74,11 +72,13 @@ class Home extends React.Component {
                         <span className={style.fundHeaderT}>
                             精选基金推荐
                         </span>
-                        <a className={style.fundHeaderA} href="javascript:void (0)">查看更多 <img className={style.fundHeaderImg} src={require('../moneyDetail/images/arrow.png')} alt=""/> </a>
+                        <a className={style.fundHeaderA} href="javascript:void (0)">查看更多 <img
+                            className={style.fundHeaderImg} src={require('../moneyDetail/images/arrow.png')} alt=""/>
+                        </a>
                     </div>
                     <div className={style.fundContent}>
                         {
-                            data.map( i => (
+                            data.map(i => (
                                 <div className={style.contentItem}>
                                     <div className={style.contentItemHeader}>
 
@@ -123,12 +123,15 @@ class Home extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user: state.user
+        user: state.user,
+        indexPage: state.indexPage
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        getIndexData: bindActionCreators(getIndexData, dispatch)
+    }
 }
 
 Home = connect(mapStateToProps, mapDispatchToProps)(Home)

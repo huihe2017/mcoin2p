@@ -47,6 +47,7 @@ class Countdown extends React.Component {
                 }
             })
                 .catch(function (error) {
+                    debugger
                     console.log(error);
                 });
 

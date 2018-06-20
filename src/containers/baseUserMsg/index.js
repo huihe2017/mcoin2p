@@ -29,9 +29,9 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount(){
-        if(this.props.user.token){
+        //if(this.props.user.token){
             this.props.getUserDetailMsg()
-        }
+        //}
 
         // this.props.getBaseUserMsg({
         //
