@@ -64,7 +64,7 @@ class ForgetPwd extends React.Component {
         return (
             <div className={style.wrap}>
 
-                <Header/>
+                {/*<Header/>*/}
                     <section className={style.content}>
                         <span className={style.title}>
                         忘记密码？
