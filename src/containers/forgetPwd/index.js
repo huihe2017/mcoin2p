@@ -42,7 +42,7 @@ class ForgetPwd extends React.Component {
         this.props.forgetPwd({
             mobile: this.state.areaCode + " " + this.state.phone,
             regType: 1,
-            validateCode: this.state.picCode
+            validateCode: this.state.code
         }, (errorText) => {
             Toast.hide()
             debugger
@@ -63,17 +63,20 @@ class ForgetPwd extends React.Component {
     }
 
     render() {
-        const quhao=[
+        const quhao = [
             {
-                value:86,
-                label:"中国大陆  +86"
-            },{
-                value:87,
-                label:"中国台湾  +87"
-            },{
-                value:88,
-                label:"中国香港  +88"
-            },
+                value: 86,
+                label: "中国大陆  +86"
+            }, {
+                value: 886,
+                label: "中国台湾  +886"
+            }, {
+                value: 852,
+                label: "中国香港  +852"
+            }, {
+                value: 853,
+                label: "中国澳门  +853"
+            }
 
         ]
         return (

@@ -9,9 +9,6 @@ export function getWalletIndexData(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_WALLET_INDEX_DATA', data: response.data})
                     //callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
                 } else if (response.data.code === 3004) {
                     dispatch({type: 'NO_SAVE_CODE'})
                 } else {
@@ -32,9 +29,6 @@ export function getWalletTradeRecord(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_WALLET_TRADE_RECORD', data: response.data})
                     //callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
                 } else {
                     alert(response.data.msg)
                 }
@@ -53,9 +47,6 @@ export function getMinerFee(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_MINER_FEE', data: response.data})
                     //callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
                 } else {
                     alert(response.data.msg)
                 }
@@ -74,9 +65,6 @@ export function getCommonAddress(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_COMMON_ADDRESS', data: response.data})
                     //callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
                 } else {
                     alert(response.data.msg)
                 }
@@ -94,9 +82,6 @@ export function confirmWithdrawMsg(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'CONFIRM_WITHDRAW_MSG', data: response.data})
                     callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
                 } else {
                     alert(response.data.msg)
                 }
@@ -115,10 +100,6 @@ export function checkSafeCode(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'CHECK_SAFE_CODE', data: response.data})
                     callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
-
                 }
                 else if (response.data.code === 3003) {
                     callback('钱包安全码错误')
@@ -140,10 +121,6 @@ export function sentMobileCode(data, callback) {
                 if (response.data.code === 0) {
                     //dispatch({type: 'CHECK_SAFE_CODE', data: response.data})
                     //callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
-
                 }
                 else if (response.data.code === 1006) {
                     callback('手机号码错误')
@@ -166,10 +143,6 @@ export function checkMobileCode(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'CHECK_MOBILE_CODE', data: response.data})
                     callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
-
                 }
                 else if (response.data.code === 1004) {
                     callback('验证码错误')
