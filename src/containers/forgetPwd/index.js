@@ -31,6 +31,10 @@ class ForgetPwd extends React.Component {
             Toast.fail('请输入短信验证码', 3, null, false)
             return false
         }
+        if (!/^(?!\d+$)(?![a-zA-Z]+$)(?![@#$%^&]+$)[\da-zA-Z@#$%^&]{6,21}$/.test(this.state.pwd)) {
+            Toast.fail('密码格式错误', 3, null, false)
+            return false
+        }
 
         Toast.loading('提交中', 3, null, false)
         this.props.forgetPwd({
@@ -100,7 +104,6 @@ class ForgetPwd extends React.Component {
                             </div>
                             <img className={style.tuxing} src="http://reso2.yiihuu.com/1331436-z.jpg" alt=""/>
                         </div>
-
                         <div className={style.selphone}>
                             <div className={style.tu}>
                                 <List>
@@ -117,6 +120,18 @@ class ForgetPwd extends React.Component {
                             </div>
                             <div className={style.lline}></div>
 
+                        </div>
+                        <div className={style.selphone}>
+                            <div className={style.tu}>
+                                <List>
+                                    <InputItem type="password"
+                                               onChange={(value) => {
+                                                   this.setState({pwd: value})
+                                               }}
+                                               placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码'}></InputItem>
+                                </List>
+
+                            </div>
                         </div>
                         <div className={style.button}>
                             <Button onClick={this.forgetPwd.bind(this)} type="primary">
