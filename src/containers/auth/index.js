@@ -9,6 +9,9 @@ import {hashHistory, Link} from 'react-router';
 import Header from '../../components/header'
 import Countdown from '../../components/countdown'
 import {checkPhone} from '../../common/util'
+import config from '../../config'
+
+
 class Auth extends React.Component {
     constructor(props) {
         super(props);
@@ -25,10 +28,10 @@ class Auth extends React.Component {
 
     getPicImg() {
         return <img onTouchEnd={(e) => {
-            e.target.src = 'http://47.91.236.245:4030/user/image-captcha?tm=' + Math.random()
+            e.target.src = config.api_url+'captcha/getcaptcha?tm=' + Math.random()
         }}
                     className={style.tuxing}
-                    src={"http://47.91.236.245:4030/user/image-captcha?tm=" + Math.random()}/>
+                    src={config.api_url+'captcha/getcaptcha?tm=' + Math.random()}/>
     }
 
     submitFn() {

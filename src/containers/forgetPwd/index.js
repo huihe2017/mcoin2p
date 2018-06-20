@@ -9,12 +9,14 @@ import {bindActionCreators} from 'redux'
 import Countdown from '../../components/countdown'
 import {Toast} from "antd-mobile/lib/index";
 import {hashHistory} from "react-router";
+import config from '../../config'
 
 class ForgetPwd extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             areaCode: [86],
+            picImg: this.getPicImg(),
             picCode:''
         }
     }
@@ -51,6 +53,15 @@ class ForgetPwd extends React.Component {
             }
         })
     }
+
+    getPicImg() {
+        return <img onTouchEnd={(e) => {
+            e.target.src = config.api_url+'captcha/getcaptcha?tm=' + Math.random()
+        }}
+                    className={style.tuxing}
+                    src={config.api_url+'captcha/getcaptcha?tm=' + Math.random()}/>
+    }
+
     render() {
         const quhao=[
             {
@@ -102,8 +113,9 @@ class ForgetPwd extends React.Component {
                                     }} placeholder="请输入图形验证码" type="text"></InputItem>                                </List>
 
                             </div>
-                            <img className={style.tuxing} src="http://reso2.yiihuu.com/1331436-z.jpg" alt=""/>
-                        </div>
+                            {/*<img className={style.tuxing} src="http://reso2.yiihuu.com/1331436-z.jpg" alt=""/>*/}
+                            {this.state.picImg}
+                            </div>
                         <div className={style.selphone}>
                             <div className={style.tu}>
                                 <List>
