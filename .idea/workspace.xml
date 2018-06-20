@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eaf612a-ca36-4e75-a6b7-2f658dbec1a9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/actions/wallet.js" afterPath="$PROJECT_DIR$/src/actions/wallet.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/baseUserMsg/index.js" afterPath="$PROJECT_DIR$/src/containers/baseUserMsg/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/forgetPwd/index.js" afterPath="$PROJECT_DIR$/src/containers/forgetPwd/index.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -54,12 +53,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/baseUserMsg/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+            <state relative-caret-position="234">
+              <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,6 +112,10 @@
               <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="21" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
+                <marker date="1529467742255" expanded="true" signature="9478:9495" ph="&lt;InputItem/&gt;" />
+                <marker date="1529467742255" expanded="true" signature="9478:9531" ph="&lt;List/&gt;" />
+                <marker date="1529467742255" expanded="true" signature="9478:9563" ph="&lt;div/&gt;" />
+                <marker date="1529467742255" expanded="true" signature="9478:9590" ph="&lt;div/&gt;" />
               </folding>
             </state>
           </provider>
@@ -151,7 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/containers/aboutUs/index.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/containers/school/index.js" />
         <option value="$PROJECT_DIR$/src/common.css" />
@@ -202,6 +216,7 @@
         <option value="$PROJECT_DIR$/src/actions/wallet.js" />
         <option value="$PROJECT_DIR$/src/containers/forgetPwd/index.js" />
         <option value="$PROJECT_DIR$/src/containers/baseUserMsg/index.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
       </list>
     </option>
   </component>
@@ -224,8 +239,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1986" />
-    <option name="y" value="50" />
+    <option name="x" value="2019" />
+    <option name="y" value="160" />
     <option name="width" value="1204" />
     <option name="height" value="1003" />
   </component>
@@ -260,31 +275,6 @@
               <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
               <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="baseUserMsg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -337,15 +327,15 @@
       <workItem from="1528251965147" duration="24188000" />
       <workItem from="1528440200648" duration="8371000" />
       <workItem from="1528680390754" duration="60573000" />
-      <workItem from="1529371745071" duration="25918000" />
+      <workItem from="1529371745071" duration="26585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="290901000" />
+    <option name="totallyTimeSpent" value="291568000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1986" y="50" width="1204" height="1003" extended-state="0" />
+    <frame x="2019" y="160" width="1204" height="1003" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19468267" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -381,16 +371,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/bankCardMsg/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="102" column="28" lean-forward="true" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/inGold/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -815,6 +795,10 @@
           <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="21" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+            <marker date="1529467742255" expanded="true" signature="9478:9495" ph="&lt;InputItem/&gt;" />
+            <marker date="1529467742255" expanded="true" signature="9478:9531" ph="&lt;List/&gt;" />
+            <marker date="1529467742255" expanded="true" signature="9478:9563" ph="&lt;div/&gt;" />
+            <marker date="1529467742255" expanded="true" signature="9478:9590" ph="&lt;div/&gt;" />
           </folding>
         </state>
       </provider>
@@ -839,9 +823,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/baseUserMsg/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+        <state relative-caret-position="234">
+          <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
