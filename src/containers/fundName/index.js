@@ -300,9 +300,9 @@ class BaseUserMsg extends React.Component {
                             >
                                 <div className={style.box}>
                                     <div id="main" style={{ width: '100%', height: 230 ,padding:'0 16px',marginBottom:'-20px',paddingTop:10}}></div>
-                                    <a href="" className={style.bottomA}>
+                                    <div className={style.bottomA} onClick={()=>hashHistory.push('/productDetails')}>
                                         查看基金详情
-                                    </a>
+                                    </div>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
                                     Content of second tab

@@ -79,6 +79,10 @@ class Auth extends React.Component {
                 }
             })
         } else {
+            if (!/^[a-zA-Z0-9]{6,20}$/.test(this.state.nickName)) {
+                Toast.fail('请输入正确的手机格式', 3, null, false)
+                return false
+            }
             if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[1-9]{1})|(18[0-9]{1})|(19[8-9]{1}))+\d{8})$/.test(this.state.phone)) {
                 Toast.fail('请输入正确的手机格式', 3, null, false)
                 return false
@@ -102,6 +106,7 @@ class Auth extends React.Component {
             Toast.loading('注册中', 3, null, false)
             this.props.register({
                 phone: this.state.areaCode+ this.state.phone,
+                nickName: this.state.nickName,
                 pwd: this.state.pwd,
                 code: this.state.code
             }, (errorText) => {
@@ -166,6 +171,18 @@ class Auth extends React.Component {
                     </div>
                 </nav>
                 <section className={style.content}>
+                    <div className={style.selphone} hidden={this.state.login}>
+                        <div className={style.tu}>
+                            <List>
+                                <InputItem type="password"
+                                           onChange={(value) => {
+                                               this.setState({nickName: value})
+                                           }}
+                                           placeholder={'请设置昵称（数字+字母组合）'}></InputItem>
+                            </List>
+
+                        </div>
+                    </div>
                     <div className={style.selphone}>
                         <div className={style.qh}>
                             <Picker onChange={(value) => {
@@ -222,7 +239,7 @@ class Auth extends React.Component {
                                            onChange={(value) => {
                                                this.setState({pwd: value})
                                            }}
-                                           placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码'}></InputItem>
+                                           placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码（数字+字母+特殊字符组合）'}></InputItem>
                             </List>
 
                         </div>

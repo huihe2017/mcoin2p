@@ -210,7 +210,7 @@ class BaseUserMsg extends React.Component {
             }
             const obj = data[index--];
             return (
-                <div className={style.item} key={rowID}>
+                <div className={style.item} key={rowID} onClick={()=>hashHistory.push('/fundName')}>
                     <span className={style.title} >
                         {obj.title}
                         <div className={style.time}>
