@@ -40,16 +40,17 @@ class ForgetPwd extends React.Component {
 
         Toast.loading('提交中', 3, null, false)
         this.props.forgetPwd({
-            mobile: this.state.areaCode + " " + this.state.phone,
+            mobile: this.state.areaCode + "" + this.state.phone,
             regType: 1,
-            validateCode: this.state.code
+            validateCode: this.state.code,
+            password:this.state.pwd
         }, (errorText) => {
             Toast.hide()
             debugger
             if (errorText) {
                 Toast.fail(errorText, 3, null, false)
             } else {
-                hashHistory.push('/modifyPwd')
+                hashHistory.push('/auth')
             }
         })
     }

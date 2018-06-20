@@ -100,7 +100,7 @@ export function register(data, callback) {
             mobile: data.phone,
             password: data.pwd,
             checkCode: data.code,
-            userName: '',
+            userName: data.nickName,
             regType: 1
         })
             .then(function (response) {

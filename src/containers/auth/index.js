@@ -174,7 +174,7 @@ class Auth extends React.Component {
                     <div className={style.selphone} hidden={this.state.login}>
                         <div className={style.tu}>
                             <List>
-                                <InputItem type="password"
+                                <InputItem type="text"
                                            onChange={(value) => {
                                                this.setState({nickName: value})
                                            }}
