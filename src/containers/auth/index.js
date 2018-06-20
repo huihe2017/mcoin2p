@@ -95,6 +95,10 @@ class Auth extends React.Component {
                 Toast.fail('密码格式错误', 3, null, false)
                 return false
             }
+            if (this.state.pwd!==this.state.repwd) {
+                Toast.fail('请再次确认密码', 3, null, false)
+                return false
+            }
             Toast.loading('注册中', 3, null, false)
             this.props.register({
                 phone: this.state.areaCode+ this.state.phone,
@@ -219,6 +223,18 @@ class Auth extends React.Component {
                                                this.setState({pwd: value})
                                            }}
                                            placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码'}></InputItem>
+                            </List>
+
+                        </div>
+                    </div>
+                    <div className={style.selphone} hidden={this.state.login}  >
+                        <div className={style.tu}>
+                            <List>
+                                <InputItem type="password"
+                                           onChange={(value) => {
+                                               this.setState({repwd: value})
+                                           }}
+                                           placeholder={'请确认密码'}></InputItem>
                             </List>
 
                         </div>

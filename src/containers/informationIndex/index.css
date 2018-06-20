@@ -52,7 +52,8 @@
     bottom:0;
     right:0;
     padding:0 20px 1px 0px;
-    background: -webkit-linear-gradient(left, transparent, #fff 65%);
+    background: -webkit-linear-gradient(left, transparent, #000 65%);
+
     background: -o-linear-gradient(right, transparent, #fff 65%);
     background: -moz-linear-gradient(right, transparent, #fff 65%);
     background: linear-gradient(to right, transparent, #fff 65%);
