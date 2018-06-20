@@ -13,7 +13,6 @@ class TradingPlatform extends React.Component {
     render() {
         return (
             <div className={style.wrap}>
-                <Header/>
                 <div className={style.notice}>
                     <span className={style.noticeT}>
                         注意
