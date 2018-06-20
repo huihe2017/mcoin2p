@@ -85,7 +85,7 @@ class ForgetPwd extends React.Component {
                 {/*<Header/>*/}
                     <section className={style.content}>
                         <span className={style.title}>
-                        忘记密码？
+                        找回密码？
                         </span>
                         <div className={style.selphone}>
                             <div className={style.qh}>
