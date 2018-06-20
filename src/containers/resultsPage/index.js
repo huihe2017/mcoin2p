@@ -14,7 +14,6 @@ class ResultsPage extends React.Component {
 
         return (
             <div className={style.wrap}>
-                <Header/>
                 <img src={require(`./images/${this.props.params.status}.png`)} alt="icon"/>
                 <span className={style.rtitle}>
                     {this.props.params.title}

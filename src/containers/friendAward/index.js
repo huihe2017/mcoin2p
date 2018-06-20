@@ -77,7 +77,7 @@ class BaseUserMsg extends React.Component {
                                 数量
                             </span>
                             <span className={style.contentTitle3}>
-                                市值（CNY）
+                                市值
                             </span>
                         </div>
                         <div className={style.contentContent}>
@@ -89,7 +89,10 @@ class BaseUserMsg extends React.Component {
                                     14.21234112
                                 </span>
                                     <span className={style.contentPart3}>
-                                    51.000CNY
+                                    ￥51.000
+                                        <span className={style.contentPart4}>
+                                            市场价:￥51.000
+                                        </span>
                                 </span>
                             </div>
                             <div className={style.contentPart}>
@@ -100,7 +103,10 @@ class BaseUserMsg extends React.Component {
                                     14.21234112
                                 </span>
                                     <span className={style.contentPart3}>
-                                    51.000CNY
+                                    ￥51.000
+                                        <span className={style.contentPart4}>
+                                            市场价:￥51.000
+                                        </span>
                                 </span>
                             </div>
                         </div>

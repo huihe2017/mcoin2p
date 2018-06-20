@@ -40,6 +40,16 @@
     height: 290px;
     margin-top: 26px;
 }
+@media screen and (max-width: 360px) {
+    :local(.qcode){
+        margin: 0 auto;
+        background-color: #5262ff;
+        width: 256px;
+        height: 256px;
+        margin-top: 26px;
+    }
+}
+
 :local(.footer){
     color: #989898;
     font-size: 14px;

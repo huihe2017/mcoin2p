@@ -90,6 +90,9 @@ class BaseUserMsg extends React.Component {
                                 </span>
                                 <span className={style.contentPart3}>
                                     ￥51.000
+                                    <span className={style.contentPart4}>
+                                        市场价:￥51.000
+                                    </span>
                                 </span>
                             </div>
                             <div className={style.contentPart}>
@@ -101,12 +104,15 @@ class BaseUserMsg extends React.Component {
                                 </span>
                                 <span className={style.contentPart3}>
                                     ￥51.000
+                                    <span className={style.contentPart4}>
+                                        市场价:￥51.000
+                                    </span>
                                 </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                {/*<Footer/>*/}
+
             </div>
         )
 

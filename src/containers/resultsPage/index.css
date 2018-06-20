@@ -1,3 +1,6 @@
+:local(.wrap){
+    padding-top: 50px;
+}
 .result-example .icon {
     width: 120px;
     height: 120px;

@@ -147,10 +147,13 @@
     float: left;
     width: 27%;
     padding-left: 0!important;
+    text-align: right;
+    padding-right: 10px;
 }
 :local(.contentPart){
     background-color: #fff;
     margin-bottom: 10px;
+    padding-right: 10px;
 }
 :local(.contentContent) :local(.contentPart):last-child{
     margin-bottom: 0;
@@ -179,6 +182,18 @@
     float: left;
     width: 27%;
     padding-left: 0!important;
+    position: relative;
+    text-align: right;
+}
+:local(.contentPart4){
+
+    position: absolute;
+    right: 0;
+    font-size: 10px;
+    color: #989898;
+    top: 18px;
+    white-space: nowrap;
+    text-align: right;
 }
 :local(.contentImg){
     width: 16px;

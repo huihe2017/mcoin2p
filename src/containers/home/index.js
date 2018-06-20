@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './index.css'
-import {Button} from 'antd-mobile'
+import {Button,Carousel} from 'antd-mobile'
 import Header from '../../components/header'
 import {hashHistory} from 'react-router'
 import Footer from '../../components/footer'
@@ -56,7 +56,19 @@ class Home extends React.Component {
                         </span>
                     </div>
                 </div>
-                <div className={style.banner}></div>
+                <div className={style.banner1}>
+                    <Carousel
+                        autoplay={true}
+                        infinite
+                    >
+                        <div className={style.banner}>
+
+                        </div>
+                        <div className={style.banner}>
+
+                        </div>
+                    </Carousel>
+                </div>
                 <div className={style.fund}>
                     <div className={style.fundHeader}>
                         <span className={style.fundHeaderT}>
