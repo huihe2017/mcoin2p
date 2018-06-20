@@ -148,7 +148,7 @@ class Auth extends React.Component {
         }
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
+                <Header/>
                 <div className={style.logo}></div>
                 <nav className={style.nav}>
                     <div>
