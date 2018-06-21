@@ -79,7 +79,7 @@ class BaseUserMsg extends React.Component {
                                         可活动资产
                                     </span>
                                     <span className={style.userTime}>
-                                        {this.props.wallet.totalAmount}
+                                        ￥{this.props.wallet.totalAmount}
                                     </span>
                                 </div>
                             </a>
@@ -120,7 +120,7 @@ class BaseUserMsg extends React.Component {
                                                 {value.amount}
                                             </span>
                                             <span className={style.contentPart3}>
-                                                {value.realAmount}
+                                                ￥{value.realAmount}
                                                     <span className={style.contentPartTip}>
                                                        市场价：￥{value.marketPrice}
                                                     </span>

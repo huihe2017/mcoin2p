@@ -300,21 +300,23 @@ class BaseUserMsg extends React.Component {
                             >
                                 <div className={style.box}>
                                     <div id="main" style={{ width: '100%', height: 230 ,padding:'0 16px',marginBottom:'-20px',paddingTop:10}}></div>
-                                    <div className={style.bottomA} onClick={()=>hashHistory.push('/productDetails')}>
-                                        查看基金详情
-                                    </div>
+
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
                                     Content of second tab
                                 </div>
                             </Tabs>
                         </StickyContainer>
+                        <div className={style.bottomA} onClick={()=>hashHistory.push('/productDetails')}>
+                            查看基金详情
+                        </div>
                     </div>
                 </div>
             </div>
         )
     }
 }
+
 
 function mapStateToProps(state, props) {
     return {

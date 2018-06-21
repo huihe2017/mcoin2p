@@ -128,6 +128,13 @@
     width: 110px;
     margin-left: 6px;
 }
+:local(.itemRightC1){
+    color: #5262ff;
+    display: block;
+    float: right;
+    width: 110px;
+    margin-left: 6px;
+}
 :local(.commission){
     position: absolute;
     right: 0;
@@ -147,6 +154,8 @@
     padding: 6px 0;
     padding-left: 16px;
     background-color: #eee;
+    display: flex;
+    align-items: center;
 }
 :local(.itemAdressBox):after{
     clear: both;

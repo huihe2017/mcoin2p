@@ -54,6 +54,19 @@ class BaseUserMsg extends React.Component {
         };
     }
 
+    logout() {
+        Toast.loading('正在退出', 0)
+        this.props.logout({
+
+        }, (errorText) => {
+            Toast.hide()
+            if (errorText) {
+                Toast.fail(errorText, 3, null, false)
+            } else {
+                hashHistory.push('/')
+            }
+        })
+    }
 
     componentWillMount(){
         // if(!this.props.user.token){
@@ -186,14 +199,27 @@ class BaseUserMsg extends React.Component {
             const obj = data[index--];
             return (
                 <div className={style.item} key={rowID}>
-                    <div className={style.icontent}>
-                        <div className={style.state}>
-                            <span style={{color:'#3b3d40'}}>{obj.number}</span>
+                    
+                    <div className={style.contentPart} onClick={()=>hashHistory.push('/friendAwardDetail')}>
+                        <span className={style.contentPart1}>
+                            <img src={require('../friendAward/images/BTC.png')} className={style.contentImg} alt=""/>BTC
+                        </span>
+                        <span className={style.contentPart2}>
+                            <span className={style.contentPart31}>
+                                周一
+                            </span>
+                            <span className={style.contentPart32}>
+                                06/01
+                            </span>
+                        </span>
+                        <div className={style.contentPart3}>
+                            <span className={style.contentPart5}>
+                                -1.00000
+                            </span>
+                            <span className={style.contentPart4}>
+                                基金名称-买入
+                            </span>
                         </div>
-                        <div className={style.number}>
-                            <span style={obj.state>0?{color:'#5262FF'}:{color:'#3B3D40'}}>{obj.state}</span>
-                        </div>
-
                     </div>
                 </div>
             );
@@ -202,29 +228,6 @@ class BaseUserMsg extends React.Component {
             <div className={style.wrap}>
                 {/*<Header/>*/}
                 <div>
-                    <div className={style.header}>
-                        <div className={style.headerTop}>
-                            <span className={style.headerTopW}>
-                                累计好友奖励明细
-                            </span>
-                            <a className={style.headerTopR} href="javascript:void (0)">
-                                <img className={style.headerTopI} src={require('../moneyDetail/images/money.png')} alt=""/>账户安全险保障中
-                            </a>
-                        </div>
-                        <div className={style.headerBottom}>
-                            <a className={style.user} href="javascript:void (0)">
-                                <div className={style.userData}>
-                                    <span className={style.userName}>
-                                        BTC
-                                    </span>
-                                    <span className={style.userTime}>
-                                        0.00004561234
-                                    </span>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
                     <div className={style.content}>
                         <ListView
                             ref={el => this.lv = el}
@@ -256,7 +259,7 @@ class BaseUserMsg extends React.Component {
                     </div>
 
                 </div>
-                {/*<Footer/>*/}
+
             </div>
         )
     }

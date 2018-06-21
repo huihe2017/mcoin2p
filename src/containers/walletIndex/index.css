@@ -148,15 +148,17 @@
 }
 :local(.contentTitle1){
     float: left;
-    width: 100px;
+    width: 27%;
 }
 :local(.contentTitle2){
     float: left;
-    width: 160px;
+    width: 44%
 }
 :local(.contentTitle3){
     float: left;
-    width: 100px;
+    width: 27%;
+    text-align: right;
+    padding-right: 10px;
 }
 :local(.contentTitleIMG){
     width: 12px;
@@ -165,7 +167,8 @@
 }
 :local(.contentPart){
     background-color: #fff;
-    margin-bottom: 10px;
+    border-bottom: 10px solid #f5f5f9;
+    padding-right: 10px;
 }
 :local(.contentContent) :local(.contentPart):last-child{
     margin-bottom: 0;
@@ -185,6 +188,7 @@
     bottom: 7px;
     right: 0px;
     text-align: right;
+    white-space: nowrap;
 }
 :local(.contentPart):after{
     display: block;
@@ -193,16 +197,17 @@
 }
 :local(.contentPart1){
     float: left;
-    width: 100px;
+    width: 27%;
 }
 :local(.contentPart2){
     float: left;
-    width: 160px;
+    width: 44%;
 }
 :local(.contentPart3){
     float: left;
-    width: 100px;
+    width: 27%;
     position: relative;
+    text-align: right;
 }
 :local(.contentImg){
     width: 16px;

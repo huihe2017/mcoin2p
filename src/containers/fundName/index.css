@@ -213,6 +213,8 @@
     font-size: 18px;
     color: #5262ff;
     font-weight: bold;
+    background-color: #fff;
+    padding-bottom: 30px;
 }
 :local(.chart) .am-tabs-default-bar-tab{
     color: #989898!important;

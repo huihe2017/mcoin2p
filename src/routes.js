@@ -51,6 +51,7 @@ import InformationDetails from './containers/informationDetails/'
 import SelectedFunds from './containers/selectedFunds/'
 import InformationIndex from './containers/informationIndex/'
 import InputSafe from './containers/inputSafe/'
+import Bill from './containers/bill/'
 
 import SetName from './containers/setName/'
 
@@ -109,6 +110,7 @@ export default () => {
             <Route path="/selectedFunds" component={SelectedFunds}/>
             <Route path="/informationIndex" component={InformationIndex}/>
             <Route path="/inputSafe" component={InputSafe}/>
+            <Route path="/bill" component={Bill}/>
         </Router>
     )
 }
