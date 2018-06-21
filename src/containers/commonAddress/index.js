@@ -177,8 +177,8 @@ class BaseUserMsg extends React.Component {
                 }}
             />
         );
+        let index = this.props.wallet.commonAddress.length - 1;
         const row = (rowData, sectionID, rowID) => {
-            let index = this.props.wallet.commonAddress.length - 1;
             if (index < 0) {
                 index = this.props.wallet.commonAddress.length - 1;
             }
@@ -186,9 +186,7 @@ class BaseUserMsg extends React.Component {
             return (
                 <div className={style.item} key={rowID}>
                     <Link to={'/forwardBTC/'+obj.address}>
-
-                            <div className={style.item1} key={index}>
-
+                            <div className={style.item1}>
                                 <div className={style.itemContent}>
                                     <div className={style.itemCoin}>
                                         <img className={style.itemImg}

@@ -44,58 +44,6 @@ class BaseUserMsg extends React.Component {
         }
     }
 
-
-    show(){
-        if(data.length==0){
-            return(
-                <div>
-                    <img className={style.showImg} src={require('./images/zero.png')} alt=""/>
-                    <span className={style.showTip}>
-                        暂无数据
-                    </span>
-                </div>
-            )
-        }else {
-            return(
-                data.map(i => (
-
-                    <div className={style.item} key={i.num} >
-
-                        <div className={style.itemContent}>
-                            <div className={style.itemCoin}>
-                                <img className={style.itemImg} src={require('../activityBalance/images/BTC.png')} alt=""/>{i.title}
-                            </div>
-                            <div className={style.itemName}>
-                                {i.name}
-                            </div>
-                            <div className={style.itemDo}>
-                                <a href="javascript:void (0)">
-                                    <img className={style.iconImg} src={require('./images/delete.png')} alt=""/>删除
-                                </a>
-                                <a href="javascript:void (0)">
-                                    <img className={style.iconImg} src={require('./images/editor.png')} alt=""/>修改
-                                </a>
-
-                            </div>
-
-                        </div>
-                        <div className={style.itemAdressBox}>
-                            <div className={style.itemAdressT}>
-                                地址
-                            </div>
-                            <div className={style.itemAdress}>
-                                {i.address}
-                            </div>
-                        </div>
-                    </div>
-                ))
-            )
-        }
-
-
-    }
-
-
     componentDidMount() {
         // if(!this.props.user.token){
         //     return false
@@ -273,7 +221,6 @@ class BaseUserMsg extends React.Component {
         };
         return (
             <div className={style.wrap}>
-
                 <div className={style.tab}>
                     {data.length==0?<div>
                         <img className={style.showImg} src={require('./images/zero.png')} alt=""/>
@@ -293,7 +240,6 @@ class BaseUserMsg extends React.Component {
                         pageSize={5}
                         style={{
                             height: this.state.height,
-                            margin: '0.05rem 0',
                         }}
                         scrollerOptions={{ scrollbars: true, scrollingComplete: this.scrollingComplete }}
                         refreshControl={<RefreshControl
@@ -308,7 +254,6 @@ class BaseUserMsg extends React.Component {
                         onEndReachedThreshold={10}
                     />}
                 </div>
-                <Footer/>
             </div>
         )
     }
