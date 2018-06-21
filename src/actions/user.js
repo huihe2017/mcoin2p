@@ -159,7 +159,6 @@ export function getDetailMsg(data, callback) {
 }
 
 export function getUserDetailMsg(data, callback) {
-    debugger
     return dispatch => {
         axios.post(config.api_url+'user/myinfo', {})
             .then(function (response) {
