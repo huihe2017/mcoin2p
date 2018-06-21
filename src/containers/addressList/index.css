@@ -113,3 +113,6 @@
     text-align: center;
     margin-top: 20px;
 }
+:local(.listBox) .am-list-view-scrollview-content{
+    position: relative!important;
+}
