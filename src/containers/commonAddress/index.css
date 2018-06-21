@@ -2,11 +2,13 @@
 :local(.tab){
     padding-top: 10px;
 }
+:local(.item1){
+
+}
 :local(.item){
     padding-left: 16px;
     width: 100%;
     background-color: #fff;
-    margin-bottom: 10px;
 }
 :local(.itemContent){
 

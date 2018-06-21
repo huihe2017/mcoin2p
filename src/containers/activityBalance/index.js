@@ -8,6 +8,7 @@ import {logout,getBaseUserMsg} from '../../actions/user'
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 import {getAssetDetail} from '../../actions/asset'
+import {getWalletTradeRecord} from "../../actions/wallet";
 
 const data = [
     {
@@ -293,7 +294,6 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        logout: bindActionCreators(logout, dispatch),
         getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
     }
 }

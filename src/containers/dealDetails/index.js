@@ -1,12 +1,15 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, Toast,RefreshControl,ListView} from 'antd-mobile';
+import {List, InputItem, Toast,RefreshControl} from 'antd-mobile';
+import Header from '../../components/header'
+import Footer from '../../components/footer'
 import {getWalletTradeRecord} from '../../actions/wallet'
 import {bindActionCreators} from 'redux'
 import {hashHistory,Link} from 'react-router'
 import {logout,getBaseUserMsg} from '../../actions/user'
 import ReactDOM from "react-dom";
+import {ListView} from "antd-mobile/lib/index";
 
 const data = [
     {
@@ -29,19 +32,8 @@ const data = [
 
     },
 ];
-let index = data.length - 1;
 
-const NUM_ROWS = data.length;
 let pageIndex = 0;
-
-function genData(pIndex = 0) {
-    const dataArr = [];
-    for (let i = 0; i < NUM_ROWS; i++) {
-        dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-    }
-    console.log(dataArr);
-    return dataArr;
-}
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -61,7 +53,6 @@ class BaseUserMsg extends React.Component {
         // if(!this.props.user.token){
         //     return false
         // }
-        this.props.getWalletTradeRecord()
         // this.props.getBaseUserMsg({
         //
         // }, (errorText) => {
@@ -114,7 +105,7 @@ class BaseUserMsg extends React.Component {
 
         // simulate initial Ajax
         setTimeout(() => {
-            this.rData = genData();
+            this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
                 refreshing: false,
@@ -159,6 +150,30 @@ class BaseUserMsg extends React.Component {
                 <span>松开立即刷新</span>
             </div>,
         ];
+    }
+
+    genData(pIndex = 0) {
+        const NUM_ROWS = data.length;
+        const dataArr = [];
+        for (let i = 0; i < NUM_ROWS; i++) {
+            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
+        }
+        console.log(dataArr);
+        return dataArr;
+    }
+
+    componentWillMount(){
+        this.props.getWalletTradeRecord()
+        // this.props.getBaseUserMsg({
+        //
+        // }, (errorText) => {
+        //     Toast.hide()
+        //     if (errorText) {
+        //         Toast.fail(errorText, 3, null, false)
+        //     } else {
+        //         //hashHistory.push('/')
+        //     }
+        // })
     }
 
     show(){
@@ -225,76 +240,76 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
-        if(!this.props.wallet.current){
-            return null
-        }
+        // if(!this.props.wallet.current){
+        //     return null
+        // }
         // let data = this.props.wallet.current.balance;
+
         const separator = (sectionID, rowID) => (
             <div
                 key={`${sectionID}-${rowID}`}
                 style={{
                     backgroundColor: '#F5F5F9',
-                    height: 0,
-                    borderTop: '1px solid #ECECED',
-                    borderBottom: '1px solid #ECECED',
+                    height: 10,
                 }}
             />
         );
         const row = (rowData, sectionID, rowID) => {
+            let index = this.props.wallet.current.list.length - 1;
             if (index < 0) {
-                index = data.length - 1;
+                index = this.props.wallet.current.list.length - 1;
             }
-            const obj = data[index--];
+            const obj = this.props.wallet.current.list[index--];
             return (
                 <div className={style.item} key={rowID}>
-                    <div className={style.item}>
-                        <div className={style.itemH}>
-                            <div className={style.itemHead}>
-                                <div className={style.itemCoin}>
-                                    {obj.type==='转出'?<div style={{color:'#5262ff'}} className={style.itemT}>
-                                        <img  className={style.itemImg} src={require('./images/in.png')} alt=""/>转入
-                                    </div>:<div  className={style.itemT}>
-                                        <img className={style.itemImg} src={require('./images/out.png')} alt=""/>转出
-                                    </div>}
-                                    {obj.minerFee?
-                                        <span className={style.commission}>
-                                    手续费：{obj.minerFee}BTC
-                                </span>:''
-                                    }
-                                </div>
-                            </div>
-                            <div className={style.itemDataBox}>
-                                <div className={style.itemLeft}>
-                                    数量 {obj.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>-{obj.amount}</span>:<span style={{color: '#3B3D40',marginLeft:10}}>+{obj.amount}</span>}
-                                </div>
-                                <div className={style.itemRight}>
-                                    <span className={style.itemLeftC}>状态</span> {obj.out?<span className={style.itemRightC1}>{obj.status}</span>:<span className={style.itemRightC1}>{obj.status}</span>}
-                                </div>
-                                <div className={style.itemLeft}>
-                                    {obj.type==='转出'?'发起':''}{obj.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>{obj.beginTime}</span>:<span style={{color: '#3B3D40',marginLeft:10}}></span>}
-                                </div>
-                                <div className={style.itemRight}>
-                                    <span className={style.itemLeftC}>完成</span> <span className={style.itemRightC}>{obj.completeTime}</span>
-                                </div>
+                   <div className={style.itemH}>
+                        <div className={style.itemHead}>
+                            <div className={style.itemCoin}>
+                                {obj.type==='转出'?<div style={{color:'#5262ff'}} className={style.itemT}>
+                                <img  className={style.itemImg} src={require('./images/in.png')} alt=""/>转入
+                                </div>:<div  className={style.itemT}>
+                                <img className={style.itemImg} src={require('./images/out.png')} alt=""/>转出
+                        </div>}
+                {obj.minerFee?
+                                <span className={style.commission}>
+                手续费：{obj.minerFee}BTC
+                            </span>:''
+                }
                             </div>
                         </div>
-                        <div className={style.itemAdressBox}>
-                            <div className={style.itemAdressT}>
-                                地址
-                            </div>
-                            <div className={style.itemAdress}>
-                                {obj.fromAddress}
-                            </div>
+                    <div className={style.itemDataBox}>
+                        <div className={style.itemLeft}>
+                            数量 {obj.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>-{obj.amount}</span>:<span style={{color: '#3B3D40',marginLeft:10}}>+{obj.amount}</span>}
                         </div>
-
+                        <div className={style.itemRight}>
+                            <span className={style.itemLeftC}>状态</span> {obj.out?<span className={style.itemRightC1}>{obj.status}</span>:<span className={style.itemRightC1}>{obj.status}</span>}
+                        </div>
+                        <div className={style.itemLeft}>
+                            {obj.type==='转出'?'发起':''}{obj.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>{obj.beginTime}</span>:<span style={{color: '#3B3D40',marginLeft:10}}></span>}
+                        </div>
+                        <div className={style.itemRight}>
+                            <span className={style.itemLeftC}>完成</span> <span className={style.itemRightC}>{obj.completeTime}</span>
+                        </div>
                     </div>
                 </div>
+                <div className={style.itemAdressBox}>
+                    <div className={style.itemAdressT}>
+                        地址
+                    </div>
+                    <div className={style.itemAdress}>
+                        {obj.fromAddress}
+                    </div>
+                </div>
+
+            </div>
             );
         };
         return (
             <div className={style.wrap}>
                 <div>
+
                     <div className={style.header}>
+
                         <div className={style.contentContent}>
                             <div className={style.contentPart}>
                                 <span className={style.contentPart1}>
@@ -322,9 +337,8 @@ class BaseUserMsg extends React.Component {
                             <ListView
                                 ref={el => this.lv = el}
                                 dataSource={this.state.dataSource}
-
                                 renderFooter={() => (<div style={{ padding: '0.3rem', textAlign: 'center' }}>
-                                    {this.state.isLoading ? '加载中...' : '加载完成'}
+                                    {this.state.isLoading ? '加载中...' : ''}
                                 </div>)}
                                 renderRow={row}
                                 renderSeparator={separator}
