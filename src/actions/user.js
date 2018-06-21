@@ -2,7 +2,7 @@ import axios from '../common/axiosConf'
 import config from '../../src/config'
 export function login(data, callback) {
     return dispatch => {
-        axios.post(config.api_url+'login/userlogin', {
+        axios.post(config.noauth_url+'login/userlogin', {
             mobile: data.phone,
             password: data.pwd,
             type:1,
@@ -49,7 +49,7 @@ export function logout(data, callback) {
 export function forgetPwd(data, callback) {
     return dispatch => {
 
-        axios.post(config.api_url+'reg/findpassword', {
+        axios.post(config.noauth_url+'reg/findpassword', {
             ...data
         })
             .then(function (response) {
@@ -96,7 +96,7 @@ export function modifyPwd(data, callback) {
 
 export function register(data, callback) {
     return dispatch => {
-        axios.post(config.api_url+'reg/reguser', {
+        axios.post(config.noauth_url+'reg/reguser', {
             mobile: data.phone,
             password: data.pwd,
             checkCode: data.code,

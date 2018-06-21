@@ -46,7 +46,6 @@ class ForgetPwd extends React.Component {
             password:this.state.pwd
         }, (errorText) => {
             Toast.hide()
-            debugger
             if (errorText) {
                 Toast.fail(errorText, 3, null, false)
             } else {
@@ -57,10 +56,10 @@ class ForgetPwd extends React.Component {
 
     getPicImg() {
         return <img onTouchEnd={(e) => {
-            e.target.src = config.api_url+'captcha/getcaptcha?tm=' + Math.random()
+            e.target.src = config.noauth_url+'captcha/getcaptcha?tm=' + Math.random()
         }}
                     className={style.tuxing}
-                    src={config.api_url+'captcha/getcaptcha?tm=' + Math.random()}/>
+                    src={config.noauth_url+'captcha/getcaptcha?tm=' + Math.random()}/>
     }
 
     render() {

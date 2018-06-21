@@ -14,7 +14,6 @@ export default function sign(state = initialState, action = {}) {
             return Object.assign({}, state, {})
 
         case 'LOGOUT':
-            debugger
             localStorage.removeItem('token')
             state.token = ''
             return Object.assign({}, state, {})

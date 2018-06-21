@@ -21,7 +21,7 @@ class Countdown extends React.Component {
             }
 
             let _this = this
-            axios.post(config.api_url+'reg/sendmobilecode', {
+            axios.post(config.noauth_url+'reg/sendmobilecode', {
                 // business: this.props.business,
                 checkCode: this.props.picCode,
                 mobile: this.props.phone

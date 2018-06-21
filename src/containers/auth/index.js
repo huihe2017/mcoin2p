@@ -28,10 +28,10 @@ class Auth extends React.Component {
 
     getPicImg() {
         return <img onTouchEnd={(e) => {
-            e.target.src = config.api_url+'captcha/getcaptcha?tm=' + Math.random()
+            e.target.src = config.noauth_url+'captcha/getcaptcha?tm=' + Math.random()
         }}
                     className={style.tuxing}
-                    src={config.api_url+'captcha/getcaptcha?tm=' + Math.random()}/>
+                    src={config.noauth_url+'captcha/getcaptcha?tm=' + Math.random()}/>
     }
 
     submitFn() {
