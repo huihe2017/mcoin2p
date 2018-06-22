@@ -55,7 +55,7 @@ class ForgetPwd extends React.Component {
     }
 
     getPicImg() {
-        return <img onTouchEnd={(e) => {
+        return <img onClick={(e) => {
             e.target.src = config.noauth_url+'captcha/getcaptcha?tm=' + Math.random()
         }}
                     className={style.tuxing}
