@@ -1,5 +1,8 @@
 import axios from '../common/axiosConf'
 import config from '../../src/config'
+import {hashHistory} from "react-router";
+import {Toast} from "antd-mobile/lib/index";
+
 export function login(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url+'login/userlogin', {
@@ -164,12 +167,16 @@ export function getUserDetailMsg(data, callback) {
             .then(function (response) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_USER_DETAIL_MSG', data: response.data})
+                }else if((response.data.code === 500)){
+                    Toast.fail('未知错误，请重新登录', 2, null, false)
+                    localStorage.removeItem('token')
+                    hashHistory.push('/auth')
                 } else {
-                    callback(response.data.msg)
+                    Toast.fail(response.data.msg)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
