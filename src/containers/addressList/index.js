@@ -280,7 +280,7 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left" />}
-                    onLeftClick={() => console.log('onLeftClick')}
+                    onLeftClick={() => hashHistory.push('/walletIndex')}
                     rightContent={[
 
                         <Link to={'/addAddress'}>+

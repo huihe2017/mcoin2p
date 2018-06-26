@@ -54,19 +54,21 @@ class Home extends React.Component {
 
 
                 </div>
-                <div className={style.banner1}>
+                <div >
                     <Carousel
-                        autoplay={true}
-                        infinite
+
+
                     >
-                        {this.props.indexPage.banners.map(() => {
-                            return <Link to={'/informationDetails'}>
-                                <div className={style.banner}>
+                        {[1,1,1,1,1].map(val => (
 
-                                </div>
-                            </Link>
-                        })}
+                            <img
+                                src={'http://img3.imgtn.bdimg.com/it/u=1149214208,1692303621&fm=214&gp=0.jpg'
+                                }
 
+
+                            />
+
+                        ))}
                     </Carousel>
                 </div>
                 <div className={style.fund}>
@@ -74,7 +76,8 @@ class Home extends React.Component {
                         <span className={style.fundHeaderT}>
                             精选基金推荐
                         </span>
-                        <a className={style.fundHeaderA} href="javascript:void (0)" onClick={()=>hashHistory.push('/selectedFunds')}>查看更多 <img
+                        <a className={style.fundHeaderA} href="javascript:void (0)"
+                           onClick={() => hashHistory.push('/selectedFunds')}>查看更多 <img
                             className={style.fundHeaderImg} src={require('../moneyDetail/images/arrow.png')} alt=""/>
                         </a>
                     </div>
@@ -106,7 +109,7 @@ class Home extends React.Component {
                                     </div>
                                     <div className={style.contentItemContent}>
                                         {
-                                            i.tag.map((obj)=>{
+                                            i.tag.map((obj) => {
                                                 return <div className={style.span}>
                                                     {obj}
                                                 </div>

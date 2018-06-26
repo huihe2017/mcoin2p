@@ -1,13 +1,13 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Picker} from 'antd-mobile';
+import {List, InputItem, Toast, NavBar, Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
-
+import {hashHistory, Link} from 'react-router'
+import {logout, getBaseUserMsg} from '../../actions/user'
+import {setSaveCode} from '../../actions/wallet'
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
@@ -16,9 +16,7 @@ class BaseUserMsg extends React.Component {
 
     logout() {
         Toast.loading('正在退出', 0)
-        this.props.logout({
-
-        }, (errorText) => {
+        this.props.logout({}, (errorText) => {
             Toast.hide()
             if (errorText) {
                 Toast.fail(errorText, 3, null, false)
@@ -28,17 +26,8 @@ class BaseUserMsg extends React.Component {
         })
     }
 
-    componentDidMount(){
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
+    componentDidMount() {
+
     }
 
     render() {
@@ -57,6 +46,21 @@ class BaseUserMsg extends React.Component {
         ];
         return (
             <div className={style.wrap}>
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/baseUserMsg')
+                    }
+                    rightContent={[
+                        <div onClick={()=>{
+                            this.props.setSaveCode({
+                                safeCode:this.state.saveCode
+                            }, () => {
+                                hashHistory.push('/walletIndex')
+                            })
+                        }} >完成</div>,
+                    ]}
+                ></NavBar>
                 {/*<Header/>*/}
                 <div>
                     <ul className={style.itemUl}>
@@ -66,13 +70,13 @@ class BaseUserMsg extends React.Component {
                         <li className={style.itemBox}>
 
                             <InputItem onChange={(value) => {
-                                this.setState({classNumber: value})
+                                this.setState({saveCode: value})
                             }} placeholder="安全码设置（6位数字）" type="text"></InputItem>
                         </li>
                         <li className={style.itemBox}>
                             <InputItem onChange={(value) => {
-                                this.setState({classNumber: value})
-                            }} placeholder="请再次输入" type="text" ></InputItem>
+                                this.setState({saveCodeConfirm: value})
+                            }} placeholder="请再次输入" type="text"></InputItem>
                         </li>
                     </ul>
 
@@ -88,14 +92,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user:state.user
+        user: state.user
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        logout: bindActionCreators(logout, dispatch),
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
+        setSaveCode: bindActionCreators(setSaveCode, dispatch)
     }
 }
 

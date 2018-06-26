@@ -55,7 +55,7 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => console.log('onLeftClick')}
+                    onLeftClick={() => hashHistory.push('/baseUserMsg')}
                     rightContent={[
                         <Link to={'/walletSetting'}>
                             <Icon key="1" type="ellipsis"/>
@@ -88,7 +88,7 @@ class BaseUserMsg extends React.Component {
                                 <img src={require('./images/add.png')} alt=""/>
                             </a>
 
-                            <Link to={'/outAddressList'}>
+                            <Link to={'/addressList'}>
                                 <a href="javascript:void (0)" className={style.user1}>
                                     <img src={require('./images/fadd.png')} alt=""/>
                                 </a>

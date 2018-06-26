@@ -67,7 +67,6 @@ class Auth extends React.Component {
             }, (errorText) => {
                 this.setState({picImg: this.getPicImg()})
                 Toast.hide()
-                debugger
                 if (errorText) {
                     Toast.fail(errorText, 3, null, false)
                 } else {

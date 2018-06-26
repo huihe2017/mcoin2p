@@ -1,5 +1,6 @@
 import axios from '../common/axiosConf'
 import config from '../../src/config'
+import {Toast} from "antd-mobile/lib/index";
 
 export function getWalletIndexData(data, callback) {
     return dispatch => {
@@ -11,12 +12,14 @@ export function getWalletIndexData(data, callback) {
                     //callback()
                 } else if (response.data.code === 3004) {
                     dispatch({type: 'NO_SAVE_CODE'})
+                } else if(response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    alert(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
@@ -115,7 +118,7 @@ export function checkSafeCode(data, callback) {
 
 export function sentMobileCode(data, callback) {
     return dispatch => {
-        axios.post(config.api_url + 'wallet/sendmobilecode', {})
+        axios.post(config.api_url + 'wallet/sendmobilecode', {...data})
             .then(function (response) {
 
                 if (response.data.code === 0) {
@@ -154,6 +157,25 @@ export function checkMobileCode(data, callback) {
             })
             .catch(function (error) {
                 alert(error);
+            });
+    }
+}
+
+export function setSaveCode(data, callback) {
+    return dispatch => {
+        axios.post(config.api_url + 'wallet/setsafecode', {...data})
+            .then(function (response) {
+
+                if (response.data.code === 0) {
+                    callback()
+                }else if(response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
+                } else {
+                    Toast.fail(response.data.message)
+                }
+            })
+            .catch(function (error) {
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
