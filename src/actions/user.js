@@ -151,9 +151,7 @@ export function getUserDetailMsg(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_USER_DETAIL_MSG', data: response.data})
                 } else if ((response.data.code === 500)) {
-                    Toast.fail('未知错误，请重新登录', 2, null, false)
-                    localStorage.removeItem('token')
-                    hashHistory.push('/auth')
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
                     Toast.fail(response.data.msg)
                 }
