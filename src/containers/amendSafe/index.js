@@ -1,12 +1,12 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Picker} from 'antd-mobile';
+import {List, InputItem, Toast,Picker,NavBar, Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {getWalletIndexData} from '../../actions/wallet'
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -56,11 +56,13 @@ class BaseUserMsg extends React.Component {
     }
 
     submit(){
-        if(!this.state.classNumber){
+        if(!this.state.safeCode){
             alert('安全码不得为空')
             return false
         }
-        alert('提交成功')
+        this.props.getWalletIndexData({safeCode:this.state.safeCode},()=>{
+            hashHistory.push('/safeSet')
+        })
     }
 
     render() {
@@ -80,6 +82,12 @@ class BaseUserMsg extends React.Component {
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/safeCenter')}
+                    rightContent={[]}
+                >安全码更改</NavBar>
                 <div>
                     <ul className={style.itemUl}>
                         <span className={style.title}>
@@ -88,7 +96,7 @@ class BaseUserMsg extends React.Component {
                         <li className={style.itemBox}>
 
                             <InputItem onChange={(value) => {
-                                this.setState({classNumber: value})
+                                this.setState({safeCode: value})
                             }} placeholder="请输入原安全码" type={this.state.show?"text":"password"} extra={<img style={{width:16,height:16}} onClick={()=>this.show()} src={require(`./images/${this.state.show}.png`)} alt=""/>}></InputItem>
                         </li>
                         <span className={style.tip}>
@@ -99,7 +107,6 @@ class BaseUserMsg extends React.Component {
                         下一步
                     </div>
                 </div>
-                <Footer/>
             </div>
         )
 
@@ -116,8 +123,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        logout: bindActionCreators(logout, dispatch),
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
+        getWalletIndexData: bindActionCreators(getWalletIndexData, dispatch)
     }
 }
 

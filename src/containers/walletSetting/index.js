@@ -47,7 +47,15 @@ class BaseUserMsg extends React.Component {
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/walletIndex')}
+                    rightContent={[
 
+
+                    ]}
+                >钱包设置</NavBar>
                 <div>
 
                     <div className={style.part}>

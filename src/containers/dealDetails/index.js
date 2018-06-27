@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,RefreshControl} from 'antd-mobile';
+import {List, InputItem, Toast,RefreshControl,NavBar, Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {getWalletTradeRecord} from '../../actions/wallet'
@@ -306,8 +306,14 @@ class BaseUserMsg extends React.Component {
         };
         return (
             <div className={style.wrap}>
-                <div>
 
+                <div>
+                    <NavBar
+                        mode="light"
+                        icon={<Icon type="left"/>}
+                        onLeftClick={() => hashHistory.push('/walletIndex')}
+                        rightContent={[]}
+                    >交易记录</NavBar>
                     <div className={style.header}>
 
                         <div className={style.contentContent}>

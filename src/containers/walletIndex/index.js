@@ -29,7 +29,7 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getWalletIndexData()
+        this.props.getWalletIndexData({},()=>{})
         // this.props.getBaseUserMsg({
         //
         // }, (errorText) => {
@@ -84,9 +84,9 @@ class BaseUserMsg extends React.Component {
                                 </div>
                             </a>
 
-                            <a href="javascript:void (0)" className={style.user1}>
-                                <img src={require('./images/add.png')} alt=""/>
-                            </a>
+                            {/*<a href="javascript:void (0)" className={style.user1}>*/}
+                                {/*<img src={require('./images/add.png')} alt=""/>*/}
+                            {/*</a>*/}
 
                             <Link to={'/addressList'}>
                                 <a href="javascript:void (0)" className={style.user1}>

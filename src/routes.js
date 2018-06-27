@@ -85,7 +85,7 @@ export default () => {
             <Route path="/qCode" component={QCode}/>
             <Route path="/privateKey" component={PrivateKey}/>
             <Route path="/addressList" component={AddressList}/>
-            <Route path="/addAddress" component={AddAddress}/>
+            <Route path="/addAddress/:id" component={AddAddress}/>
             <Route path="/forwardBTC/:address" component={ForwardBTC}/>
             <Route path="/safeSet" component={SafeSet}/>
             <Route path="/customCost" component={CustomCost}/>

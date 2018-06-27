@@ -4,12 +4,16 @@
     <list default="true" id="9eaf612a-ca36-4e75-a6b7-2f658dbec1a9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/actions/wallet.js" afterPath="$PROJECT_DIR$/src/actions/wallet.js" />
-      <change beforePath="$PROJECT_DIR$/src/config/index.js" afterPath="$PROJECT_DIR$/src/config/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/addAddress/index.js" afterPath="$PROJECT_DIR$/src/containers/addAddress/index.js" />
       <change beforePath="$PROJECT_DIR$/src/containers/addressList/index.js" afterPath="$PROJECT_DIR$/src/containers/addressList/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/auth/index.js" afterPath="$PROJECT_DIR$/src/containers/auth/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/home/index.js" afterPath="$PROJECT_DIR$/src/containers/home/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/safeSet/index.js" afterPath="$PROJECT_DIR$/src/containers/safeSet/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/amendSafe/index.js" afterPath="$PROJECT_DIR$/src/containers/amendSafe/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/dealDetails/index.js" afterPath="$PROJECT_DIR$/src/containers/dealDetails/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/forwardBTC/index.js" afterPath="$PROJECT_DIR$/src/containers/forwardBTC/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/inputSafe/index.js" afterPath="$PROJECT_DIR$/src/containers/inputSafe/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/safeCenter/index.js" afterPath="$PROJECT_DIR$/src/containers/safeCenter/index.js" />
       <change beforePath="$PROJECT_DIR$/src/containers/walletIndex/index.js" afterPath="$PROJECT_DIR$/src/containers/walletIndex/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/walletSetting/index.js" afterPath="$PROJECT_DIR$/src/containers/walletSetting/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" afterPath="$PROJECT_DIR$/src/routes.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,12 +27,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/addressList/index.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/dealDetails/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-87">
-              <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-              <folding />
+            <state relative-caret-position="160">
+              <caret line="310" column="20" lean-forward="true" selection-start-line="310" selection-start-column="20" selection-end-line="315" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+                <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
+                <element signature="e#15935#15970#0" expanded="false" />
+                <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
+                <element signature="e#16025#16167#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/forwardBTC/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="104" column="16" lean-forward="true" selection-start-line="104" selection-start-column="16" selection-end-line="109" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/inputSafe/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="107" column="40" lean-forward="true" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,23 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>findpass</find>
-      <find>reguser</find>
-      <find>login/</find>
-      <find>fund/getmorefund</find>
-      <find>fund/index</find>
-      <find>lv</find>
-      <find>ref</find>
-      <find>baseUserMsg</find>
-      <find>debugg</find>
-      <find>websocket</find>
-      <find>ws:</find>
-      <find>getUserDetailMsg</find>
-      <find>getBaseUserMsg</find>
-      <find>captcha/getcaptcha</find>
-      <find>userCenterClick</find>
-      <find>banners</find>
-      <find>api_url</find>
       <find>noauth_url</find>
       <find>captcha</find>
       <find>sendmobilecode</find>
@@ -62,11 +79,28 @@
       <find>push</find>
       <find>save</find>
       <find>setsafecode</find>
-      <find>walletIndex</find>
       <find>NavBar</find>
       <find>wallet/index</find>
       <find>sockjs</find>
       <find>Content-Type</find>
+      <find>TOKEN</find>
+      <find>修改</find>
+      <find>保存</find>
+      <find>params</find>
+      <find>submit</find>
+      <find>addAddress</find>
+      <find>walletIndex</find>
+      <find>删除</find>
+      <find>delA</find>
+      <find>isShowModal</find>
+      <find>Modal</find>
+      <find>getCommonAddress</find>
+      <find>delAddress</find>
+      <find>getWalletIndexData</find>
+      <find>Link</find>
+      <find>checksafecode</find>
+      <find>checkmobilecode</find>
+      <find>安全码</find>
     </findStrings>
     <dirStrings>
       <dir>F:\mcoin2p</dir>
@@ -78,10 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/speedID/index.js" />
-        <option value="$PROJECT_DIR$/src/components/speedBankCard/index.js" />
-        <option value="$PROJECT_DIR$/src/components/personalMsg/index.js" />
-        <option value="$PROJECT_DIR$/src/components/phoneConfirm/index.js" />
         <option value="$PROJECT_DIR$/src/components/bankCardMsg/index.js" />
         <option value="$PROJECT_DIR$/src/actions/authFrom.js" />
         <option value="$PROJECT_DIR$/src/reducers/authFrom.js" />
@@ -105,16 +135,12 @@
         <option value="$PROJECT_DIR$/src/components/header/headerView/index.js" />
         <option value="$PROJECT_DIR$/src/containers/modifyPwd/index.js" />
         <option value="$PROJECT_DIR$/src/common/util.js" />
-        <option value="$PROJECT_DIR$/src/routes.js" />
         <option value="$PROJECT_DIR$/src/containers/commonAddress/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/wallet.js" />
-        <option value="$PROJECT_DIR$/src/containers/forwardBTC/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/inputSafe/index.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/user.js" />
         <option value="$PROJECT_DIR$/src/containers/activityBalance/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/dealDetails/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/indexPage.js" />
         <option value="$PROJECT_DIR$/src/containers/baseUserMsg/index.js" />
         <option value="$PROJECT_DIR$/src/containers/home/index.js" />
@@ -123,12 +149,20 @@
         <option value="$PROJECT_DIR$/src/actions/user.js" />
         <option value="$PROJECT_DIR$/src/components/countdown/index.js" />
         <option value="$PROJECT_DIR$/src/containers/auth/index.js" />
-        <option value="$PROJECT_DIR$/src/actions/wallet.js" />
         <option value="$PROJECT_DIR$/src/containers/safeSet/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/walletIndex/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/addressList/index.js" />
         <option value="$PROJECT_DIR$/src/common/axiosConf.js" />
         <option value="$PROJECT_DIR$/src/config/index.js" />
+        <option value="$PROJECT_DIR$/src/routes.js" />
+        <option value="$PROJECT_DIR$/src/containers/addAddress/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/walletSetting/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/safeCenter/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/amendSafe/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/walletIndex/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/addressList/index.js" />
+        <option value="$PROJECT_DIR$/src/actions/wallet.js" />
+        <option value="$PROJECT_DIR$/src/containers/dealDetails/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/forwardBTC/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/inputSafe/index.js" />
       </list>
     </option>
   </component>
@@ -192,25 +226,14 @@
               <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
               <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
               <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="inputSafe" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -263,12 +286,12 @@
       <workItem from="1528251965147" duration="24188000" />
       <workItem from="1528440200648" duration="8371000" />
       <workItem from="1528680390754" duration="60573000" />
-      <workItem from="1529371745071" duration="91966000" />
+      <workItem from="1529371745071" duration="107787000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356949000" />
+    <option name="totallyTimeSpent" value="372770000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="11" width="1204" height="980" extended-state="0" />
@@ -279,7 +302,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3772242" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12574139" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22813036" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -308,49 +331,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/detailUserMsg/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="48" column="54" lean-forward="true" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/asset.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/moneyDetail/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3277">
-          <caret line="155" column="34" lean-forward="true" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/footer/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="55" column="18" lean-forward="true" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/setPerson/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/test.default.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -433,24 +413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/forwardBTC/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="63" column="30" lean-forward="false" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/inputSafe/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5046">
-          <caret line="174" column="43" lean-forward="false" selection-start-line="174" selection-start-column="43" selection-end-line="174" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/asset.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
@@ -521,20 +483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/dealDetails/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="344" column="51" lean-forward="false" selection-start-line="344" selection-start-column="51" selection-end-line="344" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-            <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
-            <element signature="e#15652#15687#0" expanded="false" />
-            <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
-            <element signature="e#15742#15884#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/baseUserMsg/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -566,7 +514,7 @@
         <state relative-caret-position="-1756">
           <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -642,7 +590,7 @@
         <state relative-caret-position="1131">
           <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -675,34 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="58" column="62" lean-forward="false" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="99" column="45" lean-forward="false" selection-start-line="99" selection-start-column="45" selection-end-line="99" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/wallet.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-519">
-          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/walletIndex/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="90" column="51" lean-forward="false" selection-start-line="90" selection-start-column="51" selection-end-line="90" selection-end-column="51" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -756,11 +676,215 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-443">
+          <caret line="1114" column="4" lean-forward="false" selection-start-line="1114" selection-start-column="4" selection-end-line="1114" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/addAddress/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="181" column="21" lean-forward="true" selection-start-line="181" selection-start-column="21" selection-end-line="181" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="87" column="42" lean-forward="false" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/walletSetting/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="49" column="16" lean-forward="true" selection-start-line="49" selection-start-column="16" selection-end-line="57" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/walletIndex/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/amendSafe/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="57" column="13" lean-forward="false" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/addressList/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="61">
+          <caret line="221" column="37" lean-forward="false" selection-start-line="221" selection-start-column="37" selection-end-line="221" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/wallet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#getWalletIndexData#0" expanded="false" />
+            <element signature="e#200#911#0" expanded="false" />
+            <element signature="e#296#809#0" expanded="false" />
+            <element signature="e#345#478#0" expanded="false" />
+            <element signature="e#517#589#0" expanded="false" />
+            <element signature="e#627#716#0" expanded="false" />
+            <element signature="e#722#795#0" expanded="false" />
+            <element signature="e#847#903#0" expanded="false" />
+            <element signature="n#!!block;n#getWalletTradeRecord#0" expanded="false" />
+            <element signature="e#993#1603#0" expanded="false" />
+            <element signature="e#1095#1501#0" expanded="false" />
+            <element signature="e#1144#1281#0" expanded="false" />
+            <element signature="e#1319#1408#0" expanded="false" />
+            <element signature="e#1414#1487#0" expanded="false" />
+            <element signature="e#1539#1595#0" expanded="false" />
+            <element signature="n#!!block;n#getMinerFee#0" expanded="false" />
+            <element signature="e#1676#2273#0" expanded="false" />
+            <element signature="e#1775#2171#0" expanded="false" />
+            <element signature="e#1824#1951#0" expanded="false" />
+            <element signature="e#1989#2078#0" expanded="false" />
+            <element signature="e#2084#2157#0" expanded="false" />
+            <element signature="e#2209#2265#0" expanded="false" />
+            <element signature="n#!!block;n#getCommonAddress#0" expanded="false" />
+            <element signature="e#2351#2956#0" expanded="false" />
+            <element signature="e#2453#2854#0" expanded="false" />
+            <element signature="e#2502#2634#0" expanded="false" />
+            <element signature="e#2672#2761#0" expanded="false" />
+            <element signature="e#2767#2840#0" expanded="false" />
+            <element signature="e#2892#2948#0" expanded="false" />
+            <element signature="n#!!block;n#confirmWithdrawMsg#0" expanded="false" />
+            <element signature="e#3036#3877#0" expanded="false" />
+            <element signature="e#3142#3775#0" expanded="false" />
+            <element signature="e#3190#3322#0" expanded="false" />
+            <element signature="e#3361#3439#0" expanded="false" />
+            <element signature="e#3478#3555#0" expanded="false" />
+            <element signature="e#3593#3682#0" expanded="false" />
+            <element signature="e#3688#3761#0" expanded="false" />
+            <element signature="e#3813#3869#0" expanded="false" />
+            <element signature="n#!!block;n#checkSafeCode#0" expanded="false" />
+            <element signature="e#3952#4692#0" expanded="false" />
+            <element signature="e#4063#4590#0" expanded="false" />
+            <element signature="e#4112#4239#0" expanded="false" />
+            <element signature="e#4294#4371#0" expanded="false" />
+            <element signature="e#4408#4497#0" expanded="false" />
+            <element signature="e#4503#4576#0" expanded="false" />
+            <element signature="e#4628#4684#0" expanded="false" />
+            <element signature="n#!!block;n#sentMobileCode#0" expanded="false" />
+            <element signature="e#4768#5631#0" expanded="false" />
+            <element signature="e#4880#5529#0" expanded="false" />
+            <element signature="e#4929#5060#0" expanded="false" />
+            <element signature="e#4951#5009#0" expanded="false" />
+            <element signature="e#5115#5191#0" expanded="false" />
+            <element signature="e#5230#5309#0" expanded="false" />
+            <element signature="e#5347#5436#0" expanded="false" />
+            <element signature="e#5442#5515#0" expanded="false" />
+            <element signature="e#5567#5623#0" expanded="false" />
+            <element signature="n#!!block;n#checkMobileCode#0" expanded="false" />
+            <element signature="e#5708#6557#0" expanded="false" />
+            <element signature="e#5814#6455#0" expanded="false" />
+            <element signature="e#5862#5991#0" expanded="false" />
+            <element signature="e#6046#6121#0" expanded="false" />
+            <element signature="e#6160#6236#0" expanded="false" />
+            <element signature="e#6273#6362#0" expanded="false" />
+            <element signature="e#6368#6441#0" expanded="false" />
+            <element signature="e#6493#6549#0" expanded="false" />
+            <element signature="n#!!block;n#setSaveCode#0" expanded="false" />
+            <element signature="e#6630#7160#0" expanded="false" />
+            <element signature="e#6739#7058#0" expanded="false" />
+            <element signature="e#6788#6838#0" expanded="false" />
+            <element signature="e#6876#6965#0" expanded="false" />
+            <element signature="e#6971#7044#0" expanded="false" />
+            <element signature="e#7096#7152#0" expanded="false" />
+            <element signature="n#!!block;n#addOrEditAddress#0" expanded="false" />
+            <element signature="e#7238#7764#0" expanded="false" />
+            <element signature="e#7343#7662#0" expanded="false" />
+            <element signature="e#7392#7442#0" expanded="false" />
+            <element signature="e#7480#7569#0" expanded="false" />
+            <element signature="e#7575#7648#0" expanded="false" />
+            <element signature="e#7700#7756#0" expanded="false" />
+            <element signature="n#!!block;n#delAddress#0" expanded="false" />
+            <element signature="e#7836#8364#0" expanded="false" />
+            <element signature="e#7944#8262#0" expanded="false" />
+            <element signature="e#7992#8042#0" expanded="false" />
+            <element signature="e#8080#8169#0" expanded="false" />
+            <element signature="e#8175#8248#0" expanded="false" />
+            <element signature="e#8300#8356#0" expanded="false" />
+            <element signature="n#!!block;n#switchSaveCode#0" expanded="false" />
+            <element signature="e#8440#8966#0" expanded="false" />
+            <element signature="e#8546#8864#0" expanded="false" />
+            <element signature="e#8594#8644#0" expanded="false" />
+            <element signature="e#8682#8771#0" expanded="false" />
+            <element signature="e#8777#8850#0" expanded="false" />
+            <element signature="e#8902#8958#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/safeCenter/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="57" column="47" lean-forward="true" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/dealDetails/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="310" column="20" lean-forward="true" selection-start-line="310" selection-start-column="20" selection-end-line="315" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
+            <element signature="e#15935#15970#0" expanded="false" />
+            <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
+            <element signature="e#16025#16167#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/forwardBTC/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="104" column="16" lean-forward="true" selection-start-line="104" selection-start-column="16" selection-end-line="109" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/inputSafe/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="107" column="40" lean-forward="true" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

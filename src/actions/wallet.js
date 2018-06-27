@@ -9,10 +9,10 @@ export function getWalletIndexData(data, callback) {
 
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_WALLET_INDEX_DATA', data: response.data})
-                    //callback()
+                    callback()
                 } else if (response.data.code === 3004) {
                     dispatch({type: 'NO_SAVE_CODE'})
-                } else if(response.data.code === 500) {
+                } else if (response.data.code === 500) {
                     Toast.fail(response.data.message, 2, null, false)
                 } else {
                     Toast.fail(response.data.message)
@@ -32,12 +32,14 @@ export function getWalletTradeRecord(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_WALLET_TRADE_RECORD', data: response.data})
                     //callback()
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    alert(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
@@ -50,12 +52,14 @@ export function getMinerFee(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_MINER_FEE', data: response.data})
                     //callback()
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    alert(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
@@ -68,12 +72,14 @@ export function getCommonAddress(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_COMMON_ADDRESS', data: response.data})
                     //callback()
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    alert(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
@@ -85,12 +91,18 @@ export function confirmWithdrawMsg(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'CONFIRM_WITHDRAW_MSG', data: response.data})
                     callback()
+                } else if (response.data.code === 3001) {
+                    Toast.fail("提币账户余额不足", 2, null, false)
+                } else if (response.data.code === 3002) {
+                    Toast.fail("提币地址不正确", 2, null, false)
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    alert(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
@@ -105,13 +117,15 @@ export function checkSafeCode(data, callback) {
                     callback()
                 }
                 else if (response.data.code === 3003) {
-                    callback('钱包安全码错误')
+                    Toast.fail('钱包安全码错误', 2, null, false)
+                }else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    alert(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
@@ -126,15 +140,17 @@ export function sentMobileCode(data, callback) {
                     //callback()
                 }
                 else if (response.data.code === 1006) {
-                    callback('手机号码错误')
+                    Toast.fail('手机号码错误', 2, null, false)
                 } else if (response.data.code === 1008) {
-                    callback('验证码发送太频繁了')
+                    Toast.fail('验证码发送太频繁了', 2, null, false)
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    alert(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
@@ -148,15 +164,17 @@ export function checkMobileCode(data, callback) {
                     callback()
                 }
                 else if (response.data.code === 1004) {
-                    callback('验证码错误')
+                    Toast.fail('验证码错误', 2, null, false)
                 } else if (response.data.code === 1006) {
-                    callback('手机号码错误')
+                    Toast.fail('手机号码错误', 2, null, false)
+                }else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    alert(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
@@ -168,7 +186,62 @@ export function setSaveCode(data, callback) {
 
                 if (response.data.code === 0) {
                     callback()
-                }else if(response.data.code === 500) {
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
+                } else {
+                    Toast.fail(response.data.message)
+                }
+            })
+            .catch(function (error) {
+                Toast.fail('网络错误，请稍后再试')
+            });
+    }
+}
+
+export function addOrEditAddress(data, callback) {
+    return dispatch => {
+        axios.post(config.api_url + 'wallet/address', {...data})
+            .then(function (response) {
+
+                if (response.data.code === 0) {
+                    callback()
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
+                } else {
+                    Toast.fail(response.data.message)
+                }
+            })
+            .catch(function (error) {
+                Toast.fail('网络错误，请稍后再试')
+            });
+    }
+}
+
+export function delAddress(data, callback) {
+    return dispatch => {
+        axios.post(config.api_url + 'wallet/deladdress', {...data})
+            .then(function (response) {
+                if (response.data.code === 0) {
+                    callback()
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
+                } else {
+                    Toast.fail(response.data.message)
+                }
+            })
+            .catch(function (error) {
+                Toast.fail('网络错误，请稍后再试')
+            });
+    }
+}
+
+export function switchSaveCode(data, callback) {
+    return dispatch => {
+        axios.post(config.api_url + 'wallet/safecode', {...data})
+            .then(function (response) {
+                if (response.data.code === 0) {
+                    callback()
+                } else if (response.data.code === 500) {
                     Toast.fail(response.data.message, 2, null, false)
                 } else {
                     Toast.fail(response.data.message)
