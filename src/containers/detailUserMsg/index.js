@@ -5,7 +5,6 @@ import { List,InputItem,TextareaItem,Toast} from 'antd-mobile';
 import Header from '../../components/header'
 import {hashHistory} from 'react-router'
 import {setAuthFrom} from '../../actions/authFrom'
-import {getDetailMsg} from '../../actions/user'
 import {bindActionCreators} from 'redux'
 
 class DetailUserMsg extends React.Component {
@@ -130,8 +129,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setAuthFrom:bindActionCreators(setAuthFrom, dispatch),
-        getDetailMsg:bindActionCreators(getDetailMsg, dispatch)
+
     }
 }
 

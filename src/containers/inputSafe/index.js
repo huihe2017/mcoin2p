@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {logout} from '../../actions/user'
 import {checkSafeCode,sentMobileCode,checkMobileCode} from '../../actions/wallet'
 import {Checkbox} from "antd-mobile/lib/index";
 
@@ -204,8 +204,7 @@ function mapDispatchToProps(dispatch) {
         checkMobileCode: bindActionCreators(checkMobileCode, dispatch),
         sentMobileCode: bindActionCreators(sentMobileCode, dispatch),
         checkSafeCode: bindActionCreators(checkSafeCode, dispatch),
-        logout: bindActionCreators(logout, dispatch),
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
+        logout: bindActionCreators(logout, dispatch)
     }
 }
 

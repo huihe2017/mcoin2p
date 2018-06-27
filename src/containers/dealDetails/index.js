@@ -7,7 +7,7 @@ import Footer from '../../components/footer'
 import {getWalletTradeRecord} from '../../actions/wallet'
 import {bindActionCreators} from 'redux'
 import {hashHistory,Link} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {logout} from '../../actions/user'
 import ReactDOM from "react-dom";
 import {ListView} from "antd-mobile/lib/index";
 

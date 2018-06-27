@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {List, InputItem, Toast,RefreshControl} from 'antd-mobile';
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {logout} from '../../actions/user'
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 import {getAssetDetail} from '../../actions/asset'

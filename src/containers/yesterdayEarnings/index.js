@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {logout} from '../../actions/user'
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -196,8 +196,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        logout: bindActionCreators(logout, dispatch),
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
+        logout: bindActionCreators(logout, dispatch)
     }
 }
 

@@ -45,6 +45,8 @@ export default function sign(state = initialState, action = {}) {
         case 'GET_USER_DETAIL_MSG':
 
             return Object.assign({}, state, action.data)
+        case 'GET_PROFILE':
+            return Object.assign({}, state, {})
         default:
             return state
     }

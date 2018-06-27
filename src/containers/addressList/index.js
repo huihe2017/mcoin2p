@@ -6,7 +6,6 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
-import {getBaseUserMsg} from '../../actions/user'
 import {getCommonAddress,delAddress} from '../../actions/wallet'
 import {createForm} from 'rc-form';
 import {StickyContainer, Sticky} from 'react-sticky';

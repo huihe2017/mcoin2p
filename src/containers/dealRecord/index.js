@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory,Link} from 'react-router'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {logout} from '../../actions/user'
 import { StickyContainer,Sticky } from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
@@ -296,8 +296,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        logout: bindActionCreators(logout, dispatch),
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
+        logout: bindActionCreators(logout, dispatch)
     }
 }
 

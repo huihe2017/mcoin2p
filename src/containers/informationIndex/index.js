@@ -6,7 +6,6 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory,Link} from 'react-router'
-import {getBaseUserMsg} from '../../actions/user'
 import { createForm } from 'rc-form';
 import { StickyContainer, Sticky } from 'react-sticky';
 
@@ -43,16 +42,7 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount(){
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
+
 
     }
     renderTabBar(props) {
@@ -170,7 +160,6 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
     }
 }
 

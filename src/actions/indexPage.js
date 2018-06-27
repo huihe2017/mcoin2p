@@ -1,5 +1,6 @@
 import axios from '../common/axiosConf'
 import config from '../../src/config'
+import {Toast} from "antd-mobile/lib/index";
 
 export function getIndexData(data, callback) {
     return dispatch => {
@@ -9,12 +10,14 @@ export function getIndexData(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_INDEX_DATA', data: response.data})
                     //callback()
+                }else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    alert(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }

@@ -5,10 +5,10 @@ import {Toast} from "antd-mobile/lib/index";
 
 export function login(data, callback) {
     return dispatch => {
-        axios.post(config.noauth_url+'login/userlogin', {
+        axios.post(config.noauth_url + 'login/userlogin', {
             mobile: data.phone,
             password: data.pwd,
-            type:1,
+            type: 1,
             checkCode: data.picCode
 
         })
@@ -16,29 +16,31 @@ export function login(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'LOGIN', data: response.data})
                     callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
+                } else if (response.data.code === 1001) {
+                    Toast.fail('邮箱错误', 2, null, false)
+                } else if (response.data.code === 1006) {
+                    Toast.fail('手机号码错误', 2, null, false)
+                } else if (response.data.code === 1009) {
+                    Toast.fail('用户或者密码错误', 2, null, false)
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    callback(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
 
 export function logout(data, callback) {
     return dispatch => {
-        axios.post(config.api_url+'login/logout', {})
+        axios.post(config.api_url + 'login/logout', {})
             .then(function (response) {
                 if (response.data.code === 0) {
                     dispatch({type: 'LOGOUT'})
                     callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
                 } else {
                     callback(response.data.msg)
                 }
@@ -52,22 +54,26 @@ export function logout(data, callback) {
 export function forgetPwd(data, callback) {
     return dispatch => {
 
-        axios.post(config.noauth_url+'reg/findpassword', {
+        axios.post(config.noauth_url + 'reg/findpassword', {
             ...data
         })
             .then(function (response) {
                 if (response.data.code === 0) {
-                    // dispatch({type: 'MODIFYPWD'})
                     callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
+                }else if (response.data.code === 1001) {
+                    Toast.fail('邮箱错误', 2, null, false)
+                }else if (response.data.code === 1006) {
+                    Toast.fail('手机号码错误', 2, null, false)
+                }else if (response.data.code === 1008) {
+                    Toast.fail('验证码发送太频繁了', 2, null, false)
+                }else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    // callback(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
@@ -75,7 +81,7 @@ export function forgetPwd(data, callback) {
 export function modifyPwd(data, callback) {
     return dispatch => {
         debugger
-        axios.post(config.api_url+'user/updatepassword  ', {
+        axios.post(config.api_url + 'user/updatepassword  ', {
             oldPassword: data.initPwd,
             newPassword1: data.pwd,
             newPassword2: data.confirmPwd
@@ -99,7 +105,7 @@ export function modifyPwd(data, callback) {
 
 export function register(data, callback) {
     return dispatch => {
-        axios.post(config.noauth_url+'reg/reguser', {
+        axios.post(config.noauth_url + 'reg/reguser', {
             mobile: data.phone,
             password: data.pwd,
             checkCode: data.code,
@@ -111,68 +117,63 @@ export function register(data, callback) {
                 if (response.data.code === 0) {
                     dispatch({type: 'REGISTER'})
                     callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
+                } else if (response.data.code === 1001) {
+                    Toast.fail('邮箱错误', 2, null, false)
+                }else if (response.data.code === 1002) {
+                    Toast.fail('密码不符合要求', 2, null, false)
+                }else if (response.data.code === 1003) {
+                    Toast.fail('两次输入密码不一致', 2, null, false)
+                }else if (response.data.code === 1004) {
+                    Toast.fail('验证码不正确', 2, null, false)
+                }else if (response.data.code === 1005) {
+                    Toast.fail('邮箱已经被注册', 2, null, false)
+                }else if (response.data.code === 1006) {
+                    Toast.fail('手机号码错误', 2, null, false)
+                }else if (response.data.code === 1007) {
+                    Toast.fail('手机号已经被注册', 2, null, false)
+                }else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
                 } else {
-                    debugger
-                    callback(response.data.msg)
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {
-                alert(error);
+                Toast.fail('网络错误，请稍后再试')
             });
     }
 }
 
-export function getBaseUserMsg(data, callback) {
-    return dispatch => {
-        axios.post('http://47.91.236.245:4030/user/customer/trade-info', {})
-            .then(function (response) {
-                if (response.data.code === 0) {
-                    dispatch({type: 'GET_BASEUSERMSG', data: response.data.data[0]})
-                    callback()
-                    // localStorage.userName = response.data.data.phone
-                    // localStorage.token = response.data.data.token
-                    // localStorage.id = response.data.data.id
-                } else {
-                    callback(response.data.msg)
-                }
-            })
-            .catch(function (error) {
-                alert(error);
-            });
-    }
-}
-
-export function getDetailMsg(data, callback) {
-    return dispatch => {
-        axios.post('http://47.91.236.245:4030/user/customer/bank-card', {})
-            .then(function (response) {
-                if (response.data.code === 0) {
-                    dispatch({type: 'GET_DETAILMSG', data: response.data.data})
-                } else {
-                    callback(response.data.msg)
-                }
-            })
-            .catch(function (error) {
-                alert(error);
-            });
-    }
-}
 
 export function getUserDetailMsg(data, callback) {
     return dispatch => {
-        axios.post(config.api_url+'user/myinfo', {})
+        axios.post(config.api_url + 'user/myinfo', {})
             .then(function (response) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_USER_DETAIL_MSG', data: response.data})
-                }else if((response.data.code === 500)){
+                } else if ((response.data.code === 500)) {
                     Toast.fail('未知错误，请重新登录', 2, null, false)
                     localStorage.removeItem('token')
                     hashHistory.push('/auth')
                 } else {
                     Toast.fail(response.data.msg)
+                }
+            })
+            .catch(function (error) {
+                Toast.fail('网络错误，请稍后再试')
+            });
+    }
+}
+
+export function getProfile(step, params) {
+    return dispatch => {
+        axios.post(config.api_url + 'user/profile', {})
+            .then(function (response) {
+                if (response.data.code === 0) {
+                    dispatch({type: 'GET_PROFILE', data: response.data})
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
+                } else {
+                    Toast.fail(response.data.message)
                 }
             })
             .catch(function (error) {

@@ -6,7 +6,6 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getBaseUserMsg} from '../../actions/user'
 import { createForm } from 'rc-form';
 
 class BaseUserMsg extends React.Component {
@@ -61,7 +60,6 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
     }
 }
 

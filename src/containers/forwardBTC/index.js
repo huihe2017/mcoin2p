@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
-import {logout, getBaseUserMsg} from '../../actions/user'
+import {logout} from '../../actions/user'
 import {getMinerFee,confirmWithdrawMsg} from '../../actions/wallet'
 import {changeJson} from '../../common/util'
 
@@ -38,16 +38,6 @@ class BaseUserMsg extends React.Component {
         if(this.props.params.address!=='null'){
             this.setState({classNumber:this.props.params.address})
         }
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
     }
 
     submit = key => () => {
@@ -249,8 +239,7 @@ function mapDispatchToProps(dispatch) {
     return {
         confirmWithdrawMsg: bindActionCreators(confirmWithdrawMsg, dispatch),
         getMinerFee: bindActionCreators(getMinerFee, dispatch),
-        logout: bindActionCreators(logout, dispatch),
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
+        logout: bindActionCreators(logout, dispatch)
     }
 }
 

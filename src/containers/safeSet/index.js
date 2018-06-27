@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
-import {logout, getBaseUserMsg} from '../../actions/user'
+import {logout} from '../../actions/user'
 import {setSaveCode} from '../../actions/wallet'
 class BaseUserMsg extends React.Component {
     constructor(props) {

@@ -80,17 +80,7 @@ class BaseUserMsg extends React.Component {
         //     return false
         // }
         this.props.getAssetDetail()
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
-        // Set the appropriate height
+
         setTimeout(() => this.setState({
             height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
         }), 0);

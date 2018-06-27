@@ -6,7 +6,6 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getBaseUserMsg} from '../../actions/user'
 import { createForm } from 'rc-form';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ReactDOM from "react-dom";
@@ -267,7 +266,6 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getBaseUserMsg: bindActionCreators(getBaseUserMsg, dispatch)
     }
 }
 

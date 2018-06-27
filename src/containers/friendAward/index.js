@@ -6,11 +6,11 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getAssetDetail} from '../../actions/asset'
-import {logout,getBaseUserMsg} from '../../actions/user'
+import {getFriendAward} from '../../actions/asset'
+import {logout} from '../../actions/user'
 import ReactDOM from "react-dom";
 
-const data = [
+let data = [
     {
         number: '2018/01/01',
         state:'+0.000003',
@@ -68,21 +68,12 @@ class BaseUserMsg extends React.Component {
         // })
     }
     componentDidMount() {
-        // if(!this.props.user.token){
-        //     return false
-        // }
-        this.props.getAssetDetail()
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
-        // Set the appropriate height
+
+        this.props.getFriendAward({page:1},()=>{
+            data = this.props.asset.friendWard.awardList
+
+        })
+
         setTimeout(() => this.setState({
             height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
         }), 0);
@@ -286,14 +277,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user:state.user
+        asset:state.asset
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        logout: bindActionCreators(logout, dispatch),
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        getFriendAward:bindActionCreators(getFriendAward,dispatch)
     }
 }
 
