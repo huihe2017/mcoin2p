@@ -82,7 +82,7 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>hashHistory.push('/activityBalance')}>
                                 <img className={style.ico} src={require('./images/coin.png')} alt=""/>
                                 <div className={style.itemWordBox}>
                                     <span className={style.itemWord}>
@@ -95,7 +95,7 @@ class BaseUserMsg extends React.Component {
 
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                             </a>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>hashHistory.push('/friendAward')}>
                                 <img className={style.ico} src={require('./images/people.png')} alt=""/>
                                 <div className={style.itemWordBox}>
                                     <span className={style.itemWord}>
@@ -129,7 +129,7 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>hashHistory.push('/fundIndex')}>
                                 <img className={style.ico} src={require('./images/line.png')} alt=""/>
                                 <div className={style.itemWordBox}>
                                     <span className={style.itemWord}>

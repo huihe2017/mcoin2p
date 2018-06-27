@@ -145,10 +145,13 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
-                                <img className={style.itemEmoji} src={require('./images/list.png')} alt=""/><span className={style.itemWord}>账单</span>
-                                <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                            </a>
+                            <Link to={'/bill'}>
+                                <a className={style.ensure} href="javascript:void(0)">
+
+                                    <img className={style.itemEmoji} src={require('./images/list.png')} alt=""/><span className={style.itemWord}>账单</span>
+                                    <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
+                                </a>
+                            </Link>
                             <Link to={'/walletIndex'}>
                                 <a className={style.ensure} href="javascript:void(0)">
                                     <img className={style.itemEmoji} src={require('./images/wallet.png')} alt=""/><span className={style.itemWord}>点点钱包</span>
