@@ -8,7 +8,7 @@ export default function sign(state = initialState, action = {}) {
 
         case 'LOGIN':
 
-            const {token} = action.data
+            const {token} = action.data.data
             localStorage.setItem('token', token)
             state.token = token
             return Object.assign({}, state, {})
@@ -22,6 +22,9 @@ export default function sign(state = initialState, action = {}) {
             return Object.assign({}, state, {})
 
         case 'REGISTER':
+            const {token} = action.data.data
+            localStorage.setItem('token', token)
+            state.token = token
             return Object.assign({}, state, {})
 
         case 'GET_BASEUSERMSG':
