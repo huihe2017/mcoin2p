@@ -278,10 +278,10 @@ class BaseUserMsg extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className={style.button}>
+                <div className={style.button} onClick={()=> hashHistory.push('/productBuying')}>
                     立即申购
                 </div>
-                {/*<Footer/>*/}
+
             </div>
         )
     }

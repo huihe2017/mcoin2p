@@ -139,9 +139,12 @@ class BaseUserMsg extends React.Component {
                                         })}>再考虑一下</Button>
                                     </div>
                                     <div className={style.button}>
-                                        <Button type="primary" onClick={()=>this.setState({
+                                        <Button type="primary" onClick={()=>{this.setState({
                                             modal3: false,
-                                        })}>继续买入</Button>
+                                        },()=>{
+                                            hashHistory.push('/buyResult')
+                                        });
+                                        }}>继续买入</Button>
                                     </div>
 
                                 </List.Item>

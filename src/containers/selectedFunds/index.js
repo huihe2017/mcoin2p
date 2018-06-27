@@ -48,7 +48,7 @@ class Home extends React.Component {
                     <div className={style.fundContent}>
                         {
                             data.map( i => (
-                                <div className={style.contentItem} onClick={()=>hashHistory.push('/productDetails')}>
+                                <div className={style.contentItem} onClick={()=>hashHistory.push('/fundName')}>
                                     <div className={style.fundHeader}>
                                         <span className={style.fundHeaderBox}>
                                             <div className={style.fundHeaderT}>{i.name}</div>

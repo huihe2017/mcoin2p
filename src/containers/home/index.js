@@ -57,11 +57,14 @@ class Home extends React.Component {
                 <div >
                     <Carousel
 
-
+                        autoplay={false}
+                        infinite
+                        beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+                        afterChange={index => console.log('slide to', index)}
                     >
                         {[1,1,1,1,1].map(val => (
 
-                            <img
+                            <img className={style.banner}
                                 src={'http://img3.imgtn.bdimg.com/it/u=1149214208,1692303621&fm=214&gp=0.jpg'
                                 }
 
