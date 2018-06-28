@@ -1,11 +1,11 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,ListView,RefreshControl,NavBar, Icon} from 'antd-mobile';
+import {List, InputItem, Toast, ListView, RefreshControl, NavBar, Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory,Link} from 'react-router'
+import {hashHistory, Link} from 'react-router'
 import {getFriendAward} from '../../actions/asset'
 import {logout} from '../../actions/user'
 import ReactDOM from "react-dom";
@@ -13,18 +13,18 @@ import ReactDOM from "react-dom";
 let data = [
     {
         number: '2018/01/01',
-        state:'+0.000003',
+        state: '+0.000003',
     },
     {
         number: '2018/01/02',
-        state:'-0.000003',
+        state: '-0.000003',
     },
     {
         number: '2018/01/03',
-        state:'-0.000003',
-    },{
+        state: '-0.000003',
+    }, {
         number: '2018/01/04',
-        state:'+0.000003',
+        state: '+0.000003',
     }
 ];
 let index = data.length - 1;
@@ -32,14 +32,6 @@ let index = data.length - 1;
 const NUM_ROWS = data.length;
 let pageIndex = 0;
 
-function genData(pIndex = 0) {
-    const dataArr = [];
-    for (let i = 0; i < NUM_ROWS; i++) {
-        dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-    }
-    console.log(dataArr);
-    return dataArr;
-}
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -55,7 +47,7 @@ class BaseUserMsg extends React.Component {
     }
 
 
-    componentWillMount(){
+    componentWillMount() {
         // this.props.getBaseUserMsg({
         //
         // }, (errorText) => {
@@ -67,12 +59,19 @@ class BaseUserMsg extends React.Component {
         //     }
         // })
     }
+
+    genData(pIndex = 0) {
+        const NUM_ROWS = this.props.asset.friendWard && this.props.asset.friendWard.awardList.length;
+        const dataArr = [];
+        for (let i = 0; i < NUM_ROWS; i++) {
+            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
+        }
+        console.log(dataArr);
+        return dataArr;
+    }
+
     componentDidMount() {
 
-        this.props.getFriendAward({page:1},()=>{
-            data = this.props.asset.friendWard.awardList
-
-        })
 
         setTimeout(() => this.setState({
             height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
@@ -107,14 +106,13 @@ class BaseUserMsg extends React.Component {
     onRefresh = () => {
         console.log('onRefresh');
         if (!this.manuallyRefresh) {
-            this.setState({ refreshing: true });
+            this.setState({refreshing: true});
         } else {
             this.manuallyRefresh = false;
         }
 
-        // simulate initial Ajax
-        setTimeout(() => {
-            this.rData = genData();
+        this.props.getFriendAward({page: 1}, () => {
+            this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
                 refreshing: false,
@@ -123,7 +121,7 @@ class BaseUserMsg extends React.Component {
             if (this.domScroller) {
                 this.domScroller.scroller.options.animationDuration = 500;
             }
-        }, 600);
+        })
     };
 
     onEndReached = (event) => {
@@ -133,20 +131,31 @@ class BaseUserMsg extends React.Component {
             return;
         }
         console.log('reach end', event);
-        this.setState({ isLoading: true });
-        setTimeout(() => {
-            this.rData = [...this.rData,];
+        this.setState({isLoading: true});
+        this.props.getFriendAward({page: 1}, () => {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
+                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
             });
-        }, 1000);
+            if (this.domScroller) {
+                this.domScroller.scroller.options.animationDuration = 500;
+            }
+        })
+
+
+        // setTimeout(() => {
+        //     //this.rData = [...this.rData,];
+        //     this.setState({
+        //         dataSource: this.state.dataSource.cloneWithRows(this.genData()),
+        //         isLoading: false,
+        //     });
+        // }, 2000);
     };
 
     scrollingComplete = () => {
         // In general, this.scrollerTop should be 0 at the end, but it may be -0.000051 in chrome61.
         if (this.scrollerTop >= -1) {
-            this.setState({ showFinishTxt: false });
+            this.setState({showFinishTxt: false});
         }
     }
 
@@ -174,15 +183,17 @@ class BaseUserMsg extends React.Component {
             />
         );
         const row = (rowData, sectionID, rowID) => {
+            let index = this.props.asset.friendWard.awardList.length - 1;
             if (index < 0) {
-                index = data.length - 1;
+                index = this.props.asset.friendWard.awardList.length - 1;
             }
-            const obj = data[index--];
+            const obj = this.props.asset.friendWard.awardList[index--];
             return (
                 <div className={style.item} key={rowID}>
-                    <div className={style.contentPart} onClick={()=>hashHistory.push('/friendAwardDetail')}>
+                    <div className={style.contentPart} onClick={() => hashHistory.push('/friendAwardDetail')}>
                                 <span className={style.contentPart1}>
-                                    <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
+                                    <img src={require('./images/BTC.png')} className={style.contentImg}
+                                         alt=""/>{obj.currency}
                                 </span>
                         <span className={style.contentPart2}>
                                     14.21234112
@@ -222,7 +233,7 @@ class BaseUserMsg extends React.Component {
                                         累计市值 （元）
                                     </span>
                                     <span className={style.userTime}>
-                                        317.556.02
+                                        {this.props.asset.friendWard && this.props.asset.friendWard.totalAmount}
                                     </span>
                                 </div>
                             </a>
@@ -245,7 +256,7 @@ class BaseUserMsg extends React.Component {
                                 ref={el => this.lv = el}
                                 dataSource={this.state.dataSource}
 
-                                renderFooter={() => (<div style={{ padding: '0.3rem', textAlign: 'center' }}>
+                                renderFooter={() => (<div style={{padding: '0.3rem', textAlign: 'center'}}>
                                     {this.state.isLoading ? '加载中...' : '加载完成'}
                                 </div>)}
                                 renderRow={row}
@@ -256,7 +267,7 @@ class BaseUserMsg extends React.Component {
                                     height: this.state.height,
                                     margin: '0.05rem 0',
                                 }}
-                                scrollerOptions={{ scrollbars: true, scrollingComplete: this.scrollingComplete }}
+                                scrollerOptions={{scrollbars: true, scrollingComplete: this.scrollingComplete}}
                                 refreshControl={<RefreshControl
                                     refreshing={this.state.refreshing}
                                     onRefresh={this.onRefresh}
@@ -282,13 +293,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        asset:state.asset
+        asset: state.asset
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getFriendAward:bindActionCreators(getFriendAward,dispatch)
+        getFriendAward: bindActionCreators(getFriendAward, dispatch)
     }
 }
 

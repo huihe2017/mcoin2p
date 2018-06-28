@@ -151,7 +151,9 @@ class BaseUserMsg extends React.Component {
     }
 
     genData(pIndex = 0) {
-        const NUM_ROWS = data.length;
+
+        const NUM_ROWS =  this.props.wallet.commonAddress.length
+        // const NUM_ROWS = data.length;
         const dataArr = [];
         for (let i = 0; i < NUM_ROWS; i++) {
             dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);

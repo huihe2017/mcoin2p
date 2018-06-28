@@ -9,6 +9,7 @@ import resultsPage from './resultsPage'
 import asset from './asset'
 import wallet from './wallet'
 import indexPage from './indexPage'
+import fund from './fund'
 let states = {
     foreignExchange,
     user,
@@ -16,7 +17,8 @@ let states = {
     resultsPage,
     asset,
     wallet,
-    indexPage
+    indexPage,
+    fund
 }
 
 let _states = {}

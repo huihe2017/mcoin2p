@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
-import {getAssetDetail} from '../../actions/asset'
+import {getMyFundList} from '../../actions/fund'
 import ReactDOM from "react-dom";
 
 const data = [
@@ -66,19 +66,6 @@ class BaseUserMsg extends React.Component {
         };
     }
 
-    logout() {
-        Toast.loading('正在退出', 0)
-        this.props.logout({
-
-        }, (errorText) => {
-            Toast.hide()
-            if (errorText) {
-                Toast.fail(errorText, 3, null, false)
-            } else {
-                hashHistory.push('/')
-            }
-        })
-    }
 
     componentWillMount(){
         // if(!this.props.user.token){
@@ -88,21 +75,8 @@ class BaseUserMsg extends React.Component {
         // }
     }
     componentDidMount() {
-        // if(!this.props.user.token){
-        //     return false
-        // }
-        this.props.getAssetDetail()
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
-        // Set the appropriate height
+
+
         setTimeout(() => this.setState({
             height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
         }), 0);
@@ -337,7 +311,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        getMyFundList:bindActionCreators(getMyFundList,dispatch)
     }
 }
 

@@ -9,7 +9,9 @@ export default function asset(state = initialState, action = {}) {
         case 'GET_FRIEND_WARD':
             state.friendWard = action.data.data
             return Object.assign({}, state, {})
-
+        case 'GET_ACTIVE_COIN':
+            state.activeCoin = action.data.data
+            return Object.assign({}, state, {})
         default:
             return state
     }

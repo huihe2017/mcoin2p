@@ -1,19 +1,76 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Icon,RefreshControl, Tabs,Carousel,Modal,Button} from 'antd-mobile';
+import {List, InputItem, Toast, Icon, NavBar, RefreshControl, Tabs, Carousel, Modal, Button} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
 import {getAssetDetail} from '../../actions/asset'
+import {getFundDetail} from '../../actions/fund'
 import ReactDOM from "react-dom";
-import { StickyContainer, Sticky } from 'react-sticky';
+import {StickyContainer, Sticky} from 'react-sticky';
 import echarts from 'echarts/lib/echarts';
 
-import  'echarts/lib/chart/line';
+import 'echarts/lib/chart/line';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
+
+
+let option = {
+    title: {
+        text: '',
+        subtext: `2018/03/24                   近七日年化：${'+4.7720%'}`
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['最高气温', '最低气温']
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            dataView: {readOnly: false},
+            magicType: {type: ['line', 'bar']},
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['05-01', '05-05', '05-10', '05-15', '05-20']
+    },
+    yAxis: {
+        type: 'value',
+        boundaryGap: false,
+
+    },
+    series: [
+        {
+            name: '买入价格',
+            type: 'line',
+            data: [11, 13, 13.5, 14, 14.5],
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+            markLine: {
+                data: [
+                    {type: 'average', name: '平均值'}
+                ]
+            }
+        },
+
+    ]
+}
+
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -26,9 +83,7 @@ class BaseUserMsg extends React.Component {
 
     logout() {
         Toast.loading('正在退出', 0)
-        this.props.logout({
-
-        }, (errorText) => {
+        this.props.logout({}, (errorText) => {
             Toast.hide()
             if (errorText) {
                 Toast.fail(errorText, 3, null, false)
@@ -38,95 +93,66 @@ class BaseUserMsg extends React.Component {
         })
     }
 
-    componentWillMount(){
+    componentWillMount() {
         // if(!this.props.user.token){
         //     this.props.setAuthFrom('/history',()=>{
         //         hashHistory.push('/auth')
         //     })
         // }
     }
-    componentDidMount() {
+
+    renderChat = () => {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
         // 绘制图表
-        myChart.setOption({
-            title: {
-                text: '',
-                subtext: `2018/03/24                   近七日年化：${'+4.7720%'}`
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                data:['最高气温','最低气温']
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    dataZoom: {
-                        yAxisIndex: 'none'
-                    },
-                    dataView: {readOnly: false},
-                    magicType: {type: ['line', 'bar']},
-                    restore: {},
-                    saveAsImage: {}
-                }
-            },
-            xAxis:  {
-                type: 'category',
-                boundaryGap: false,
-                data: ['05-01','05-05','05-10','05-15','05-20']
-            },
-            yAxis: {
-                type: 'value',
-                boundaryGap: false,
+        myChart.setOption(option);
+    }
 
-            },
-            series: [
-                {
-                    name:'买入价格',
-                    type:'line',
-                    data:[11, 13, 13.5, 14, 14.5],
-                    markPoint: {
-                        data: [
-                            {type: 'max', name: '最大值'},
-                            {type: 'min', name: '最小值'}
-                        ]
-                    },
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
-                    }
-                },
+    componentDidMount() {
 
-            ]
-        });
+
+        this.props.getFundDetail({
+            productId: this.props.params.id
+        }, () => {
+            this.renderChat()
+        })
+
     }
 
 
     render() {
 
         const dataTabs = [
-            { title: '近1月' },
-            { title: '近2月' },
-            { title: '近3月' },
-            { title: '近4月' },
-            { title: '近5月' },
+            {title: '近1月'},
+            {title: '近2月'},
+            {title: '近3月'},
+            {title: '近4月'},
+            {title: '近5月'},
 
         ];
         const tabs = [
-            { title: '七日年化收益走势' },
-            { title: '千分收益' },
+            {title: '七日年化收益走势'},
+            {title: '千分收益'},
         ];
+
         function renderTabBar(props) {
             return (<Sticky>
-                {({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
+                {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
             </Sticky>);
+        }
+
+        if (!this.props.fund.detail) {
+            return null
         }
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/selectedFunds')}
+                    rightContent={[]}
+                >基金详情</NavBar>
                 <div>
                     <div className={style.header}>
                         <div className={style.headerTop}>
@@ -134,7 +160,7 @@ class BaseUserMsg extends React.Component {
                                 持有币额
                             </span>
                             <span className={style.headerTopR}>
-                                收益率 3.43%
+                                收益率 {this.props.fund.detail.rateSeven}
                             </span>
                         </div>
                         <div className={style.headerBottom}>
@@ -171,19 +197,48 @@ class BaseUserMsg extends React.Component {
                                     <StickyContainer>
                                         <Tabs tabs={dataTabs}
                                               initalPage={1}
-                                              tabBarPosition="bottom" renderTabBar={renderTabBar} useOnPan={false} swipeable={false}
+                                              tabBarPosition="bottom" renderTabBar={renderTabBar} useOnPan={false}
+                                              swipeable={false}
                                         >
-                                    <div id="main" style={{ width: '100%', height: 240 ,padding:'0 16px',marginBottom:0,paddingTop:10}}></div>
-                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '240px', backgroundColor: '#fff' }}>
-                                                Content of second tab2
-                                            </div>
-                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '240px', backgroundColor: '#fff' }}>
+                                            <div id="main" style={{
+                                                width: '100%',
+                                                height: 240,
+                                                padding: '0 16px',
+                                                marginBottom: 0,
+                                                paddingTop: 10
+                                            }}></div>
+                                            <div id="main2" style={{
+                                                width: '100%',
+                                                height: 240,
+                                                padding: '0 16px',
+                                                marginBottom: 0,
+                                                paddingTop: 10
+                                            }}></div>
+                                            <div style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                height: '240px',
+                                                backgroundColor: '#fff'
+                                            }}>
                                                 Content of second tab3
                                             </div>
-                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '240px', backgroundColor: '#fff' }}>
+                                            <div style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                height: '240px',
+                                                backgroundColor: '#fff'
+                                            }}>
                                                 Content of second tab4
                                             </div>
-                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '240px', backgroundColor: '#fff' }}>
+                                            <div style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                height: '240px',
+                                                backgroundColor: '#fff'
+                                            }}>
                                                 Content of second tab5
                                             </div>
                                         </Tabs>
@@ -192,7 +247,13 @@ class BaseUserMsg extends React.Component {
 
                                 </div>
 
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
+                                <div style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    height: '250px',
+                                    backgroundColor: '#fff'
+                                }}>
                                     Content of second tab
                                 </div>
                             </Tabs>
@@ -209,7 +270,7 @@ class BaseUserMsg extends React.Component {
                                     产品名称
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    产品名称>
+                                    {this.props.fund.detail.title}
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>
@@ -278,7 +339,7 @@ class BaseUserMsg extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className={style.button} onClick={()=> hashHistory.push('/productBuying')}>
+                <div className={style.button} onClick={() => hashHistory.push('/productBuying')}>
                     立即申购
                 </div>
 
@@ -289,13 +350,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        asset:state.asset
+        fund: state.fund
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        getFundDetail: bindActionCreators(getFundDetail, dispatch)
     }
 }
 

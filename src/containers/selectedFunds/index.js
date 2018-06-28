@@ -1,11 +1,14 @@
 import React from 'react'
 import style from './index.css'
-import {Button} from 'antd-mobile'
+import {Button,NavBar,Icon} from 'antd-mobile'
 import Header from '../../components/header'
 import {hashHistory} from 'react-router'
 import Footer from '../../components/footer'
+import {getFundList} from '../../actions/fund'
 import {connect} from 'react-redux'
 import Circle from 'react-circle';
+import {bindActionCreators} from 'redux'
+
 
 const data=[
         {
@@ -37,23 +40,33 @@ class Home extends React.Component {
         this.props.user.token ? hashHistory.push('/speedAccount') : hashHistory.push('/auth')
     }
 
+     componentDidMount(){
+         this.props.getFundList()
+     }
+
     render() {
+
         return (
             <div className={style.wrap}>
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/')}
+                    rightContent={[
 
+                    ]}
+                >精选基金</NavBar>
                 <div className={style.fund}>
-                    <div  className={style.fundTitle}>
-                        精选基金
-                    </div>
+
                     <div className={style.fundContent}>
                         {
-                            data.map( i => (
-                                <div className={style.contentItem} onClick={()=>hashHistory.push('/fundName')}>
+                            this.props.fund.list&&this.props.fund.list.map( i => (
+                                <div className={style.contentItem} onClick={()=>hashHistory.push('/productDetails/'+i.id)}>
                                     <div className={style.fundHeader}>
                                         <span className={style.fundHeaderBox}>
-                                            <div className={style.fundHeaderT}>{i.name}</div>
+                                            <div className={style.fundHeaderT}>{i.title}</div>
                                             <div className={style.span}>
-                                                {i.underline}BTC起购
+                                                {i.limitLowAmount}BTC起购
                                             </div>
 
                                         </span>
@@ -65,7 +78,7 @@ class Home extends React.Component {
 
                                             <div className={style.yieldRateBox}>
                                                 <span className={style.yieldRate}>
-                                                    {i.yieldRate}
+                                                    {i.rateSeven}
                                                 </span>%
                                             </div>
                                             <div className={style.yieldRateTip}>
@@ -75,20 +88,20 @@ class Home extends React.Component {
                                         <div className={style.contentItemName1}>
                                             <div className={style.yieldRateBox1}>
                                                 <span className={style.yieldRate1}>
-                                                    {i.time}
+                                                    {i.period}
                                                 </span>天
                                             </div>
                                             <div className={style.yieldRateTip}>
-                                                期限 {i.share}
+                                                期限
                                             </div>
                                         </div>
                                         <div className={style.circleBox}>
                                             <div className={style.circle}>
                                                 {
-                                                    i.up?<Circle
+                                                    i.rateSeven?<Circle
                                                         size={80}
-                                                        progress={i.percent}
-                                                        progress={i.percent}
+                                                        progress={i.rateSeven}
+                                                        progress={i.rateSeven}
                                                     />:<div className={style.cir}>
                                                         敬请期待 <br/>
                                                         ...
@@ -113,12 +126,14 @@ class Home extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user: state.user
+        fund: state.fund
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        getFundList:bindActionCreators(getFundList,dispatch)
+    }
 }
 
 Home = connect(mapStateToProps, mapDispatchToProps)(Home)

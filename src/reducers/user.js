@@ -50,6 +50,10 @@ export default function sign(state = initialState, action = {}) {
             return Object.assign({}, state, action.data.data)
         case 'GET_PROFILE':
             return Object.assign({}, state, {})
+        case 'SET_NAME':
+            debugger
+            state.userInfo.userName = action.data.userName
+            return Object.assign({}, state, {})
         default:
             return state
     }

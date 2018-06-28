@@ -179,3 +179,22 @@ export function getProfile(step, params) {
             });
     }
 }
+
+export function setNickname(data, callback) {
+    return dispatch => {
+        axios.post(config.api_url + 'user/updateusername ', {...data})
+            .then(function (response) {
+                if (response.data.code === 0) {
+                    dispatch({type: 'SET_NAME',data})
+                    callback()
+                } else if (response.data.code === 500) {
+                    Toast.fail(response.data.message, 2, null, false)
+                } else {
+                    Toast.fail(response.data.message)
+                }
+            })
+            .catch(function (error) {
+                Toast.fail('网络错误，请稍后再试')
+            });
+    }
+}

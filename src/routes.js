@@ -103,7 +103,7 @@ export default () => {
             <Route path="/dealRecord" component={DealRecord}/>
             <Route path="/fundName" component={FundName}/>
             <Route path="/friendAwardDetail" component={FriendAwardDetail}/>
-            <Route path="/productDetails" component={ProductDetails}/>
+            <Route path="/productDetails/:id" component={ProductDetails}/>
             <Route path="/productBuying" component={ProductBuying}/>
             <Route path="/buyResult" component={BuyResult}/>
             <Route path="/informationDetails" component={InformationDetails}/>

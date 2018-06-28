@@ -8,7 +8,7 @@ import {logout} from '../../actions/user'
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 import {getAssetDetail} from '../../actions/asset'
-import {getWalletTradeRecord} from "../../actions/wallet";
+import {getActiveCoin} from "../../actions/asset";
 
 const data = [
     {
@@ -32,14 +32,7 @@ let index = data.length - 1;
 const NUM_ROWS = data.length;
 let pageIndex = 0;
 
-function genData(pIndex = 0) {
-    const dataArr = [];
-    for (let i = 0; i < NUM_ROWS; i++) {
-        dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-    }
-    console.log(dataArr);
-    return dataArr;
-}
+
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -54,36 +47,23 @@ class BaseUserMsg extends React.Component {
         }
     }
 
-
+    genData(pIndex = 0) {
+        const NUM_ROWS = this.props.asset.activeCoin && this.props.asset.activeCoin.list.length;
+        const dataArr = [];
+        for (let i = 0; i < NUM_ROWS; i++) {
+            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
+        }
+        console.log(dataArr);
+        return dataArr;
+    }
 
     componentWillMount(){
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
+
     }
     componentDidMount() {
-        // if(!this.props.user.token){
-        //     return false
-        // }
-        this.props.getAssetDetail()
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
-        // Set the appropriate height
+
+
+
         setTimeout(() => this.setState({
             height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
         }), 0);
@@ -123,9 +103,8 @@ class BaseUserMsg extends React.Component {
             this.manuallyRefresh = false;
         }
 
-        // simulate initial Ajax
-        setTimeout(() => {
-            this.rData = genData();
+        this.props.getActiveCoin({page: 1}, () => {
+            this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
                 refreshing: false,
@@ -134,7 +113,7 @@ class BaseUserMsg extends React.Component {
             if (this.domScroller) {
                 this.domScroller.scroller.options.animationDuration = 500;
             }
-        }, 600);
+        })
     };
 
     onEndReached = (event) => {
@@ -145,13 +124,15 @@ class BaseUserMsg extends React.Component {
         }
         console.log('reach end', event);
         this.setState({ isLoading: true });
-        setTimeout(() => {
-            this.rData = [...this.rData,];
+        this.props.getActiveCoin({page: 1}, () => {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
+                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
             });
-        }, 1000);
+            if (this.domScroller) {
+                this.domScroller.scroller.options.animationDuration = 500;
+            }
+        })
     };
 
     scrollingComplete = () => {
@@ -185,15 +166,16 @@ class BaseUserMsg extends React.Component {
             />
         );
         const row = (rowData, sectionID, rowID) => {
+            let index = this.props.asset.activeCoin.list.length - 1;
             if (index < 0) {
-                index = data.length - 1;
+                index = this.props.asset.activeCoin.list.length - 1;
             }
-            const obj = data[index--];
+            const obj = this.props.asset.activeCoin.list[index--];
             return (
                 <div className={style.item} key={rowID}>
                     <div className={style.contentPart}>
                                 <span className={style.contentPart1}>
-                                   <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
+                                   <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>{obj.currency}
                                 </span>
                         <span className={style.contentPart2}>
                                     14.21234112
@@ -294,13 +276,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user:state.user
+        asset:state.asset
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        getActiveCoin:bindActionCreators(getActiveCoin,dispatch)
     }
 }
 

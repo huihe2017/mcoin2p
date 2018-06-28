@@ -153,7 +153,7 @@ class BaseUserMsg extends React.Component {
     }
 
     genData(pIndex = 0) {
-        const NUM_ROWS = data.length;
+        const NUM_ROWS = this.props.wallet.current.list.length;
         const dataArr = [];
         for (let i = 0; i < NUM_ROWS; i++) {
             dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
@@ -162,89 +162,12 @@ class BaseUserMsg extends React.Component {
         return dataArr;
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.props.getWalletTradeRecord()
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
     }
 
-    show(){
-        let data = this.props.wallet.current
-        if(data.list.length==0){
-            return(
-                <div>
-                    <img className={style.showImg} src={require('../addressList/images/zero.png')} alt=""/>
-                    <span className={style.showTip}>
-                        暂无数据
-                    </span>
-                </div>
-            )
-        }else {
-            return(
-                data.list.map((i,index) => (
-
-                    <div className={style.item} key={index} >
-                        <div className={style.itemH}>
-                            <div className={style.itemHead}>
-                                <div className={style.itemCoin}>
-                                    {i.type==='转出'?<div style={{color:'#5262ff'}} className={style.itemT}>
-                                        <img  className={style.itemImg} src={require('./images/in.png')} alt=""/>转入
-                                    </div>:<div  className={style.itemT}>
-                                        <img className={style.itemImg} src={require('./images/out.png')} alt=""/>转出
-                                    </div>}
-                                    {i.minerFee?
-                                        <span className={style.commission}>
-                                    手续费：{i.minerFee}BTC
-                                </span>:''
-                                    }
-                                </div>
-                            </div>
-                            <div className={style.itemDataBox}>
-                                <div className={style.itemLeft}>
-                                    数量 {i.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>-{i.amount}</span>:<span style={{color: '#3B3D40',marginLeft:10}}>+{i.amount}</span>}
-                                </div>
-                                <div className={style.itemRight}>
-                                    <span className={style.itemLeftC}>状态</span> {i.out?<span className={style.itemRightC1}>{i.status}</span>:<span className={style.itemRightC1}>{i.status}</span>}
-                                </div>
-                                <div className={style.itemLeft}>
-                                    {i.type==='转出'?'发起':''}{i.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>{i.beginTime}</span>:<span style={{color: '#3B3D40',marginLeft:10}}></span>}
-                                </div>
-                                <div className={style.itemRight}>
-                                    <span className={style.itemLeftC}>完成</span> <span className={style.itemRightC}>{i.completeTime}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={style.itemAdressBox}>
-                            <div className={style.itemAdressT}>
-                                地址
-                            </div>
-                            <div className={style.itemAdress}>
-                                {i.fromAddress}
-                            </div>
-                        </div>
-
-                    </div>
-                ))
-            )
-        }
-
-
-    }
 
     render() {
-        // if(!this.props.wallet.current){
-        //     return null
-        // }
-        // let data = this.props.wallet.current.balance;
-
         const separator = (sectionID, rowID) => (
             <div
                 key={`${sectionID}-${rowID}`}

@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getAssetDetail} from '../../actions/asset'
+import {buyFund} from '../../actions/fund'
 import ReactDOM from "react-dom";
 
 class BaseUserMsg extends React.Component {
@@ -19,18 +19,7 @@ class BaseUserMsg extends React.Component {
         };
     }
 
-    logout() {
-        Toast.loading('正在退出', 0)
-        this.props.logout({
-
-        }, (errorText) => {
-            Toast.hide()
-            if (errorText) {
-                Toast.fail(errorText, 3, null, false)
-            } else {
-                hashHistory.push('/')
-            }
-        })
+    componentDidMount(){
     }
 
     componentWillMount(){
@@ -70,7 +59,7 @@ class BaseUserMsg extends React.Component {
                             type={'number'}
                             placeholder=""
                             clear
-                            onChange={(v) => { console.log('onChange', v); }}
+                            onChange={(v) => { this.setState({amount:v}) }}
                             onBlur={(v) => { console.log('onBlur', v); }}
                         ></InputItem>
                     </div>
@@ -142,7 +131,16 @@ class BaseUserMsg extends React.Component {
                                         <Button type="primary" onClick={()=>{this.setState({
                                             modal3: false,
                                         },()=>{
-                                            hashHistory.push('/buyResult')
+                                            this.props.buyFund({
+                                                productId:this.props.fund.detail.id,
+                                                amount:this.state.amount,
+                                                autoRenew:this.state.autoRenew
+
+                                            },()=>{
+                                                hashHistory.push('/buyResult')
+
+                                            })
+
                                         });
                                         }}>继续买入</Button>
                                     </div>
@@ -160,13 +158,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        asset:state.asset
+        fund:state.fund
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        buyFund:bindActionCreators(buyFund,dispatch)
     }
 }
 
