@@ -150,8 +150,12 @@ export function getUserDetailMsg(data, callback) {
             .then(function (response) {
                 if (response.data.code === 0) {
                     dispatch({type: 'GET_USER_DETAIL_MSG', data: response.data})
+                } else if ((response.data.code === 501)) {
+                    Toast.fail(response.data.message, 2, null, false)
+                    hashHistory('/auth')
                 } else if ((response.data.code === 500)) {
                     Toast.fail(response.data.message, 2, null, false)
+                    hashHistory('/auth')
                 } else {
                     Toast.fail(response.data.msg)
                 }

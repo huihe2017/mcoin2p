@@ -154,6 +154,14 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
+        let index
+        if(!this.props.asset.activeCoin){
+            index = 0
+        }else {
+            index = this.props.asset.activeCoin.list.length - 1;
+
+        }
+
         const separator = (sectionID, rowID) => (
             <div
                 key={`${sectionID}-${rowID}`}
@@ -166,7 +174,6 @@ class BaseUserMsg extends React.Component {
             />
         );
         const row = (rowData, sectionID, rowID) => {
-            let index = this.props.asset.activeCoin.list.length - 1;
             if (index < 0) {
                 index = this.props.asset.activeCoin.list.length - 1;
             }
@@ -178,12 +185,12 @@ class BaseUserMsg extends React.Component {
                                    <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>{obj.currency}
                                 </span>
                         <span className={style.contentPart2}>
-                                    14.21234112
+                                    {obj.amount}
                                 </span>
                         <span className={style.contentPart3}>
-                                    ￥51.000
+                                    ￥{obj.marketValue}
                                     <span className={style.contentPart4}>
-                                        市场价:￥51.000
+                                        市场价:￥{obj.marketPrice}
                                     </span>
                                 </span>
                     </div>
@@ -215,7 +222,7 @@ class BaseUserMsg extends React.Component {
                                         市值
                                     </span>
                                     <span className={style.userTime}>
-                                        ￥317.556.02
+                                        {this.props.asset.activeCoin&&this.props.asset.activeCoin.totalAmount}
                                     </span>
                                 </div>
                             </a>
