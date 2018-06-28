@@ -16,7 +16,7 @@ import axios from 'axios'
 //     });
 
  axios.defaults.headers.common['token'] = localStorage.token;
-axios.defaults.headers.common['Content-type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers['Content-type'] = 'application/x-www-form-urlencoded';
 // axios.defaults.headers:{
 //     'Content-type': 'application/x-www-form-urlencoded'
 // }
