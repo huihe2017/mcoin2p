@@ -87,7 +87,7 @@ class BaseUserMsg extends React.Component {
 
     submitCode(){
         if(!this.state.safeCode){
-            alert('安全码不得为空')
+            Toast.fail('安全码不得为空', 3, null, false)
             return false
         }
         this.props.checkSafeCode({

@@ -42,7 +42,7 @@ class BaseUserMsg extends React.Component {
 
     submit = key => () => {
         if(!this.state.can){
-            alert('阅读后方可')
+            Toast.fail('阅读后方可', 3, null, false)
             return
         }
         this.props.confirmWithdrawMsg({
@@ -199,12 +199,12 @@ class BaseUserMsg extends React.Component {
                                     {this.state.sValue}
                                 </span>
                             </span>
-                            <span className={style.alTip}>
-                                备注名称：
-                                <span style={{color:'#3B3D40'}}>
-                                    飞机
-                                </span>
-                            </span>
+                            {/*<span className={style.alTip}>*/}
+                                {/*备注名称：*/}
+                                {/*<span style={{color:'#3B3D40'}}>*/}
+                                    {/*飞机*/}
+                                {/*</span>*/}
+                            {/*</span>*/}
                             <span className={style.alTip}>
                                 <span className={style.alTip1}>钱包地址：</span>
                                 <span className={style.alTip2} style={{color:'#3B3D40'}}>

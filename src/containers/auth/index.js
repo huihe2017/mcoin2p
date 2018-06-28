@@ -50,7 +50,6 @@ class Auth extends React.Component {
             //     return false
             // }
             if (!/^(?!\d+$)(?![a-zA-Z]+$)(?![@#$%^&]+$)[\da-zA-Z@#$%^&]{6,21}$/.test(this.state.pwd)) {
-                alert(222)
                 Toast.fail('密码格式错误', 3, null, false)
                 return false
             }

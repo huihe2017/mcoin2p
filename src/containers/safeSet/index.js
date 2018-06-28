@@ -11,23 +11,22 @@ import {setSaveCode} from '../../actions/wallet'
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
-    }
-
-    logout() {
-        Toast.loading('正在退出', 0)
-        this.props.logout({}, (errorText) => {
-            Toast.hide()
-            if (errorText) {
-                Toast.fail(errorText, 3, null, false)
-            } else {
-                hashHistory.push('/')
-            }
-        })
+        this.state = {
+            submit:false
+        }
     }
 
     componentDidMount() {
 
+    }
+
+    check(){
+        if((/^\d{6}$/.test(this.state.saveCode))&&(this.state.saveCodeConfirm==this.state.saveCode)){
+            this.setState({
+                submit:true
+            })
+        }
+        console.log(2);
     }
 
     render() {
@@ -53,15 +52,19 @@ class BaseUserMsg extends React.Component {
                     }
                     rightContent={[
                         <div onClick={()=>{
-                            this.props.setSaveCode({
-                                safeCode:this.state.saveCode
-                            }, () => {
-                                hashHistory.push('/walletIndex')
-                            })
+                            if(this.state.submit){
+                                this.props.setSaveCode({
+                                    safeCode:this.state.saveCode
+                                }, () => {
+                                    hashHistory.push('/walletIndex')
+                                })
+                            }else {
+                                Toast.fail('请确认安全码', 3, null, false)
+                            }
+
                         }} >完成</div>,
                     ]}
                 ></NavBar>
-                {/*<Header/>*/}
                 <div>
                     <ul className={style.itemUl}>
                         <span className={style.title}>
@@ -70,12 +73,16 @@ class BaseUserMsg extends React.Component {
                         <li className={style.itemBox}>
 
                             <InputItem onChange={(value) => {
-                                this.setState({saveCode: value})
+                                this.setState({saveCode: value},()=>{
+                                    this.check()
+                                })
                             }} placeholder="安全码设置（6位数字）" type="text"></InputItem>
                         </li>
                         <li className={style.itemBox}>
                             <InputItem onChange={(value) => {
-                                this.setState({saveCodeConfirm: value})
+                                this.setState({saveCodeConfirm: value},()=>{
+                                    this.check()
+                                })
                             }} placeholder="请再次输入" type="text"></InputItem>
                         </li>
                     </ul>
