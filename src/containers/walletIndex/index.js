@@ -49,8 +49,8 @@ class BaseUserMsg extends React.Component {
                     onLeftClick={() => hashHistory.push('/baseUserMsg')}
                     rightContent={[
                         <Link to={'/walletSetting'}>
-                            <Icon key="1" type="ellipsis"/>
-                        </Link>,
+                            <Icon key="1" size={'xs'} type="ellipsis"/>
+                        </Link>, <Icon key="1" size={'xs'} type="search"/>
                     ]}
                 >点点数字基金</NavBar>
                 <div>

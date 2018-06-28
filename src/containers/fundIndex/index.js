@@ -1,11 +1,11 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Icon,RefreshControl, ListView} from 'antd-mobile';
+import {List, InputItem, Toast,Icon,RefreshControl, ListView, NavBar} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
+import {hashHistory, Link} from 'react-router'
 import {getAssetDetail} from '../../actions/asset'
 import ReactDOM from "react-dom";
 
@@ -238,7 +238,11 @@ class BaseUserMsg extends React.Component {
         };
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/baseUserMsg')}
+                >基金</NavBar>
                 <div>
                     <div className={style.header}>
                         <div className={style.headerTop}>

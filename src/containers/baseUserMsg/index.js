@@ -102,16 +102,16 @@ class BaseUserMsg extends React.Component {
                                     </div>
 
 
-                                    <div className={style.totalL1}>
-                                        <Link to={'/yesterdayEarnings'}>
-                                        <span className={style.totalLT}>
-                                            昨日收益 （元）
-                                        </span>
-                                        <span className={style.totalLB1}>
-                                            +{this.props.user.yesterdayProfit}
-                                        </span>
-                                        </Link>
-                                    </div>
+                                    {/*<div className={style.totalL1}>*/}
+                                        {/*<Link to={'/yesterdayEarnings'}>*/}
+                                        {/*<span className={style.totalLT}>*/}
+                                            {/*昨日收益 （元）*/}
+                                        {/*</span>*/}
+                                        {/*<span className={style.totalLB1}>*/}
+                                            {/*+{this.props.user.yesterdayProfit}*/}
+                                        {/*</span>*/}
+                                        {/*</Link>*/}
+                                    {/*</div>*/}
 
                                 <img className={style.totalR} src={require('./images/arrow.png')} alt=""/>
                             </a>
@@ -130,8 +130,10 @@ class BaseUserMsg extends React.Component {
                                 <span className={style.itemContent}>{this.props.user.currentAmount}</span>
                             </a>
                             <a className={style.partLi} href="javascript:void(0)">
+                                <Link to={'/fundIndex'}>
                                 <span className={style.itemTitle}>基金（元）</span>
                                 <span className={style.itemContent}>{this.props.user.fundAmount}</span>
+                                </Link>
                             </a>
 
                                 <a className={style.partLi} href="javascript:void(0)">
