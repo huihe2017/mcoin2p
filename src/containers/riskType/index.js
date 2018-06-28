@@ -1,5 +1,6 @@
 import React from 'react'
 import style from "./index.css"
+import Star from '../../components/star/index'
 import {connect} from 'react-redux'
 import { RefreshControl, ListView } from 'antd-mobile';
 import Header from '../../components/header'
@@ -14,65 +15,60 @@ class History extends React.Component {
 
     constructor(props) {
         super(props);
-
-
-
         this.state = {
 
         };
     }
-
-
+    ratingChanged = (newRating) => {
+        console.log(newRating)
+    }
     render() {
 
         return (
             <div className={style.wrap}>
-                <Header/>
                 <div className={style.wrapContent}>
                     <span className={style.header}>
                         成长型
                     </span>
+
                     <div className={style.content}>
                         <div className={style.icoBox}>
                             <span className={style.icoText}>
                                 收益需求<i></i>
                             </span>
-                            <img className={style.icoImg} src={require('./images/active.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/active.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/active.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
+
+                            <Star
+                                rank={1}
+                                limit={5}
+                            />
 
                         </div>
                         <div className={style.icoBox}>
                             <span className={style.icoText}>
                                 实际风险承担<i></i>
                             </span>
-                            <img className={style.icoImg} src={require('./images/active.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/active.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
+                            <Star
+                                rank={1}
+                                limit={5}
+                            />
                         </div>
                         <div className={style.icoBox}>
                             <span className={style.icoText}>
                                 心理风险接受<i></i>
                             </span>
-                            <img className={style.icoImg} src={require('./images/active.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/active.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/active.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
+                            <Star
+                                rank={1}
+                                limit={5}
+                            />
                         </div>
                         <div className={style.icoBox}>
                             <span className={style.icoText}>
                                 流动需求<i></i>
                             </span>
-                            <img className={style.icoImg} src={require('./images/active.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
-                            <img className={style.icoImg} src={require('./images/mo.png')} alt=""/>
+                            <Star
+                                rank={1}
+                                limit={5}
+                            />
                         </div>
                         <div className={style.contentText}>
                             在成长类型下，数字货币托管团队会优先推荐您风险系数较低，

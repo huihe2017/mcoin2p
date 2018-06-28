@@ -1,0 +1,30 @@
+.react-star {
+    display: inline-block;
+    direction: rtl;
+
+}
+
+.star {
+    color: #ddd;
+    cursor: pointer;
+    transition: color .3s;
+    filter: grayscale(100%);
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+
+}
+.star>span{
+    background-image: url('../../containers/riskType/images/active.png');
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.star:hover,
+.star:hover ~ .star,
+.star.active,
+.star.active ~ .star {
+    filter: grayscale(0%);
+}
