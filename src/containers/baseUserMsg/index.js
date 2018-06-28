@@ -88,17 +88,18 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.part}>
                         <List>
-                            <a className={style.partTotal} href="javascript:void(0)">
+                            <a className={style.partTotal} onClick={()=>hashHistory.push('/moneyDetail')} href="javascript:void(0)">
 
-                                    <div className={style.totalL}>
-                                        <Link to={'/moneyDetail'}>
+                                    <div className={style.totalL} >
                                         <span className={style.totalLT}>
-                                            总金额 （元）<img className={style.see} src={require('./images/wen.png')} alt=""/>
+                                            总资产<img className={style.see} src={require('./images/wen.png')} onClick={(e)=>{
+                                            e.stopPropagation();
+                                                Toast.info('tip tip', 3)}
+                                            } alt=""/>
                                         </span>
                                             <span className={style.totalLB}>
-                                            {this.props.user.totalAmount}
+                                            ￥{this.props.user.totalAmount}
                                         </span>
-                                        </Link>
                                     </div>
 
 
@@ -120,26 +121,26 @@ class BaseUserMsg extends React.Component {
 
                                 <a className={style.partLi} href="javascript:void(0)">
                                     <Link to={'/activityBalance'}>
-                                    <span className={style.itemTitle}>活动余币（元）</span>
-                                    <span className={style.itemContent}>{this.props.user.activeAmount}</span>
+                                    <span className={style.itemTitle}>活动余币</span>
+                                    <span className={style.itemContent}>￥{this.props.user.activeAmount}</span>
                                     </Link>
                             </a>
 
                             <a className={style.partLi} href="javascript:void(0)">
-                                <span className={style.itemTitle}>活期存币（元）</span>
-                                <span className={style.itemContent}>{this.props.user.currentAmount}</span>
+                                <span className={style.itemTitle}>活期存币</span>
+                                <span className={style.itemContent}>￥{this.props.user.currentAmount}</span>
                             </a>
                             <a className={style.partLi} href="javascript:void(0)">
                                 <Link to={'/fundIndex'}>
-                                <span className={style.itemTitle}>基金（元）</span>
-                                <span className={style.itemContent}>{this.props.user.fundAmount}</span>
+                                <span className={style.itemTitle}>基金</span>
+                                <span className={style.itemContent}>￥{this.props.user.fundAmount}</span>
                                 </Link>
                             </a>
 
                                 <a className={style.partLi} href="javascript:void(0)">
                                     <Link to={'/friendAward'}>
-                                    <span className={style.itemTitle}>累计好友奖励（元）</span>
-                                    <span className={style.itemContent}>{this.props.user.totalAward}</span>
+                                    <span className={style.itemTitle}>累计好友奖励</span>
+                                    <span className={style.itemContent}>￥{this.props.user.totalAward}</span>
                                     </Link>
                                 </a>
 
