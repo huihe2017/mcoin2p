@@ -43,14 +43,7 @@ let index = data.length - 1;
 const NUM_ROWS = data.length;
 let pageIndex = 0;
 
-function genData(pIndex = 0) {
-    const dataArr = [];
-    for (let i = 0; i < NUM_ROWS; i++) {
-        dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-    }
-    console.log(dataArr);
-    return dataArr;
-}
+
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -73,6 +66,15 @@ class BaseUserMsg extends React.Component {
         //         hashHistory.push('/auth')
         //     })
         // }
+    }
+    genData(pIndex = 0) {
+        const NUM_ROWS = this.props.fund.myFund && this.props.fund.myFund.userProducts.length;
+        const dataArr = [];
+        for (let i = 0; i < NUM_ROWS; i++) {
+            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
+        }
+        console.log(dataArr);
+        return dataArr;
     }
     componentDidMount() {
 
@@ -117,8 +119,8 @@ class BaseUserMsg extends React.Component {
         }
 
         // simulate initial Ajax
-        setTimeout(() => {
-            this.rData = genData();
+        this.props.getMyFundList({page: 1}, () => {
+            this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
                 refreshing: false,
@@ -127,7 +129,7 @@ class BaseUserMsg extends React.Component {
             if (this.domScroller) {
                 this.domScroller.scroller.options.animationDuration = 500;
             }
-        }, 600);
+        })
     };
 
     onEndReached = (event) => {
@@ -137,14 +139,15 @@ class BaseUserMsg extends React.Component {
             return;
         }
         console.log('reach end', event);
-        this.setState({ isLoading: true });
-        setTimeout(() => {
-            this.rData = [...this.rData,];
+        this.props.getMyFundList({page: 1}, () => {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
+                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
             });
-        }, 1000);
+            if (this.domScroller) {
+                this.domScroller.scroller.options.animationDuration = 500;
+            }
+        })
     };
 
     scrollingComplete = () => {
@@ -167,6 +170,8 @@ class BaseUserMsg extends React.Component {
 
 
     render() {
+        let index = this.props.fund.myFund&&this.props.fund.myFund.userProducts.length - 1;
+
         const separator = (sectionID, rowID) => (
             <div
                 key={`${sectionID}-${rowID}`}
@@ -180,30 +185,30 @@ class BaseUserMsg extends React.Component {
         );
         const row = (rowData, sectionID, rowID) => {
             if (index < 0) {
-                index = data.length - 1;
+                index = this.props.fund.myFund.userProducts.length - 1;
             }
-            const obj = data[index--];
+            const obj = this.props.fund.myFund.userProducts[index--];
             return (
                 <div className={style.item} key={rowID} onClick={()=>hashHistory.push('/fundName')}>
                     <span className={style.title} >
                         {obj.title}
                         <div className={style.time}>
-                            封闭期还剩7天
+
                         </div>
                     </span>
                     <div className={style.icontent}>
 
                         <div className={style.state}>
                             <span>币额</span>
-                            <span style={{color:'#3b3d40'}}>{obj.number}</span>
+                            <span style={{color:'#3b3d40'}}>{obj.coinCount}</span>
                         </div>
                         <div className={style.number}>
                             <span>昨日收益</span>
-                            <span style={{color:'#F49193'}}>{obj.state}</span>
+                            <span style={{color:'#F49193'}}>{obj.yesterdayProfit}</span>
                         </div>
                         <div className={style.way}>
                             <span>七日年化</span>
-                            <span style={{color:'#F49193'}}>{obj.way}</span>
+                            <span style={{color:'#F49193'}}>{obj.rateSeven}</span>
                         </div>
                         <img className={style.arrImg} src={require('./images/arrow.png')} alt=""/>
                     </div>
@@ -234,16 +239,16 @@ class BaseUserMsg extends React.Component {
                                         BTC
                                     </span>
                                     <span className={style.userTime}>
-                                        3.556123
+                                        {this.props.fund.myFund&&this.props.fund.myFund.userTotalCoin}
                                     </span>
                                 </div>
                             </a>
                             <div className={style.userMoney}>
                                 <span className={style.userMoneyT}>
-                                    昨日收益（BTC）<span className={style.userMoneyC}>+0.00004</span>
+                                    昨日收益（BTC）<span className={style.userMoneyC}>+{this.props.fund.myFund&&this.props.fund.myFund.userYesterdayProfit}</span>
                                 </span>
                                 <span className={style.userMoneyT}>
-                                    累计收益（BTC）<span className={style.userMoneyC}>+0.00004</span>
+                                    累计收益（BTC）<span className={style.userMoneyC}>+{this.props.fund.myFund&&this.props.fund.myFund.userTotalProfit}</span>
                                 </span>
                             </div>
                         </div>
@@ -305,7 +310,7 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        asset:state.asset
+        fund:state.fund
     }
 }
 
