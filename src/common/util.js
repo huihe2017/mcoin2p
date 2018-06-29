@@ -32,22 +32,35 @@ export function changeJson(json, label, value) {
     return json
 }
 
-
+function setUrlK(ojson) {
+    var s = '', name, key;
+    for (var p in ojson) {
+        if (!ojson[p]) {
+            return null;
+        }
+        if (ojson.hasOwnProperty(p)) {
+            name = p
+        }
+        ;
+        key = ojson[p];
+        s += "&" + name + "=" + encodeURIComponent(key);
+    }
+    ;
+    return s.substring(1, s.length);
+};
 
 
 export function http(option) {
     let url
-    if(option.url==='login/userlogin'||option.url==='reg/findpassword'||option.url==='reg/reguser'||option.url==='fund/getmorefund'||option.url==='fund/getdetail'||option.url==='fund/index'){
+    if (option.url === 'login/userlogin' || option.url === 'reg/findpassword' || option.url === 'reg/reguser' || option.url === 'fund/getmorefund' || option.url === 'fund/getdetail' || option.url === 'fund/index') {
         url = config.noauth_url + option.url
-    }else {
+    } else {
         url = config.api_url + option.url
     }
-
+    // let params = new URLSearchParams();
     axios({
         url,
-        params: {
-            ...option.data
-        },
+        data: setUrlK(option.data),
         method: 'post'
     })
         .then(function (response) {
@@ -66,28 +79,3 @@ export function http(option) {
         });
 }
 
-
-//json转url参数
-// export function parseParam(param, key) {
-//     var paramStr = "";
-//     if (param instanceof String || param instanceof Number || param instanceof Boolean) {
-//         paramStr += "&" + key + "=" + encodeURIComponent(param);
-//     } else {
-//         $.each(param, function (i) {
-//             var k = key == null ? i : key + (param instanceof Array ? "[" + i + "]" : "." + i);
-//             paramStr += '&' + parseParam(this, k);
-//         });
-//     }
-//     return paramStr.substr(1);
-// };
-// var obj = {
-//     "name": 'tom',
-//     "class": {
-//         "className": 'class1'
-//     },
-//     "classMates": [{
-//         "name": 'lily'
-//     }]
-// };
-//console.log(parseParam(obj));//name=tom&class.className=class1&classMates[0].name=lily
-//console.log(parseParam(obj, 'stu'));//stu.name=tom&stu.class.className=class1&stu.classMates[0].name=lily

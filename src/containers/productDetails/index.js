@@ -157,10 +157,10 @@ class BaseUserMsg extends React.Component {
                     <div className={style.header}>
                         <div className={style.headerTop}>
                             <span className={style.headerTopW}>
-                                基金名称
+                                {this.props.fund.detail.title}
                             </span>
                             <span className={style.headerTopR}>
-                                {this.props.fund.detail.rateSeven}天期限
+                                {this.props.fund.detail.period}天期限
                             </span>
                         </div>
                         <div className={style.headerBottom}>
@@ -170,14 +170,14 @@ class BaseUserMsg extends React.Component {
                                          七日年化收益率
                                     </span>
                                     <span className={style.userTime}>
-                                        3.5%
+                                        {this.props.fund.detail.rateSeven}%
                                     </span>
                                 </div>
                             </a>
                             <div className={style.userMoney}>
 
                                 <span className={style.userMoneyT}>
-                                    万分收益<span className={style.userMoneyC}>￥0.00004</span>
+                                    万分收益<span className={style.userMoneyC}>{this.props.fund.detail.profit1000}%</span>
                                 </span>
                             </div>
                         </div>
@@ -268,7 +268,7 @@ class BaseUserMsg extends React.Component {
                                     起购份额
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    {this.props.fund.detail.title}
+                                    {this.props.fund.detail.limitLowAmount}
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>
@@ -276,7 +276,7 @@ class BaseUserMsg extends React.Component {
                                     申购费率
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    0.1%
+                                    {this.props.fund.detail.shoppingFeeRate}%
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>
@@ -284,27 +284,25 @@ class BaseUserMsg extends React.Component {
                                     封闭天数
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    30天
+                                    {this.props.fund.detail.rateSeven}天
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
-                                    份额确认
+                                    订单确认
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    15点前买入，T+1 交易日确认 <br/>
-                                    15点后买入，T+2 交易日确认<br/>
-                                    双休日收益无变化
+                                    {this.props.fund.detail.confirmDesc}
                                 </span>
                             </div>
-                            <div className={style.contentItemBox}>
-                                <span className={style.contentItemBoxT}>
-                                    净值确认
-                                </span>
-                                <span className={style.contentItemBoxC}>
-                                    同份额确认时间
-                                </span>
-                            </div>
+                            {/*<div className={style.contentItemBox}>*/}
+                                {/*<span className={style.contentItemBoxT}>*/}
+                                    {/*净值确认*/}
+                                {/*</span>*/}
+                                {/*<span className={style.contentItemBoxC}>*/}
+                                    {/*{this.props.fund.detail.confirmDesc}*/}
+                                {/*</span>*/}
+                            {/*</div>*/}
                         </div>
                         <div className={style.contentItem}>
                             <span className={style.contentItemT}>
@@ -315,7 +313,7 @@ class BaseUserMsg extends React.Component {
                                     赎回费率
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    0.1%
+                                    {this.props.fund.detail.redeemFeeRate}%
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>
@@ -323,9 +321,7 @@ class BaseUserMsg extends React.Component {
                                     到账时间
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    可选择30天后自动续期或自动赎回<br/>
-                                    自动续期当天按照T+1交易日确认<br/>
-                                    自动赎回当天按照T+1交易日确认
+                                    {this.props.fund.detail.redeemDesc}
                                 </span>
                             </div>
 
