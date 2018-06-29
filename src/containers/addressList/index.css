@@ -22,7 +22,7 @@
     padding-left: 16px;
     width: 100%;
     background-color: #fff;
-    margin-bottom: 10px;
+    border-bottom: 10px solid #f5f4f7;
 }
 :local(.itemContent){
 
