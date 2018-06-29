@@ -15,7 +15,9 @@ class BaseUserMsg extends React.Component {
         this.state = {
             modal2: false,
             modal3:false,
-            can:false
+            can:false,
+            xu:true,
+            xu1:true
         };
     }
 
@@ -51,9 +53,9 @@ class BaseUserMsg extends React.Component {
                         基金名额
                     </div>
                     <div className={style.input}>
-                        基金名额
+                        买入币额
                         <span className={style.extra}>
-                           ￥
+                           <b>￥</b>
                         </span>
                         <InputItem
                             type={'number'}
@@ -72,7 +74,7 @@ class BaseUserMsg extends React.Component {
                     })}>
                         到期后
                         <div className={style.expireA}>
-                            自动续期 <img className={style.expireI} src={require('./images/arrow.png')} alt=""/>
+                            {this.state.xu1?'自动续期':'自动赎回'} <img className={style.expireI} src={require('./images/arrow.png')} alt=""/>
                         </div>
                         <Modal
                             popup
@@ -83,13 +85,15 @@ class BaseUserMsg extends React.Component {
                             animationType="slide-up"
                         >
                             <List className="popup-list">
-                                {[<div onClick={()=>{alert(1)}}><div className={style.ititle}>自动续期</div><div className={style.icontent}>到期后本金及收益自动买入下一期，收益不间断。到期前一天15：00前均可更改。</div></div>, <div onClick={()=>{alert(3)}}><div className={style.ititle}>自动续回</div><div className={style.icontent}>到期后本金及收益回到活动余币。到期前一天15：00前均可改。</div></div>].map((i, index) => (
+                                {[<div onClick={()=>{this.setState({xu:true
+                                })}}><div className={style.ititle}>自动续期 <span hidden={!this.state.xu} className={style.ititle1}>当前选择</span></div><div className={style.icontent}>到期后本金及收益自动买入下一期，收益不间断。到期前一天15：00前均可更改。</div></div>, <div onClick={()=>{this.setState({xu:false})}}><div className={style.ititle}>自动续回 <span hidden={this.state.xu} className={style.ititle1}>当前选择</span></div><div className={style.icontent}>到期后本金及收益回到活动余币。到期前一天15：00前均可改。</div></div>].map((i, index) => (
                                     <List.Item key={index}>{i}</List.Item>
                                 ))}
                                 <List.Item>
                                     <div className={style.button}>
                                         <Button type="primary" onClick={()=>this.setState({
                                             modal2: false,
+                                            xu1:this.state.xu
                                         })}>确认</Button>
                                     </div>
 
