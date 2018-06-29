@@ -86,8 +86,8 @@ class Home extends React.Component {
                     <div className={style.fundContent}>
                         {
                             this.props.indexPage.funds.map(i => (
-                                <div className={style.contentItem}>
-                                    <div className={style.contentItemHeader}>
+                                <div className={style.contentItem} >
+                                    <div className={style.contentItemHeader} onClick={()=>hashHistory.push('/productDetails/:id')}>
 
                                         <div className={style.contentItemName}>
 

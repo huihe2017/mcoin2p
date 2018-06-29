@@ -132,7 +132,7 @@ class BaseUserMsg extends React.Component {
         ];
         const tabs = [
             {title: '七日年化收益走势'},
-            {title: '千分收益'},
+            {title: '万分收益'},
         ];
 
         function renderTabBar(props) {
@@ -267,7 +267,7 @@ class BaseUserMsg extends React.Component {
                             </span>
                             <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
-                                    产品名称
+                                    起购份额
                                 </span>
                                 <span className={style.contentItemBoxC}>
                                     {this.props.fund.detail.title}
@@ -275,68 +275,64 @@ class BaseUserMsg extends React.Component {
                             </div>
                             <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
-                                    买入币额
+                                    申购费率
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    1.0000 BTC
+                                    0.1%
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
-                                    买入时间
+                                    封闭天数
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    2018/12/12  12:00
+                                    30天
+                                </span>
+                            </div>
+                            <div className={style.contentItemBox}>
+                                <span className={style.contentItemBoxT}>
+                                    份额确认
+                                </span>
+                                <span className={style.contentItemBoxC}>
+                                    15点前买入，T+1 交易日确认 <br/>
+                                    15点后买入，T+2 交易日确认<br/>
+                                    双休日收益无变化
+                                </span>
+                            </div>
+                            <div className={style.contentItemBox}>
+                                <span className={style.contentItemBoxT}>
+                                    净值确认
+                                </span>
+                                <span className={style.contentItemBoxC}>
+                                    同份额确认时间
                                 </span>
                             </div>
                         </div>
                         <div className={style.contentItem}>
                             <span className={style.contentItemT}>
-                                确认消息
+                                赎回信息
                             </span>
                             <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
-                                    基金管理费
+                                    赎回费率
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    1.0000 BTC
+                                    0.1%
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
-                                    托管费
+                                    到账时间
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    1.0000 BTC
+                                    可选择30天后自动续期或自动赎回<br/>
+                                    自动续期当天按照T+1交易日确认<br/>
+                                    自动赎回当天按照T+1交易日确认
                                 </span>
                             </div>
-                            <div className={style.contentItemBox}>
-                                <span className={style.contentItemBoxT}>
-                                    销售服务费
-                                </span>
-                                <span className={style.contentItemBoxC}>
-                                    1.0000 BTC
-                                </span>
-                            </div>
-                            <div className={style.contentItemBox}>
-                                <span className={style.contentItemBoxT}>
-                                    确认时间
-                                </span>
-                                <span className={style.contentItemBoxC}>
-                                    2018/12/12  12:00
-                                </span>
-                            </div>
+
                         </div>
-                        <div className={style.contentItem}>
-                            <div className={style.contentItemBox}>
-                            <span className={style.contentItemBoxT}>
-                                订单号
-                            </span>
-                                <span className={style.contentItemBoxC}>
-                                12813246451684135486461654
-                            </span>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div className={style.button} onClick={() => hashHistory.push('/productBuying')}>

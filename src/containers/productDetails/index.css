@@ -233,13 +233,15 @@
     text-align: left;
     display: block;
     width: 30%;
-
+    font-weight: lighter;
 }
 :local(.contentItemBoxC){
-    text-align: right;
+    text-align: left;
     display: block;
     width: 70%;
     padding-right: 16px;
+    color: #3B3D40;
+    font-weight: lighter;
 }
 :local(.button){
     width: 100%;

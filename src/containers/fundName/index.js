@@ -142,7 +142,7 @@ class BaseUserMsg extends React.Component {
                             <div className={style.userMoney}>
 
                                 <span className={style.userMoneyT} style={{marginTop:20}}>
-                                    千分收益<span className={style.userMoneyC}>￥0.00004</span>
+                                    万分收益<span className={style.userMoneyC}>￥0.00004</span>
                                 </span>
                             </div>
                         </div>
