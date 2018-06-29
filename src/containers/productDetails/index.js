@@ -7,7 +7,7 @@ import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
 import {getAssetDetail} from '../../actions/asset'
-import {getFundDetail} from '../../actions/fund'
+import {getFundDetail, getFundChart} from '../../actions/fund'
 import ReactDOM from "react-dom";
 import {StickyContainer, Sticky} from 'react-sticky';
 import echarts from 'echarts/lib/echarts';
@@ -114,7 +114,11 @@ class BaseUserMsg extends React.Component {
         this.props.getFundDetail({
             productId: this.props.params.id
         }, () => {
-            this.renderChat()
+            this.props.getFundChart({}, () => {
+
+                this.renderChat()
+            })
+
         })
 
     }
@@ -296,12 +300,12 @@ class BaseUserMsg extends React.Component {
                                 </span>
                             </div>
                             {/*<div className={style.contentItemBox}>*/}
-                                {/*<span className={style.contentItemBoxT}>*/}
-                                    {/*净值确认*/}
-                                {/*</span>*/}
-                                {/*<span className={style.contentItemBoxC}>*/}
-                                    {/*{this.props.fund.detail.confirmDesc}*/}
-                                {/*</span>*/}
+                            {/*<span className={style.contentItemBoxT}>*/}
+                            {/*净值确认*/}
+                            {/*</span>*/}
+                            {/*<span className={style.contentItemBoxC}>*/}
+                            {/*{this.props.fund.detail.confirmDesc}*/}
+                            {/*</span>*/}
                             {/*</div>*/}
                         </div>
                         <div className={style.contentItem}>
@@ -346,7 +350,9 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getFundDetail: bindActionCreators(getFundDetail, dispatch)
+        getFundDetail: bindActionCreators(getFundDetail, dispatch),
+        getFundChart: bindActionCreators(getFundChart, dispatch)
+
     }
 }
 

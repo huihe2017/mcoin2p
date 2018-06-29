@@ -163,7 +163,7 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount(){
-        this.props.getWalletTradeRecord()
+        this.props.getWalletTradeRecord({currency:'BTC'})
     }
 
 

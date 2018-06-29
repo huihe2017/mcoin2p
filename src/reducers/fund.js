@@ -17,7 +17,10 @@ export default function fund(state = initialState, action = {}) {
             state.myFundDetails = action.data.data
             return Object.assign({}, state, {})
         case 'BUY_FUND':
-            state.myFundDetails.startTime = action.data.data
+            state.detail.startTime = action.data.data
+            return Object.assign({}, state, {})
+        case 'GET_FUND_CHART':
+            state.detail.chart = action.data.data.list
             return Object.assign({}, state, {})
         default:
             return state

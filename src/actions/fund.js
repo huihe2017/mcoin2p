@@ -74,6 +74,21 @@ export function getMyFundDetails(data, callback) {
         })
     }
 }
+
+export function getFundChart(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'profit/getrate',
+            success:(response)=>{
+                dispatch({type: 'GET_FUND_CHART', data: response.data})
+            }
+
+        })
+    }
+}
 export function getFundList2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'fund/getmorefund', {})

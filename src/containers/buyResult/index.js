@@ -50,7 +50,7 @@ class BaseUserMsg extends React.Component {
                                     成功买入
                                 </span>
                                 <span className={style.userTime}>
-                                    ￥3.556123
+                                    ￥{this.props.fund.detail.startTime.profitTime}
                                 </span>
                             </div>
                         </a>
@@ -67,7 +67,7 @@ class BaseUserMsg extends React.Component {
                             </span>
                             <div className={style.itemCircle}></div>
                             <span className={style.itemTime}>
-                                预期时间 06/01
+                                预期时间 {this.props.fund.detail.startTime.buyTime}
                             </span>
                         </div>
                         <div className={style.contentItem2}>
@@ -76,7 +76,7 @@ class BaseUserMsg extends React.Component {
                             </span>
                             <div className={style.itemCircle1}></div>
                             <span className={style.itemTime}>
-                                06/01
+                                {this.props.fund.detail.startTime.profitTime}
                             </span>
                         </div>
                         <div className={style.contentItem3}>
@@ -87,7 +87,7 @@ class BaseUserMsg extends React.Component {
                                 <div className={style.itemCircle2}></div>
                             </div>
                             <span className={style.itemTime}>
-                                07/01
+                                {this.props.fund.detail.startTime.expireTime}
                             </span>
                         </div>
                     </div>
@@ -102,7 +102,7 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        asset:state.asset
+        fund:state.fund
     }
 }
 
