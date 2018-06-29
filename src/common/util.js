@@ -36,8 +36,15 @@ export function changeJson(json, label, value) {
 
 
 export function http(option) {
+    let url
+    if(option.url==='login/userlogin'||option.url==='reg/findpassword'||option.url==='reg/reguser'||option.url==='fund/getmorefund'||option.url==='fund/getdetail'||option.url==='fund/index'){
+        url = config.noauth_url + option.url
+    }else {
+        url = config.api_url + option.url
+    }
+
     axios({
-        url: config.noauth_url + option.url,
+        url,
         params: {
             ...option.data
         },

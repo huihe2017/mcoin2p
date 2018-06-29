@@ -59,6 +59,8 @@ export function getMyFundList(data, callback) {
         })
     }
 }
+
+
 export function getFundList2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'fund/getmorefund', {})
