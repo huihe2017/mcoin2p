@@ -96,20 +96,20 @@ class Home extends React.Component {
                                             </div>
                                         </div>
                                         <div className={style.circleBox}>
-                                            <div className={style.circle}>
-                                                {
-                                                    i.rateSeven?<Circle
-                                                        size={80}
-                                                        progress={i.rateSeven}
-                                                        progress={i.rateSeven}
-                                                    />:<div className={style.cir}>
-                                                        敬请期待 <br/>
-                                                        ...
-                                                    </div>
-                                                }
+                                            {/*<div className={style.circle}>*/}
+                                                {/*{*/}
+                                                    {/*i.rateSeven?<Circle*/}
+                                                        {/*size={80}*/}
+                                                        {/*progress={i.rateSeven}*/}
+                                                        {/*progress={i.rateSeven}*/}
+                                                    {/*/>:<div className={style.cir}>*/}
+                                                        {/*敬请期待 <br/>*/}
+                                                        {/*...*/}
+                                                    {/*</div>*/}
+                                                {/*}*/}
 
 
-                                            </div>
+                                            {/*</div>*/}
 
                                         </div>
                                     </div>

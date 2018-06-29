@@ -6,7 +6,23 @@
 :local(.item){
     background-color: #fff;
 }
+:local(.showImg){
 
+    width: 90px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 90px;
+}
+:local(.showTip){
+    color: #DFDCE4;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
 :local(.contentPart){
     background-color: #fff;
     padding-right: 10px;
