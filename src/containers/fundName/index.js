@@ -21,6 +21,8 @@ class BaseUserMsg extends React.Component {
         this.state = {
             data: ['1', '2', '3'],
             modal2: false,
+            xu:true,
+            xu1:true
         };
     }
 
@@ -195,7 +197,7 @@ class BaseUserMsg extends React.Component {
                                     <span className={style.bannerAR} onClick={() => this.setState({
                                         modal2: true,
                                     })}>
-                                           自动续期
+                                           {this.state.xu1?'自动续期':'自动赎回'}
                                             <img src={require('./images/arrow.png')} className={style.bannerARI}
                                                  alt=""/>
                                         </span>
@@ -229,15 +231,12 @@ class BaseUserMsg extends React.Component {
                                     animationType="slide-up"
                                 >
                                     <List className="popup-list">
-                                        {[<div onClick={() => {
-                                            alert(1)
-                                        }}>
-                                            <div className={style.ititle}>自动续期</div>
+                                        {[<div onClick={() => {this.setState({xu:true
+                                        })}}>
+                                            <div className={style.ititle}>自动续期 <span hidden={!this.state.xu} className={style.ititle1}>当前选择</span></div>
                                             <div className={style.icontent}>到期后本金及收益自动买入下一期，收益不间断。到期前一天15：00前均可更改。</div>
-                                        </div>, <div onClick={() => {
-                                            alert(3)
-                                        }}>
-                                            <div className={style.ititle}>自动续回</div>
+                                        </div>, <div onClick={() => {this.setState({xu:false})}}>
+                                            <div className={style.ititle}>自动续回 <span hidden={this.state.xu} className={style.ititle1}>当前选择</span></div>
                                             <div className={style.icontent}>到期后本金及收益回到活动余币。到期前一天15：00前均可改。</div>
                                         </div>].map((i, index) => (
                                             <List.Item key={index}>{i}</List.Item>
@@ -246,6 +245,7 @@ class BaseUserMsg extends React.Component {
                                             <div className={style.button}>
                                                 <Button type="primary" onClick={() => this.setState({
                                                     modal2: false,
+                                                    xu1:this.state.xu
                                                 })}>确认</Button>
                                             </div>
 

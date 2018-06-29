@@ -72,6 +72,10 @@
     font-size: 16px;
     color: #3B3D40;
 }
+:local(.ititle1){
+    font-size: 12px;
+    color: #5262ff;
+}
 :local(.icontent){
     font-size: 12px;
     color: #989898;
