@@ -118,6 +118,27 @@ export function setNickname(data, callback) {
     }
 }
 
+export function setRiskType(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'user/updaterisktype',
+            success:(response)=>{
+                 dispatch({type: 'SET_RISK_TYPE',data})
+            }
+
+        })
+    }
+}
+
+export function riskPage(type,value) {
+    return dispatch => {
+        dispatch({type: 'RIST_PAGE', data:{type,value}})
+    }
+}
+
 export function login2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'login/userlogin', {

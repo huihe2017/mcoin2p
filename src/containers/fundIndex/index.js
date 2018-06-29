@@ -189,7 +189,7 @@ class BaseUserMsg extends React.Component {
             }
             const obj = this.props.fund.myFund.userProducts[index--];
             return (
-                <div className={style.item} key={rowID} onClick={()=>hashHistory.push('/fundName')}>
+                <div className={style.item} key={rowID} onClick={()=>hashHistory.push('/fundName/'+obj.productId)}>
                     <span className={style.title} >
                         {obj.title}
                         <div className={style.time}>

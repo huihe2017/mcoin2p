@@ -2,13 +2,12 @@ import React from 'react'
 import style from "./index.css"
 import Star from '../../components/star/index'
 import {connect} from 'react-redux'
-import { RefreshControl, ListView } from 'antd-mobile';
+import {RefreshControl, ListView} from 'antd-mobile';
 import Header from '../../components/header'
 import ReactDOM from 'react-dom'
-import {hashHistory,Link} from 'react-router'
-import {setAuthFrom} from '../../actions/authFrom'
+import {hashHistory, Link} from 'react-router'
+import {setRiskType,riskPage} from '../../actions/user'
 import {bindActionCreators} from 'redux'
-
 
 
 class History extends React.Component {
@@ -16,19 +15,26 @@ class History extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            profit: 0,
+            riskTaking: 0,
+            heartTaking: 0,
+            flowDemand: 0,
         };
+    }
+    componentWillUnmount(){
+        this.props.riskPage('get',0)
     }
     ratingChanged = (newRating) => {
         console.log(newRating)
     }
+
     render() {
 
         return (
             <div className={style.wrap}>
                 <div className={style.wrapContent}>
                     <span className={style.header}>
-                        成长型
+                        {this.props.user.userInfo.riskType}
                     </span>
 
                     <div className={style.content}>
@@ -38,8 +44,11 @@ class History extends React.Component {
                             </span>
 
                             <Star
-                                rank={1}
+                                rank={0}
                                 limit={5}
+                                onRank={(n) => {
+                                    this.setState({profit: n})
+                                }}
                             />
 
                         </div>
@@ -48,8 +57,11 @@ class History extends React.Component {
                                 实际风险承担<i></i>
                             </span>
                             <Star
-                                rank={1}
+                                rank={0}
                                 limit={5}
+                                onRank={(n) => {
+                                    this.setState({riskTaking: n})
+                                }}
                             />
                         </div>
                         <div className={style.icoBox}>
@@ -57,8 +69,11 @@ class History extends React.Component {
                                 心理风险接受<i></i>
                             </span>
                             <Star
-                                rank={1}
+                                rank={0}
                                 limit={5}
+                                onRank={(n) => {
+                                    this.setState({heartTaking: n})
+                                }}
                             />
                         </div>
                         <div className={style.icoBox}>
@@ -66,8 +81,11 @@ class History extends React.Component {
                                 流动需求<i></i>
                             </span>
                             <Star
-                                rank={1}
+                                rank={0}
                                 limit={5}
+                                onRank={(n) => {
+                                    this.setState({flowDemand: n})
+                                }}
                             />
                         </div>
                         <div className={style.contentText}>
@@ -76,11 +94,26 @@ class History extends React.Component {
                         </div>
                     </div>
                     <div className={style.but}>
-                        <Link to={'/selectRisk'}>
+                        <a onClick={() => {
+                            if (this.props.user.userInfo.ristPage === 'set') {
+                                this.props.setRiskType({
+                                    profit: this.state.profit,
+                                    riskTaking: this.state.riskTaking,
+                                    heartTaking: this.state.heartTaking,
+                                    flowDemand: this.state.flowDemand,
+                                    type: this.props.user.userInfo.riskType
+                                }, () => {
+                                    hashHistory.push('/setPerson')
+                                })
+                            }else {
+                                hashHistory.push('/selectRisk')
+                            }
+                            return false
+                        }} >
                             <button className={style.button}>
-                                重新选择
+                                {this.props.user.userInfo.ristPage === 'set'?'确定':'重新选择'}
                             </button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -93,13 +126,14 @@ class History extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        user:state.user
+        user: state.user
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        setAuthFrom:bindActionCreators(setAuthFrom, dispatch)
+        setRiskType: bindActionCreators(setRiskType, dispatch),
+        riskPage: bindActionCreators(riskPage, dispatch)
     }
 }
 

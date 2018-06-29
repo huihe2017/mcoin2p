@@ -5,7 +5,7 @@ import { RefreshControl, ListView } from 'antd-mobile';
 import Header from '../../components/header'
 import ReactDOM from 'react-dom'
 import {hashHistory,Link} from 'react-router'
-import {setAuthFrom} from '../../actions/authFrom'
+import {riskPage} from '../../actions/user'
 import {bindActionCreators} from 'redux'
 
 
@@ -33,7 +33,7 @@ class History extends React.Component {
                         请选择适合您的理财方式
                     </span>
                     <div className={style.content}>
-                        <Link to={'/riskType'}>
+                        <Link onClick={()=>{this.props.riskPage('set',0)}} to={'/riskType'}>
                             <a className={style.aBox} href="javascript:void (0)">
                                 <div className={style.aLeft}>
                                     <span className={style.aTitle}>
@@ -49,7 +49,7 @@ class History extends React.Component {
 
                             </a>
                         </Link>
-                        <Link to={'/riskType'}>
+                        <Link onClick={()=>{this.props.riskPage('set',1)}}  to={'/riskType'}>
                             <a className={style.aBox} href="javascript:void (0)">
                                 <div className={style.aLeft}>
                                     <span className={style.aTitle}>
@@ -64,7 +64,7 @@ class History extends React.Component {
                                 </div>
                             </a>
                         </Link>
-                        <Link to={'/riskType'}>
+                        <Link onClick={()=>{this.props.riskPage('set',2)}}  to={'/riskType'}>
                             <a className={style.aBox} href="javascript:void (0)">
                                 <div className={style.aLeft}>
                                     <span className={style.aTitle}>
@@ -97,7 +97,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setAuthFrom:bindActionCreators(setAuthFrom, dispatch)
+        riskPage:bindActionCreators(riskPage, dispatch)
     }
 }
 

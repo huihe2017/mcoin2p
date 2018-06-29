@@ -35,7 +35,7 @@ export function changeJson(json, label, value) {
 function setUrlK(ojson) {
     var s = '', name, key;
     for (var p in ojson) {
-        if (!ojson[p]) {
+        if (!ojson[p] && ojson[p] !== 0) {
             return null;
         }
         if (ojson.hasOwnProperty(p)) {
@@ -58,6 +58,7 @@ export function http(option) {
         url = config.api_url + option.url
     }
     // let params = new URLSearchParams();
+    axios.defaults.headers.common['token'] = localStorage.token;
     axios({
         url,
         data: setUrlK(option.data),
@@ -68,10 +69,10 @@ export function http(option) {
                 option.success(response)
                 option.callback && option.callback()
             } else if (response.data.code === 501) {
-                Toast.fail(response.data.message, 2, null, false)
+                Toast.fail(response.data.msg, 2, null, false)
                 hashHistory.push('/auth')
             } else {
-                Toast.fail(response.data.message, 2, null, false)
+                Toast.fail(response.data.msg, 2, null, false)
             }
         })
         .catch(function (error) {
