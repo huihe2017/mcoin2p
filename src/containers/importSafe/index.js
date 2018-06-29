@@ -7,7 +7,7 @@ import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
 import {logout} from '../../actions/user'
-import {setSaveCode} from '../../actions/wallet'
+import {getWalletIndexData} from '../../actions/wallet'
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +21,7 @@ class BaseUserMsg extends React.Component {
     }
 
     check(){
-        if((/^\d{6}$/.test(this.state.saveCode))&&(this.state.saveCodeConfirm==this.state.saveCode)){
+        if((/^\d{6}$/.test(this.state.saveCode))){
             this.setState({
                 submit:true
             })
@@ -53,7 +53,7 @@ class BaseUserMsg extends React.Component {
                     rightContent={[
                         <div onClick={()=>{
                             if(this.state.submit){
-                                this.props.setSaveCode({
+                                this.props.getWalletIndexData({
                                     safeCode:this.state.saveCode
                                 }, () => {
                                     hashHistory.push('/walletIndex')
@@ -99,7 +99,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setSaveCode: bindActionCreators(setSaveCode, dispatch)
+        getWalletIndexData: bindActionCreators(getWalletIndexData, dispatch)
     }
 }
 

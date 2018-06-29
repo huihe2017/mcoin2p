@@ -115,7 +115,7 @@ class BaseUserMsg extends React.Component {
         }
 
         // simulate initial Ajax
-        this.props.getAwardDetails({page: 1}, () => {
+        this.props.getAwardDetails({page: 1,currency:'BTC'}, () => {
             this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
@@ -136,7 +136,7 @@ class BaseUserMsg extends React.Component {
         }
         console.log('reach end', event);
         this.setState({ isLoading: true });
-        this.props.getAwardDetails({page: 1}, () => {
+        this.props.getAwardDetails({page: 1,currency:'BTC'}, () => {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,

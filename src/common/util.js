@@ -73,6 +73,8 @@ export function http(option) {
                 hashHistory.push('/auth')
             }else if (response.data.code === 3004) {
                 hashHistory.push('/safeSet')
+            }else if (response.data.code === 3008) {
+                hashHistory.push('/importSafe')
             } else {
                 Toast.fail(response.data.msg, 2, null, false)
             }
