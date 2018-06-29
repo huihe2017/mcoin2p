@@ -4,9 +4,11 @@
     <list default="true" id="9eaf612a-ca36-4e75-a6b7-2f658dbec1a9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/actions/fund.js" afterPath="$PROJECT_DIR$/src/actions/fund.js" />
-      <change beforePath="$PROJECT_DIR$/src/common/util.js" afterPath="$PROJECT_DIR$/src/common/util.js" />
       <change beforePath="$PROJECT_DIR$/src/config/index.js" afterPath="$PROJECT_DIR$/src/config/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/auth/index.js" afterPath="$PROJECT_DIR$/src/containers/auth/index.js" />
       <change beforePath="$PROJECT_DIR$/src/containers/fundIndex/index.js" afterPath="$PROJECT_DIR$/src/containers/fundIndex/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/fundName/index.js" afterPath="$PROJECT_DIR$/src/containers/fundName/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/fund.js" afterPath="$PROJECT_DIR$/src/reducers/fund.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,22 +23,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/bill/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3193">
-              <caret line="132" column="26" lean-forward="false" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/fundIndex/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="235" column="48" lean-forward="true" selection-start-line="235" selection-start-column="48" selection-end-line="235" selection-end-column="48" />
+            <state relative-caret-position="126">
+              <caret line="236" column="51" lean-forward="false" selection-start-line="236" selection-start-column="51" selection-end-line="236" selection-end-column="51" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -44,36 +34,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="util.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/common/util.js">
+      <file leaf-file-name="wallet.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/wallet.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="axiosConf.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/axiosConf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="17" column="61" lean-forward="true" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
+            <state relative-caret-position="258">
+              <caret line="99" column="13" lean-forward="true" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config/index.js">
+        <entry file="file://$PROJECT_DIR$/src/containers/inputSafe/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="11" />
-              <folding>
-                <marker date="1530235777766" expanded="true" signature="198:229" ph="..." />
-              </folding>
+            <state relative-caret-position="142">
+              <caret line="88" column="33" lean-forward="true" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,8 +57,49 @@
       <file leaf-file-name="fund.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducers/fund.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="24" />
+            <state relative-caret-position="464">
+              <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/fundName/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="121" column="39" lean-forward="false" selection-start-line="121" selection-start-column="39" selection-end-line="121" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="41" column="21" lean-forward="true" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="n#!!block;n#login2#0" expanded="false" />
+                <element signature="n#!!block;n#logout2#0" expanded="false" />
+                <element signature="n#!!block;n#forgetPwd2#0" expanded="false" />
+                <element signature="n#!!block;n#modifyPwd2#0" expanded="false" />
+                <element signature="n#!!block;n#getUserDetailMsg2#0" expanded="false" />
+                <element signature="n#!!block;n#getProfile2#0" expanded="false" />
+                <element signature="n#!!block;n#setNickname2#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/forgetPwd/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -91,8 +108,8 @@
       <file leaf-file-name="fund.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/fund.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="48" column="24" lean-forward="true" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+            <state relative-caret-position="374">
+              <caret line="70" column="52" lean-forward="false" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="52" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="n#!!block;n#getFundList2#0" expanded="false" />
@@ -104,18 +121,30 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/auth/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="104" column="27" lean-forward="true" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/countdown/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="28" column="25" lean-forward="true" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checksafecode</find>
-      <find>checkmobilecode</find>
-      <find>安全码</find>
-      <find>getBaseUserMsg</find>
-      <find>data.data</find>
-      <find>whwhwehegg636363grh</find>
-      <find>data</find>
-      <find>14</find>
       <find>safeCode</find>
       <find>setNickname</find>
       <find>saveCode</find>
@@ -138,6 +167,14 @@
       <find>de</find>
       <find>debu</find>
       <find>noauth_url</find>
+      <find>pwd</find>
+      <find>login</find>
+      <find>reguser</find>
+      <find>register</find>
+      <find>sentMobileCode</find>
+      <find>sendmobilecode</find>
+      <find>findpassword</find>
+      <find>forgetPwd</find>
     </findStrings>
     <dirStrings>
       <dir>F:\mcoin2p</dir>
@@ -149,13 +186,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/header/headerView/index.js" />
         <option value="$PROJECT_DIR$/src/containers/modifyPwd/index.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/indexPage.js" />
         <option value="$PROJECT_DIR$/src/containers/forgetPwd/index.js" />
         <option value="$PROJECT_DIR$/src/components/countdown/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/auth/index.js" />
         <option value="$PROJECT_DIR$/src/containers/safeCenter/index.js" />
         <option value="$PROJECT_DIR$/src/containers/amendSafe/index.js" />
         <option value="$PROJECT_DIR$/src/containers/detailUserMsg/index.js" />
@@ -184,7 +219,6 @@
         <option value="$PROJECT_DIR$/src/containers/selectedFunds/index.js" />
         <option value="$PROJECT_DIR$/src/containers/productDetails/index.js" />
         <option value="$PROJECT_DIR$/src/containers/productBuying/index.js" />
-        <option value="$PROJECT_DIR$/src/reducers/fund.js" />
         <option value="$PROJECT_DIR$/src/containers/dealDetails/index.js" />
         <option value="$PROJECT_DIR$/src/containers/activityBalance/index.js" />
         <option value="$PROJECT_DIR$/src/actions/indexPage.js" />
@@ -196,10 +230,13 @@
         <option value="$PROJECT_DIR$/src/reducers/asset.js" />
         <option value="$PROJECT_DIR$/src/containers/friendAwardDetail/index.js" />
         <option value="$PROJECT_DIR$/src/actions/user.js" />
+        <option value="$PROJECT_DIR$/src/common/util.js" />
+        <option value="$PROJECT_DIR$/src/containers/fundIndex/index.js" />
         <option value="$PROJECT_DIR$/src/config/index.js" />
         <option value="$PROJECT_DIR$/src/actions/fund.js" />
-        <option value="$PROJECT_DIR$/src/containers/fundIndex/index.js" />
-        <option value="$PROJECT_DIR$/src/common/util.js" />
+        <option value="$PROJECT_DIR$/src/reducers/fund.js" />
+        <option value="$PROJECT_DIR$/src/containers/fundName/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/auth/index.js" />
       </list>
     </option>
   </component>
@@ -300,7 +337,7 @@
               <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="fundIndex" type="462c0819:PsiDirectoryNode" />
+              <item name="fundName" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
@@ -359,12 +396,12 @@
       <workItem from="1528251965147" duration="24188000" />
       <workItem from="1528440200648" duration="8371000" />
       <workItem from="1528680390754" duration="60573000" />
-      <workItem from="1529371745071" duration="158645000" />
+      <workItem from="1529371745071" duration="160489000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="423628000" />
+    <option name="totallyTimeSpent" value="425472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1936" height="1056" extended-state="0" />
@@ -404,42 +441,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/modifyPwd/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/registerServiceWorker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2378">
-          <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-443">
@@ -548,16 +549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
           <caret line="268" column="0" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/inputSafe/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="206" column="52" lean-forward="false" selection-start-line="206" selection-start-column="52" selection-end-line="206" selection-end-column="52" />
           <folding>
             <element signature="e#0#25#0" expanded="false" />
           </folding>
@@ -693,7 +684,7 @@
         <state relative-caret-position="118">
           <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="57" selection-end-column="30" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -760,28 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/wallet.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#getWalletIndexData2#0" expanded="false" />
-            <element signature="n#!!block;n#getWalletTradeRecord2#0" expanded="false" />
-            <element signature="n#!!block;n#getMinerFee2#0" expanded="false" />
-            <element signature="n#!!block;n#getCommonAddress2#0" expanded="false" />
-            <element signature="n#!!block;n#confirmWithdrawMsg2#0" expanded="false" />
-            <element signature="n#!!block;n#checkSafeCode2#0" expanded="false" />
-            <element signature="n#!!block;n#sentMobileCode2#0" expanded="false" />
-            <element signature="n#!!block;n#checkMobileCode2#0" expanded="false" />
-            <element signature="n#!!block;n#setSaveCode2#0" expanded="false" />
-            <element signature="n#!!block;n#addOrEditAddress2#0" expanded="false" />
-            <element signature="n#!!block;n#delAddress2#0" expanded="false" />
-            <element signature="n#!!block;n#switchSaveCode2#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/asset.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -821,71 +790,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="1" column="35" lean-forward="true" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!block;n#login2#0" expanded="false" />
-            <element signature="n#!!block;n#logout2#0" expanded="false" />
-            <element signature="n#!!block;n#forgetPwd2#0" expanded="false" />
-            <element signature="n#!!block;n#modifyPwd2#0" expanded="false" />
-            <element signature="n#!!block;n#register2#0" expanded="false" />
-            <element signature="n#!!block;n#getUserDetailMsg2#0" expanded="false" />
-            <element signature="n#!!block;n#getProfile2#0" expanded="false" />
-            <element signature="n#!!block;n#setNickname2#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/fundIndex/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="235" column="48" lean-forward="true" selection-start-line="235" selection-start-column="48" selection-end-line="235" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/bill/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3193">
+        <state relative-caret-position="-3976">
           <caret line="132" column="26" lean-forward="false" selection-start-line="132" selection-start-column="26" selection-end-line="132" selection-end-column="26" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/fund.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/fund.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="48" column="24" lean-forward="true" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#getFundList2#0" expanded="false" />
-            <element signature="n#!!block;n#getFundDetail2#0" expanded="false" />
-            <element signature="n#!!block;n#buyFund2#0" expanded="false" />
-            <element signature="n#!!block;n#getMyFundList2#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="11" />
-          <folding>
-            <marker date="1530235777766" expanded="true" signature="198:229" ph="..." />
           </folding>
         </state>
       </provider>
@@ -900,11 +810,120 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/common/util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        <state relative-caret-position="-1218">
+          <caret line="6" column="87" lean-forward="true" selection-start-line="6" selection-start-column="87" selection-end-line="6" selection-end-column="87" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <marker date="1530238986099" expanded="true" signature="198:229" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/fundIndex/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="236" column="51" lean-forward="false" selection-start-line="236" selection-start-column="51" selection-end-line="236" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/fund.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="70" column="52" lean-forward="false" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#getFundList2#0" expanded="false" />
+            <element signature="n#!!block;n#getFundDetail2#0" expanded="false" />
+            <element signature="n#!!block;n#buyFund2#0" expanded="false" />
+            <element signature="n#!!block;n#getMyFundList2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/fund.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/fundName/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="121" column="39" lean-forward="false" selection-start-line="121" selection-start-column="39" selection-end-line="121" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/wallet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="99" column="13" lean-forward="true" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/inputSafe/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="88" column="33" lean-forward="true" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/auth/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="104" column="27" lean-forward="true" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/countdown/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="28" column="25" lean-forward="true" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="41" column="21" lean-forward="true" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#login2#0" expanded="false" />
+            <element signature="n#!!block;n#logout2#0" expanded="false" />
+            <element signature="n#!!block;n#forgetPwd2#0" expanded="false" />
+            <element signature="n#!!block;n#modifyPwd2#0" expanded="false" />
+            <element signature="n#!!block;n#getUserDetailMsg2#0" expanded="false" />
+            <element signature="n#!!block;n#getProfile2#0" expanded="false" />
+            <element signature="n#!!block;n#setNickname2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/forgetPwd/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

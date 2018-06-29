@@ -60,7 +60,20 @@ export function getMyFundList(data, callback) {
     }
 }
 
+export function getMyFundDetails(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'userfund/detail',
+            success:(response)=>{
+                dispatch({type: 'GET_MY_FUND_DETAILS', data: response.data})
+            }
 
+        })
+    }
+}
 export function getFundList2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'fund/getmorefund', {})

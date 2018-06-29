@@ -60,9 +60,10 @@ class Auth extends React.Component {
             // }
             Toast.loading('登录中', 3, null, false)
             this.props.login({
-                phone: this.state.areaCode+this.state.phone,
-                pwd: this.state.pwd,
-                picCode: this.state.picCode
+                type:1,
+                mobile: this.state.areaCode+this.state.phone,
+                password: this.state.pwd,
+                checkCode: this.state.picCode
             }, (errorText) => {
                 this.setState({picImg: this.getPicImg()})
                 Toast.hide()
@@ -103,10 +104,11 @@ class Auth extends React.Component {
             }
             Toast.loading('注册中', 3, null, false)
             this.props.register({
-                phone: this.state.areaCode+ this.state.phone,
-                nickName: this.state.nickName,
-                pwd: this.state.pwd,
-                code: this.state.code
+                regType:1,
+                mobile: this.state.areaCode+ this.state.phone,
+                userName: this.state.nickName,
+                password: this.state.pwd,
+                validateCode: this.state.code
             }, (errorText) => {
                 this.setState({picImg: this.getPicImg()})
                 Toast.hide()

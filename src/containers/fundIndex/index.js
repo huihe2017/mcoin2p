@@ -236,7 +236,7 @@ class BaseUserMsg extends React.Component {
                             <a className={style.user} href="javascript:void (0)">
                                 <div className={style.userData}>
                                     <span className={style.userName}>
-                                        BTC
+                                        {this.props.fund.myFund&&this.props.fund.myFund.currency}
                                     </span>
                                     <span className={style.userTime}>
                                         {this.props.fund.myFund&&this.props.fund.myFund.userTotalCoin}
@@ -245,10 +245,10 @@ class BaseUserMsg extends React.Component {
                             </a>
                             <div className={style.userMoney}>
                                 <span className={style.userMoneyT}>
-                                    昨日收益（BTC）<span className={style.userMoneyC}>+{this.props.fund.myFund&&this.props.fund.myFund.userYesterdayProfit}</span>
+                                    昨日收益（{this.props.fund.myFund&&this.props.fund.myFund.currency}）<span className={style.userMoneyC}>+{this.props.fund.myFund&&this.props.fund.myFund.userYesterdayProfit}</span>
                                 </span>
                                 <span className={style.userMoneyT}>
-                                    累计收益（BTC）<span className={style.userMoneyC}>+{this.props.fund.myFund&&this.props.fund.myFund.userTotalProfit}</span>
+                                    累计收益（{this.props.fund.myFund&&this.props.fund.myFund.currency}）<span className={style.userMoneyC}>+{this.props.fund.myFund&&this.props.fund.myFund.userTotalProfit}</span>
                                 </span>
                             </div>
                         </div>

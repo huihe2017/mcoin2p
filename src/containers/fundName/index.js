@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getAssetDetail} from '../../actions/asset'
+import {getMyFundDetails} from '../../actions/fund'
 import ReactDOM from "react-dom";
 import { StickyContainer, Sticky } from 'react-sticky';
 import echarts from 'echarts/lib/echarts';
@@ -318,13 +318,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        asset:state.asset
+        fund:state.fund
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        getMyFundDetails:bindActionCreators(getMyFundDetails,dispatch)
     }
 }
 
