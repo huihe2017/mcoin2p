@@ -76,6 +76,7 @@ export function http(option) {
             }
         })
         .catch(function (error) {
+            debugger
             Toast.fail('网络错误，请稍后再试')
         });
 }
