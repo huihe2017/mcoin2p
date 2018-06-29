@@ -69,8 +69,10 @@ export function http(option) {
                 option.success(response)
                 option.callback && option.callback()
             } else if (response.data.code === 501) {
-                Toast.fail(response.data.msg, 2, null, false)
+                // Toast.fail(response.data.msg, 2, null, false)
                 hashHistory.push('/auth')
+            }else if (response.data.code === 3004) {
+                hashHistory.push('/safeSet')
             } else {
                 Toast.fail(response.data.msg, 2, null, false)
             }

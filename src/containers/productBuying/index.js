@@ -138,7 +138,7 @@ class BaseUserMsg extends React.Component {
                                             this.props.buyFund({
                                                 productId:this.props.fund.detail.id,
                                                 amount:this.state.amount,
-                                                autoRenew:this.state.autoRenew
+                                                autoRenew:this.state.autoRenew?1:0
 
                                             },()=>{
                                                 hashHistory.push('/buyResult')
