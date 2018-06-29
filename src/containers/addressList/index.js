@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
-import {getCommonAddress,delAddress} from '../../actions/wallet'
+import {getCommonAddress, delAddress} from '../../actions/wallet'
 import {createForm} from 'rc-form';
 import {StickyContainer, Sticky} from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
@@ -152,7 +152,7 @@ class BaseUserMsg extends React.Component {
 
     genData(pIndex = 0) {
 
-        const NUM_ROWS =  this.props.wallet.commonAddress.length
+        const NUM_ROWS = this.props.wallet.commonAddress.length
         // const NUM_ROWS = data.length;
         const dataArr = [];
         for (let i = 0; i < NUM_ROWS; i++) {
@@ -224,41 +224,41 @@ class BaseUserMsg extends React.Component {
             return (
 
 
-                    <div className={style.item} key={obj.id}>
+                <div className={style.item} key={obj.id}>
 
-                        <div className={style.itemContent}>
-                            <div className={style.itemCoin}>
-                                <img className={style.itemImg} src={require('../activityBalance/images/BTC.png')}
-                                     alt=""/>{obj.currency}
-                            </div>
-                            <div className={style.itemName}>
-                                {obj.tag}
-                            </div>
-                            <div className={style.itemDo}>
-                                <a onClick={(e) => {
-
-                                    this.setState({isShowModal: true})
-                                    this.setState({delAddressId: obj.id})
-
-                                    e.stopPropagation()
-                                }} href="javascript:void (0)">
-                                    <img className={style.iconImg} src={require('./images/delete.png')} alt=""/>删除
-                                </a>
-                                <Link to={'/addAddress/' + obj.id}>
-
-                                    <img className={style.iconImg} src={require('./images/editor.png')} alt=""/>修改
-                                </Link>
-                            </div>
+                    <div className={style.itemContent}>
+                        <div className={style.itemCoin}>
+                            <img className={style.itemImg} src={require('../activityBalance/images/BTC.png')}
+                                 alt=""/>{obj.currency}
                         </div>
-                        <div className={style.itemAdressBox}>
-                            <div className={style.itemAdressT}>
-                                地址
-                            </div>
-                            <div className={style.itemAdress}>
-                                {obj.address}
-                            </div>
+                        <div className={style.itemName}>
+                            {obj.tag}
+                        </div>
+                        <div className={style.itemDo}>
+                            <a onClick={(e) => {
+
+                                this.setState({isShowModal: true})
+                                this.setState({delAddressId: obj.id})
+
+                                e.stopPropagation()
+                            }} href="javascript:void (0)">
+                                <img className={style.iconImg} src={require('./images/delete.png')} alt=""/>删除
+                            </a>
+                            <Link to={'/addAddress/' + obj.id}>
+
+                                <img className={style.iconImg} src={require('./images/editor.png')} alt=""/>修改
+                            </Link>
                         </div>
                     </div>
+                    <div className={style.itemAdressBox}>
+                        <div className={style.itemAdressT}>
+                            地址
+                        </div>
+                        <div className={style.itemAdress}>
+                            {obj.address}
+                        </div>
+                    </div>
+                </div>
 
             );
         };
@@ -297,8 +297,8 @@ class BaseUserMsg extends React.Component {
     }
     delAddress = () => {
         this.props.delAddress({
-            id:this.state.delAddressId
-        },()=>{
+            id: this.state.delAddressId
+        }, () => {
             window.location.reload()
         })
     }
@@ -307,12 +307,8 @@ class BaseUserMsg extends React.Component {
 
         const tabs = [
             {title: '全部'},
-            {title: 'TOKEN'},
-            {title: 'BCH'},
-            {title: 'ETC'},
-            {title: 'ETH'}, {title: 'BCH'},
-            {title: 'ETC'},
-            {title: 'ETH'},
+            {title: 'BTC'},
+            {title: 'ETH'}
 
         ];
         let pageIndex = 0;
@@ -403,7 +399,7 @@ function mapDispatchToProps(dispatch) {
         getCommonAddress: bindActionCreators(getCommonAddress, dispatch),
         delAddress: bindActionCreators(delAddress, dispatch)
 
-}
+    }
 }
 
 BaseUserMsg = connect(mapStateToProps, mapDispatchToProps)(BaseUserMsg)

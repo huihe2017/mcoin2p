@@ -119,7 +119,7 @@ class BaseUserMsg extends React.Component {
                                 cascade={false}
                                 extra=" "
                                 value={this.state.currency}
-                                onChange={v => {alert(v);this.setState({currency: v})}}
+                                onChange={v => {this.setState({currency: v})}}
                                 onOk={v => this.setState({currency: v})}
                             >
                                 <List.Item arrow="horizontal"><span className={style.itemBoxC}>
@@ -190,19 +190,19 @@ class BaseUserMsg extends React.Component {
                             <span className={style.alTip} style={{marginTop: 12}}>
                                 备注名称：
                                 <span style={{color: '#3B3D40'}}>
-                                    飞机
+                                    {this.state.tag}
                                 </span>
                             </span>
                             <span className={style.alTip}>
                                 货币类型：
                                 <span style={{color: '#3B3D40'}}>
-                                    BTC
+                                    {this.state.currency}
                                 </span>
                             </span>
                             <span className={style.alTip}>
                                 <span className={style.alTip1}>钱包地址：</span>
                                 <span className={style.alTip2} style={{color: '#3B3D40'}}>
-                                    ABABABBABAABABAABABABABABAB
+                                    {this.state.address}
                                 </span>
                             </span>
 

@@ -29,7 +29,7 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount() {
-        
+
         if(!this.props.wallet.list){
             this.props.getWalletIndexData({},()=>{})
         }
