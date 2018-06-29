@@ -12,6 +12,12 @@ export default function asset(state = initialState, action = {}) {
         case 'GET_ACTIVE_COIN':
             state.activeCoin = action.data.data
             return Object.assign({}, state, {})
+        case 'GET_BILLS_LIST':
+            state.bills = action.data.data
+            return Object.assign({}, state, {})
+        case 'GET_AWARD_DETAILS':
+            state.awardDetails = action.data.data
+            return Object.assign({}, state, {})
         default:
             return state
     }

@@ -1,9 +1,124 @@
 import axios from '../common/axiosConf'
+import {http} from '../common/util'
 import config from '../../src/config'
 import {hashHistory} from "react-router";
 import {Toast} from "antd-mobile/lib/index";
 
+
+
 export function login(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'login/userlogin',
+            success:(response)=>{
+                dispatch({type: 'LOGIN', data: response.data})
+            }
+
+        })
+    }
+}
+export function logout(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'login/logout',
+            success:(response)=>{
+                dispatch({type: 'LOGOUT'})
+            }
+
+        })
+    }
+}
+export function forgetPwd(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'reg/findpassword',
+            success:(response)=>{
+            }
+
+        })
+    }
+}
+export function modifyPwd(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'user/updatepassword',
+            success:(response)=>{
+                dispatch({type: 'MODIFYPWD'})
+            }
+
+        })
+    }
+}
+export function register(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'reg/reguser',
+            success:(response)=>{
+                dispatch({type: 'REGISTER'})
+            }
+
+        })
+    }
+}
+export function getUserDetailMsg(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'user/myinfo',
+            success:(response)=>{
+                dispatch({type: 'GET_USER_DETAIL_MSG', data: response.data})
+            }
+
+        })
+    }
+}
+export function getProfile(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'user/profile',
+            success:(response)=>{
+                dispatch({type: 'GET_PROFILE', data: response.data})
+            }
+
+        })
+    }
+}
+export function setNickname(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'user/updateusername',
+            success:(response)=>{
+                dispatch({type: 'SET_NAME',data})
+            }
+
+        })
+    }
+}
+
+export function login2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'login/userlogin', {
             mobile: data.phone,
@@ -34,7 +149,7 @@ export function login(data, callback) {
     }
 }
 
-export function logout(data, callback) {
+export function logout2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'login/logout', {})
             .then(function (response) {
@@ -51,7 +166,7 @@ export function logout(data, callback) {
     }
 }
 
-export function forgetPwd(data, callback) {
+export function forgetPwd2(data, callback) {
     return dispatch => {
 
         axios.post(config.noauth_url + 'reg/findpassword', {
@@ -78,7 +193,7 @@ export function forgetPwd(data, callback) {
     }
 }
 
-export function modifyPwd(data, callback) {
+export function modifyPwd2(data, callback) {
     return dispatch => {
         debugger
         axios.post(config.api_url + 'user/updatepassword  ', {
@@ -103,7 +218,7 @@ export function modifyPwd(data, callback) {
     }
 }
 
-export function register(data, callback) {
+export function register2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'reg/reguser', {
             mobile: data.phone,
@@ -144,7 +259,7 @@ export function register(data, callback) {
 }
 
 
-export function getUserDetailMsg(data, callback) {
+export function getUserDetailMsg2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'user/myinfo', {})
             .then(function (response) {
@@ -166,7 +281,7 @@ export function getUserDetailMsg(data, callback) {
     }
 }
 
-export function getProfile(step, params) {
+export function getProfile2(step, params) {
     return dispatch => {
         axios.post(config.api_url + 'user/profile', {})
             .then(function (response) {
@@ -184,7 +299,7 @@ export function getProfile(step, params) {
     }
 }
 
-export function setNickname(data, callback) {
+export function setNickname2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'user/updateusername ', {...data})
             .then(function (response) {

@@ -1,8 +1,173 @@
 import axios from '../common/axiosConf'
 import config from '../../src/config'
 import {Toast} from "antd-mobile/lib/index";
+import {http} from '../common/util'
+
 
 export function getWalletIndexData(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/index',
+            success:(response)=>{
+                dispatch({type: 'GET_WALLET_INDEX_DATA', data: response.data})
+            }
+
+        })
+    }
+}
+export function getWalletTradeRecord(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/balancelist',
+            success:(response)=>{
+                dispatch({type: 'GET_WALLET_TRADE_RECORD', data: response.data})
+            }
+
+        })
+    }
+}
+export function getMinerFee(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/minerfee',
+            success:(response)=>{
+                dispatch({type: 'GET_MINER_FEE', data: response.data})
+            }
+
+        })
+    }
+}
+export function getCommonAddress(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/addresslist',
+            success:(response)=>{
+                dispatch({type: 'GET_COMMON_ADDRESS', data: response.data})
+            }
+
+        })
+    }
+}
+export function confirmWithdrawMsg(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/withdraw',
+            success:(response)=>{
+                dispatch({type: 'CONFIRM_WITHDRAW_MSG', data: response.data})
+            }
+
+        })
+    }
+}
+export function checkSafeCode(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/checksafecode',
+            success:(response)=>{
+                dispatch({type: 'CHECK_SAFE_CODE', data: response.data})
+            }
+
+        })
+    }
+}
+export function sentMobileCode(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/sendmobilecode',
+            success:(response)=>{
+                axios.post(config.api_url + 'wallet/sendmobilecode', {...data})
+            }
+
+        })
+    }
+}
+export function checkMobileCode(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/checkmobilecode',
+            success:(response)=>{
+                dispatch({type: 'CHECK_MOBILE_CODE', data: response.data})
+            }
+
+        })
+    }
+}
+export function setSaveCode(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/setsafecode',
+            success:(response)=>{
+            }
+
+        })
+    }
+}
+export function addOrEditAddress(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/address',
+            success:(response)=>{
+            }
+
+        })
+    }
+}
+export function delAddress(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/deladdress',
+            success:(response)=>{
+            }
+
+        })
+    }
+}export function switchSaveCode(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'wallet/safecode',
+            success:(response)=>{
+            }
+
+        })
+    }
+}
+export function getWalletIndexData2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/index', {})
             .then(function (response) {
@@ -24,7 +189,7 @@ export function getWalletIndexData(data, callback) {
     }
 }
 
-export function getWalletTradeRecord(data, callback) {
+export function getWalletTradeRecord2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/balancelist', {})
             .then(function (response) {
@@ -44,7 +209,7 @@ export function getWalletTradeRecord(data, callback) {
     }
 }
 
-export function getMinerFee(data, callback) {
+export function getMinerFee2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/minerfee', {})
             .then(function (response) {
@@ -64,7 +229,7 @@ export function getMinerFee(data, callback) {
     }
 }
 
-export function getCommonAddress(data, callback) {
+export function getCommonAddress2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/addresslist', {})
             .then(function (response) {
@@ -84,7 +249,7 @@ export function getCommonAddress(data, callback) {
     }
 }
 
-export function confirmWithdrawMsg(data, callback) {
+export function confirmWithdrawMsg2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/withdraw', {...data})
             .then(function (response) {
@@ -107,7 +272,7 @@ export function confirmWithdrawMsg(data, callback) {
     }
 }
 
-export function checkSafeCode(data, callback) {
+export function checkSafeCode2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/checksafecode', {...data})
             .then(function (response) {
@@ -130,7 +295,7 @@ export function checkSafeCode(data, callback) {
     }
 }
 
-export function sentMobileCode(data, callback) {
+export function sentMobileCode2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/sendmobilecode', {...data})
             .then(function (response) {
@@ -155,7 +320,7 @@ export function sentMobileCode(data, callback) {
     }
 }
 
-export function checkMobileCode(data, callback) {
+export function checkMobileCode2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/checkmobilecode', {})
             .then(function (response) {
@@ -179,7 +344,7 @@ export function checkMobileCode(data, callback) {
     }
 }
 
-export function setSaveCode(data, callback) {
+export function setSaveCode2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/setsafecode', {...data})
             .then(function (response) {
@@ -198,7 +363,7 @@ export function setSaveCode(data, callback) {
     }
 }
 
-export function addOrEditAddress(data, callback) {
+export function addOrEditAddress2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/address', {...data})
             .then(function (response) {
@@ -217,7 +382,7 @@ export function addOrEditAddress(data, callback) {
     }
 }
 
-export function delAddress(data, callback) {
+export function delAddress2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/deladdress', {...data})
             .then(function (response) {
@@ -235,7 +400,7 @@ export function delAddress(data, callback) {
     }
 }
 
-export function switchSaveCode(data, callback) {
+export function switchSaveCode2(data, callback) {
     return dispatch => {
         axios.post(config.api_url + 'wallet/safecode', {...data})
             .then(function (response) {

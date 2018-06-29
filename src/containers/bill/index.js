@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory,Link} from 'react-router'
-import {getAssetDetail} from '../../actions/asset'
+import {getBillsList} from '../../actions/asset'
 import ReactDOM from "react-dom";
 
 const data = [
@@ -79,7 +79,6 @@ class BaseUserMsg extends React.Component {
         // if(!this.props.user.token){
         //     return false
         // }
-        this.props.getAssetDetail()
 
         setTimeout(() => this.setState({
             height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
@@ -111,7 +110,15 @@ class BaseUserMsg extends React.Component {
         this.scrollerTop = e.scroller.getValues().top;
         this.domScroller = e;
     };
-
+    genData(pIndex = 0) {
+        const NUM_ROWS = this.props.asset.bills && this.props.asset.bills.list.length;
+        const dataArr = [];
+        for (let i = 0; i < NUM_ROWS; i++) {
+            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
+        }
+        console.log(dataArr);
+        return dataArr;
+    }
     onRefresh = () => {
         console.log('onRefresh');
         if (!this.manuallyRefresh) {
@@ -121,17 +128,19 @@ class BaseUserMsg extends React.Component {
         }
 
         // simulate initial Ajax
-        setTimeout(() => {
+
             this.rData = genData();
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
-                refreshing: false,
-                showFinishTxt: true,
-            });
-            if (this.domScroller) {
-                this.domScroller.scroller.options.animationDuration = 500;
-            }
-        }, 600);
+            this.props.getBillsList({page: 1}, () => {
+                this.rData = this.genData();
+                this.setState({
+                    dataSource: this.state.dataSource.cloneWithRows(this.rData),
+                    refreshing: false,
+                    showFinishTxt: true,
+                });
+                if (this.domScroller) {
+                    this.domScroller.scroller.options.animationDuration = 500;
+                }
+            })
     };
 
     onEndReached = (event) => {
@@ -142,13 +151,15 @@ class BaseUserMsg extends React.Component {
         }
         console.log('reach end', event);
         this.setState({ isLoading: true });
-        setTimeout(() => {
-            this.rData = [...this.rData,];
+        this.props.getBillsList({page: 1}, () => {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
+                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
             });
-        }, 1000);
+            if (this.domScroller) {
+                this.domScroller.scroller.options.animationDuration = 500;
+            }
+        })
     };
 
     scrollingComplete = () => {
@@ -171,6 +182,8 @@ class BaseUserMsg extends React.Component {
 
 
     render() {
+        let index = this.props.asset.bills&&this.props.asset.bills.list.length - 1;
+
         const separator = (sectionID, rowID) => (
             <div
                 key={`${sectionID}-${rowID}`}
@@ -184,30 +197,30 @@ class BaseUserMsg extends React.Component {
         );
         const row = (rowData, sectionID, rowID) => {
             if (index < 0) {
-                index = data.length - 1;
+                index = this.props.asset.bills.list.length - 1;
             }
-            const obj = data[index--];
+            const obj = this.props.asset.bills.list[index--];
             return (
                 <div className={style.item} key={rowID}>
                     
                     <div className={style.contentPart} >
                         <span className={style.contentPart1}>
-                            <img src={require('../friendAward/images/BTC.png')} className={style.contentImg} alt=""/>BTC
+                            <img src={require('../friendAward/images/BTC.png')} className={style.contentImg} alt=""/>{obj.currency}
                         </span>
                         <span className={style.contentPart2}>
                             <span className={style.contentPart31}>
-                                周一
+                                {obj.createDate}
                             </span>
                             <span className={style.contentPart32}>
-                                06/01
+                                {obj.createDate}
                             </span>
                         </span>
                         <div className={style.contentPart3}>
                             <span className={style.contentPart5}>
-                                -1.00000
+                                -{obj.amount}
                             </span>
                             <span className={style.contentPart4}>
-                                基金名称-买入
+                                {obj.remark}
                             </span>
                         </div>
                     </div>
@@ -267,7 +280,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        getBillsList:bindActionCreators(getBillsList,dispatch)
     }
 }
 

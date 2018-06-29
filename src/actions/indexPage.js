@@ -1,8 +1,23 @@
 import axios from '../common/axiosConf'
 import config from '../../src/config'
 import {Toast} from "antd-mobile/lib/index";
+import {http} from '../common/util'
 
 export function getIndexData(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'fund/index',
+            success:(response)=>{
+                dispatch({type: 'GET_INDEX_DATA', data: response.data})
+            }
+
+        })
+    }
+}
+export function getIndexData2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'fund/index', {})
             .then(function (response) {

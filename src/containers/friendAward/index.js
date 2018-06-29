@@ -171,6 +171,8 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
+        let index = this.props.asset.friendWard&&this.props.asset.friendWard.awardList.length - 1;
+
         const separator = (sectionID, rowID) => (
             <div
                 key={`${sectionID}-${rowID}`}
@@ -183,7 +185,6 @@ class BaseUserMsg extends React.Component {
             />
         );
         const row = (rowData, sectionID, rowID) => {
-            let index = this.props.asset.friendWard.awardList.length - 1;
             if (index < 0) {
                 index = this.props.asset.friendWard.awardList.length - 1;
             }
@@ -196,12 +197,12 @@ class BaseUserMsg extends React.Component {
                                          alt=""/>{obj.currency}
                                 </span>
                         <span className={style.contentPart2}>
-                                    14.21234112
+                                    {obj.amount}
                                 </span>
                         <span className={style.contentPart3}>
-                                    ￥51.000
+                                    ￥{obj.marketValue}
                                         <span className={style.contentPart4}>
-                                            市场价:￥51.000
+                                            市场价:￥{obj.marketPrice}
                                         </span>
                                 </span>
                     </div>

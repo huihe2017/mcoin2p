@@ -1,4 +1,7 @@
 import {Toast} from 'antd-mobile';
+import axios from "./axiosConf";
+import config from "../config";
+import {hashHistory} from "react-router";
 
 export function checkPhone() {
     if (!/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(this.state.phone)) {
@@ -12,14 +15,14 @@ export function checkPhone() {
     return true
 }
 
-export function changeJson(json,label,value) {
-    json[0].map((obj)=>{
-        for(var key in obj){
-            if(key===label){
+export function changeJson(json, label, value) {
+    json[0].map((obj) => {
+        for (var key in obj) {
+            if (key === label) {
                 obj['label'] = obj[key]
                 delete obj[key]
             }
-            if(key===value){
+            if (key === value) {
                 obj['value'] = obj[key]
                 delete obj[key]
             }
@@ -28,3 +31,56 @@ export function changeJson(json,label,value) {
 
     return json
 }
+
+
+
+
+export function http(option) {
+    axios({
+        url: config.noauth_url + option.url,
+        params: {
+            ...option.data
+        },
+        method: 'post'
+    })
+        .then(function (response) {
+            if (response.data.code === 0) {
+                option.success(response)
+                option.callback && option.callback()
+            } else if (response.data.code === 501) {
+                Toast.fail(response.data.message, 2, null, false)
+                hashHistory.push('/auth')
+            } else {
+                Toast.fail(response.data.message, 2, null, false)
+            }
+        })
+        .catch(function (error) {
+            Toast.fail('网络错误，请稍后再试')
+        });
+}
+
+
+//json转url参数
+// export function parseParam(param, key) {
+//     var paramStr = "";
+//     if (param instanceof String || param instanceof Number || param instanceof Boolean) {
+//         paramStr += "&" + key + "=" + encodeURIComponent(param);
+//     } else {
+//         $.each(param, function (i) {
+//             var k = key == null ? i : key + (param instanceof Array ? "[" + i + "]" : "." + i);
+//             paramStr += '&' + parseParam(this, k);
+//         });
+//     }
+//     return paramStr.substr(1);
+// };
+// var obj = {
+//     "name": 'tom',
+//     "class": {
+//         "className": 'class1'
+//     },
+//     "classMates": [{
+//         "name": 'lily'
+//     }]
+// };
+//console.log(parseParam(obj));//name=tom&class.className=class1&classMates[0].name=lily
+//console.log(parseParam(obj, 'stu'));//stu.name=tom&stu.class.className=class1&stu.classMates[0].name=lily

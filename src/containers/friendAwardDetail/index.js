@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getAssetDetail} from '../../actions/asset'
+import {getAwardDetails} from '../../actions/asset'
 import ReactDOM from "react-dom";
 
 const data = [
@@ -66,7 +66,6 @@ class BaseUserMsg extends React.Component {
         // if(!this.props.user.token){
         //     return false
         // }
-        this.props.getAssetDetail()
 
         setTimeout(() => this.setState({
             height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
@@ -98,7 +97,15 @@ class BaseUserMsg extends React.Component {
         this.scrollerTop = e.scroller.getValues().top;
         this.domScroller = e;
     };
-
+    genData(pIndex = 0) {
+        const NUM_ROWS = this.props.asset.awardDetails && this.props.asset.awardDetails.list.length;
+        const dataArr = [];
+        for (let i = 0; i < NUM_ROWS; i++) {
+            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
+        }
+        console.log(dataArr);
+        return dataArr;
+    }
     onRefresh = () => {
         console.log('onRefresh');
         if (!this.manuallyRefresh) {
@@ -108,8 +115,8 @@ class BaseUserMsg extends React.Component {
         }
 
         // simulate initial Ajax
-        setTimeout(() => {
-            this.rData = genData();
+        this.props.getAwardDetails({page: 1}, () => {
+            this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
                 refreshing: false,
@@ -118,7 +125,7 @@ class BaseUserMsg extends React.Component {
             if (this.domScroller) {
                 this.domScroller.scroller.options.animationDuration = 500;
             }
-        }, 600);
+        })
     };
 
     onEndReached = (event) => {
@@ -129,13 +136,15 @@ class BaseUserMsg extends React.Component {
         }
         console.log('reach end', event);
         this.setState({ isLoading: true });
-        setTimeout(() => {
-            this.rData = [...this.rData,];
+        this.props.getAwardDetails({page: 1}, () => {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
+                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
             });
-        }, 1000);
+            if (this.domScroller) {
+                this.domScroller.scroller.options.animationDuration = 500;
+            }
+        })
     };
 
     scrollingComplete = () => {
@@ -158,6 +167,8 @@ class BaseUserMsg extends React.Component {
 
 
     render() {
+        let index = this.props.asset.awardDetails&&this.props.asset.awardDetails.list.length - 1;
+
         const separator = (sectionID, rowID) => (
             <div
                 key={`${sectionID}-${rowID}`}
@@ -171,14 +182,14 @@ class BaseUserMsg extends React.Component {
         );
         const row = (rowData, sectionID, rowID) => {
             if (index < 0) {
-                index = data.length - 1;
+                index = this.props.asset.awardDetails.list.length - 1;
             }
-            const obj = data[index--];
+            const obj = this.props.asset.awardDetails.list[index--];
             return (
                 <div className={style.item} key={rowID}>
                     <div className={style.icontent}>
                         <div className={style.state}>
-                            <span style={{color:'#3b3d40'}}>{obj.number}</span>
+                            <span style={{color:'#3b3d40'}}>{obj.amount}</span>
                         </div>
                         <div className={style.number}>
                             <span style={obj.state>0?{color:'#5262FF'}:{color:'#3B3D40'}}>{obj.state}</span>
@@ -260,7 +271,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        getAwardDetails:bindActionCreators(getAwardDetails,dispatch)
     }
 }
 

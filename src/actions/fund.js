@@ -1,8 +1,65 @@
 import axios from '../common/axiosConf'
 import config from '../../src/config'
 import {Toast} from "antd-mobile/lib/index";
+import {http} from '../common/util'
 
 export function getFundList(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'fund/getmorefund',
+            success:(response)=>{
+                dispatch({type: 'GET_FUND_LIST', data: response.data})
+            }
+
+        })
+    }
+}
+export function getFundDetail(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'fund/getdetail',
+            success:(response)=>{
+                dispatch({type: 'GET_FUND_DETAIL', data: response.data})
+            }
+
+        })
+    }
+}
+export function buyFund(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'fund/buy',
+            success:(response)=>{
+                dispatch({type: 'BUY_FUND', data: response.data})
+            }
+
+        })
+    }
+}
+export function getMyFundList(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'userfund/index',
+            success:(response)=>{
+                dispatch({type: 'GET_MY_FUND_LIST', data: response.data})
+            }
+
+        })
+    }
+}
+export function getFundList2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'fund/getmorefund', {})
             .then(function (response) {
@@ -22,7 +79,7 @@ export function getFundList(data, callback) {
     }
 }
 
-export function getFundDetail(data, callback) {
+export function getFundDetail2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'fund/getdetail  ', {})
             .then(function (response) {
@@ -42,7 +99,7 @@ export function getFundDetail(data, callback) {
     }
 }
 
-export function buyFund(data, callback) {
+export function buyFund2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'fund/buy  ', {...data})
             .then(function (response) {
@@ -68,7 +125,7 @@ export function buyFund(data, callback) {
     }
 }
 
-export function getMyFundList(data, callback) {
+export function getMyFundList2(data, callback) {
     return dispatch => {
         axios.post(config.noauth_url + 'userfund/index  ', {})
             .then(function (response) {
