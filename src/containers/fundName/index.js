@@ -122,28 +122,32 @@ class BaseUserMsg extends React.Component {
                     <div className={style.header}>
                         <div className={style.headerTop}>
                             <span className={style.headerTopW}>
-                                基金名称
+                                持有币额
                             </span>
                             <span className={style.headerTopR}>
-                                30天期限
+                                收益率 3.43%
                             </span>
                         </div>
                         <div className={style.headerBottom}>
                             <a className={style.user} href="javascript:void (0)">
                                 <div className={style.userData}>
                                     <span className={style.userName}>
-                                        七日年化收益率
+                                         BTC
                                     </span>
                                     <span className={style.userTime}>
-                                        3.5%
+                                        3.556123
                                     </span>
                                 </div>
                             </a>
                             <div className={style.userMoney}>
 
-                                <span className={style.userMoneyT} style={{marginTop:20}}>
-                                    万分收益<span className={style.userMoneyC}>￥0.00004</span>
+                                <span className={style.userMoneyT} >
+                                    昨日收益 (BTC)    <span className={style.userMoneyC}> +0.00004</span>
                                 </span>
+                                <span className={style.userMoneyT} >
+                                    持有收益 (BTC)   <span className={style.userMoneyC}> +0.00004</span>
+                                </span>
+
                             </div>
                         </div>
                     </div>

@@ -157,29 +157,27 @@ class BaseUserMsg extends React.Component {
                     <div className={style.header}>
                         <div className={style.headerTop}>
                             <span className={style.headerTopW}>
-                                持有币额
+                                基金名称
                             </span>
                             <span className={style.headerTopR}>
-                                收益率 {this.props.fund.detail.rateSeven}
+                                {this.props.fund.detail.rateSeven}天期限
                             </span>
                         </div>
                         <div className={style.headerBottom}>
                             <a className={style.user} href="javascript:void (0)">
                                 <div className={style.userData}>
                                     <span className={style.userName}>
-                                        BTC
+                                         七日年化收益率
                                     </span>
                                     <span className={style.userTime}>
-                                        3.556123
+                                        3.5%
                                     </span>
                                 </div>
                             </a>
                             <div className={style.userMoney}>
+
                                 <span className={style.userMoneyT}>
-                                    昨日收益（BTC）<span className={style.userMoneyC}>+0.00004</span>
-                                </span>
-                                <span className={style.userMoneyT}>
-                                    累计收益（BTC）<span className={style.userMoneyC}>+0.00004</span>
+                                    万分收益<span className={style.userMoneyC}>￥0.00004</span>
                                 </span>
                             </div>
                         </div>

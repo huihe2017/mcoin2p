@@ -143,6 +143,7 @@
     display: block;
     font-size: 10px;
     line-height: 20px;
+    text-align: left;
 }
 :local(.userMoneyC){
     font-weight: bold;
@@ -204,7 +205,7 @@
 }
 :local(.box){
     background-color: #FFF;
-    padding-bottom: 16px;
+    padding-bottom: 20px;
 }
 :local(.bottomA){
     text-align: center;
