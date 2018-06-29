@@ -9,6 +9,7 @@ import {hashHistory, Link} from 'react-router'
 import {setRiskType,riskPage} from '../../actions/user'
 import {bindActionCreators} from 'redux'
 
+const star=[{one:2,two:2,three:2,four:2,five:2},{one:3,two:3,three:3,four:3,five:3},{one:4,two:4,three:4,four:4,five:4}]
 
 class History extends React.Component {
 
@@ -28,13 +29,24 @@ class History extends React.Component {
         console.log(newRating)
     }
 
+    showType(e){
+        if(e==0){
+            return '进取型'
+        }else if(e==1){
+            return '成长型'
+        }else if(e==2){
+            return '保守型'
+        }
+    }
+
+
     render() {
 
         return (
             <div className={style.wrap}>
                 <div className={style.wrapContent}>
                     <span className={style.header}>
-                        {this.props.user.userInfo.riskType}
+                        {this.showType(this.props.user.userInfo.riskType)}
                     </span>
 
                     <div className={style.content}>

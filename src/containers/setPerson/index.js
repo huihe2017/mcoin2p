@@ -32,6 +32,16 @@ class BaseUserMsg extends React.Component {
 
     }
 
+    showType(e){
+        if(e==0){
+            return '进取型'
+        }else if(e==1){
+            return '成长型'
+        }else if(e==2){
+            return '保守型'
+        }
+    }
+
     render() {
         return (
             <div className={style.wrap}>
@@ -77,7 +87,7 @@ class BaseUserMsg extends React.Component {
                                     <span className={style.itemWord}>风险选择
     </span>
                                     <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                                    <span className={style.itemWordR}>{this.props.user.userInfo.riskType}</span>
+                                    <span className={style.itemWordR}>{this.showType(this.props.user.userInfo.riskType)}</span>
                                 </a>
                             </Link>
                             <a className={style.ensure} href="javascript:void(0)">
