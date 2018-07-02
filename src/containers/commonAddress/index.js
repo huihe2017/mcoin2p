@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, RefreshControl, Toast, Tabs, WhiteSpace} from 'antd-mobile';
+import {List, RefreshControl, Toast, Tabs, NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -180,6 +180,15 @@ class BaseUserMsg extends React.Component {
         };
         return (
             <div className={style.wrap}>
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/forwardBTC/null')}
+                    rightContent={[
+                        <span>添加</span>,
+
+                    ]}
+                >好友奖励明细</NavBar>
                 <ListView
                     ref={el => this.lv = el}
                     dataSource={this.state.dataSource}

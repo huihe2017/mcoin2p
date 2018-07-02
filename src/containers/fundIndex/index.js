@@ -217,7 +217,7 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.partHeader}>
 
-                        <a className={style.partA} href="javascript:void(0)" onClick={()=>hashHistory.push('/recordDetail')}>
+                        <a className={style.partA} href="javascript:void(0)" onClick={()=>hashHistory.push('/earningsDetail')}>
                             <img className={style.partImg} src={require('./images/list.png')} alt=""/>
                             收益明细
                         </a>

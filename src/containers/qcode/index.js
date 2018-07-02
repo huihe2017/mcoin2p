@@ -1,8 +1,9 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import { List,InputItem,Button,WingBlank} from 'antd-mobile';
+import { List,InputItem,Button,NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
+import {hashHistory} from "react-router";
 
 class AboutUs extends React.Component {
     constructor(props) {
@@ -15,7 +16,12 @@ class AboutUs extends React.Component {
     render() {
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/setPerson')}
+
+                >我的二维码</NavBar>
                 <div className={style.content}>
                     <div className={style.qcodeBox}>
                         <div className={style.header}>

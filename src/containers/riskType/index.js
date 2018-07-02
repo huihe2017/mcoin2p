@@ -2,7 +2,7 @@ import React from 'react'
 import style from "./index.css"
 import Star from '../../components/star/index'
 import {connect} from 'react-redux'
-import {RefreshControl, ListView} from 'antd-mobile';
+import {RefreshControl, ListView,NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import ReactDOM from 'react-dom'
 import {hashHistory, Link} from 'react-router'
@@ -44,6 +44,15 @@ class History extends React.Component {
 
         return (
             <div className={style.wrap}>
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/setPerson')}
+                    rightContent={[
+                        <span>完成</span>
+
+                    ]}
+                >我的风险类型</NavBar>
                 <div className={style.wrapContent}>
                     <span className={style.header}>
                         {this.showType(this.props.user.userInfo.riskType)}

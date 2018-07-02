@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast} from 'antd-mobile';
+import {List, InputItem, Toast,NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -45,7 +45,12 @@ class BaseUserMsg extends React.Component {
     render() {
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/baseUserMsg')}
+
+                >个人中心</NavBar>
                 <div>
 
                     <div className={style.part}>

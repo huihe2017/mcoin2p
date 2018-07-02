@@ -99,7 +99,7 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('/dealDetails')}
+                    onLeftClick={() => hashHistory.push('dealDetails/BTC')}
                     rightContent={[]}
                 >转出</NavBar>
                 <div>

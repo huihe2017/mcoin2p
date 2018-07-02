@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Icon,RefreshControl, Tabs,Carousel,Modal,Button} from 'antd-mobile';
+import {List, InputItem, Toast,RefreshControl, Tabs,Carousel,Modal,Button,NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -47,7 +47,15 @@ class BaseUserMsg extends React.Component {
     render() {
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/selectedFunds')}
+                    rightContent={[
+
+
+                    ]}
+                >产品买入</NavBar>
                 <div className={style.wrapContent}>
                     <div className={style.title}>
                         基金名额

@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {Progress, InputItem, Toast,Icon,RefreshControl, ListView} from 'antd-mobile';
+import {Progress, InputItem, Toast,Icon,RefreshControl, ListView,NavBar} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -36,7 +36,12 @@ class BaseUserMsg extends React.Component {
         const { percent } = this.state;
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/informationIndex')}
+
+                >好友奖励明细</NavBar>
                 <span className={style.header}>
                     八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...
                 </span>

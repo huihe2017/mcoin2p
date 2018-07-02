@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, RefreshControl, Toast,Tabs,Tag} from 'antd-mobile';
+import {List, RefreshControl, Toast,Tabs,Tag,NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -237,7 +237,7 @@ class BaseUserMsg extends React.Component {
             }
             const obj = data[index--];
             return (
-                <div key={rowID} style={{ padding: '0 15px' }}>
+                <div key={rowID} style={{ padding: '0 15px' }} onClick={()=>hashHistory.push('/recordDetail')}>
                     <div className={style.item} key={obj.num} >
                         <div className={style.itemLeft}>
                             <div className={style.itemLeftH}>
@@ -268,6 +268,15 @@ class BaseUserMsg extends React.Component {
         };
         return (
             <div className={style.wrap}>
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/fundIndex')}
+                    rightContent={[
+
+
+                    ]}
+                >交易记录</NavBar>
                 <StickyContainer>
                     <Tabs tabs={tabs} initalPage={'t2'} renderTabBar={renderTabBar}
                     >
