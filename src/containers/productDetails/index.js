@@ -18,20 +18,17 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 
 
-
-
-
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             data: ['1', '2', '3'],
             modal2: false,
-            option:{
-                productId:this.props.params.id,
-                unit:'month',
-                n:1,
-                type:1,
+            option: {
+                productId: this.props.params.id,
+                unit: 'month',
+                n: 1,
+                type: 1,
             }
         };
     }
@@ -84,7 +81,7 @@ class BaseUserMsg extends React.Component {
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
-                data:toChartData(this.props.fund.detail.chart).profitDate
+                data: toChartData(this.props.fund.detail.chart).profitDate
                 // data: ['05-01', '05-05', '05-10', '09-15', '05-20']
             },
             yAxis: {
@@ -97,7 +94,7 @@ class BaseUserMsg extends React.Component {
                     name: '买入价格',
                     type: 'line',
                     // data: [11, 13, 13.5, 14, 140.5],
-                    data:toChartData(this.props.fund.detail.chart).rateSeven,
+                    data: toChartData(this.props.fund.detail.chart).rateSeven,
                     markPoint: {
                         data: [
                             {type: 'max', name: '最大值'},
@@ -120,23 +117,21 @@ class BaseUserMsg extends React.Component {
         myChart.setOption(option);
     }
 
-    getChart = ()=>{
-        this.props.getFundDetail({
-            productId: this.props.params.id
+    getChart = () => {
+        this.props.getFundChart({
+            ...this.state.option
         }, () => {
-            this.props.getFundChart({
-                ...this.state.option
-            }, () => {
-
-                this.renderChat()
-            })
-
+            this.renderChat()
         })
     }
 
     componentDidMount() {
+        this.props.getFundDetail({
+            productId: this.props.params.id
+        }, () => {
+            this.getChart()
+        })
 
-        this.getChart()
     }
 
 
@@ -206,76 +201,168 @@ class BaseUserMsg extends React.Component {
 
                         <StickyContainer>
                             <Tabs tabs={tabs}
+                                  onChange={(tab, index) => {
+                                      this.setState({option:{...this.state.option,...{type:index===0?1:2}}},()=>{
+                                          this.getChart()
+                                      })
+
+                                  }}
                                   initalPage={1}
                                   renderTabBar={renderTabBar}
                                   useOnPan={false}
                                   swipeable={false}
                             >
-                                <div className={style.box}>
-                                    <StickyContainer>
-                                        <Tabs tabs={dataTabs}
-                                              initalPage={1}
-                                              tabBarPosition="bottom" renderTabBar={renderTabBar} useOnPan={false}
-                                              swipeable={false}
-                                        >
-                                            <div id="main" style={{
-                                                width: '100%',
-                                                height: 240,
-                                                padding: '0 16px',
-                                                marginBottom: 0,
-                                                paddingTop: 10
-                                            }}></div>
-                                            <div id="main2" style={{
-                                                width: '100%',
-                                                height: 240,
-                                                padding: '0 16px',
-                                                marginBottom: 0,
-                                                paddingTop: 10
-                                            }}></div>
-                                            <div style={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                height: '240px',
-                                                backgroundColor: '#fff'
-                                            }}>
-                                                Content of second tab3
-                                            </div>
-                                            <div style={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                height: '240px',
-                                                backgroundColor: '#fff'
-                                            }}>
-                                                Content of second tab4
-                                            </div>
-                                            <div style={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                height: '240px',
-                                                backgroundColor: '#fff'
-                                            }}>
-                                                Content of second tab5
-                                            </div>
-                                        </Tabs>
-                                    </StickyContainer>
+                                {/*<div className={style.box}>*/}
+                                {/*<StickyContainer>*/}
+                                {/*<Tabs tabs={dataTabs}*/}
+                                {/*initalPage={1}*/}
+                                {/*tabBarPosition="bottom" renderTabBar={renderTabBar} useOnPan={false}*/}
+                                {/*swipeable={false}*/}
+                                {/*>*/}
+                                {/*<div id="main" style={{*/}
+                                {/*width: '100%',*/}
+                                {/*height: 240,*/}
+                                {/*padding: '0 16px',*/}
+                                {/*marginBottom: 0,*/}
+                                {/*paddingTop: 10*/}
+                                {/*}}></div>*/}
+                                {/*<div id="main2" style={{*/}
+                                {/*width: '100%',*/}
+                                {/*height: 240,*/}
+                                {/*padding: '0 16px',*/}
+                                {/*marginBottom: 0,*/}
+                                {/*paddingTop: 10*/}
+                                {/*}}></div>*/}
+                                {/*<div style={{*/}
+                                {/*display: 'flex',*/}
+                                {/*alignItems: 'center',*/}
+                                {/*justifyContent: 'center',*/}
+                                {/*height: '240px',*/}
+                                {/*backgroundColor: '#fff'*/}
+                                {/*}}>*/}
+                                {/*Content of second tab3*/}
+                                {/*</div>*/}
+                                {/*<div style={{*/}
+                                {/*display: 'flex',*/}
+                                {/*alignItems: 'center',*/}
+                                {/*justifyContent: 'center',*/}
+                                {/*height: '240px',*/}
+                                {/*backgroundColor: '#fff'*/}
+                                {/*}}>*/}
+                                {/*Content of second tab4*/}
+                                {/*</div>*/}
+                                {/*<div style={{*/}
+                                {/*display: 'flex',*/}
+                                {/*alignItems: 'center',*/}
+                                {/*justifyContent: 'center',*/}
+                                {/*height: '240px',*/}
+                                {/*backgroundColor: '#fff'*/}
+                                {/*}}>*/}
+                                {/*Content of second tab5*/}
+                                {/*</div>*/}
+                                {/*</Tabs>*/}
+                                {/*</StickyContainer>*/}
+                                {/*</div>*/}
 
-
-                                </div>
-
-                                <div style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    height: '250px',
-                                    backgroundColor: '#fff'
-                                }}>
-                                    Content of second tab
-                                </div>
+                                {/*<div style={{*/}
+                                {/*display: 'flex',*/}
+                                {/*alignItems: 'center',*/}
+                                {/*justifyContent: 'center',*/}
+                                {/*height: '250px',*/}
+                                {/*backgroundColor: '#fff'*/}
+                                {/*}}>*/}
+                                {/*Content of second tab*/}
+                                {/*</div>*/}
                             </Tabs>
                         </StickyContainer>
+
+                        <div id="main" style={{
+                            width: '100%',
+                            height: 240,
+                            padding: '0 16px',
+                            marginBottom: 0,
+                            paddingTop: 10
+                        }}></div>
+
+
+                        <div className={style.box}>
+                            <StickyContainer>
+                                <Tabs tabs={dataTabs}
+                                      onChange={(tab, index) => {
+                                          let n,unit
+                                          if(index===0){
+                                              n = 1
+                                              unit='month'
+                                          }
+                                          if(index===1){
+                                              n = 3
+                                              unit='month'
+                                          }
+                                          if(index===2){
+                                              n = 6
+                                              unit='month'
+                                          }
+                                          if(index===3){
+                                              n = 1
+                                              unit='year'
+                                          }
+                                          if(index===4){
+                                              n = 3
+                                              unit='year'
+                                          }
+                                          this.setState({option:{...this.state.option,...{n,unit}}},()=>{
+                                              this.getChart()
+                                          })
+
+                                      }}
+                                      initalPage={1}
+                                      tabBarPosition="bottom" renderTabBar={renderTabBar} useOnPan={false}
+                                      swipeable={false}
+                                >
+                                    {/*<div id="main" style={{*/}
+                                    {/*width: '100%',*/}
+                                    {/*height: 240,*/}
+                                    {/*padding: '0 16px',*/}
+                                    {/*marginBottom: 0,*/}
+                                    {/*paddingTop: 10*/}
+                                    {/*}}></div>*/}
+                                    {/*<div id="main2" style={{*/}
+                                    {/*width: '100%',*/}
+                                    {/*height: 240,*/}
+                                    {/*padding: '0 16px',*/}
+                                    {/*marginBottom: 0,*/}
+                                    {/*paddingTop: 10*/}
+                                    {/*}}></div>*/}
+                                    {/*<div style={{*/}
+                                    {/*display: 'flex',*/}
+                                    {/*alignItems: 'center',*/}
+                                    {/*justifyContent: 'center',*/}
+                                    {/*height: '240px',*/}
+                                    {/*backgroundColor: '#fff'*/}
+                                    {/*}}>*/}
+                                    {/*Content of second tab3*/}
+                                    {/*</div>*/}
+                                    {/*<div style={{*/}
+                                    {/*display: 'flex',*/}
+                                    {/*alignItems: 'center',*/}
+                                    {/*justifyContent: 'center',*/}
+                                    {/*height: '240px',*/}
+                                    {/*backgroundColor: '#fff'*/}
+                                    {/*}}>*/}
+                                    {/*Content of second tab4*/}
+                                    {/*</div>*/}
+                                    {/*<div style={{*/}
+                                    {/*display: 'flex',*/}
+                                    {/*alignItems: 'center',*/}
+                                    {/*justifyContent: 'center',*/}
+                                    {/*height: '240px',*/}
+                                    {/*backgroundColor: '#fff'*/}
+                                    {/*}}>*/}
+                                    {/*Content of second tab5*/}
+                                    {/*</div>*/}
+                                </Tabs>
+                            </StickyContainer>
+                        </div>
 
                     </div>
                     <div className={style.content}>
