@@ -1,5 +1,5 @@
 :local(.wrap){
-    margin-bottom: 52px;
+
 }
 :local(.part){
     margin-bottom: 10px;
@@ -137,11 +137,11 @@
 }
 :local(.contentTitle1){
     float: left;
-    width: 27%;
+    width: 31%;
 }
 :local(.contentTitle2){
     float: left;
-    width: 44%;
+    width: 40%;
 }
 :local(.contentTitle3){
     float: left;
@@ -172,11 +172,11 @@
 }
 :local(.contentPart1){
     float: left;
-    width: 27%;
+    width: 33%;
 }
 :local(.contentPart2){
     float: left;
-    width: 44%;
+    width: 40%;
 }
 :local(.contentPart3){
     float: left;

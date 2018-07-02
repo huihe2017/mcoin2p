@@ -24,6 +24,8 @@ const data = [
     },
 ]
 
+let arr=[{aa:11,bb:22,cc:33},{aa:11,bb:22,cc:334},{aa:11,bb:22,cc:33},{aa:11,bb:22,cc:33},{aa:11,bb:22,cc:33},{aa:11,bb:22,cc:33}]
+
 class Home extends React.Component {
     speedAccound() {
         console.log('444', this.props.user)
@@ -31,7 +33,31 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
+
         this.props.getIndexData()
+        this.getarr(arr)
+    }
+
+    getarr(e){
+        let arr1=[];
+        let dataArr = new Array(e.length);
+        for (var key in e[1]) {
+            if (e[1].hasOwnProperty(key))
+                arr1.push(key);
+            }
+            console.log(arr1);
+        let obj1= new Object();
+        for(let i = 0; i < dataArr.length;i++){
+            dataArr[i] = new Array();
+            e.map(function (val,ind) {
+                let obj = new Object();
+                dataArr[i].push(val[arr1[i]])
+            })
+        }
+        arr1.map(function (v,i) {
+            obj1[arr1[i]]=dataArr[i]
+        })
+        console.log(obj1);
     }
 
     render() {

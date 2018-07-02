@@ -96,7 +96,7 @@ class Home extends React.Component {
                                             </div>
                                         </div>
                                         <div className={style.circleBox}>
-                                            {/*<div className={style.circle}>*/}
+                                            <div className={style.circle}>
                                                 {/*{*/}
                                                     {/*i.rateSeven?<Circle*/}
                                                         {/*size={80}*/}
@@ -107,9 +107,11 @@ class Home extends React.Component {
                                                         {/*...*/}
                                                     {/*</div>*/}
                                                 {/*}*/}
+                                                <div className={style.cir1}>
+                                                    开发申购
+                                                </div>
 
-
-                                            {/*</div>*/}
+                                            </div>
 
                                         </div>
                                     </div>

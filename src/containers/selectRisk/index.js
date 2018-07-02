@@ -27,7 +27,6 @@ class History extends React.Component {
 
         return (
             <div className={style.wrap}>
-                <Header/>
                 <div className={style.wrapContent}>
                     <span className={style.header}>
                         请选择适合您的理财方式
