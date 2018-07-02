@@ -9,36 +9,6 @@ import {hashHistory} from 'react-router'
 import {getAwardDetails} from '../../actions/asset'
 import ReactDOM from "react-dom";
 
-const data = [
-    {
-        number: '2018/01/01',
-        state:'+0.000003',
-    },
-    {
-        number: '2018/01/02',
-        state:'-0.000003',
-    },
-    {
-        number: '2018/01/03',
-        state:'-0.000003',
-    },{
-        number: '2018/01/04',
-        state:'+0.000003',
-    }
-];
-let index = data.length - 1;
-
-const NUM_ROWS = data.length;
-let pageIndex = 0;
-
-function genData(pIndex = 0) {
-    const dataArr = [];
-    for (let i = 0; i < NUM_ROWS; i++) {
-        dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-    }
-    console.log(dataArr);
-    return dataArr;
-}
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -55,66 +25,61 @@ class BaseUserMsg extends React.Component {
     }
 
 
-    componentWillMount(){
-        // if(!this.props.user.token){
-        //     this.props.setAuthFrom('/history',()=>{
-        //         hashHistory.push('/auth')
-        //     })
-        // }
-    }
     componentDidMount() {
-        // if(!this.props.user.token){
-        //     return false
-        // }
 
-        setTimeout(() => this.setState({
-            height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
-        }), 0);
+        if (this.lv) {
 
-        // handle https://github.com/ant-design/ant-design-mobile/issues/1588
-        this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
-            this.tsPageY = e.touches[0].pageY;
-        });
-        // In chrome61 `document.body.scrollTop` is invalid
-        const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
-        this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
-            this.tmPageY = e.touches[0].pageY;
-            if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
-                console.log('start pull to refresh');
-                this.domScroller.options.preventDefaultOnTouchMove = false;
-            } else {
-                this.domScroller.options.preventDefaultOnTouchMove = undefined;
-            }
-        });
+            setTimeout(() => this.setState({
+                height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
+            }), 0);
+
+            // handle https://github.com/ant-design/ant-design-mobile/issues/1588
+
+            this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
+                this.tsPageY = e.touches[0].pageY;
+            });
+            // In chrome61 `document.body.scrollTop` is invalid
+            const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
+            this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
+                this.tmPageY = e.touches[0].pageY;
+                if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
+                    console.log('start pull to refresh');
+                    this.domScroller.options.preventDefaultOnTouchMove = false;
+                } else {
+                    this.domScroller.options.preventDefaultOnTouchMove = undefined;
+                }
+            });
+        }
     }
 
     componentWillUnmount() {
-        this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
-        this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
+        if (this.lv) {
+            this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
+            this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
+        }
+
     }
 
     onScroll = (e) => {
         this.scrollerTop = e.scroller.getValues().top;
         this.domScroller = e;
     };
+
     genData(pIndex = 0) {
-        const NUM_ROWS = this.props.asset.awardDetails && this.props.asset.awardDetails.list.length;
-        const dataArr = [];
-        for (let i = 0; i < NUM_ROWS; i++) {
-            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-        }
-        console.log(dataArr);
-        return dataArr;
+        return this.props.asset.awardDetails.list;
     }
+
     onRefresh = () => {
+
         console.log('onRefresh');
         if (!this.manuallyRefresh) {
-            this.setState({ refreshing: true });
+            this.setState({refreshing: true});
         } else {
             this.manuallyRefresh = false;
         }
 
         // simulate initial Ajax
+
         this.props.getAwardDetails({page: 1,currency:'BTC'}, () => {
             this.rData = this.genData();
             this.setState({
@@ -129,13 +94,15 @@ class BaseUserMsg extends React.Component {
     };
 
     onEndReached = (event) => {
+
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false
         if (this.state.isLoading && !this.state.hasMore) {
+            console.log(33)
             return;
         }
         console.log('reach end', event);
-        this.setState({ isLoading: true });
+        this.setState({isLoading: true});
         this.props.getAwardDetails({page: 1,currency:'BTC'}, () => {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.genData()),
@@ -150,7 +117,7 @@ class BaseUserMsg extends React.Component {
     scrollingComplete = () => {
         // In general, this.scrollerTop should be 0 at the end, but it may be -0.000051 in chrome61.
         if (this.scrollerTop >= -1) {
-            this.setState({ showFinishTxt: false });
+            this.setState({showFinishTxt: false});
         }
     }
 
@@ -167,8 +134,6 @@ class BaseUserMsg extends React.Component {
 
 
     render() {
-        let index = this.props.asset.awardDetails&&this.props.asset.awardDetails.list.length - 1;
-
         const separator = (sectionID, rowID) => (
             <div
                 key={`${sectionID}-${rowID}`}
@@ -181,10 +146,8 @@ class BaseUserMsg extends React.Component {
             />
         );
         const row = (rowData, sectionID, rowID) => {
-            if (index < 0) {
-                index = this.props.asset.awardDetails.list.length - 1;
-            }
-            const obj = this.props.asset.awardDetails.list[index--];
+            const obj = rowData;
+
             return (
                 <div className={style.item} key={rowID}>
                     <div className={style.icontent}>
@@ -219,7 +182,7 @@ class BaseUserMsg extends React.Component {
                                         BTC
                                     </span>
                                     <span className={style.userTime}>
-                                        0.00004561234
+                                        {this.props.asset.awardDetails&&this.props.asset.awardDetails.totalAmount}
                                     </span>
                                 </div>
                             </a>
@@ -227,12 +190,22 @@ class BaseUserMsg extends React.Component {
                         </div>
                     </div>
                     <div className={style.content}>
+
+                        {this.props.asset.awardDetails && this.props.asset.awardDetails.list.length === 0 ? <div>
+                                <img className={style.showImg} src={require('../outAddressList/images/zero.png')}
+                                     alt=""/>
+                                <span className={style.showTip}>
+                                    暂无数据
+                                </span>
+                            </div> :
+
+
                         <ListView
                             ref={el => this.lv = el}
                             dataSource={this.state.dataSource}
 
                             renderFooter={() => (<div style={{ padding: '0.3rem', textAlign: 'center' }}>
-                                {this.state.isLoading ? '加载中...' : '加载完成'}
+                                {this.state.isLoading ? '' : ''}
                             </div>)}
                             renderRow={row}
                             renderSeparator={separator}
@@ -253,7 +226,7 @@ class BaseUserMsg extends React.Component {
                             scrollEventThrottle={20}
                             onEndReached={this.onEndReached}
                             onEndReachedThreshold={10}
-                        />
+                        />}
                     </div>
 
                 </div>

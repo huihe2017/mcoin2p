@@ -1,39 +1,16 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,RefreshControl,NavBar, Icon} from 'antd-mobile';
+import {List, InputItem, Toast, RefreshControl, NavBar, Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {getWalletTradeRecord} from '../../actions/wallet'
 import {bindActionCreators} from 'redux'
-import {hashHistory,Link} from 'react-router'
+import {hashHistory, Link} from 'react-router'
 import {logout} from '../../actions/user'
 import ReactDOM from "react-dom";
 import {ListView} from "antd-mobile/lib/index";
 
-const data = [
-    {
-        num:1,
-        out: false,
-        number: '14.2123411231',
-        do: '操作完成 ',
-        time: '2018/05/23  23:52',
-        address: '1LezCq1NAfdsfbsdkjfksdsasdddddddddsddddddddddsadfsafsadasdasdas',
-    },
-    {
-        num:2,
-        out: true,
-        number: '14.2123411231',
-        do: '操作完成 ',
-        time: '2018/05/23  23:52',
-        time1: '2018/05/23  23:52',
-        commission:0.02,
-        address: '1LezCq1NAfdsfbsdkjfksdsasdddddddddsddddddddddsadfsafsadasdasdas',
-
-    },
-];
-
-let pageIndex = 0;
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -41,53 +18,48 @@ class BaseUserMsg extends React.Component {
         const dataSource = new ListView.DataSource({
             rowHasChanged: (row1, row2) => row1 !== row2,
         });
+
         this.state = {
             dataSource,
             refreshing: true,
             height: document.documentElement.clientHeight,
-        }
-
+        };
     }
 
-    componentDidMount() {
-        // if(!this.props.user.token){
-        //     return false
-        // }
-        // this.props.getBaseUserMsg({
-        //
-        // }, (errorText) => {
-        //     Toast.hide()
-        //     if (errorText) {
-        //         Toast.fail(errorText, 3, null, false)
-        //     } else {
-        //         //hashHistory.push('/')
-        //     }
-        // })
-        // Set the appropriate height
-        setTimeout(() => this.setState({
-            height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
-        }), 0);
 
-        // handle https://github.com/ant-design/ant-design-mobile/issues/1588
-        this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
-            this.tsPageY = e.touches[0].pageY;
-        });
-        // In chrome61 `document.body.scrollTop` is invalid
-        const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
-        this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
-            this.tmPageY = e.touches[0].pageY;
-            if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
-                console.log('start pull to refresh');
-                this.domScroller.options.preventDefaultOnTouchMove = false;
-            } else {
-                this.domScroller.options.preventDefaultOnTouchMove = undefined;
-            }
-        });
+    componentDidMount() {
+
+        if (this.lv) {
+
+            setTimeout(() => this.setState({
+                height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
+            }), 0);
+
+            // handle https://github.com/ant-design/ant-design-mobile/issues/1588
+
+            this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
+                this.tsPageY = e.touches[0].pageY;
+            });
+            // In chrome61 `document.body.scrollTop` is invalid
+            const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
+            this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
+                this.tmPageY = e.touches[0].pageY;
+                if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
+                    console.log('start pull to refresh');
+                    this.domScroller.options.preventDefaultOnTouchMove = false;
+                } else {
+                    this.domScroller.options.preventDefaultOnTouchMove = undefined;
+                }
+            });
+        }
     }
 
     componentWillUnmount() {
-        this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
-        this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
+        if (this.lv) {
+            this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
+            this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
+        }
+
     }
 
     onScroll = (e) => {
@@ -95,16 +67,22 @@ class BaseUserMsg extends React.Component {
         this.domScroller = e;
     };
 
+    genData(pIndex = 0) {
+        return this.props.wallet.current.list;
+    }
+
     onRefresh = () => {
+
         console.log('onRefresh');
         if (!this.manuallyRefresh) {
-            this.setState({ refreshing: true });
+            this.setState({refreshing: true});
         } else {
             this.manuallyRefresh = false;
         }
 
         // simulate initial Ajax
-        setTimeout(() => {
+
+        this.props.getWalletTradeRecord({currency: 'BTC', page: 1}, () => {
             this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
@@ -114,30 +92,34 @@ class BaseUserMsg extends React.Component {
             if (this.domScroller) {
                 this.domScroller.scroller.options.animationDuration = 500;
             }
-        }, 600);
+        })
     };
 
     onEndReached = (event) => {
+
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false
         if (this.state.isLoading && !this.state.hasMore) {
+            console.log(33)
             return;
         }
         console.log('reach end', event);
-        this.setState({ isLoading: true });
-        setTimeout(() => {
-            this.rData = [...this.rData,];
+        this.setState({isLoading: true});
+        this.props.getWalletTradeRecord({currency: 'BTC', page: 1}, () => {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
+                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
             });
-        }, 1000);
+            if (this.domScroller) {
+                this.domScroller.scroller.options.animationDuration = 500;
+            }
+        })
     };
 
     scrollingComplete = () => {
         // In general, this.scrollerTop should be 0 at the end, but it may be -0.000051 in chrome61.
         if (this.scrollerTop >= -1) {
-            this.setState({ showFinishTxt: false });
+            this.setState({showFinishTxt: false});
         }
     }
 
@@ -152,22 +134,9 @@ class BaseUserMsg extends React.Component {
         ];
     }
 
-    genData(pIndex = 0) {
-        const NUM_ROWS = this.props.wallet.current.list.length;
-        const dataArr = [];
-        for (let i = 0; i < NUM_ROWS; i++) {
-            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-        }
-        console.log(dataArr);
-        return dataArr;
-    }
-
-    componentDidMount(){
-        this.props.getWalletTradeRecord({currency:'BTC'})
-    }
-
 
     render() {
+
         const separator = (sectionID, rowID) => (
             <div
                 key={`${sectionID}-${rowID}`}
@@ -178,53 +147,57 @@ class BaseUserMsg extends React.Component {
             />
         );
         const row = (rowData, sectionID, rowID) => {
-            let index = this.props.wallet.current.list.length - 1;
-            if (index < 0) {
-                index = this.props.wallet.current.list.length - 1;
-            }
-            const obj = this.props.wallet.current.list[index--];
+            const obj = rowData;
+
             return (
                 <div className={style.item} key={rowID}>
-                   <div className={style.itemH}>
+                    <div className={style.itemH}>
                         <div className={style.itemHead}>
                             <div className={style.itemCoin}>
-                                {obj.type==='转出'?<div style={{color:'#5262ff'}} className={style.itemT}>
-                                <img  className={style.itemImg} src={require('./images/in.png')} alt=""/>转入
-                                </div>:<div  className={style.itemT}>
-                                <img className={style.itemImg} src={require('./images/out.png')} alt=""/>转出
-                        </div>}
-                {obj.minerFee?
-                                <span className={style.commission}>
+                                {obj.type === '转出' ? <div style={{color: '#5262ff'}} className={style.itemT}>
+                                    <img className={style.itemImg} src={require('./images/in.png')} alt=""/>转入
+                                </div> : <div className={style.itemT}>
+                                    <img className={style.itemImg} src={require('./images/out.png')} alt=""/>转出
+                                </div>}
+                                {obj.minerFee ?
+                                    <span className={style.commission}>
                 手续费：{obj.minerFee}BTC
-                            </span>:''
-                }
+                            </span> : ''
+                                }
                             </div>
                         </div>
-                    <div className={style.itemDataBox}>
-                        <div className={style.itemLeft}>
-                            数量 {obj.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>-{obj.amount}</span>:<span style={{color: '#3B3D40',marginLeft:10}}>+{obj.amount}</span>}
-                        </div>
-                        <div className={style.itemRight}>
-                            <span className={style.itemLeftC}>状态</span> {obj.out?<span className={style.itemRightC1}>{obj.status}</span>:<span className={style.itemRightC1}>{obj.status}</span>}
-                        </div>
-                        <div className={style.itemLeft}>
-                            {obj.type==='转出'?'发起':''}{obj.type==='转出'?<span style={{color: '#3B3D40',marginLeft:10}}>{obj.beginTime}</span>:<span style={{color: '#3B3D40',marginLeft:10}}></span>}
-                        </div>
-                        <div className={style.itemRight}>
-                            <span className={style.itemLeftC}>完成</span> <span className={style.itemRightC}>{obj.completeTime}</span>
+                        <div className={style.itemDataBox}>
+                            <div className={style.itemLeft}>
+                                数量 {obj.type === '转出' ?
+                                <span style={{color: '#3B3D40', marginLeft: 10}}>-{obj.amount}</span> :
+                                <span style={{color: '#3B3D40', marginLeft: 10}}>+{obj.amount}</span>}
+                            </div>
+                            <div className={style.itemRight}>
+                                <span className={style.itemLeftC}>状态</span> {obj.out ?
+                                <span className={style.itemRightC1}>{obj.status}</span> :
+                                <span className={style.itemRightC1}>{obj.status}</span>}
+                            </div>
+                            <div className={style.itemLeft}>
+                                {obj.type === '转出' ? '发起' : ''}{obj.type === '转出' ?
+                                <span style={{color: '#3B3D40', marginLeft: 10}}>{obj.beginTime}</span> :
+                                <span style={{color: '#3B3D40', marginLeft: 10}}></span>}
+                            </div>
+                            <div className={style.itemRight}>
+                                <span className={style.itemLeftC}>完成</span> <span
+                                className={style.itemRightC}>{obj.completeTime}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className={style.itemAdressBox}>
-                    <div className={style.itemAdressT}>
-                        地址
+                    <div className={style.itemAdressBox}>
+                        <div className={style.itemAdressT}>
+                            地址
+                        </div>
+                        <div className={style.itemAdress}>
+                            {obj.fromAddress}
+                        </div>
                     </div>
-                    <div className={style.itemAdress}>
-                        {obj.fromAddress}
-                    </div>
-                </div>
 
-            </div>
+                </div>
             );
         };
         return (
@@ -242,15 +215,16 @@ class BaseUserMsg extends React.Component {
                         <div className={style.contentContent}>
                             <div className={style.contentPart}>
                                 <span className={style.contentPart1}>
-                                    <img src={require('./images/BTC.png')} className={style.contentImg} alt=""/>BTC
+                                    <img src={require('./images/BTC.png')} className={style.contentImg}
+                                         alt=""/>{this.props.wallet.current && this.props.wallet.current.balance.currency}
                                 </span>
-                                    <span className={style.contentPart2}>
-                                        {data.amount}
+                                <span className={style.contentPart2}>
+                                        {this.props.wallet.current && this.props.wallet.current.balance.amount}
                                 </span>
-                                    <span className={style.contentPart3}>
-                                    {data.realAmount}CNY
+                                <span className={style.contentPart3}>
+                                    {this.props.wallet.current && this.props.wallet.current.balance.realAmount}CNY
                                         <span className={style.contentPartTip}>
-                                           市场价：￥{data.marketPrice}
+                                           市场价：￥{this.props.wallet.current && this.props.wallet.current.balance.marketPrice}
                                         </span>
                                 </span>
                             </div>
@@ -263,43 +237,53 @@ class BaseUserMsg extends React.Component {
                         </div>
 
                         <div>
-                            <ListView
-                                ref={el => this.lv = el}
-                                dataSource={this.state.dataSource}
-                                renderFooter={() => (<div style={{ padding: '0.3rem', textAlign: 'center' }}>
-                                    {this.state.isLoading ? '加载中...' : ''}
-                                </div>)}
-                                renderRow={row}
-                                renderSeparator={separator}
-                                initialListSize={5}
-                                pageSize={5}
-                                style={{
-                                    height: this.state.height,
-                                    margin: '0.05rem 0',
-                                }}
-                                scrollerOptions={{ scrollbars: true, scrollingComplete: this.scrollingComplete }}
-                                refreshControl={<RefreshControl
-                                    refreshing={this.state.refreshing}
-                                    onRefresh={this.onRefresh}
-                                    icon={this.renderCustomIcon()}
+
+                            {this.props.wallet.current && this.props.wallet.current.list.length === 0 ? <div>
+                                    <img className={style.showImg} src={require('../outAddressList/images/zero.png')}
+                                         alt=""/>
+                                    <span className={style.showTip}>
+                                    暂无数据
+                                </span>
+                                </div> :
+
+
+                                <ListView
+                                    ref={el => this.lv = el}
+                                    dataSource={this.state.dataSource}
+                                    renderFooter={() => (<div style={{padding: '0.3rem', textAlign: 'center'}}>
+                                        {this.state.isLoading ? '' : ''}
+                                    </div>)}
+                                    renderRow={row}
+                                    renderSeparator={separator}
+                                    initialListSize={5}
+                                    pageSize={5}
+                                    style={{
+                                        height: this.state.height,
+                                        margin: '0.05rem 0',
+                                    }}
+                                    scrollerOptions={{scrollbars: true, scrollingComplete: this.scrollingComplete}}
+                                    refreshControl={<RefreshControl
+                                        refreshing={this.state.refreshing}
+                                        onRefresh={this.onRefresh}
+                                        icon={this.renderCustomIcon()}
+                                    />}
+                                    onScroll={this.onScroll}
+                                    scrollRenderAheadDistance={200}
+                                    scrollEventThrottle={20}
+                                    onEndReached={this.onEndReached}
+                                    onEndReachedThreshold={10}
                                 />}
-                                onScroll={this.onScroll}
-                                scrollRenderAheadDistance={200}
-                                scrollEventThrottle={20}
-                                onEndReached={this.onEndReached}
-                                onEndReachedThreshold={10}
-                            />
                         </div>
                     </div>
                     <div className={style.footer}>
-                        <div className={style.footerL} onClick={()=>hashHistory.push('/forwardBTC/null')}>
+                        <div className={style.footerL} onClick={() => hashHistory.push('/forwardBTC/null')}>
 
-                            <img  className={style.itemImg1} src={require('./images/ino.png')} alt=""/>转出
+                            <img className={style.itemImg1} src={require('./images/ino.png')} alt=""/>转出
 
                         </div>
-                        <div className={style.footerR} onClick={()=>hashHistory.push('/outQcode')}>
+                        <div className={style.footerR} onClick={() => hashHistory.push('/outQcode')}>
 
-                            <img  className={style.itemImg1} src={require('./images/outi.png')} alt=""/>转入
+                            <img className={style.itemImg1} src={require('./images/outi.png')} alt=""/>转入
 
                         </div>
 
@@ -315,13 +299,12 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        wallet:state.wallet
+        wallet: state.wallet
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        logout: bindActionCreators(logout, dispatch),
         getWalletTradeRecord: bindActionCreators(getWalletTradeRecord, dispatch)
     }
 }

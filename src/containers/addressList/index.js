@@ -13,19 +13,7 @@ import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 
 
-const data = [
-    {
-        id: 2,
-        currency: 'BTC',
-        tag: '大大大飞机',
-        address: '1LezCq1NAfdsfbsdkjfksdsasdddddddddsddddddddddsadfsafsadasdasdas',
-    }, {
-        id: 2,
-        currency: 'BTC',
-        tag: '大大大飞机',
-        address: '1LezCq1NAfdsfbsdkjfksdsasdddddddddsddddddddddsadfsafsadasdasdas',
-    }
-];
+
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -42,15 +30,7 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount() {
-        // if(!this.props.user.token){
-        //     return false
-        // }
 
-        this.props.getCommonAddress({
-            page: 1
-        }, () => {
-
-        })
         // Set the appropriate height
         if (!this.lv) {
             return false
@@ -96,7 +76,7 @@ class BaseUserMsg extends React.Component {
         }
 
         // simulate initial Ajax
-        setTimeout(() => {
+        this.props.getCommonAddress({ page: 1}, () => {
             this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
@@ -106,7 +86,7 @@ class BaseUserMsg extends React.Component {
             if (this.domScroller) {
                 this.domScroller.scroller.options.animationDuration = 500;
             }
-        }, 600);
+        })
     };
 
     onEndReached = (event) => {
@@ -117,13 +97,15 @@ class BaseUserMsg extends React.Component {
         }
         console.log('reach end', event);
         this.setState({isLoading: true});
-        setTimeout(() => {
-            this.rData = [...this.rData,];
+        this.props.getCommonAddress({ page: 1}, () => {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
+                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
             });
-        }, 1000);
+            if (this.domScroller) {
+                this.domScroller.scroller.options.animationDuration = 500;
+            }
+        })
     };
 
     scrollingComplete = () => {
@@ -151,76 +133,15 @@ class BaseUserMsg extends React.Component {
     }
 
     genData(pIndex = 0) {
-
-        const NUM_ROWS = this.props.wallet.commonAddress.length
-        // const NUM_ROWS = data.length;
-        const dataArr = [];
-        for (let i = 0; i < NUM_ROWS; i++) {
-            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-        }
-        console.log(dataArr);
-        return dataArr;
+        return this.props.wallet.commonAddress;
     }
 
-    show() {
-        if (data.length == 0) {
-            return (
-                <div>
-                    <img className={style.showImg} src={require('./images/zero.png')} alt=""/>
-                    <span className={style.showTip}>
-                        暂无数据
-                    </span>
-                </div>
-            )
-        } else {
-            return (
-                data.map(i => (
 
-                    <div className={style.item} key={i.num}>
-
-                        <div className={style.itemContent}>
-                            <div className={style.itemCoin}>
-                                <img className={style.itemImg} src={require('../activityBalance/images/BTC.png')}
-                                     alt=""/>{i.title}
-                            </div>
-                            <div className={style.itemName}>
-                                {i.name}
-                            </div>
-                            <div className={style.itemDo}>
-                                <a href="javascript:void (0)">
-                                    <img className={style.iconImg} src={require('./images/delete.png')} alt=""/>删除
-                                </a>
-                                <Link to={'/addAddress/' + i.id}>
-                                    <img className={style.iconImg} src={require('./images/editor.png')} alt=""/>修改
-                                </Link>
-
-                            </div>
-
-                        </div>
-                        <div className={style.itemAdressBox}>
-                            <div className={style.itemAdressT}>
-                                地址
-                            </div>
-                            <div className={style.itemAdress}>
-                                {i.address}
-                            </div>
-                        </div>
-                    </div>
-                ))
-            )
-        }
-
-
-    }
 
     renderList = () => {
         const row = (rowData, sectionID, rowID) => {
-            let data = this.props.wallet.commonAddress
-            let index = data.length - 1;
-            if (index < 0) {
-                index = data.length - 1;
-            }
-            const obj = data[index--];
+
+            const obj = rowData;
             return (
 
 
@@ -273,7 +194,7 @@ class BaseUserMsg extends React.Component {
                 dataSource={this.state.dataSource}
 
                 renderFooter={() => (<div style={{padding: '0.3rem', textAlign: 'center'}}>
-                    {this.state.isLoading ? '加载中...' : ''}
+                    {this.state.isLoading ? '' : ''}
                 </div>)}
                 renderRow={row}
                 initialListSize={5}

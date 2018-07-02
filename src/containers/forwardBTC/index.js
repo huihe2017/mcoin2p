@@ -34,7 +34,10 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
-        this.props.getMinerFee()
+
+        if(this.props.wallet.current){
+            this.props.getMinerFee({currency:this.props.wallet.current.balance.currency})
+        }
         if(this.props.params.address!=='null'){
             this.setState({classNumber:this.props.params.address})
         }
@@ -82,12 +85,13 @@ class BaseUserMsg extends React.Component {
 
 
     render() {
-        if (!this.props.wallet.minerFeeList) {
-            return null
-        }
         if(!this.props.wallet.current){
             hashHistory.push('/walletIndex')
         }
+        if (!this.props.wallet.minerFeeList) {
+            return null
+        }
+
         return (
 
             <div className={style.wrap}>
@@ -122,7 +126,7 @@ class BaseUserMsg extends React.Component {
                                     填写数额
                                 </span>
                                 <span className={style.itemBoxTT1}>
-                                    可转 <span style={{color: '#5262FF'}}>{this.props.wallet.current.balance.amount} BTC</span>
+                                    可转 <span style={{color: '#5262FF'}}>{this.props.wallet.current.balance.amount} {this.props.wallet.current.balance.currency}</span>
                                 </span>
                             </div>
 

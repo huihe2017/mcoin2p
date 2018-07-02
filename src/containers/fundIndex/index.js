@@ -9,41 +9,6 @@ import {hashHistory, Link} from 'react-router'
 import {getMyFundList} from '../../actions/fund'
 import ReactDOM from "react-dom";
 
-const data = [
-    {
-        title: '基金A',
-        time: 'Meet hotel',
-        number: '1860684651644',
-        state:'入金失败',
-        way:'网银支付'
-    },
-    {
-        title: '基金B',
-        time: 'Meet hotel',
-        number: '1.000000',
-        state:'+0.000003',
-        way:'4.23%'
-    },
-    {
-        title: '基金C',
-        time: 'Meet hotel',
-        number: '1.000000',
-        state:'+0.000003',
-        way:'4.23%'
-    },{
-        title: '基金D',
-        time: 'Meet hotel',
-        number: '1.000000',
-        state:'+0.000003',
-        way:'4.23%'
-    }
-];
-let index = data.length - 1;
-
-const NUM_ROWS = data.length;
-let pageIndex = 0;
-
-
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -60,49 +25,39 @@ class BaseUserMsg extends React.Component {
     }
 
 
-    componentWillMount(){
-        // if(!this.props.user.token){
-        //     this.props.setAuthFrom('/history',()=>{
-        //         hashHistory.push('/auth')
-        //     })
-        // }
-    }
-    genData(pIndex = 0) {
-        const NUM_ROWS = this.props.fund.myFund && this.props.fund.myFund.userProducts.length;
-        const dataArr = [];
-        for (let i = 0; i < NUM_ROWS; i++) {
-            dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-        }
-        console.log(dataArr);
-        return dataArr;
-    }
     componentDidMount() {
 
+        if (this.lv) {
 
-        setTimeout(() => this.setState({
-            height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
-        }), 0);
+            setTimeout(() => this.setState({
+                height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
+            }), 0);
 
-        // handle https://github.com/ant-design/ant-design-mobile/issues/1588
-        this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
-            this.tsPageY = e.touches[0].pageY;
-        });
-        // In chrome61 `document.body.scrollTop` is invalid
-        const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
-        this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
-            this.tmPageY = e.touches[0].pageY;
-            if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
-                console.log('start pull to refresh');
-                this.domScroller.options.preventDefaultOnTouchMove = false;
-            } else {
-                this.domScroller.options.preventDefaultOnTouchMove = undefined;
-            }
-        });
+            // handle https://github.com/ant-design/ant-design-mobile/issues/1588
+
+            this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
+                this.tsPageY = e.touches[0].pageY;
+            });
+            // In chrome61 `document.body.scrollTop` is invalid
+            const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
+            this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
+                this.tmPageY = e.touches[0].pageY;
+                if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
+                    console.log('start pull to refresh');
+                    this.domScroller.options.preventDefaultOnTouchMove = false;
+                } else {
+                    this.domScroller.options.preventDefaultOnTouchMove = undefined;
+                }
+            });
+        }
     }
 
     componentWillUnmount() {
-        this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
-        this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
+        if (this.lv) {
+            this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
+            this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
+        }
+
     }
 
     onScroll = (e) => {
@@ -110,16 +65,22 @@ class BaseUserMsg extends React.Component {
         this.domScroller = e;
     };
 
+    genData(pIndex = 0) {
+        return this.props.fund.myFund.userProducts;
+    }
+
     onRefresh = () => {
+
         console.log('onRefresh');
         if (!this.manuallyRefresh) {
-            this.setState({ refreshing: true });
+            this.setState({refreshing: true});
         } else {
             this.manuallyRefresh = false;
         }
 
         // simulate initial Ajax
-        this.props.getMyFundList({page: 1}, () => {
+
+        this.props.getMyFundList({page: 1,uid:this.props.user.userInfo.uid,currency:'BTC'}, () => {
             this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
@@ -133,13 +94,16 @@ class BaseUserMsg extends React.Component {
     };
 
     onEndReached = (event) => {
+
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false
         if (this.state.isLoading && !this.state.hasMore) {
+            console.log(33)
             return;
         }
         console.log('reach end', event);
-        this.props.getMyFundList({page: 1}, () => {
+        this.setState({isLoading: true});
+        this.props.getMyFundList({page: 1,uid:this.props.user.userInfo.uid,currency:'BTC'}, () => {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
@@ -153,7 +117,7 @@ class BaseUserMsg extends React.Component {
     scrollingComplete = () => {
         // In general, this.scrollerTop should be 0 at the end, but it may be -0.000051 in chrome61.
         if (this.scrollerTop >= -1) {
-            this.setState({ showFinishTxt: false });
+            this.setState({showFinishTxt: false});
         }
     }
 
@@ -184,10 +148,8 @@ class BaseUserMsg extends React.Component {
             />
         );
         const row = (rowData, sectionID, rowID) => {
-            if (index < 0) {
-                index = this.props.fund.myFund.userProducts.length - 1;
-            }
-            const obj = this.props.fund.myFund.userProducts[index--];
+
+            const obj = rowData;
             return (
                 <div className={style.item} key={rowID} onClick={()=>hashHistory.push('/fundName/'+obj.productId)}>
                     <span className={style.title} >
@@ -262,23 +224,23 @@ class BaseUserMsg extends React.Component {
                         <div className={style.line}>
                         </div>
                         <a className={style.partA} href="javascript:void(0)" onClick={()=>hashHistory.push('/dealRecord')}>
-                                <img className={style.partImg} src={require('./images/record.png')} alt=""/>
+                            <img className={style.partImg} src={require('./images/record.png')} alt=""/>
                             交易记录
                         </a>
                     </div>
-                    <div hidden={data.length>0}>
+                    <div hidden={this.props.fund.myFund&&this.props.fund.myFund.userProducts.length>0}>
                         <img className={style.z} src={require('../addressList/images/zero.png')} alt=""/>
                         <span className={style.s} >
-                            快去 <a href="javascript:void (0)">基金市场</a> 挑一下吧
+                            快去 <Link to={'/selectedFunds'}>基金市场</Link> 挑一下吧
                         </span>
                     </div>
-                    <div hidden={!data.length>0}>
+                    <div hidden={!(this.props.fund.myFund&&this.props.fund.myFund.userProducts.length)>0}>
                         <ListView
                             ref={el => this.lv = el}
                             dataSource={this.state.dataSource}
 
                             renderFooter={() => (<div style={{ padding: '0.3rem', textAlign: 'center' }}>
-                                {this.state.isLoading ? '加载中...' : '加载完成'}
+                                {this.state.isLoading ? '' : ''}
                             </div>)}
                             renderRow={row}
                             renderSeparator={separator}
@@ -311,7 +273,8 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        fund:state.fund
+        fund:state.fund,
+        user:state.user
     }
 }
 
