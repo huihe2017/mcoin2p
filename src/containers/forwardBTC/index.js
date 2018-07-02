@@ -26,7 +26,7 @@ class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sValue: ['0.002'],
+            sValue: [],
             modal1: false,
             can:false
         }
