@@ -32,7 +32,7 @@ debugger
     return [json]
 }
 
-function setUrlK(ojson) {
+export function setUrlK(ojson) {
     var s = '', name, key;
     for (var p in ojson) {
         if (!ojson[p] && ojson[p] !== 0) {
