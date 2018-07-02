@@ -217,7 +217,7 @@ class BaseUserMsg extends React.Component {
                                         <span className={style.bannerAL}>
                                             {o.orderDesc}
                                         </span>
-                                                    <span className={style.bannerAR} onClick={() => this.setState({
+                                                    <span className={style.bannerAR} style={o.status===0?{color:'#989898',cursor: 'not-allowed'}:{}} onClick={() => o.status===0?'':this.setState({
                                                         modal2: true,
                                                         current: {orderId: o.orderId, autoRenew: o.autoRenew}
                                                     })}>
