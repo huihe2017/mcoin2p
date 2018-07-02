@@ -1,9 +1,10 @@
 import React from 'react'
 import style from "./index.css"
-import {InputItem,Toast} from 'antd-mobile';
+import {InputItem, Toast} from 'antd-mobile';
 import {connect} from 'react-redux'
 import axios from '../../common/axiosConf'
 import config from '../../config'
+import {setUrlK} from '../../common/util'
 
 class Countdown extends React.Component {
     constructor(props) {
@@ -21,10 +22,14 @@ class Countdown extends React.Component {
             }
 
             let _this = this
-            axios.post(config.noauth_url+'reg/sendmobilecode', {
-                // business: this.props.business,
-                checkCode: this.props.picCode,
-                mobile: this.props.phone
+            axios({
+                method: 'post',
+                url: config.noauth_url + 'reg/sendmobilecode',
+                data: setUrlK({
+                    // business: this.props.business,
+                    checkCode: this.props.picCode,
+                    mobile: this.props.phone
+                })
             }).then(function (response) {
                 console.log(response);
                 if (response.data.code === 0) {
@@ -41,7 +46,7 @@ class Countdown extends React.Component {
                         })
 
                     }, 1000)
-                }else{
+                } else {
                     Toast.fail(response.data.msg, 3, null, false)
                     _this.props.failCallback()
                 }
