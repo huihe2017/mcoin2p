@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {List, InputItem, Toast, Icon, NavBar, RefreshControl, Tabs, Carousel, Modal, Button} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
+import {toChartData} from '../../common/util'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
 import {getAssetDetail} from '../../actions/asset'
@@ -17,59 +18,7 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 
 
-let option = {
-    title: {
-        text: '',
-        subtext: `2018/03/24                   近七日年化：${'+4.7720%'}`
-    },
-    tooltip: {
-        trigger: 'axis'
-    },
-    legend: {
-        data: ['最高气温', '最低气温']
-    },
-    toolbox: {
-        show: true,
-        feature: {
-            dataZoom: {
-                yAxisIndex: 'none'
-            },
-            dataView: {readOnly: false},
-            magicType: {type: ['line', 'bar']},
-            restore: {},
-            saveAsImage: {}
-        }
-    },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['05-01', '05-05', '05-10', '05-15', '05-20']
-    },
-    yAxis: {
-        type: 'value',
-        boundaryGap: false,
 
-    },
-    series: [
-        {
-            name: '买入价格',
-            type: 'line',
-            data: [11, 13, 13.5, 14, 14.5],
-            markPoint: {
-                data: [
-                    {type: 'max', name: '最大值'},
-                    {type: 'min', name: '最小值'}
-                ]
-            },
-            markLine: {
-                data: [
-                    {type: 'average', name: '平均值'}
-                ]
-            }
-        },
-
-    ]
-}
 
 
 class BaseUserMsg extends React.Component {
@@ -78,6 +27,12 @@ class BaseUserMsg extends React.Component {
         this.state = {
             data: ['1', '2', '3'],
             modal2: false,
+            option:{
+                productId:this.props.params.id,
+                unit:'month',
+                n:1,
+                type:1,
+            }
         };
     }
 
@@ -102,25 +57,86 @@ class BaseUserMsg extends React.Component {
     }
 
     renderChat = () => {
+
+        let option = {
+            title: {
+                text: '',
+                subtext: `2018/03/24                   近七日年化：${'+4.7720%'}`
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['最高气温', '最低气温']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {readOnly: false},
+                    magicType: {type: ['line', 'bar']},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data:toChartData(this.props.fund.detail.chart).profitDate
+                // data: ['05-01', '05-05', '05-10', '09-15', '05-20']
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: false,
+
+            },
+            series: [
+                {
+                    name: '买入价格',
+                    type: 'line',
+                    // data: [11, 13, 13.5, 14, 140.5],
+                    data:toChartData(this.props.fund.detail.chart).rateSeven,
+                    markPoint: {
+                        data: [
+                            {type: 'max', name: '最大值'},
+                            {type: 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
+                },
+
+            ]
+        }
+
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
         // 绘制图表
         myChart.setOption(option);
     }
 
-    componentDidMount() {
-
-
+    getChart = ()=>{
         this.props.getFundDetail({
             productId: this.props.params.id
         }, () => {
-            this.props.getFundChart({}, () => {
+            this.props.getFundChart({
+                ...this.state.option
+            }, () => {
 
                 this.renderChat()
             })
 
         })
+    }
 
+    componentDidMount() {
+
+        this.getChart()
     }
 
 
@@ -128,10 +144,10 @@ class BaseUserMsg extends React.Component {
 
         const dataTabs = [
             {title: '近1月'},
-            {title: '近2月'},
             {title: '近3月'},
-            {title: '近4月'},
-            {title: '近5月'},
+            {title: '近6月'},
+            {title: '1年'},
+            {title: '3年'},
 
         ];
         const tabs = [

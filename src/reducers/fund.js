@@ -22,6 +22,12 @@ export default function fund(state = initialState, action = {}) {
         case 'GET_FUND_CHART':
             state.detail.chart = action.data.data.list
             return Object.assign({}, state, {})
+        case 'SET_AUTO_RENEW':
+            let filterData = state.myFundDetails.activeUserOrderInfoList.filter((item) => action.data.orderId == item.orderId)
+            console.log(44444444444,filterData);
+            filterData.autoRenew = action.data.autoRenew
+            console.log(55555555555555,state);
+            return Object.assign({}, state, {})
         default:
             return state
     }

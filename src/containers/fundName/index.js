@@ -5,8 +5,8 @@ import {List, InputItem, Toast, Icon, RefreshControl, Tabs, Carousel, Modal, But
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory,Link} from 'react-router'
-import {getMyFundDetails} from '../../actions/fund'
+import {hashHistory, Link} from 'react-router'
+import {getMyFundDetails, setAutoRenew} from '../../actions/fund'
 import ReactDOM from "react-dom";
 import {StickyContainer, Sticky} from 'react-sticky';
 import echarts from 'echarts/lib/echarts';
@@ -21,8 +21,8 @@ class BaseUserMsg extends React.Component {
         this.state = {
             data: ['1', '2', '3'],
             modal2: false,
-            xu:true,
-            xu1:true
+            xu: true,
+            xu1: true
         };
     }
 
@@ -55,7 +55,7 @@ class BaseUserMsg extends React.Component {
             myChart.setOption({
                 title: {
                     text: '累计盈亏',
-                    subtext: `累计收益：`+this.props.fund.myFundDetails.totalProfit
+                    subtext: `累计收益：` + this.props.fund.myFundDetails.totalProfit
                 },
                 tooltip: {
                     trigger: 'axis'
@@ -110,6 +110,22 @@ class BaseUserMsg extends React.Component {
 
     }
 
+    getarr(e) {
+        let subArrayNum = 3;
+        var dataArr = new Array(Math.ceil(e.length / subArrayNum));
+        for (let i = 0; i < dataArr.length; i++) {
+            dataArr[i] = new Array();
+            for (let j = 0; j < subArrayNum; j++) {
+                dataArr[i][j] = '';
+            }
+        }
+        for (let i = 0; i < e.length; i++) {
+            dataArr[parseInt(i / subArrayNum)][i % subArrayNum] = e[i];
+        }
+        console.log(dataArr);
+
+        return dataArr
+    }
 
     render() {
         if (!this.props.fund.myFundDetails) {
@@ -186,143 +202,42 @@ class BaseUserMsg extends React.Component {
                             afterChange={index => console.log('slide to', index)}
                         >
 
-                            <div className={style.bannerItem}
-                                 key={1}
-                                 style={{display: 'inline-block', width: '100%', height: 117}}
-                            >
-                                <a className={style.bannerA} href="javascript:void (0)">
-                                        <span className={style.bannerAL}>
-                                           06-02买入的将在14天后到期11
-                                        </span>
-                                    <span className={style.bannerAR} onClick={() => this.setState({
-                                        modal2: true,
-                                    })}>
-                                           {this.state.xu1?'自动续期':'自动赎回'}
-                                            <img src={require('./images/arrow.png')} className={style.bannerARI}
-                                                 alt=""/>
-                                        </span>
-                                </a>
-                                <a className={style.bannerA} href="javascript:void (0)">
-                                        <span className={style.bannerAL}>
-                                           06-02买入的将在14天后到期
-                                        </span>
-                                    <span className={style.bannerAR}>
-                                           自动续期
-                                            <img src={require('./images/arrow.png')} className={style.bannerARI}
-                                                 alt=""/>
-                                        </span>
-                                </a>
-                                <a className={style.bannerA} href="javascript:void (0)">
-                                        <span className={style.bannerAL}>
-                                           06-02买入的将在14天后到期
-                                        </span>
-                                    <span className={style.bannerAR}>
-                                           自动续期
-                                            <img src={require('./images/arrow.png')} className={style.bannerARI}
-                                                 alt=""/>
-                                        </span>
-                                </a>
-                                <Modal
-                                    popup
-                                    visible={this.state.modal2}
-                                    onClose={() => this.setState({
-                                        modal2: false,
-                                    })}
-                                    animationType="slide-up"
-                                >
-                                    <List className="popup-list">
-                                        {[<div onClick={() => {this.setState({xu:true
-                                        })}}>
-                                            <div className={style.ititle}>自动续期 <span hidden={!this.state.xu} className={style.ititle1}>当前选择</span></div>
-                                            <div className={style.icontent}>到期后本金及收益自动买入下一期，收益不间断。到期前一天15：00前均可更改。</div>
-                                        </div>, <div onClick={() => {this.setState({xu:false})}}>
-                                            <div className={style.ititle}>自动续回 <span hidden={this.state.xu} className={style.ititle1}>当前选择</span></div>
-                                            <div className={style.icontent}>到期后本金及收益回到活动余币。到期前一天15：00前均可改。</div>
-                                        </div>].map((i, index) => (
-                                            <List.Item key={index}>{i}</List.Item>
-                                        ))}
-                                        <List.Item>
-                                            <div className={style.button}>
-                                                <Button type="primary" onClick={() => this.setState({
-                                                    modal2: false,
-                                                    xu1:this.state.xu
-                                                })}>确认</Button>
-                                            </div>
 
-                                        </List.Item>
-                                    </List>
-                                </Modal>
-                            </div>
-                            <div className={style.bannerItem}
-                                 key={2}
-                                 style={{display: 'inline-block', width: '100%', height: 117}}
-                            >
-                                <a className={style.bannerA} href="javascript:void (0)">
+                            {
+                                this.getarr(this.props.fund.myFundDetails.activeUserOrderInfoList).map((v) => {
+                                    return <div className={style.bannerItem}
+                                                key={2}
+                                                style={{display: 'inline-block', width: '100%', height: 117}}
+                                    >
+
+                                        {v.map((o) => {
+
+                                            if (o != '') {
+                                                return <a className={style.bannerA} href="javascript:void (0)">
                                         <span className={style.bannerAL}>
-                                           06-02买入的将在14天后到期
+                                            {o.orderDesc}
                                         </span>
-                                    <span className={style.bannerAR}>
-                                           自动续期
-                                            <img src={require('./images/arrow.png')} className={style.bannerARI}
-                                                 alt=""/>
+                                                    <span className={style.bannerAR} onClick={() => this.setState({
+                                                        modal2: true,
+                                                        current: {orderId: o.orderId, autoRenew: o.autoRenew}
+                                                    })}>
+                                                        {/*{o.status}*/}
+                                                        {/*{this.state.xu1?'自动续期':'自动赎回'}*/}
+                                                        {o.autoRenew === 1 ? '自动续期' : '自动赎回'}
+                                                        <img src={require('./images/arrow.png')}
+                                                             className={style.bannerARI}
+                                                             alt=""/>
                                         </span>
-                                </a>
-                                <a className={style.bannerA} href="javascript:void (0)">
-                                        <span className={style.bannerAL}>
-                                           06-02买入的将在14天后到期
-                                        </span>
-                                    <span className={style.bannerAR}>
-                                           自动续期
-                                            <img src={require('./images/arrow.png')} className={style.bannerARI}
-                                                 alt=""/>
-                                        </span>
-                                </a>
-                                <a className={style.bannerA} href="javascript:void (0)">
-                                        <span className={style.bannerAL}>
-                                           06-02买入的将在14天后到期
-                                        </span>
-                                    <span className={style.bannerAR}>
-                                           自动续期
-                                            <img src={require('./images/arrow.png')} className={style.bannerARI}
-                                                 alt=""/>
-                                        </span>
-                                </a>
-                            </div>
-                            <div className={style.bannerItem}
-                                 key={3}
-                                 style={{display: 'inline-block', width: '100%', height: 117}}
-                            >
-                                <a className={style.bannerA} href="javascript:void (0)">
-                                        <span className={style.bannerAL}>
-                                           06-02买入的将在14天后到期
-                                        </span>
-                                    <span className={style.bannerAR}>
-                                           自动续期
-                                            <img src={require('./images/arrow.png')} className={style.bannerARI}
-                                                 alt=""/>
-                                        </span>
-                                </a>
-                                <a className={style.bannerA} href="javascript:void (0)">
-                                        <span className={style.bannerAL}>
-                                           06-02买入的将在14天后到期
-                                        </span>
-                                    <span className={style.bannerAR}>
-                                           自动续期
-                                            <img src={require('./images/arrow.png')} className={style.bannerARI}
-                                                 alt=""/>
-                                        </span>
-                                </a>
-                                <a className={style.bannerA} href="javascript:void (0)">
-                                        <span className={style.bannerAL}>
-                                           06-02买入的将在14天后到期
-                                        </span>
-                                    <span className={style.bannerAR}>
-                                           自动续期
-                                            <img src={require('./images/arrow.png')} className={style.bannerARI}
-                                                 alt=""/>
-                                        </span>
-                                </a>
-                            </div>
+                                                </a>
+                                            }
+
+                                        })}
+
+
+                                    </div>
+                                })
+                            }
+
 
                         </Carousel>
                     </div>
@@ -353,11 +268,63 @@ class BaseUserMsg extends React.Component {
                                 </div>
                             </Tabs>
                         </StickyContainer>
-                        <Link to={'/productDetails/'+this.props.fund.myFundDetails.productId} ><div className={style.bottomA} onClick={() => hashHistory.push('/productDetails')}>
-                            查看基金详情
-                        </div></Link>
+                        <Link to={'/productDetails/' + this.props.fund.myFundDetails.productId}>
+                            <div className={style.bottomA} onClick={() => hashHistory.push('/productDetails')}>
+                                查看基金详情
+                            </div>
+                        </Link>
                     </div>
                 </div>
+
+                {this.state.current ? <Modal
+                    popup
+                    visible={this.state.modal2}
+                    onClose={() => this.setState({
+                        modal2: false,
+                    })}
+                    animationType="slide-up"
+                >
+                    <List className="popup-list">
+                        {[<div onClick={() => {
+                            this.setState({
+                                current: {autoRenew: 1, orderId: this.state.current.orderId}
+                            })
+                        }}>
+                            <div className={style.ititle}>自动续期 <span
+                                hidden={this.state.current.autoRenew === 1 ? false : true}
+                                className={style.ititle1}>当前选择</span></div>
+                            <div className={style.icontent}>到期后本金及收益自动买入下一期，收益不间断。到期前一天15：00前均可更改。</div>
+                        </div>, <div onClick={() => {
+                            this.setState({current: {autoRenew: 0, orderId: this.state.current.orderId}})
+                        }}>
+                            <div className={style.ititle}>自动续回 <span
+                                hidden={(this.state.current.autoRenew === 0 ? false : true)}
+                                className={style.ititle1}>当前选择</span></div>
+                            <div className={style.icontent}>到期后本金及收益回到活动余币。到期前一天15：00前均可改。</div>
+                        </div>].map((i, index) => (
+                            <List.Item key={index}>{i}</List.Item>
+                        ))}
+                        <List.Item>
+                            <div className={style.button}>
+                                <Button type="primary" onClick={() => {
+
+                                    this.props.setAutoRenew({
+                                        ...this.state.current
+                                    }, () => {
+                                        this.props.getMyFundDetails({productId: this.props.params.id})
+                                    })
+
+                                    this.setState({
+                                        modal2: false
+                                    })
+                                }}>确认</Button>
+                            </div>
+
+                        </List.Item>
+                    </List>
+                </Modal> : null}
+
+
             </div>
         )
     }
@@ -372,7 +339,8 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getMyFundDetails: bindActionCreators(getMyFundDetails, dispatch)
+        getMyFundDetails: bindActionCreators(getMyFundDetails, dispatch),
+        setAutoRenew: bindActionCreators(setAutoRenew, dispatch)
     }
 }
 

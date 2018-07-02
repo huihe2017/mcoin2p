@@ -169,8 +169,8 @@ class BaseUserMsg extends React.Component {
                         <div className={style.itemDataBox}>
                             <div className={style.itemLeft}>
                                 数量 {obj.type === '转出' ?
-                                <span style={{color: '#3B3D40', marginLeft: 10}}>-{obj.amount}</span> :
-                                <span style={{color: '#3B3D40', marginLeft: 10}}>+{obj.amount}</span>}
+                                <span style={{color: '#3B3D40', marginLeft: 10}}>{obj.amount}</span> :
+                                <span style={{color: '#3B3D40', marginLeft: 10}}>{obj.amount}</span>}
                             </div>
                             <div className={style.itemRight}>
                                 <span className={style.itemLeftC}>状态</span> {obj.out ?

@@ -16,7 +16,7 @@ export function checkPhone() {
 }
 
 export function changeJson(json, label, value) {
-    json[0].map((obj) => {
+    json.map((obj) => {
         for (var key in obj) {
             if (key === label) {
                 obj['label'] = obj[key]
@@ -28,8 +28,8 @@ export function changeJson(json, label, value) {
             }
         }
     })
-
-    return json
+debugger
+    return [json]
 }
 
 function setUrlK(ojson) {
@@ -52,7 +52,7 @@ function setUrlK(ojson) {
 
 export function http(option) {
     let url
-    if (option.url === 'login/userlogin' || option.url === 'reg/findpassword' || option.url === 'reg/reguser' || option.url === 'fund/getmorefund' || option.url === 'fund/getdetail' || option.url === 'fund/index') {
+    if (option.url === 'login/userlogin' || option.url === 'reg/findpassword' || option.url === 'reg/reguser' || option.url === 'fund/getmorefund' || option.url === 'fund/getdetail' || option.url === 'fund/index' || option.url === 'profit/getrate') {
         url = config.noauth_url + option.url
     } else {
         url = config.api_url + option.url
@@ -85,3 +85,24 @@ export function http(option) {
         });
 }
 
+export function toChartData(e) {
+    let arr1=[];
+    let dataArr = new Array(e.length);
+    for (var key in e[1]) {
+        if (e[1].hasOwnProperty(key))
+            arr1.push(key);
+    }
+    console.log(arr1);
+    let obj1= new Object();
+    for(let i = 0; i < dataArr.length;i++){
+        dataArr[i] = new Array();
+        e.map(function (val,ind) {
+            let obj = new Object();
+            dataArr[i].push(val[arr1[i]])
+        })
+    }
+    arr1.map(function (v,i) {
+        obj1[arr1[i]]=dataArr[i]
+    })
+    return obj1
+}

@@ -166,7 +166,7 @@ class BaseUserMsg extends React.Component {
                         </span>
                         <div className={style.contentPart3}>
                             <span className={style.contentPart5}>
-                                -{obj.amount}
+                                {obj.amount}
                             </span>
                             <span className={style.contentPart4}>
                                 {obj.remark}
