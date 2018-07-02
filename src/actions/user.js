@@ -27,7 +27,7 @@ export function logout(data, callback) {
             type:'post',
             data,
             callback,
-            url:'login/logout',
+            url:'user/logout',
             success:(response)=>{
                 dispatch({type: 'LOGOUT'})
             }

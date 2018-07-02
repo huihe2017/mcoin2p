@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9eaf612a-ca36-4e75-a6b7-2f658dbec1a9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/containers/productDetails/index.js" afterPath="$PROJECT_DIR$/src/containers/productDetails/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/actions/user.js" afterPath="$PROJECT_DIR$/src/actions/user.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,12 +50,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/productDetails/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="304" column="56" lean-forward="true" selection-start-line="304" selection-start-column="56" selection-end-line="304" selection-end-column="56" />
+            <state relative-caret-position="267">
+              <caret line="82" column="35" lean-forward="true" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/actions/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+              <folding>
+                <element signature="n#!!block;n#login2#0" expanded="false" />
+                <element signature="n#!!block;n#forgetPwd2#0" expanded="false" />
+                <element signature="n#!!block;n#modifyPwd2#0" expanded="false" />
+                <element signature="n#!!block;n#register2#0" expanded="false" />
+                <element signature="n#!!block;n#getUserDetailMsg2#0" expanded="false" />
+                <element signature="n#!!block;n#getProfile2#0" expanded="false" />
+                <element signature="n#!!block;n#setNickname2#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,7 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>NO_SAVE_CODE</find>
       <find>isSetSaveCode</find>
       <find>getWalletIndexData</find>
       <find>起购</find>
@@ -104,6 +121,7 @@
       <find>filter</find>
       <find>getFundChart</find>
       <find>dataTabs</find>
+      <find>logout</find>
     </findStrings>
     <dirStrings>
       <dir>F:\mcoin2p</dir>
@@ -150,7 +168,6 @@
         <option value="$PROJECT_DIR$/src/containers/walletIndex/index.js" />
         <option value="$PROJECT_DIR$/src/containers/addAddress/index.js" />
         <option value="$PROJECT_DIR$/src/containers/buyResult/index.js" />
-        <option value="$PROJECT_DIR$/src/actions/user.js" />
         <option value="$PROJECT_DIR$/src/containers/dealRecord/index.js" />
         <option value="$PROJECT_DIR$/src/containers/fundIndex/index.js" />
         <option value="$PROJECT_DIR$/src/containers/friendAwardDetail/index.js" />
@@ -166,6 +183,7 @@
         <option value="$PROJECT_DIR$/src/containers/fundName/index.js" />
         <option value="$PROJECT_DIR$/src/common/util.js" />
         <option value="$PROJECT_DIR$/src/containers/productDetails/index.js" />
+        <option value="$PROJECT_DIR$/src/actions/user.js" />
       </list>
     </option>
   </component>
@@ -188,8 +206,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2064" />
-    <option name="y" value="42" />
+    <option name="x" value="2046" />
+    <option name="y" value="132" />
     <option name="width" value="1342" />
     <option name="height" value="980" />
   </component>
@@ -302,15 +320,15 @@
       <workItem from="1528251965147" duration="24188000" />
       <workItem from="1528440200648" duration="8371000" />
       <workItem from="1528680390754" duration="60573000" />
-      <workItem from="1529371745071" duration="232634000" />
+      <workItem from="1529371745071" duration="233220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="497617000" />
+    <option name="totallyTimeSpent" value="498203000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2064" y="42" width="1342" height="980" extended-state="0" />
+    <frame x="2046" y="132" width="1342" height="980" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -559,23 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="22" column="40" lean-forward="true" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-          <folding>
-            <element signature="n#!!block;n#login2#0" expanded="false" />
-            <element signature="n#!!block;n#logout2#0" expanded="false" />
-            <element signature="n#!!block;n#forgetPwd2#0" expanded="false" />
-            <element signature="n#!!block;n#modifyPwd2#0" expanded="false" />
-            <element signature="n#!!block;n#register2#0" expanded="false" />
-            <element signature="n#!!block;n#getUserDetailMsg2#0" expanded="false" />
-            <element signature="n#!!block;n#getProfile2#0" expanded="false" />
-            <element signature="n#!!block;n#setNickname2#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/setPerson/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
@@ -797,9 +798,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/productDetails/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="304" column="56" lean-forward="true" selection-start-line="304" selection-start-column="56" selection-end-line="304" selection-end-column="56" />
+        <state relative-caret-position="267">
+          <caret line="82" column="35" lean-forward="true" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!block;n#login2#0" expanded="false" />
+            <element signature="n#!!block;n#forgetPwd2#0" expanded="false" />
+            <element signature="n#!!block;n#modifyPwd2#0" expanded="false" />
+            <element signature="n#!!block;n#register2#0" expanded="false" />
+            <element signature="n#!!block;n#getUserDetailMsg2#0" expanded="false" />
+            <element signature="n#!!block;n#getProfile2#0" expanded="false" />
+            <element signature="n#!!block;n#setNickname2#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
