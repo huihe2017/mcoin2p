@@ -66,7 +66,6 @@ class BaseUserMsg extends React.Component {
                            ￥
                         </span>
                         <InputItem
-                            type={'number'}
                             placeholder=""
                             clear
                             onChange={(v) => { this.setState({amount:v}) }}
@@ -143,6 +142,7 @@ class BaseUserMsg extends React.Component {
                                         <Button type="primary" onClick={()=>{this.setState({
                                             modal3: false,
                                         },()=>{
+
                                             this.props.buyFund({
                                                 productId:this.props.fund.detail.id,
                                                 amount:this.state.amount,

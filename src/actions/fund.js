@@ -121,16 +121,18 @@ export function getTradeList(data, callback) {
     }
 }
 
-export function getTradeListIng(data, callback) {
+
+
+export function getTradeDetails(data, callback) {
     debugger
     return dispatch => {
         http({
             type:'post',
             data,
             callback,
-            url:'order/inprogress',
+            url:'order/tradedetail',
             success:(response)=>{
-                dispatch({type: 'GET_TRADE_LIST_ING', data: response.data})
+                dispatch({type: 'GET_TRADE_DETAILS', data: response.data})
             }
 
         })

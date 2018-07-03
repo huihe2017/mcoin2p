@@ -1,12 +1,12 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Icon,RefreshControl, ListView,NavBar} from 'antd-mobile';
+import {List, InputItem, Toast, Icon, RefreshControl, ListView, NavBar} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getAssetDetail} from '../../actions/asset'
+import {getTradeDetails} from '../../actions/fund'
 import ReactDOM from "react-dom";
 
 const data = [
@@ -45,23 +45,11 @@ class BaseUserMsg extends React.Component {
         super(props);
 
 
-        this.state = {
-
-        };
+        this.state = {};
     }
 
-    logout() {
-        Toast.loading('正在退出', 0)
-        this.props.logout({
-
-        }, (errorText) => {
-            Toast.hide()
-            if (errorText) {
-                Toast.fail(errorText, 3, null, false)
-            } else {
-                hashHistory.push('/')
-            }
-        })
+    componentDidMount() {
+        this.props.getTradeDetails({orderId:1})
     }
 
     render() {
@@ -71,98 +59,96 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() =>  this.props.history.goBack()}
-                    rightContent={[
-
-
-                    ]}
+                    onLeftClick={() => this.props.history.goBack()}
+                    rightContent={[]}
                 >记录详情</NavBar>
                 <div className={style.header}>
-                        <div className={style.headerTop}>
+                    <div className={style.headerTop}>
                             <span className={style.headerTopW}>
                                 基金名称
                             </span>
-                        </div>
-                        <div className={style.headerBottom}>
-                            <a className={style.user} href="javascript:void (0)">
-                                <div className={style.userData}>
+                    </div>
+                    <div className={style.headerBottom}>
+                        <a className={style.user} href="javascript:void (0)">
+                            <div className={style.userData}>
                                     <span className={style.userName}>
                                         买入成功
                                     </span>
-                                    <span className={style.userTime}>
+                                <span className={style.userTime}>
                                         ￥122321.0
                                     </span>
-                                </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </div>
+                </div>
                 <div className={style.content}>
                     <div className={style.contentItem}>
                             <span className={style.contentItemT}>
                                 买入信息
                             </span>
-                            <div className={style.contentItemBox}>
+                        <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
                                     产品名称
                                 </span>
-                                <span className={style.contentItemBoxC}>
-                                    产品名称 <img className={style.contentItemBoxCI} src={require('./images/arrow.png')} alt=""/>
+                            <span className={style.contentItemBoxC}>
+                                    产品名称 <img className={style.contentItemBoxCI} src={require('./images/arrow.png')}
+                                              alt=""/>
                                 </span>
-                            </div>
-                            <div className={style.contentItemBox}>
+                        </div>
+                        <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
                                     买入币额
                                 </span>
-                                <span className={style.contentItemBoxC}>
+                            <span className={style.contentItemBoxC}>
                                     1.0000 BTC
                                 </span>
-                            </div>
-                            <div className={style.contentItemBox}>
+                        </div>
+                        <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
                                     买入时间
                                 </span>
-                                <span className={style.contentItemBoxC}>
+                            <span className={style.contentItemBoxC}>
                                     2018/12/12  12:00
                                 </span>
-                            </div>
                         </div>
+                    </div>
                     <div className={style.contentItem}>
                             <span className={style.contentItemT}>
                                 确认消息
                             </span>
-                            <div className={style.contentItemBox}>
+                        <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
                                     基金管理费
                                 </span>
-                                <span className={style.contentItemBoxC}>
+                            <span className={style.contentItemBoxC}>
                                     1.0000 BTC
                                 </span>
-                            </div>
-                            <div className={style.contentItemBox}>
+                        </div>
+                        <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
                                     托管费
                                 </span>
-                                <span className={style.contentItemBoxC}>
+                            <span className={style.contentItemBoxC}>
                                     1.0000 BTC
                                 </span>
-                            </div>
-                            <div className={style.contentItemBox}>
+                        </div>
+                        <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
                                     销售服务费
                                 </span>
-                                <span className={style.contentItemBoxC}>
+                            <span className={style.contentItemBoxC}>
                                     1.0000 BTC
                                 </span>
-                            </div>
-                            <div className={style.contentItemBox}>
+                        </div>
+                        <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
                                     确认时间
                                 </span>
-                                <span className={style.contentItemBoxC}>
+                            <span className={style.contentItemBoxC}>
                                     2018/12/12  12:00
                                 </span>
-                            </div>
                         </div>
+                    </div>
                     <div className={style.contentItem}>
                         <div className={style.contentItemBox}>
                             <span className={style.contentItemBoxT}>
@@ -181,13 +167,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        asset:state.asset
+        asset: state.asset
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        getTradeDetails: bindActionCreators(getTradeDetails, dispatch)
     }
 }
 

@@ -32,6 +32,9 @@ export default function fund(state = initialState, action = {}) {
         case 'GET_TRADE_LIST_ING':
             state.tradeListIng = action.data.data
             return Object.assign({}, state, {})
+        case 'GET_TRADE_DETAILS':
+            state.tradeDatails = action.data.data
+            return Object.assign({}, state, {})
         default:
             return state
     }
