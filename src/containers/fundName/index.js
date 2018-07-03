@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
-import {getMyFundDetails, setAutoRenew} from '../../actions/fund'
+import {getMyFundDetails, setAutoRenew, getFundChart} from '../../actions/fund'
 import ReactDOM from "react-dom";
 import {StickyContainer, Sticky} from 'react-sticky';
 import echarts from 'echarts/lib/echarts';
@@ -14,6 +14,7 @@ import echarts from 'echarts/lib/echarts';
 import 'echarts/lib/chart/line';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
+import {toChartData} from "../../common/util";
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -78,7 +79,8 @@ class BaseUserMsg extends React.Component {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: ['05-01', '05-05', '05-10', '05-15', '05-20']
+                    data:toChartData(this.props.fund.myFundDetails.userProfitChartList).profitDate
+                    // data: ['05-01', '05-05', '05-10', '05-15', '05-20']
                 },
                 yAxis: {
                     type: 'value',
@@ -89,7 +91,8 @@ class BaseUserMsg extends React.Component {
                     {
                         name: '买入价格',
                         type: 'line',
-                        data: [11, 13, 13.5, 14, 14.5],
+                        // data: [11, 13, 13.5, 14, 14.5],
+                        data:toChartData(this.props.fund.myFundDetails.userProfitChartList).profit,
                         markPoint: {
                             data: [
                                 {type: 'max', name: '最大值'},
@@ -125,6 +128,67 @@ class BaseUserMsg extends React.Component {
         console.log(dataArr);
 
         return dataArr
+    }
+
+    renderChat = () => {
+
+        let option = {
+
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['最高气温', '最低气温']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {readOnly: false},
+                    magicType: {type: ['line', 'bar']},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: toChartData(this.props.fund.myFundDetails.chart).profitDate
+                // data: ['05-01', '05-05', '05-10', '09-15', '05-20']
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: false,
+
+            },
+            series: [
+                {
+                    name: '买入价格',
+                    type: 'line',
+                    // data: [11, 13, 13.5, 14, 140.5],
+                    data:toChartData(this.props.fund.myFundDetails.chart).rateSeven,
+                    markPoint: {
+                        data: [
+                            {type: 'max', name: '最大值'},
+                            {type: 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
+                },
+
+            ]
+        }
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+        // 绘制图表
+        myChart.setOption(option);
     }
 
     render() {
@@ -187,14 +251,16 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.partHeader}>
 
-                        <a className={style.partA} href="javascript:void(0)"  onClick={()=>hashHistory.push('/earningsDetail')}><img className={style.partImg}
-                                                                                  src={require('./images/list.png')}
-                                                                                  alt=""/>
+                        <a className={style.partA} href="javascript:void(0)"
+                           onClick={() => hashHistory.push('/earningsDetail')}><img className={style.partImg}
+                                                                                    src={require('./images/list.png')}
+                                                                                    alt=""/>
                             收益明细
                         </a>
                         <div className={style.line}>
                         </div>
-                        <a className={style.partA} href="javascript:void(0)"  onClick={()=>hashHistory.push('/dealRecord')}>
+                        <a className={style.partA} href="javascript:void(0)"
+                           onClick={() => hashHistory.push('/dealRecord')}>
                             <img className={style.partImg} src={require('./images/record.png')} alt=""/>
                             交易记录
                         </a>
@@ -222,7 +288,10 @@ class BaseUserMsg extends React.Component {
                                         <span className={style.bannerAL}>
                                             {o.orderDesc}
                                         </span>
-                                                    <span className={style.bannerAR} style={o.status===0?{color:'#989898',cursor: 'not-allowed'}:{}} onClick={() => o.status===0?'':this.setState({
+                                                    <span className={style.bannerAR} style={o.status === 0 ? {
+                                                        color: '#989898',
+                                                        cursor: 'not-allowed'
+                                                    } : {}} onClick={() => o.status === 0 ? '' : this.setState({
                                                         modal2: true,
                                                         current: {orderId: o.orderId, autoRenew: o.autoRenew}
                                                     })}>
@@ -251,6 +320,19 @@ class BaseUserMsg extends React.Component {
                             <Tabs tabs={tabs}
                                   initalPage={'t2'}
                                   renderTabBar={renderTabBar}
+                                  onChange={(v, i) => {
+                                      if (i === 1) {
+                                          let option = {
+                                              productId: this.props.params.id,
+                                              unit: 'month',
+                                              n: 1,
+                                              type: 1,
+                                          }
+                                          this.props.getFundChart({...option}, () => {
+                                              this.renderChat()
+                                          })
+                                      }
+                                  }}
                             >
                                 <div className={style.box}>
                                     <div id="main" style={{
@@ -269,7 +351,13 @@ class BaseUserMsg extends React.Component {
                                     height: '250px',
                                     backgroundColor: '#fff'
                                 }}>
-                                    Content of second tab
+                                    <div id="main2" style={{
+                                        width: '100%',
+                                        height: 230,
+                                        padding: '0 16px',
+                                        marginBottom: '-20px',
+                                        paddingTop: 10
+                                    }}></div>
                                 </div>
                             </Tabs>
                         </StickyContainer>
@@ -298,9 +386,16 @@ class BaseUserMsg extends React.Component {
                             <div className={style.ititle}>自动续期 <span
                                 hidden={this.state.current.autoRenew === 1 ? false : true}
                                 className={style.ititle1}>当前选择</span></div>
-                            <div className={style.icontent}>到期后本金及收益自动买入下一期，收益不间断。到期前一天15：00前均可更改。</div>
+                            <div
+                                className={style.icontent}>到期后本金及收益自动买入下一期，收益不间断。到期前一天15：00前均可更改。
+                            </div>
                         </div>, <div onClick={() => {
-                            this.setState({current: {autoRenew: 0, orderId: this.state.current.orderId}})
+                            this.setState({
+                                current: {
+                                    autoRenew: 0,
+                                    orderId: this.state.current.orderId
+                                }
+                            })
                         }}>
                             <div className={style.ititle}>自动续回 <span
                                 hidden={(this.state.current.autoRenew === 0 ? false : true)}
@@ -345,6 +440,7 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
     return {
         getMyFundDetails: bindActionCreators(getMyFundDetails, dispatch),
+        getFundChart: bindActionCreators(getFundChart, dispatch),
         setAutoRenew: bindActionCreators(setAutoRenew, dispatch)
     }
 }

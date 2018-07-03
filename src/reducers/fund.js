@@ -20,7 +20,7 @@ export default function fund(state = initialState, action = {}) {
             state.detail.startTime = action.data.data
             return Object.assign({}, state, {})
         case 'GET_FUND_CHART':
-            state.detail.chart = action.data.data.list
+            state.detail?(state.detail.chart = action.data.data.list):(state.myFundDetails.chart = action.data.data.list)
             return Object.assign({}, state, {})
         case 'SET_AUTO_RENEW':
             let filterData = state.myFundDetails.activeUserOrderInfoList.filter((item) => action.data.orderId == item.orderId)
@@ -28,6 +28,9 @@ export default function fund(state = initialState, action = {}) {
             return Object.assign({}, state, {})
         case 'GET_TRADE_LIST':
             state.tradeList = action.data.data
+            return Object.assign({}, state, {})
+        case 'GET_TRADE_LIST_ING':
+            state.tradeListIng = action.data.data
             return Object.assign({}, state, {})
         default:
             return state

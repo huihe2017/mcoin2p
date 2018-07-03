@@ -96,7 +96,7 @@ class BaseUserMsg extends React.Component {
         })
     };
 
-    onEndReached = (event) => {
+    onEndReached = (event) => {return false
 
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false

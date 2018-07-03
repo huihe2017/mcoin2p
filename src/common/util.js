@@ -28,14 +28,14 @@ export function changeJson(json, label, value) {
             }
         }
     })
-debugger
+    debugger
     return [json]
 }
 
 export function setUrlK(ojson) {
     var s = '', name, key;
     for (var p in ojson) {
-        if (!ojson[p] && ojson[p] !== 0) {
+        if (!ojson[p] && ojson[p] !== 0 && ojson[p] !== '') {
             return null;
         }
         if (ojson.hasOwnProperty(p)) {
@@ -71,9 +71,9 @@ export function http(option) {
             } else if (response.data.code === 501) {
                 // Toast.fail(response.data.msg, 2, null, false)
                 hashHistory.push('/auth')
-            }else if (response.data.code === 3004) {
+            } else if (response.data.code === 3004) {
                 hashHistory.push('/safeSet')
-            }else if (response.data.code === 3008) {
+            } else if (response.data.code === 3008) {
                 hashHistory.push('/importSafe')
             } else {
                 Toast.fail(response.data.msg, 2, null, false)
@@ -86,23 +86,23 @@ export function http(option) {
 }
 
 export function toChartData(e) {
-    let arr1=[];
+    let arr1 = [];
     let dataArr = new Array(e.length);
     for (var key in e[1]) {
         if (e[1].hasOwnProperty(key))
             arr1.push(key);
     }
     console.log(arr1);
-    let obj1= new Object();
-    for(let i = 0; i < dataArr.length;i++){
+    let obj1 = new Object();
+    for (let i = 0; i < dataArr.length; i++) {
         dataArr[i] = new Array();
-        e.map(function (val,ind) {
+        e.map(function (val, ind) {
             let obj = new Object();
             dataArr[i].push(val[arr1[i]])
         })
     }
-    arr1.map(function (v,i) {
-        obj1[arr1[i]]=dataArr[i]
+    arr1.map(function (v, i) {
+        obj1[arr1[i]] = dataArr[i]
     })
     return obj1
 }
