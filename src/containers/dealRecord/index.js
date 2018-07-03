@@ -145,6 +145,12 @@ class BaseUserMsg extends React.Component {
             {title: '全部'},
             {title: '进行中'},
         ];
+        const tabs1 = [
+            { title: '买入' },
+            { title: '赎回' },
+            { title: '续期' },
+            { title: '其他' },
+        ];
 
         let pageIndex = 0;
 
@@ -203,10 +209,12 @@ class BaseUserMsg extends React.Component {
 
                         <div className={style.content}>
                             <div className={style.tagBox}>
-                                <Tag data-seed="logId">买入</Tag>
-                                <Tag data-seed="logId">赎回</Tag>
-                                <Tag data-seed="logId">续期</Tag>
-                                <Tag data-seed="logId">其他</Tag>
+                                <Tabs tabs={tabs1}
+                                      initalPage={'t2'}
+                                      renderTabBar={renderTabBar}
+                                >
+
+                                </Tabs>
                             </div>
                             <div>
                                 {this.props.fund.tradeList && this.props.fund.tradeList.length === 0 ?
