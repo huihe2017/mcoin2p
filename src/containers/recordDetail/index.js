@@ -76,7 +76,7 @@ class BaseUserMsg extends React.Component {
 
 
                     ]}
-                >收益明细</NavBar>
+                >记录详情</NavBar>
                 <div className={style.header}>
                         <div className={style.headerTop}>
                             <span className={style.headerTopW}>
