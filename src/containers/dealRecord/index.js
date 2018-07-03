@@ -146,10 +146,11 @@ class BaseUserMsg extends React.Component {
             {title: '进行中'},
         ];
         const tabs1 = [
+            { title: '全部' },
             { title: '买入' },
             { title: '赎回' },
             { title: '续期' },
-            { title: '其他' },
+
         ];
 
         let pageIndex = 0;
