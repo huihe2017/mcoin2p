@@ -212,6 +212,47 @@ class BaseUserMsg extends React.Component {
                             <div className={style.tagBox}>
                                 <Tabs tabs={tabs1}
                                       initalPage={'t2'}
+                                      onChange={(a,b)=>{
+                                          if(b===1){
+                                              this.setState({type:0},()=>{
+                                                  this.props.getTradeList({page: 1, type: this.state.type}, () => {
+                                                      this.setState({
+                                                          dataSource: this.state.dataSource.cloneWithRows(this.genData()),
+                                                          isLoading: false,
+                                                      });
+                                                      if (this.domScroller) {
+                                                          this.domScroller.scroller.options.animationDuration = 500;
+                                                      }
+                                                  })
+                                              })
+                                          }
+                                          if(b===2){
+                                              this.setState({type:1},()=>{
+                                                  this.props.getTradeList({page: 1, type: this.state.type}, () => {
+                                                      this.setState({
+                                                          dataSource: this.state.dataSource.cloneWithRows(this.genData()),
+                                                          isLoading: false,
+                                                      });
+                                                      if (this.domScroller) {
+                                                          this.domScroller.scroller.options.animationDuration = 500;
+                                                      }
+                                                  })
+                                              })
+                                          }
+                                          if(b===3){
+                                              this.setState({type:2},()=>{
+                                                  this.props.getTradeList({page: 1, type: this.state.type}, () => {
+                                                      this.setState({
+                                                          dataSource: this.state.dataSource.cloneWithRows(this.genData()),
+                                                          isLoading: false,
+                                                      });
+                                                      if (this.domScroller) {
+                                                          this.domScroller.scroller.options.animationDuration = 500;
+                                                      }
+                                                  })
+                                              })
+                                          }
+                                      }}
                                       renderTabBar={renderTabBar}
                                 >
 

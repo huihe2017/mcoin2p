@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Icon,RefreshControl, ListView, NavBar} from 'antd-mobile';
+import {List, InputItem, Toast, Icon, RefreshControl, ListView, NavBar} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -80,7 +80,7 @@ class BaseUserMsg extends React.Component {
 
         // simulate initial Ajax
 
-        this.props.getMyFundList({page: 1,uid:this.props.user.userInfo.uid,currency:'BTC'}, () => {
+        this.props.getMyFundList({page: 1, uid: this.props.user.userInfo.uid, currency: 'BTC'}, () => {
             this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
@@ -93,7 +93,8 @@ class BaseUserMsg extends React.Component {
         })
     };
 
-    onEndReached = (event) => {return false
+    onEndReached = (event) => {
+        return false
 
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false
@@ -103,7 +104,7 @@ class BaseUserMsg extends React.Component {
         }
         console.log('reach end', event);
         this.setState({isLoading: true});
-        this.props.getMyFundList({page: 1,uid:this.props.user.userInfo.uid,currency:'BTC'}, () => {
+        this.props.getMyFundList({page: 1, uid: this.props.user.userInfo.uid, currency: 'BTC'}, () => {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
@@ -134,7 +135,7 @@ class BaseUserMsg extends React.Component {
 
 
     render() {
-        let index = this.props.fund.myFund&&this.props.fund.myFund.userProducts.length - 1;
+        let index = this.props.fund.myFund && this.props.fund.myFund.userProducts.length - 1;
 
         const separator = (sectionID, rowID) => (
             <div
@@ -151,8 +152,8 @@ class BaseUserMsg extends React.Component {
 
             const obj = rowData;
             return (
-                <div className={style.item} key={rowID} onClick={()=>hashHistory.push('/fundName/'+obj.productId)}>
-                    <span className={style.title} >
+                <div className={style.item} key={rowID} onClick={() => hashHistory.push('/fundName/' + obj.productId)}>
+                    <span className={style.title}>
                         {obj.title}
                         <div className={style.time}>
 
@@ -162,15 +163,15 @@ class BaseUserMsg extends React.Component {
 
                         <div className={style.state}>
                             <span>币额</span>
-                            <span style={{color:'#3b3d40'}}>{obj.coinCount}</span>
+                            <span style={{color: '#3b3d40'}}>{obj.coinCount}</span>
                         </div>
                         <div className={style.number}>
                             <span>昨日收益</span>
-                            <span style={{color:'#F49193'}}>{obj.yesterdayProfit}</span>
+                            <span style={{color: '#F49193'}}>{obj.yesterdayProfit}</span>
                         </div>
                         <div className={style.way}>
                             <span>七日年化</span>
-                            <span style={{color:'#F49193'}}>{obj.rateSeven}</span>
+                            <span style={{color: '#F49193'}}>{obj.rateSeven}</span>
                         </div>
                         <img className={style.arrImg} src={require('./images/arrow.png')} alt=""/>
                     </div>
@@ -198,48 +199,52 @@ class BaseUserMsg extends React.Component {
                             <a className={style.user} href="javascript:void (0)">
                                 <div className={style.userData}>
                                     <span className={style.userName}>
-                                        {this.props.fund.myFund&&this.props.fund.myFund.currency}
+                                        {this.props.fund.myFund && this.props.fund.myFund.currency}
                                     </span>
                                     <span className={style.userTime}>
-                                        {this.props.fund.myFund&&this.props.fund.myFund.userTotalCoin}
+                                        {this.props.fund.myFund && this.props.fund.myFund.userTotalCoin}
                                     </span>
                                 </div>
                             </a>
                             <div className={style.userMoney}>
                                 <span className={style.userMoneyT}>
-                                    昨日收益（{this.props.fund.myFund&&this.props.fund.myFund.currency}）<span className={style.userMoneyC}>+{this.props.fund.myFund&&this.props.fund.myFund.userYesterdayProfit}</span>
+                                    昨日收益（{this.props.fund.myFund && this.props.fund.myFund.currency}）<span
+                                    className={style.userMoneyC}>+{this.props.fund.myFund && this.props.fund.myFund.userYesterdayProfit}</span>
                                 </span>
                                 <span className={style.userMoneyT}>
-                                    累计收益（{this.props.fund.myFund&&this.props.fund.myFund.currency}）<span className={style.userMoneyC}>+{this.props.fund.myFund&&this.props.fund.myFund.userTotalProfit}</span>
+                                    累计收益（{this.props.fund.myFund && this.props.fund.myFund.currency}）<span
+                                    className={style.userMoneyC}>+{this.props.fund.myFund && this.props.fund.myFund.userTotalProfit}</span>
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div className={style.partHeader}>
 
-                        <a className={style.partA} href="javascript:void(0)" onClick={()=>hashHistory.push('/earningsDetail')}>
+                        <a className={style.partA} href="javascript:void(0)"
+                           onClick={() => hashHistory.push('/earningsDetail')}>
                             <img className={style.partImg} src={require('./images/list.png')} alt=""/>
                             收益明细
                         </a>
                         <div className={style.line}>
                         </div>
-                        <a className={style.partA} href="javascript:void(0)" onClick={()=>hashHistory.push('/dealRecord')}>
+                        <a className={style.partA} href="javascript:void(0)"
+                           onClick={() => hashHistory.push('/dealRecord')}>
                             <img className={style.partImg} src={require('./images/record.png')} alt=""/>
                             交易记录
                         </a>
                     </div>
-                    <div hidden={this.props.fund.myFund&&this.props.fund.myFund.userProducts.length>0}>
+                    <div hidden={this.props.fund.myFund && this.props.fund.myFund.userProducts.length > 0}>
                         <img className={style.z} src={require('../addressList/images/zero.png')} alt=""/>
-                        <span className={style.s} >
+                        <span className={style.s}>
                             快去 <Link to={'/selectedFunds'}>基金市场</Link> 挑一下吧
                         </span>
                     </div>
-                    <div hidden={!(this.props.fund.myFund&&this.props.fund.myFund.userProducts.length)>0}>
+                    <div hidden={!(this.props.fund.myFund && this.props.fund.myFund.userProducts.length) > 0}>
                         <ListView
                             ref={el => this.lv = el}
                             dataSource={this.state.dataSource}
 
-                            renderFooter={() => (<div style={{ padding: '0.3rem', textAlign: 'center' }}>
+                            renderFooter={() => (<div style={{padding: '0.3rem', textAlign: 'center'}}>
                                 {this.state.isLoading ? '' : ''}
                             </div>)}
                             renderRow={row}
@@ -250,7 +255,7 @@ class BaseUserMsg extends React.Component {
                                 height: this.state.height,
                                 margin: '0.05rem 0',
                             }}
-                            scrollerOptions={{ scrollbars: true, scrollingComplete: this.scrollingComplete }}
+                            scrollerOptions={{scrollbars: true, scrollingComplete: this.scrollingComplete}}
                             refreshControl={<RefreshControl
                                 refreshing={this.state.refreshing}
                                 onRefresh={this.onRefresh}
@@ -273,14 +278,14 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        fund:state.fund,
-        user:state.user
+        fund: state.fund,
+        user: state.user
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getMyFundList:bindActionCreators(getMyFundList,dispatch)
+        getMyFundList: bindActionCreators(getMyFundList, dispatch)
     }
 }
 
