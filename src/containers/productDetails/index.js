@@ -94,7 +94,7 @@ class BaseUserMsg extends React.Component {
                     name: '买入价格',
                     type: 'line',
                     // data: [11, 13, 13.5, 14, 140.5],
-                    data: toChartData(this.props.fund.detail.chart).rateSeven,
+                    data:this.state.option.type===1? toChartData(this.props.fund.detail.chart).rateSeven:toChartData(this.props.fund.detail.chart).profitWan,
                     markPoint: {
                         data: [
                             {type: 'max', name: '最大值'},
