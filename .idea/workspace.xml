@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eaf612a-ca36-4e75-a6b7-2f658dbec1a9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/actions/fund.js" afterPath="$PROJECT_DIR$/src/actions/fund.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/outQcode/index.js" afterPath="$PROJECT_DIR$/src/containers/outQcode/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/fund.js" afterPath="$PROJECT_DIR$/src/reducers/fund.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/outQcode/index.css" afterPath="$PROJECT_DIR$/src/containers/outQcode/index.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,11 +26,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/outQcode/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+            <state relative-caret-position="28">
+              <caret line="1" column="26" lean-forward="false" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/outQcode/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="76" column="22" lean-forward="true" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -43,7 +50,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lv</find>
       <find>data</find>
       <find>outAddressList</find>
       <find>&lt;ListView</find>
@@ -73,6 +79,7 @@
       <find>profitDate</find>
       <find>tips</find>
       <find>renderChat</find>
+      <find>address</find>
     </findStrings>
     <dirStrings>
       <dir>F:\mcoin2p</dir>
@@ -84,7 +91,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/containers/baseUserMsg/index.js" />
         <option value="$PROJECT_DIR$/src/containers/yesterdayEarnings/index.js" />
         <option value="$PROJECT_DIR$/src/containers/customCost/index.js" />
         <option value="$PROJECT_DIR$/src/containers/earningsDetail/index.js" />
@@ -135,6 +141,7 @@
         <option value="$PROJECT_DIR$/src/actions/fund.js" />
         <option value="$PROJECT_DIR$/src/reducers/fund.js" />
         <option value="$PROJECT_DIR$/src/containers/outQcode/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/outQcode/index.css" />
       </list>
     </option>
   </component>
@@ -270,12 +277,12 @@
       <workItem from="1528251965147" duration="24188000" />
       <workItem from="1528440200648" duration="8371000" />
       <workItem from="1528680390754" duration="60573000" />
-      <workItem from="1529371745071" duration="247851000" />
+      <workItem from="1529371745071" duration="247938000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="512834000" />
+    <option name="totallyTimeSpent" value="512921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2080" y="28" width="1342" height="980" extended-state="0" />
@@ -315,14 +322,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/auth/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/authFrom.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -752,8 +751,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/outQcode/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+        <state relative-caret-position="28">
+          <caret line="1" column="26" lean-forward="false" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/outQcode/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="76" column="22" lean-forward="true" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
           <folding />
         </state>
       </provider>
