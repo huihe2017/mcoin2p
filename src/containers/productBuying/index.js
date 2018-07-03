@@ -74,7 +74,7 @@ class BaseUserMsg extends React.Component {
                         ></InputItem>
                     </div>
                     <div className={style.inputTip}>
-                        {this.props.fund.detail.profitTime}5月31日（星期一）产生收益，到期前不能赎回<br/>
+                        {this.props.fund.detail.profitTime}产生收益，到期前不能赎回<br/>
                         基金交易规则请查看 <a href="javascript:void (0)">交易规则</a>
                     </div>
                     <div className={style.expire} onClick={()=>this.setState({
