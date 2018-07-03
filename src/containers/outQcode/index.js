@@ -29,6 +29,7 @@ class AboutUs extends React.Component {
         if(!this.state.address){
             return null
         }
+        console.log(2222,this.state.address);
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -45,7 +46,7 @@ class AboutUs extends React.Component {
                                 {text: '取消'},
                                 {
                                     text: '确定',
-                                    onPress: value => this.setState({sum: value,address:this.state.address+'?amount='+value}, () => console.log(`输入的内容:${value}`))
+                                    onPress: value => this.setState({sum: value,address:this.props.wallet.current.address+'?amount='+value}, () => console.log(`输入的内容:${value}`))
                                 },
                             ])}>
                                 <span className={style.name}>{this.state.sum == '' ? '设置金额' : this.state.sum}</span>
@@ -61,7 +62,7 @@ class AboutUs extends React.Component {
                         {/*</div>*/}
                         <div className={style.footer1}>
                             <span className={style.address}>
-                                {this.state.address}
+                                {this.props.wallet.current.address}
                             </span>
                             <span className={style.addressDo}>
                                 复制

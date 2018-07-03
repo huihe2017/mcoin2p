@@ -104,3 +104,18 @@ export function setAutoRenew(data, callback) {
         })
     }
 }
+
+export function getTradeList(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'order/tradelist',
+            success:(response)=>{
+                dispatch({type: 'GET_TRADE_LIST', data: data})
+            }
+
+        })
+    }
+}
