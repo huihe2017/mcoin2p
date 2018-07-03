@@ -37,6 +37,9 @@ export default function wallet(state = initialState, action = {}) {
         case 'CHECK_MOBILE_CODE':
             state.isMobileCodeChecked = true
             return Object.assign({}, state, {})
+        case 'GET_RECHARGE_ADDRESS':
+            state.current.address = action.data.data.address
+            return Object.assign({}, state, {})
         default:
             return state
     }

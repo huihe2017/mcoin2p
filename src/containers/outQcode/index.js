@@ -21,7 +21,7 @@ class AboutUs extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('/dealDetails')}
+                    onLeftClick={() => this.props.history.goBack()}
 
                 >BTC</NavBar>
                 <div className={style.content}>
