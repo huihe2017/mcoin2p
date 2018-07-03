@@ -85,14 +85,15 @@ class BaseUserMsg extends React.Component {
     }
 
     next(){
-        if(!(this.state.classNumber==''&&this.state.amount==''&&this.state.sValue.length==0)){
-
+        console.log(this.state.classNumber);
+        if(this.state.classNumber&&this.state.amount&&this.state.sValue.length){
+            this.setState({
+                modal1: true,
+            })
+        }else {
             Toast.fail('请完善资料', 3, null, false);
-            return false
         }
-        this.setState({
-            modal1: true,
-        })
+
     }
 
 
@@ -166,7 +167,7 @@ class BaseUserMsg extends React.Component {
                                 dismissText={<Icon type={'cross'}/>}
                             >
                                 <List.Item arrow="horizontal"><span className={style.itemBoxC}>
-                                请选择币种
+                                请选择矿工费
                             </span></List.Item>
                             </Picker>
                         </li>

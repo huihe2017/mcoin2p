@@ -188,7 +188,7 @@ class BaseUserMsg extends React.Component {
                         <span>添加</span>,
 
                     ]}
-                >好友奖励明细</NavBar>
+                >常用地址</NavBar>
                 <ListView
                     ref={el => this.lv = el}
                     dataSource={this.state.dataSource}

@@ -27,7 +27,8 @@ class BaseUserMsg extends React.Component {
         super(props);
         this.state = {
             modal1: false,
-            can: false
+            can: false,
+            currency:[]
         }
     }
 
@@ -92,14 +93,14 @@ class BaseUserMsg extends React.Component {
     }
 
     next(){
-        if(!(this.state.tag==''&&this.state.address==''&&this.state.currency.length==0)){
-
+        if(this.state.tag&&this.state.address&&this.state.currency.length){
+            this.setState({
+                modal1: true,
+            })
+        }else {
             Toast.fail('请完善资料', 3, null, false);
-            return false
         }
-        this.setState({
-            modal1: true,
-        })
+
     }
 
     render() {

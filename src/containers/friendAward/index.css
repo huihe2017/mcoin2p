@@ -15,7 +15,23 @@
     border-bottom: 1px solid #eee;
 
 }
+:local(.showImg){
 
+    width: 90px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 90px;
+}
+:local(.showTip){
+    color: #DFDCE4;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
 
 :local(.ensure):after,:local(.partLi):after,:local(.partTotal):after,:local(.headerTop):after,:local(.headerBottom):after{
     display: block;
