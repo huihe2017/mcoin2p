@@ -39,7 +39,7 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('/informationIndex')}
+                    onLeftClick={() => this.props.history.goBack()}
 
                 >好友奖励明细</NavBar>
                 <span className={style.header}>

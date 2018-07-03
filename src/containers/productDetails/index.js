@@ -161,11 +161,10 @@ class BaseUserMsg extends React.Component {
         }
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('/selectedFunds')}
+                    onLeftClick={() => this.props.history.goBack()}
                     rightContent={[]}
                 >基金详情</NavBar>
                 <div>

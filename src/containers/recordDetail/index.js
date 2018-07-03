@@ -71,7 +71,7 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('/dealRecord')}
+                    onLeftClick={() =>  this.props.history.goBack()}
                     rightContent={[
 
 

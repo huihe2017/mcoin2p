@@ -106,13 +106,12 @@ class BaseUserMsg extends React.Component {
     render() {
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('/walletIndex')}
+                    onLeftClick={() => this.props.history.goBack()}
                     rightContent={[]}
-                >转出</NavBar>
+                >安全码</NavBar>
                 <div>
                     <ul className={style.itemUl}>
                         <span className={style.title}>

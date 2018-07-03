@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast, Icon, RefreshControl, Tabs, Carousel, Modal, Button} from 'antd-mobile';
+import {List, NavBar, Toast, Icon, RefreshControl, Tabs, Carousel, Modal, Button} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -144,7 +144,12 @@ class BaseUserMsg extends React.Component {
 
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => this.props.history.goBack()}
+
+                >BTC</NavBar>
                 <div>
                     <div className={style.header}>
                         <div className={style.headerTop}>
@@ -182,14 +187,14 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.partHeader}>
 
-                        <a className={style.partA} href="javascript:void(0)"><img className={style.partImg}
+                        <a className={style.partA} href="javascript:void(0)"  onClick={()=>hashHistory.push('/earningsDetail')}><img className={style.partImg}
                                                                                   src={require('./images/list.png')}
                                                                                   alt=""/>
                             收益明细
                         </a>
                         <div className={style.line}>
                         </div>
-                        <a className={style.partA} href="javascript:void(0)">
+                        <a className={style.partA} href="javascript:void(0)"  onClick={()=>hashHistory.push('/dealRecord')}>
                             <img className={style.partImg} src={require('./images/record.png')} alt=""/>
                             交易记录
                         </a>
