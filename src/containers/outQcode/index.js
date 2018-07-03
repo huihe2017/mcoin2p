@@ -50,7 +50,7 @@ class AboutUs extends React.Component {
                                 },
                             ])}>
                                 <span className={style.name}>{this.state.sum == '' ? '设置金额' : this.state.sum}</span>
-                                {/*<img className={style.nameImg} src={require('./images/edit.png')} alt=""/>*/}
+                                <img className={style.nameImg} src={require('./images/edit.png')} alt=""/>
 
                             </a>
                         </div>

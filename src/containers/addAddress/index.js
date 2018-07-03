@@ -38,7 +38,7 @@ class BaseUserMsg extends React.Component {
         if (id !== 'null') {
             filterData = this.props.wallet.commonAddress.filter((item) => id == item.id);
         }
-        filterData = filterData[0]
+        // filterData = filterData[0]
         this.setState({currency:[filterData.currency]})
         this.setState({address: filterData.address})
         this.setState({tag: filterData.tag})
@@ -87,6 +87,17 @@ class BaseUserMsg extends React.Component {
         }
         this.setState({
             can: true
+        })
+    }
+
+    next(){
+        if(!(this.state.tag==''&&this.state.address==''&&this.state.currency.length==0)){
+
+            Toast.fail('请完善资料', 3, null, false);
+            return false
+        }
+        this.setState({
+            modal1: true,
         })
     }
 
@@ -158,9 +169,7 @@ class BaseUserMsg extends React.Component {
                             提示：1至20个字符，支持中英文以常见标点符号
                         </span>
                     </ul>
-                    <div className={style.button} onClick={() => this.setState({
-                        modal1: true,
-                    })}>
+                    <div className={style.button} onClick={()=>this.next()}>
                         {this.props.params.id === 'null' ? '保存地址' : '修改地址'}
 
                     </div>
@@ -221,7 +230,6 @@ class BaseUserMsg extends React.Component {
                         </div>
                     </Modal>
                 </div>
-                {/*<Footer/>*/}
             </div>
         )
 

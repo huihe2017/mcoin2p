@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Picker,Icon,Slider} from 'antd-mobile';
+import {List, InputItem, Toast,Picker,Icon,Slider,NavBar} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -12,7 +12,7 @@ class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sValue:['0.002']
+            classNumber:''
         }
     }
 
@@ -22,50 +22,28 @@ class BaseUserMsg extends React.Component {
         };
     }
 
-    logout() {
-        Toast.loading('正在退出', 0)
-        this.props.logout({
-
-        }, (errorText) => {
-            Toast.hide()
-            if (errorText) {
-                Toast.fail(errorText, 3, null, false)
-            } else {
-                hashHistory.push('/')
-            }
-        })
-    }
 
     componentDidMount(){
 
     }
+    submit(){
+        if(this.state.classNumber==''){
+            Toast.fail('请填写矿工费', 3, null, false);
+            return false
+        }
+        alert(1)
 
+    }
 
     render() {
-        const seasons = [
-            [
-                {
-                    label: '0.002(推荐)',
-                    value: '0.002',
-                },
-                {
-                    label: '0.001',
-                    value: '0.001',
-                },
-                {
-                    label: '0.007',
-                    value: '0.007',
-                },
-                {
-                    label: 'custom',
-                    value: 'custom',
-                },
-            ],
-
-        ];
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => this.props.history.goBack()}
+                    rightContent={[]}
+                >自定义矿工费</NavBar>
                 <div>
                     <ul className={style.itemUl}>
 
@@ -93,7 +71,7 @@ class BaseUserMsg extends React.Component {
                                 <div className={style.silderBox}>
                                     <Slider
                                         style={{ marginLeft: 30, marginRight: 30 }}
-                                        defaultValue={26}
+                                        defaultValue={0}
                                         min={0}
                                         max={30}
                                         onChange={this.log('change')}
@@ -108,11 +86,10 @@ class BaseUserMsg extends React.Component {
 
                         </li>
                     </ul>
-                    <div className={style.button}>
+                    <div className={style.button} onClick={()=>this.submit()}>
                         确定
                     </div>
                 </div>
-                {/*<Footer/>*/}
             </div>
         )
 

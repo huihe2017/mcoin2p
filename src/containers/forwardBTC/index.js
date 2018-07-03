@@ -26,9 +26,11 @@ class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sValue: [],
             modal1: false,
-            can:false
+            can:false,
+            classNumber:'',
+            amount:'',
+            sValue: [],
         }
     }
 
@@ -82,6 +84,16 @@ class BaseUserMsg extends React.Component {
         })
     }
 
+    next(){
+        if(!(this.state.classNumber==''&&this.state.amount==''&&this.state.sValue.length==0)){
+
+            Toast.fail('请完善资料', 3, null, false);
+            return false
+        }
+        this.setState({
+            modal1: true,
+        })
+    }
 
 
     render() {
@@ -95,7 +107,6 @@ class BaseUserMsg extends React.Component {
         return (
 
             <div className={style.wrap}>
-                {/*<Header/>*/}
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
@@ -160,9 +171,7 @@ class BaseUserMsg extends React.Component {
                             </Picker>
                         </li>
                     </ul>
-                    <div className={style.button} onClick={()=>this.setState({
-                        modal1: true,
-                    })}>
+                    <div className={style.button} onClick={()=>this.next()}>
                         下一步
                     </div>
                     <Modal
