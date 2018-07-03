@@ -7,6 +7,7 @@
     "antd-mobile": "next",
     "axios": "^0.16.2",
     "echarts": "^4.1.0",
+    "qrcode.react": "^0.8.0",
     "rc-form": "^2.2.0",
     "react": "15.5.4",
     "react-circle": "^1.0.3",
