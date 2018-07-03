@@ -50,11 +50,11 @@ class AboutUs extends React.Component {
                             ])}>
                                 <span className={style.name}>{this.state.sum == '' ? '设置金额' : this.state.sum}</span>
                                 {/*<img className={style.nameImg} src={require('./images/edit.png')} alt=""/>*/}
-                                <QRCode renderAs={'svg'} value={this.state.address}/>,
+
                             </a>
                         </div>
                         <div className={style.qcode}>
-
+                            <QRCode renderAs={'svg'} size={'100%'} value={this.state.address}/>
                         </div>
                         {/*<div className={style.footer}>*/}
                             {/*186****0031*/}
