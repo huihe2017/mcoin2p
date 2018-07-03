@@ -55,6 +55,7 @@ export default function sign(state = initialState, action = {}) {
             return Object.assign({}, state, {})
         case 'SET_RISK_TYPE':
             state.userInfo.riskType = state.userInfo.ristSelect
+            state.userInfo.riskTypeInfo = action.data
             return Object.assign({}, state, {})
         case 'RIST_PAGE':
             state.userInfo.ristPage = action.data.type

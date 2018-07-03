@@ -41,7 +41,7 @@ class History extends React.Component {
 
 
     render() {
-
+        console.log(11111111,this.props);
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -65,7 +65,7 @@ class History extends React.Component {
                             </span>
 
                             <Star
-                                rank={0}
+                                rank={this.props.user.userInfo.ristPage === 'set'?0:this.props.user.userInfo.riskTypeInfo.profit}
                                 limit={5}
                                 onRank={(n) => {
                                     this.setState({profit: n})
@@ -78,7 +78,7 @@ class History extends React.Component {
                                 实际风险承担<i></i>
                             </span>
                             <Star
-                                rank={0}
+                                rank={this.props.user.userInfo.ristPage === 'set'?0:this.props.user.userInfo.riskTypeInfo.riskTaking}
                                 limit={5}
                                 onRank={(n) => {
                                     this.setState({riskTaking: n})
@@ -90,7 +90,7 @@ class History extends React.Component {
                                 心理风险接受<i></i>
                             </span>
                             <Star
-                                rank={0}
+                                rank={this.props.user.userInfo.ristPage === 'set'?0:this.props.user.userInfo.riskTypeInfo.heartTaking}
                                 limit={5}
                                 onRank={(n) => {
                                     this.setState({heartTaking: n})
@@ -102,7 +102,7 @@ class History extends React.Component {
                                 流动需求<i></i>
                             </span>
                             <Star
-                                rank={0}
+                                rank={this.props.user.userInfo.ristPage === 'set'?0:this.props.user.userInfo.riskTypeInfo.flowDemand}
                                 limit={5}
                                 onRank={(n) => {
                                     this.setState({flowDemand: n})
