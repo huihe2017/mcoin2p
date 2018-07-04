@@ -68,15 +68,17 @@ class BaseUserMsg extends React.Component {
                 <div>
                     <ul className={style.itemUl}>
                         <span className={style.title}>
-                            安全码设置
+                            请输入安全码
                         </span>
                         <li className={style.itemBox}>
+                            <List>
+                                <InputItem type='password' onChange={(value) => {
+                                    this.setState({saveCode: value},()=>{
+                                        this.check()
+                                    })
+                                }} placeholder="安全码设置（6位数字）" type="text"></InputItem>
+                            </List>
 
-                            <InputItem onChange={(value) => {
-                                this.setState({saveCode: value},()=>{
-                                    this.check()
-                                })
-                            }} placeholder="安全码设置（6位数字）" type="text"></InputItem>
                         </li>
 
                     </ul>

@@ -143,7 +143,7 @@ class BaseUserMsg extends React.Component {
                     >
                         <div style={{ height: 150}}>
                             <span className={style.alTip}>
-                                已向 {this.props.user.userInfo.mobile} 发送验证码验证码3分钟有效，请注意！
+                                已向 { this.props.user.userInfo.mobile.replace(/^(\d{3})\d{4}(\d+)/,"$1****$2")} 发送验证码验证码3分钟有效，请注意！
                             </span>
                             <ul className={style.inputUl}>
                                 <li className={style.inputLi}>
@@ -171,8 +171,22 @@ class BaseUserMsg extends React.Component {
                                 <li className={style.inputLi}>
                                     <InputItem maxLength={1} id={'input4'} onChange={(value) => {
                                         this.setState({code4: value},()=>{if(this.state.code4.length==1){
+                                            document.querySelector('#input5').focus();
+                                        }})
+                                    }} type={"text"} ></InputItem>
+                                </li>
+                                <li className={style.inputLi}>
+                                    <InputItem maxLength={1} id={'input5'} onChange={(value) => {
+                                        this.setState({code5: value},()=>{if(this.state.code5.length==1){
+                                            document.querySelector('#input6').focus();
+                                        }})
+                                    }} type={"text"} ></InputItem>
+                                </li>
+                                <li className={style.inputLi}>
+                                    <InputItem maxLength={1} id={'input6'} onChange={(value) => {
+                                        this.setState({code6: value},()=>{if(this.state.code6.length==1){
                                             this.props.checkMobileCode({
-                                                checkCode:this.state.code4,
+                                                checkCode:this.state.code6,
                                                 applyId:this.props.wallet.applyId
                                             },()=>{
                                                 alert('提币成功')

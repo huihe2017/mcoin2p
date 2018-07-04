@@ -96,14 +96,17 @@
     color: #3B3D40!important;
     font-weight: bold!important;
     background-color: #f5f4f7;
-    width: 40px!important;
-    height: 40px!important;
+    width: 30px!important;
+    height: 30px!important;
     border-radius: 5px!important;
-    padding-left: 15px;
+    padding-left: 10px!important;
 }
 :local(.inputLi) .am-list-item.am-input-item{
     border-bottom: none;
 }
 :local(.inputLi) .am-list-item.am-input-item{
     padding: 0!important;
+}
+:local(.inputUl) .am-list-item.am-input-item::after{
+    display: none!important;
 }
