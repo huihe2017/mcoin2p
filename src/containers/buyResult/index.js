@@ -58,7 +58,7 @@ class BaseUserMsg extends React.Component {
                                     成功买入
                                 </span>
                                 <span className={style.userTime}>
-                                    ￥{this.props.fund.detail.startTime.profitTime}
+                                    ￥{this.props.fund.detail.startTime.amount}
                                 </span>
                             </div>
                         </a>

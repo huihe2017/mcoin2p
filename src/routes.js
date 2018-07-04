@@ -100,7 +100,7 @@ export default () => {
             <Route path="/amendSafe" component={AmendSafe}/>
             <Route path="/fundIndex" component={FundIndex}/>
             <Route path="/earningsDetail" component={EarningsDetail}/>
-            <Route path="/recordDetail" component={RecordDetail}/>
+            <Route path="/recordDetail/:id" component={RecordDetail}/>
             <Route path="/dealRecord" component={DealRecord}/>
             <Route path="/fundName/:id" component={FundName}/>
             <Route path="/friendAwardDetail" component={FriendAwardDetail}/>

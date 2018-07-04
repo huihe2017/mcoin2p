@@ -106,7 +106,6 @@ export function setAutoRenew(data, callback) {
 }
 
 export function getTradeList(data, callback) {
-    debugger
     return dispatch => {
         http({
             type:'post',
@@ -121,10 +120,23 @@ export function getTradeList(data, callback) {
     }
 }
 
+export function getTradeListIng(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'order/inprogress',
+            success:(response)=>{
+                dispatch({type: 'GET_TRADE_LIST_ING', data: response.data})
+            }
+
+        })
+    }
+}
 
 
 export function getTradeDetails(data, callback) {
-    debugger
     return dispatch => {
         http({
             type:'post',

@@ -2,42 +2,10 @@ import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
 import {List, InputItem, Toast, Icon, RefreshControl, ListView, NavBar} from 'antd-mobile';
-import Header from '../../components/header'
-import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
-import {hashHistory} from 'react-router'
 import {getTradeDetails} from '../../actions/fund'
-import ReactDOM from "react-dom";
 
-const data = [
-    // {
-    //     title: '基金A',
-    //     time: 'Meet hotel',
-    //     number: '1860684651644',
-    //     state:'入金失败',
-    //     way:'网银支付'
-    // },
-    // {
-    //     title: '基金B',
-    //     time: 'Meet hotel',
-    //     number: '1.000000',
-    //     state:'+0.000003',
-    //     way:'4.23%'
-    // },
-    // {
-    //     title: '基金C',
-    //     time: 'Meet hotel',
-    //     number: '1.000000',
-    //     state:'+0.000003',
-    //     way:'4.23%'
-    // },{
-    //     title: '基金D',
-    //     time: 'Meet hotel',
-    //     number: '1.000000',
-    //     state:'+0.000003',
-    //     way:'4.23%'
-    // }
-];
+
 
 
 class BaseUserMsg extends React.Component {
@@ -49,23 +17,26 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getTradeDetails({orderId:1})
+        this.props.getTradeDetails({orderId: this.props.params.id})
     }
 
     render() {
 
+        if (!this.props.fund.tradeDatails) {
+            return null
+        }
         return (
             <div className={style.wrap}>
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => this.props.history.goBack()}
+                    onLeftClick={() => this.props.history.goBack(-1)}
                     rightContent={[]}
                 >记录详情</NavBar>
                 <div className={style.header}>
                     <div className={style.headerTop}>
                             <span className={style.headerTopW}>
-                                基金名称
+                                {this.props.fund.tradeDatails.title}
                             </span>
                     </div>
                     <div className={style.headerBottom}>
@@ -75,7 +46,7 @@ class BaseUserMsg extends React.Component {
                                         买入成功
                                     </span>
                                 <span className={style.userTime}>
-                                        ￥122321.0
+                                        ￥{this.props.fund.tradeDatails.realAmount}
                                     </span>
                             </div>
                         </a>
@@ -91,7 +62,7 @@ class BaseUserMsg extends React.Component {
                                     产品名称
                                 </span>
                             <span className={style.contentItemBoxC}>
-                                    产品名称 <img className={style.contentItemBoxCI} src={require('./images/arrow.png')}
+                                    {this.props.fund.tradeDatails.title} <img className={style.contentItemBoxCI} src={require('./images/arrow.png')}
                                               alt=""/>
                                 </span>
                         </div>
@@ -100,7 +71,7 @@ class BaseUserMsg extends React.Component {
                                     买入币额
                                 </span>
                             <span className={style.contentItemBoxC}>
-                                    1.0000 BTC
+                                {this.props.fund.tradeDatails.amount} {this.props.fund.tradeDatails.currency}
                                 </span>
                         </div>
                         <div className={style.contentItemBox}>
@@ -108,7 +79,7 @@ class BaseUserMsg extends React.Component {
                                     买入时间
                                 </span>
                             <span className={style.contentItemBoxC}>
-                                    2018/12/12  12:00
+                                    {this.props.fund.tradeDatails.createTime}
                                 </span>
                         </div>
                     </div>
@@ -121,7 +92,7 @@ class BaseUserMsg extends React.Component {
                                     基金管理费
                                 </span>
                             <span className={style.contentItemBoxC}>
-                                    1.0000 BTC
+                                    {this.props.fund.tradeDatails.adminFee} {this.props.fund.tradeDatails.currency}
                                 </span>
                         </div>
                         <div className={style.contentItemBox}>
@@ -129,7 +100,7 @@ class BaseUserMsg extends React.Component {
                                     托管费
                                 </span>
                             <span className={style.contentItemBoxC}>
-                                    1.0000 BTC
+                                    {this.props.fund.tradeDatails.trusteeFee} {this.props.fund.tradeDatails.currency}
                                 </span>
                         </div>
                         <div className={style.contentItemBox}>
@@ -137,7 +108,7 @@ class BaseUserMsg extends React.Component {
                                     销售服务费
                                 </span>
                             <span className={style.contentItemBoxC}>
-                                    1.0000 BTC
+                                    {this.props.fund.tradeDatails.shoppingFee} {this.props.fund.tradeDatails.currency}
                                 </span>
                         </div>
                         <div className={style.contentItemBox}>
@@ -145,7 +116,7 @@ class BaseUserMsg extends React.Component {
                                     确认时间
                                 </span>
                             <span className={style.contentItemBoxC}>
-                                    2018/12/12  12:00
+                                    {this.props.fund.tradeDatails.confirmTime}
                                 </span>
                         </div>
                     </div>
@@ -155,7 +126,7 @@ class BaseUserMsg extends React.Component {
                                 订单号
                             </span>
                             <span className={style.contentItemBoxC}>
-                                12813246451684135486461654
+                                {this.props.fund.tradeDatails.id}
                             </span>
                         </div>
                     </div>
@@ -167,7 +138,7 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        asset: state.asset
+        fund: state.fund
     }
 }
 

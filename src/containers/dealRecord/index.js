@@ -8,7 +8,7 @@ import {getTradeList} from '../../actions/fund'
 import {StickyContainer, Sticky} from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
-
+import TradeIng from "../../containers/tradeIng";
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -167,7 +167,7 @@ class BaseUserMsg extends React.Component {
         const row = (rowData, sectionID, rowID) => {
             const obj = rowData;
             return (
-                <Link to={'/recordDetail'} >
+                <Link to={'/recordDetail/'+obj.orderId} >
                 <div key={rowID} style={{padding: '0 15px'}} onClick={() => hashHistory.push('/recordDetail')}>
                     <div className={style.item} key={obj.amount}>
                         <div className={style.itemLeft}>
@@ -297,24 +297,7 @@ class BaseUserMsg extends React.Component {
                             </div>
                         </div>
 
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            height: '250px',
-                            backgroundColor: '#fff'
-                        }}>
-                            Content of second tab
-                        </div>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            height: '250px',
-                            backgroundColor: '#fff'
-                        }}>
-                            Content of third tab
-                        </div>
+                        <TradeIng></TradeIng>
                     </Tabs>
                 </StickyContainer>
 

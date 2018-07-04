@@ -143,7 +143,7 @@ class BaseUserMsg extends React.Component {
                     >
                         <div style={{ height: 150}}>
                             <span className={style.alTip}>
-                                已向 186****1866 发送验证码验证码3分钟有效，请注意！
+                                已向 {this.props.user.userInfo.mobile} 发送验证码验证码3分钟有效，请注意！
                             </span>
                             <ul className={style.inputUl}>
                                 <li className={style.inputLi}>
