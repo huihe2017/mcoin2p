@@ -1,44 +1,14 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast,Icon,RefreshControl, ListView,NavBar} from 'antd-mobile';
+import {List, InputItem, Toast, Icon, RefreshControl, ListView, NavBar} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getAssetDetail} from '../../actions/asset'
+import {getProfitList} from '../../actions/fund'
 import ReactDOM from "react-dom";
 
-const data = [
-    {
-        number: '2018/01/01',
-        state:'+0.000003',
-    },
-    {
-        number: '2018/01/02',
-        state:'-0.000003',
-    },
-    {
-        number: '2018/01/03',
-        state:'-0.000003',
-    },{
-        number: '2018/01/04',
-        state:'+0.000003',
-    }
-];
-let index = data.length - 1;
-
-const NUM_ROWS = data.length;
-let pageIndex = 0;
-
-function genData(pIndex = 0) {
-    const dataArr = [];
-    for (let i = 0; i < NUM_ROWS; i++) {
-        dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
-    }
-    console.log(dataArr);
-    return dataArr;
-}
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -54,57 +24,40 @@ class BaseUserMsg extends React.Component {
         };
     }
 
-    logout() {
-        Toast.loading('正在退出', 0)
-        this.props.logout({
 
-        }, (errorText) => {
-            Toast.hide()
-            if (errorText) {
-                Toast.fail(errorText, 3, null, false)
-            } else {
-                hashHistory.push('/')
-            }
-        })
-    }
-
-    componentWillMount(){
-        // if(!this.props.user.token){
-        //     this.props.setAuthFrom('/history',()=>{
-        //         hashHistory.push('/auth')
-        //     })
-        // }
-    }
     componentDidMount() {
-        // if(!this.props.user.token){
-        //     return false
-        // }
-        this.props.getAssetDetail()
 
-        setTimeout(() => this.setState({
-            height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
-        }), 0);
+        if (this.lv) {
 
-        // handle https://github.com/ant-design/ant-design-mobile/issues/1588
-        this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
-            this.tsPageY = e.touches[0].pageY;
-        });
-        // In chrome61 `document.body.scrollTop` is invalid
-        const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
-        this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
-            this.tmPageY = e.touches[0].pageY;
-            if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
-                console.log('start pull to refresh');
-                this.domScroller.options.preventDefaultOnTouchMove = false;
-            } else {
-                this.domScroller.options.preventDefaultOnTouchMove = undefined;
-            }
-        });
+            setTimeout(() => this.setState({
+                height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
+            }), 0);
+
+            // handle https://github.com/ant-design/ant-design-mobile/issues/1588
+
+            this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
+                this.tsPageY = e.touches[0].pageY;
+            });
+            // In chrome61 `document.body.scrollTop` is invalid
+            const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
+            this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
+                this.tmPageY = e.touches[0].pageY;
+                if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
+                    console.log('start pull to refresh');
+                    this.domScroller.options.preventDefaultOnTouchMove = false;
+                } else {
+                    this.domScroller.options.preventDefaultOnTouchMove = undefined;
+                }
+            });
+        }
     }
 
     componentWillUnmount() {
-        this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
-        this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
+        if (this.lv) {
+            this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
+            this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
+        }
+
     }
 
     onScroll = (e) => {
@@ -112,17 +65,23 @@ class BaseUserMsg extends React.Component {
         this.domScroller = e;
     };
 
+    genData(pIndex = 0) {
+        return this.props.fund.profitList.profitList;
+    }
+
     onRefresh = () => {
+
         console.log('onRefresh');
         if (!this.manuallyRefresh) {
-            this.setState({ refreshing: true });
+            this.setState({refreshing: true});
         } else {
             this.manuallyRefresh = false;
         }
 
         // simulate initial Ajax
-        setTimeout(() => {
-            this.rData = genData();
+
+        this.props.getProfitList({currency: 'BTC', page: 1, uid: this.props.user.userInfo.uid}, () => {
+            this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
                 refreshing: false,
@@ -131,30 +90,34 @@ class BaseUserMsg extends React.Component {
             if (this.domScroller) {
                 this.domScroller.scroller.options.animationDuration = 500;
             }
-        }, 600);
+        })
     };
 
-    onEndReached = (event) => {return false
+    onEndReached = (event) => {
+        return false
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false
         if (this.state.isLoading && !this.state.hasMore) {
+            console.log(33)
             return;
         }
         console.log('reach end', event);
-        this.setState({ isLoading: true });
-        setTimeout(() => {
-            this.rData = [...this.rData,];
+        this.setState({isLoading: true});
+        this.props.getWalletTradeRecord({currency: 'BTC', page: 1, uid: this.props.user.userInfo.uid}, () => {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
+                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,
             });
-        }, 1000);
+            if (this.domScroller) {
+                this.domScroller.scroller.options.animationDuration = 500;
+            }
+        })
     };
 
     scrollingComplete = () => {
         // In general, this.scrollerTop should be 0 at the end, but it may be -0.000051 in chrome61.
         if (this.scrollerTop >= -1) {
-            this.setState({ showFinishTxt: false });
+            this.setState({showFinishTxt: false});
         }
     }
 
@@ -183,18 +146,16 @@ class BaseUserMsg extends React.Component {
             />
         );
         const row = (rowData, sectionID, rowID) => {
-            if (index < 0) {
-                index = data.length - 1;
-            }
-            const obj = data[index--];
+            const obj = rowData;
             return (
                 <div className={style.item} key={rowID}>
                     <div className={style.icontent}>
                         <div className={style.state}>
-                            <span style={{color:'#3b3d40'}}>{obj.number}</span>
+                            <span style={{color: '#3b3d40'}}>{obj.profit}</span>
                         </div>
                         <div className={style.number}>
-                            <span style={obj.state>0?{color:'#5262FF'}:{color:'#3B3D40'}}>{obj.state}</span>
+                            <span
+                                style={obj.state > 0 ? {color: '#5262FF'} : {color: '#3B3D40'}}>{obj.profitDate}</span>
                         </div>
 
                     </div>
@@ -206,11 +167,8 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() =>this.props.history.goBack()}
-                    rightContent={[
-
-
-                    ]}
+                    onLeftClick={() => this.props.history.goBack()}
+                    rightContent={[]}
                 >收益明细</NavBar>
                 <div>
                     <div className={style.header}>
@@ -219,17 +177,18 @@ class BaseUserMsg extends React.Component {
                                 累计收益
                             </span>
                             <a className={style.headerTopR} href="javascript:void (0)">
-                                <img className={style.headerTopI} src={require('../moneyDetail/images/money.png')} alt=""/>账户安全险保障中
+                                <img className={style.headerTopI} src={require('../moneyDetail/images/money.png')}
+                                     alt=""/>账户安全险保障中
                             </a>
                         </div>
                         <div className={style.headerBottom}>
                             <a className={style.user} href="javascript:void (0)">
                                 <div className={style.userData}>
                                     <span className={style.userName}>
-                                        BTC
+                                        {this.props.fund.profitList && this.props.fund.profitList.currency}
                                     </span>
                                     <span className={style.userTime}>
-                                        0.00004561234
+                                        {this.props.fund.profitList && this.props.fund.profitList.totalProfit}
                                     </span>
                                 </div>
                             </a>
@@ -241,8 +200,8 @@ class BaseUserMsg extends React.Component {
                             ref={el => this.lv = el}
                             dataSource={this.state.dataSource}
 
-                            renderFooter={() => (<div style={{ padding: '0.3rem', textAlign: 'center' }}>
-                                {this.state.isLoading ? '加载中...' : '加载完成'}
+                            renderFooter={() => (<div style={{padding: '0.3rem', textAlign: 'center'}}>
+                                {this.state.isLoading ? '' : ''}
                             </div>)}
                             renderRow={row}
                             renderSeparator={separator}
@@ -252,7 +211,7 @@ class BaseUserMsg extends React.Component {
                                 height: this.state.height,
                                 margin: '0.05rem 0',
                             }}
-                            scrollerOptions={{ scrollbars: true, scrollingComplete: this.scrollingComplete }}
+                            scrollerOptions={{scrollbars: true, scrollingComplete: this.scrollingComplete}}
                             refreshControl={<RefreshControl
                                 refreshing={this.state.refreshing}
                                 onRefresh={this.onRefresh}
@@ -275,13 +234,14 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        asset:state.asset
+        fund: state.fund,
+        user: state.user
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getAssetDetail:bindActionCreators(getAssetDetail,dispatch)
+        getProfitList: bindActionCreators(getProfitList, dispatch)
     }
 }
 

@@ -150,3 +150,18 @@ export function getTradeDetails(data, callback) {
         })
     }
 }
+
+export function getProfitList(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'userfund/totalprofitdetail',
+            success:(response)=>{
+                dispatch({type: 'GET_PROFIT_LIST', data: response.data})
+            }
+
+        })
+    }
+}
