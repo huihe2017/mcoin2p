@@ -178,7 +178,8 @@ class BaseUserMsg extends React.Component {
                                 <span className={style.itemRightC1}>{obj.status}</span>}
                             </div>
                             <div className={style.itemLeft}>
-                                {obj.type === '转出' ? '发起' : ''}{obj.type === '转出' ?
+                                {obj.type === '转出' ? '发起' : ''}
+                                {obj.type === '转出' ?
                                 <span style={{color: '#3B3D40', marginLeft: 10}}>{obj.beginTime}</span> :
                                 <span style={{color: '#3B3D40', marginLeft: 10}}></span>}
                             </div>
