@@ -8,7 +8,7 @@ import {hashHistory} from 'react-router';
 class SideBar extends Component {
 
     onClickHandle(e) {
-        if (localStorage.userName === 'null') {
+        if (sessionStorage.userName === 'null') {
             e.preventDefault()
             this.props.userCenterClick(true)
         }

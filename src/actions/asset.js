@@ -127,7 +127,7 @@ export function getActiveCoin2(step, callback) {
                 }
             })
             .catch(function (error) {
-                debugger
+
                 Toast.fail('网络错误，请稍后再试')
             });
     }

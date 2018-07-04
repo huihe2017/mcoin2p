@@ -186,7 +186,7 @@ class BaseUserMsg extends React.Component {
                                     <InputItem maxLength={1} id={'input6'} onChange={(value) => {
                                         this.setState({code6: value},()=>{if(this.state.code6.length==1){
                                             this.props.checkMobileCode({
-                                                checkCode:this.state.code6,
+                                                checkCode:this.state.code1+this.state.code2+this.state.code3+this.state.code4+this.state.code5+this.state.code6,
                                                 applyId:this.props.wallet.applyId
                                             },()=>{
                                                 alert('提币成功')

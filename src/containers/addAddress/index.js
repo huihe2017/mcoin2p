@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast, Picker, Modal, Checkbox,NavBar,Icon} from 'antd-mobile';
+import {List, InputItem, Toast, Picker, Modal, Checkbox, NavBar, Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -28,7 +28,7 @@ class BaseUserMsg extends React.Component {
         this.state = {
             modal1: false,
             can: false,
-            currency:[]
+            currency: []
         }
     }
 
@@ -39,7 +39,7 @@ class BaseUserMsg extends React.Component {
         if (id !== 'null') {
             filterData = this.props.wallet.commonAddress.filter((item) => id == item.id);
             filterData = filterData[0]
-            this.setState({currency:[filterData.currency]})
+            this.setState({currency: [filterData.currency]})
             this.setState({address: filterData.address})
             this.setState({tag: filterData.tag})
         }
@@ -66,7 +66,7 @@ class BaseUserMsg extends React.Component {
             address: this.state.address,
             tag: this.state.tag
         }, () => {
-            hashHistory.push('/addressList')
+            this.props.history.goBack()
         })
     }
     onWrapTouchStart = (e) => {
@@ -92,12 +92,12 @@ class BaseUserMsg extends React.Component {
         })
     }
 
-    next(){
-        if(this.state.tag&&this.state.address&&this.state.currency.length){
+    next() {
+        if (this.state.tag && this.state.address && this.state.currency.length) {
             this.setState({
                 modal1: true,
             })
-        }else {
+        } else {
             Toast.fail('请完善资料', 3, null, false);
         }
 
@@ -122,7 +122,9 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('addressList')}
+                    onLeftClick={() => {
+                        hashHistory.push('addressList')
+                    }}
                     rightContent={[]}
                 >转出</NavBar>
                 <div>
@@ -137,7 +139,9 @@ class BaseUserMsg extends React.Component {
                                 cascade={false}
                                 extra=" "
                                 value={this.state.currency}
-                                onChange={v => {this.setState({currency: v})}}
+                                onChange={v => {
+                                    this.setState({currency: v})
+                                }}
                                 onOk={v => this.setState({currency: v})}
                             >
                                 <List.Item arrow="horizontal"><span className={style.itemBoxC}>
@@ -171,7 +175,7 @@ class BaseUserMsg extends React.Component {
                             提示：1至20个字符，支持中英文以常见标点符号
                         </span>
                     </ul>
-                    <div className={style.button} onClick={()=>this.next()}>
+                    <div className={style.button} onClick={() => this.next()}>
                         {this.props.params.id === 'null' ? '保存地址' : '修改地址'}
 
                     </div>

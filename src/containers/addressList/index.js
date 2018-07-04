@@ -275,9 +275,6 @@ class BaseUserMsg extends React.Component {
                             // onChange={()=>{alert(1)}}
                               renderTabBar={this.renderTabBar.bind(this)}
                         >
-                            {
-                                this.renderList()
-                            }
                             <div>
                                 {
                                     this.renderList()
@@ -285,19 +282,15 @@ class BaseUserMsg extends React.Component {
                             </div>
                             <div>
                                 {
-                                    this.renderList()
+                                    this.renderList('BTC')
                                 }
                             </div>
                             <div>
                                 {
-                                    this.renderList()
+                                    this.renderList('ETH')
                                 }
                             </div>
-                            <div>
-                                {
-                                    this.renderList()
-                                }
-                            </div>
+
 
                         </Tabs>
                     </StickyContainer>

@@ -185,7 +185,7 @@ class BaseUserMsg extends React.Component {
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
                     rightContent={[
-                        <span>添加</span>,
+                        <Link to={'/addAddress/null'} >添加</Link>,
 
                     ]}
                 >常用地址</NavBar>

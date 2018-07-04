@@ -67,7 +67,7 @@ export default class Header extends Component {
                             }else{
                                 this.props.toggle(true)
                             }
-                        }} className={style.login}>{this.props.isLogin ? localStorage.userName : '登录'}</a>
+                        }} className={style.login}>{this.props.isLogin ? sessionStorage.userName : '登录'}</a>
                         <a onClick={() => {
                             if(this.props.isLogin){
                                 this.props.signOut()

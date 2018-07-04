@@ -1,5 +1,5 @@
 let initialState = {
-    token: localStorage.token
+    token: sessionStorage.token
 }
 
 export default function sign(state = initialState, action = {}) {
@@ -9,12 +9,12 @@ export default function sign(state = initialState, action = {}) {
         case 'LOGIN':
 
             let {token} = action.data.data
-            localStorage.setItem('token', token)
+            sessionStorage.setItem('token', token)
             state.token = token
             return Object.assign({}, state, {})
 
         case 'LOGOUT':
-            localStorage.removeItem('token')
+            sessionStorage.removeItem('token')
             state.token = ''
             return Object.assign({}, state, {})
 
@@ -23,7 +23,7 @@ export default function sign(state = initialState, action = {}) {
 
         case 'REGISTER':
             let {token1} = action.data.data
-            localStorage.setItem('token', token1)
+            sessionStorage.setItem('token', token1)
             state.token = token
             return Object.assign({}, state, {})
 
@@ -55,6 +55,7 @@ export default function sign(state = initialState, action = {}) {
             return Object.assign({}, state, {})
         case 'SET_RISK_TYPE':
             state.userInfo.riskType = state.userInfo.ristSelect
+
             state.userInfo.riskTypeInfo = action.data
             return Object.assign({}, state, {})
         case 'RIST_PAGE':

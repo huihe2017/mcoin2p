@@ -28,7 +28,6 @@ export function changeJson(json, label, value) {
             }
         }
     })
-    debugger
     return [json]
 }
 
@@ -58,7 +57,7 @@ export function http(option) {
         url = config.api_url + option.url
     }
     // let params = new URLSearchParams();
-    axios.defaults.headers.common['token'] = localStorage.token;
+    axios.defaults.headers.common['token'] = sessionStorage.token;
     axios({
         url,
         data: setUrlK(option.data),

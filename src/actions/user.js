@@ -21,7 +21,6 @@ export function login(data, callback) {
     }
 }
 export function logout(data, callback) {
-    debugger
     return dispatch => {
         http({
             type:'post',

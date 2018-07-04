@@ -2,14 +2,20 @@ import React from 'react'
 import style from "./index.css"
 import Star from '../../components/star/index'
 import {connect} from 'react-redux'
-import {RefreshControl, ListView,NavBar,Icon} from 'antd-mobile';
+import {RefreshControl, ListView, NavBar, Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import ReactDOM from 'react-dom'
 import {hashHistory, Link} from 'react-router'
-import {setRiskType,riskPage} from '../../actions/user'
+import {setRiskType, riskPage} from '../../actions/user'
 import {bindActionCreators} from 'redux'
 
-const star=[{one:2,two:2,three:2,four:2,five:2},{one:3,two:3,three:3,four:3,five:3},{one:4,two:4,three:4,four:4,five:4}]
+const star = [{one: 2, two: 2, three: 2, four: 2, five: 2}, {one: 3, two: 3, three: 3, four: 3, five: 3}, {
+    one: 4,
+    two: 4,
+    three: 4,
+    four: 4,
+    five: 4
+}]
 
 class History extends React.Component {
 
@@ -22,40 +28,54 @@ class History extends React.Component {
             flowDemand: 0,
         };
     }
-    componentWillUnmount(){
-        this.props.riskPage('get',0)
+
+    componentWillUnmount() {
+        this.props.riskPage('get', 0)
     }
+
     ratingChanged = (newRating) => {
         console.log(newRating)
     }
 
-    showType(e){
-        if(e==0){
+    changeType(e) {
+        if (e == 0) {
             return '进取型'
-        }else if(e==1){
+        } else if (e == 1) {
             return '成长型'
-        }else if(e==2){
+        } else if (e == 2) {
             return '保守型'
         }
     }
 
+    showType = () => {
+        if (this.props.user.userInfo.ristPage !== 'set') {
+            return this.changeType(this.props.user.userInfo.riskTypeInfo.riskType)
+        } else {
+            return this.changeType(this.props.user.userInfo.ristSelect)
+        }
+    }
 
     render() {
-        console.log(11111111,this.props);
         return (
             <div className={style.wrap}>
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('/setPerson')}
+                    onLeftClick={() => {
+                        if(this.props.user.userInfo.ristPage !== 'set'){
+                            hashHistory.push('/setPerson')
+                        }else {
+                            hashHistory.push('/selectRisk')
+                        }
+                    }}
                     rightContent={[
-                        <span>完成</span>
+                        <span></span>
 
                     ]}
                 >我的风险类型</NavBar>
                 <div className={style.wrapContent}>
                     <span className={style.header}>
-                        {this.showType(this.props.user.userInfo.riskType)}
+                        {this.showType()}
                     </span>
 
                     <div className={style.content}>
@@ -65,7 +85,7 @@ class History extends React.Component {
                             </span>
 
                             <Star
-                                rank={this.props.user.userInfo.ristPage === 'set'?0:this.props.user.userInfo.riskTypeInfo.profit}
+                                rank={this.props.user.userInfo.ristPage === 'set' ? 0 : this.props.user.userInfo.riskTypeInfo.profit}
                                 limit={5}
                                 onRank={(n) => {
                                     this.setState({profit: n})
@@ -78,7 +98,7 @@ class History extends React.Component {
                                 实际风险承担<i></i>
                             </span>
                             <Star
-                                rank={this.props.user.userInfo.ristPage === 'set'?0:this.props.user.userInfo.riskTypeInfo.riskTaking}
+                                rank={this.props.user.userInfo.ristPage === 'set' ? 0 : this.props.user.userInfo.riskTypeInfo.riskTaking}
                                 limit={5}
                                 onRank={(n) => {
                                     this.setState({riskTaking: n})
@@ -90,7 +110,7 @@ class History extends React.Component {
                                 心理风险接受<i></i>
                             </span>
                             <Star
-                                rank={this.props.user.userInfo.ristPage === 'set'?0:this.props.user.userInfo.riskTypeInfo.heartTaking}
+                                rank={this.props.user.userInfo.ristPage === 'set' ? 0 : this.props.user.userInfo.riskTypeInfo.heartTaking}
                                 limit={5}
                                 onRank={(n) => {
                                     this.setState({heartTaking: n})
@@ -102,7 +122,7 @@ class History extends React.Component {
                                 流动需求<i></i>
                             </span>
                             <Star
-                                rank={this.props.user.userInfo.ristPage === 'set'?0:this.props.user.userInfo.riskTypeInfo.flowDemand}
+                                rank={this.props.user.userInfo.ristPage === 'set' ? 0 : this.props.user.userInfo.riskTypeInfo.flowDemand}
                                 limit={5}
                                 onRank={(n) => {
                                     this.setState({flowDemand: n})
@@ -122,17 +142,17 @@ class History extends React.Component {
                                     riskTaking: this.state.riskTaking,
                                     heartTaking: this.state.heartTaking,
                                     flowDemand: this.state.flowDemand,
-                                    type: this.props.user.userInfo.riskType
+                                    riskType: this.props.user.userInfo.ristSelect
                                 }, () => {
                                     hashHistory.push('/setPerson')
                                 })
-                            }else {
+                            } else {
                                 hashHistory.push('/selectRisk')
                             }
                             return false
-                        }} >
+                        }}>
                             <button className={style.button}>
-                                {this.props.user.userInfo.ristPage === 'set'?'确定':'重新选择'}
+                                {this.props.user.userInfo.ristPage === 'set' ? '确定' : '重新选择'}
                             </button>
                         </a>
                     </div>

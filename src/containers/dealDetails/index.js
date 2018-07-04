@@ -154,7 +154,7 @@ class BaseUserMsg extends React.Component {
                     <div className={style.itemH}>
                         <div className={style.itemHead}>
                             <div className={style.itemCoin}>
-                                {obj.type === '转出' ? <div style={{color: '#5262ff'}} className={style.itemT}>
+                                {obj.type === '转入' ? <div style={{color: '#5262ff'}} className={style.itemT}>
                                     <img className={style.itemImg} src={require('./images/in.png')} alt=""/>转入
                                 </div> : <div className={style.itemT}>
                                     <img className={style.itemImg} src={require('./images/out.png')} alt=""/>转出
@@ -180,8 +180,8 @@ class BaseUserMsg extends React.Component {
                             <div className={style.itemLeft}>
                                 {obj.type === '转出' ? '发起' : ''}
                                 {obj.type === '转出' ?
-                                <span style={{color: '#3B3D40', marginLeft: 10}}>{obj.beginTime}</span> :
-                                <span style={{color: '#3B3D40', marginLeft: 10}}></span>}
+                                    <span style={{color: '#3B3D40', marginLeft: 10}}>{obj.beginTime}</span> :
+                                    <span style={{color: '#3B3D40', marginLeft: 10}}></span>}
                             </div>
                             <div className={style.itemRight}>
                                 <span className={style.itemLeftC}>完成</span> <span
