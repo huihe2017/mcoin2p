@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import { List,InputItem,Button,WingBlank,Picker} from 'antd-mobile';
+import { List,InputItem,Button,WingBlank,Picker,NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
 import {checkPhone} from '../../common/util'
 import {forgetPwd} from '../../actions/user'
@@ -33,8 +33,12 @@ class ForgetPwd extends React.Component {
             Toast.fail('请输入短信验证码', 3, null, false)
             return false
         }
-        if (!/^(?!\d+$)(?![a-zA-Z]+$)(?![@#$%^&]+$)[\da-zA-Z@#$%^&]{6,21}$/.test(this.state.pwd)) {
+        if (!/^(?!\d+$)(?![a-zA-Z]+$)(?![+=_!@#$%^&*.\- ,[\]{}()|<>;`~]+$)[\da-zA-Z+=_!@#$%^&*.\- ,[\]{}()|<>;`~]{6,21}$/.test(this.state.pwd)) {
             Toast.fail('密码格式错误', 3, null, false)
+            return false
+        }
+        if (this.state.pwd!==this.state.rePwd) {
+            Toast.fail('两次输入密码不同', 3, null, false)
             return false
         }
 
@@ -82,7 +86,14 @@ class ForgetPwd extends React.Component {
         return (
             <div className={style.wrap}>
 
-                {/*<Header/>*/}
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left"/>}
+                    onLeftClick={() => hashHistory.push('/auth')}
+                    rightContent={[
+
+                    ]}
+                >点点数字基金</NavBar>
                     <section className={style.content}>
                         <span className={style.title}>
                         找回密码？
@@ -143,7 +154,19 @@ class ForgetPwd extends React.Component {
                                                onChange={(value) => {
                                                    this.setState({pwd: value})
                                                }}
-                                               placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码'}></InputItem>
+                                               placeholder={ '请设置6-20位密码'}></InputItem>
+                                </List>
+
+                            </div>
+                        </div>
+                        <div className={style.selphone} >
+                            <div className={style.tu}>
+                                <List>
+                                    <InputItem type="password"
+                                               onChange={(value) => {
+                                                   this.setState({rePwd: value})
+                                               }}
+                                               placeholder={'请再次输入密码'}></InputItem>
                                 </List>
 
                             </div>

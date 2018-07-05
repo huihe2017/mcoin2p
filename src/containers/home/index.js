@@ -81,23 +81,25 @@ class Home extends React.Component {
 
                 </div>
                 <div>
-                    <Carousel
+                    {/*轮播banner*/}
+                    {/*<Carousel*/}
 
-                        autoplay={false}
-                        infinite
-                        beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-                        afterChange={index => console.log('slide to', index)}
-                    >
-                        {this.props.indexPage.banners.map(val => {
-                                return <img className={style.banner}
-                                            src={val.photo
-                                            }
+                        {/*autoplay={false}*/}
+                        {/*infinite*/}
+                        {/*beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}*/}
+                        {/*afterChange={index => console.log('slide to', index)}*/}
+                    {/*>*/}
+                        {/*{this.props.indexPage.banners.map(val => {*/}
+                                {/*return <img className={style.banner}*/}
+                                            {/*src={val.photo*/}
+                                            {/*}*/}
 
 
-                                />
-                            }
-                        )}
-                    </Carousel>
+                                {/*/>*/}
+                            {/*}*/}
+                        {/*)}*/}
+                    {/*</Carousel>*/}
+                    <img className={style.banner} src={''}/>
                 </div>
                 <div className={style.fund}>
                     <div className={style.fundHeader}>

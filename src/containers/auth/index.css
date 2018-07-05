@@ -1,6 +1,13 @@
 :local(.wrap){
-
-
+    position: relative;
+}
+:local(.toHome){
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    color: #5262ff;
+    top: 20px;
+    left: 16px;
 }
 :local(.logo){
     margin: 0 auto;

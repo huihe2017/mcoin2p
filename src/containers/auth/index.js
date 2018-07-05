@@ -49,7 +49,7 @@ class Auth extends React.Component {
             //     Toast.fail('密码格式错误', 3, null, false)
             //     return false
             // }
-            if (!/^(?!\d+$)(?![a-zA-Z]+$)(?![@#$%^&]+$)[\da-zA-Z@#$%^&]{6,21}$/.test(this.state.pwd)) {
+            if (!/^(?![a-zA-z]+$)(?!\d+$)(?![+=_!@#$%^&*.\- ,[\]{}()|<>;`~]+$)[a-zA-Z\d+=_!@#$%^&*.\- ,[\]{}()|<>;`~\\/]+$/.test(this.state.pwd)) {
                 Toast.fail('密码格式错误', 3, null, false)
                 return false
             }
@@ -94,7 +94,12 @@ class Auth extends React.Component {
                 Toast.fail('请输入短信验证码', 3, null, false)
                 return false
             }
-            if (!/^(?!\d+$)(?![a-zA-Z]+$)(?![@#$%^&]+$)[\da-zA-Z@#$%^&]{6,21}$/.test(this.state.pwd)) {
+
+            // if (!/^(?!\d+$)(?![a-zA-Z]+$)(?![+=_!@#$%^&*.\- ,[\]{}()|<>;`]+$)[\da-zA-Z+=_!@#$%^&*.\- ,[\]{}()|<>;`]{6,21}$/.test(this.state.pwd)) {
+            //     Toast.fail('密码格式错误', 3, null, false)
+            //     return false
+            // }
+            if (!/^(?![a-zA-z]+$)(?!\d+$)(?![+=_!@#$%^&*.\- ,[\]{}()|<>;`~]+$)[a-zA-Z\d+=_!@#$%^&*.\- ,[\]{}()|<>;`~\\/]+$/.test(this.state.pwd)) {
                 Toast.fail('密码格式错误', 3, null, false)
                 return false
             }
@@ -160,8 +165,12 @@ class Auth extends React.Component {
         }
         return (
             <div className={style.wrap}>
-                {/*<Header/>*/}
-                <div className={style.logo}></div>
+                <a className={style.toHome} href="javascript:void (0)" onClick={()=>hashHistory.push('/')}>
+                    返回首页
+                </a>
+                <div className={style.logo}>
+                    
+                </div>
                 <nav className={style.nav}>
                     <div>
                         <span id={this.state.login ? style.active : ""} onClick={this.toreg.bind(this)}>登录</span>

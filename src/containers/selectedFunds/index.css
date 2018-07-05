@@ -64,24 +64,22 @@
 :local(.yieldRateBox){
     display: block;
     font-size: 15px;
-    color: #F49193;
-
-
-}
-:local(.yieldRateBox1){
-    display: block;
-    font-size: 15px;
-    color: #3B3D40;
+    color: #5262ff;
 
 
 }
 :local(.yieldRate){
-    font-size: 20px;
-    color: #F49193;
+    font-size: 24px;
+    color: #5262ff;
+    line-height: 32px;
+    font-weight: bold;
 }
 :local(.yieldRate1){
-    font-size: 20px;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 32px;
     color: #3B3D40;
+    font-weight: bold;
 }
 :local(.yieldRateTip){
     margin-top: 10px;
@@ -95,7 +93,7 @@
 :local(.span){
     line-height: 18px;
     height: 20px;
-    width: 80px;
+    padding: 0 10px;
     text-align: right;
     font-size: 12px;
     color: #5262ff;

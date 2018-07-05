@@ -71,7 +71,7 @@ class BaseUserMsg extends React.Component {
                         <div className={style.headerBottom}>
                             <Link to={'/setPerson'}>
                                 <a className={style.user}  href="javascript:void (0)">
-                                    <img className={style.userImg} src={this.props.user.userInfo.portraitUrl} alt=""/>
+                                    <img className={style.userImg} src={require('./images/ava.png')} alt=""/>
                                     <div className={style.userData}>
                                         <span className={style.userName}>
                                             {this.props.user.userInfo.userName}
