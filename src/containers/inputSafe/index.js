@@ -3,12 +3,13 @@ import style from "./index.css"
 import {connect} from 'react-redux'
 import {List, InputItem, Toast,Picker,Modal,NavBar,Icon} from 'antd-mobile';
 import Header from '../../components/header'
-import Footer from '../../components/footer'
+import Countdown from '../../components/countdown'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
 import {logout} from '../../actions/user'
 import {checkSafeCode,sentMobileCode,checkMobileCode} from '../../actions/wallet'
 import {Checkbox} from "antd-mobile/lib/index";
+import {checkPhone} from "../../common/util";
 
 function closest(el, selector) {
     const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
@@ -134,11 +135,7 @@ class BaseUserMsg extends React.Component {
                         onClose={()=>this.setState({modal1: false})}
                         title="提示"
                         closable={true}
-                        footer={[
-                            { text: '重新发送', onPress: () => {
-                                alert('重新发送')
-                                } }
-                        ]}
+
                         wrapProps={{ onTouchStart: this.onWrapTouchStart }}
                     >
                         <div style={{ height: 150}}>
@@ -189,13 +186,16 @@ class BaseUserMsg extends React.Component {
                                                 checkCode:this.state.code1+this.state.code2+this.state.code3+this.state.code4+this.state.code5+this.state.code6,
                                                 applyId:this.props.wallet.applyId
                                             },()=>{
-                                                alert('提币成功')
+                                                hashHistory.push('/dealDetails/'+this.props.wallet.current.balance.currency)
                                             })
                                         }})
                                     }} type={"text"} ></InputItem>
                                 </li>
 
                             </ul>
+                            {/*<div onClick={()=>{*/}
+                                {/**/}
+                            {/*}} >重新发送</div>*/}
                         </div>
                     </Modal>
                 </div>

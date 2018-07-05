@@ -29,7 +29,6 @@ for (let i in states) {
     _states[i] = states[i]()
 }
 
-
 export default combineReducers(states)
 
 export const getInitialState = () => {

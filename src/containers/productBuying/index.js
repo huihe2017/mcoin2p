@@ -63,7 +63,7 @@ class BaseUserMsg extends React.Component {
                     <div className={style.input}>
                         买入币额
                         <span className={style.extra}>
-                           ￥
+                           {this.props.fund.detail.currency}
                         </span>
                         <InputItem
                             placeholder=""
@@ -73,8 +73,7 @@ class BaseUserMsg extends React.Component {
                         ></InputItem>
                     </div>
                     <div className={style.inputTip}>
-                        {this.props.fund.detail.profitTime}产生收益，到期前不能赎回<br/>
-                        基金交易规则请查看 <a href="javascript:void (0)">交易规则</a>
+                        预计{this.props.fund.detail.profitTime}产生收益，具体确认时间以买入时间为准，到期前不能赎回。 基金交易规则请查看 <a href="javascript:void (0)">交易规则</a>
                     </div>
                     <div className={style.expire} onClick={()=>this.setState({
                         modal2: true,

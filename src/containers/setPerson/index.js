@@ -80,10 +80,10 @@ class BaseUserMsg extends React.Component {
                                     <span className={style.itemWordR}>{this.props.user.userInfo.userName}</span>
                                 </a>
                             </Link>
-                            <a className={style.ensure} href="javascript:void(0)">
-                                <span className={style.itemWord}>绑定手机</span>
-                                <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
-                            </a>
+                            {/*<a className={style.ensure} href="javascript:void(0)">*/}
+                                {/*<span className={style.itemWord}>绑定手机</span>*/}
+                                {/*<img className={style.arrow} src={require('./images/arrow.png')} alt=""/>*/}
+                            {/*</a>*/}
                         </List>
                     </div>
                     <div className={style.part}>

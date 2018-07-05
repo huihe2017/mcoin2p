@@ -39,7 +39,7 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => this.props.history.goBack()}
+                    onLeftClick={() => hashHistory.push('/productDetails/'+this.props.fund.detail.id)}
                     rightContent={[
 
 
@@ -58,7 +58,7 @@ class BaseUserMsg extends React.Component {
                                     成功买入
                                 </span>
                                 <span className={style.userTime}>
-                                    ￥{this.props.fund.detail.startTime.amount}
+                                    {this.props.fund.detail.startTime.currency}{this.props.fund.detail.startTime.amount}
                                 </span>
                             </div>
                         </a>

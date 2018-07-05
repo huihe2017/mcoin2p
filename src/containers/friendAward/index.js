@@ -192,10 +192,10 @@ class BaseUserMsg extends React.Component {
                             <a className={style.user} href="javascript:void (0)">
                                 <div className={style.userData}>
                                     <span className={style.userName}>
-                                        累计市值 （元）
+                                        市值
                                     </span>
                                     <span className={style.userTime}>
-                                        {this.props.asset.friendWard && this.props.asset.friendWard.totalAmount}
+                                        ￥{this.props.asset.friendWard && this.props.asset.friendWard.totalAmount}
                                     </span>
                                 </div>
                             </a>
