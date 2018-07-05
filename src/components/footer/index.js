@@ -67,7 +67,7 @@ class Footer extends React.Component {
                         selectedIcon={
                             <div className={style.homeA}/>
                         }
-                        title="首页"
+                        title={<span style={this.props.home?{color:'#5262ff'}:{}}>首页</span>}
                         key="Koubei"
 
                         selected={this.state.selectedTab === 'redTab'}
@@ -90,7 +90,7 @@ class Footer extends React.Component {
                         selectedIcon={
                             <div className={style.newA}/>
                         }
-                        title="资讯"
+                        title={<span style={this.props.information?{color:'#5262ff'}:{}}>资讯</span>}
                         key="Friend"
                         dot
                         selected={this.state.selectedTab === 'greenTab'}
@@ -107,7 +107,8 @@ class Footer extends React.Component {
                     <TabBar.Item
                         icon={<div className={this.props.person?style.personA:style.person}/>}
                         selectedIcon={<div className={style.personA}/>}
-                        title="我的"
+
+                        title={<span style={this.props.person?{color:'#5262ff'}:{}}>我的</span>}
                         key="my"
                         selected={this.state.selectedTab === 'yellowTab'}
                         onPress={() => {

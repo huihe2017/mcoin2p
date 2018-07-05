@@ -108,7 +108,7 @@ class Home extends React.Component {
                                                     {/*</div>*/}
                                                 {/*}*/}
                                                 <div className={style.cir1}>
-                                                    开发申购
+                                                    开放申购
                                                 </div>
 
                                             </div>
