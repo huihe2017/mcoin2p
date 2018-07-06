@@ -68,6 +68,9 @@
     border-radius: 5px;
     margin-top: 16px;
 }
+:local(.button1)[disabled]{
+    opacity: 0.5;
+}
 :local(.itemBoxC){
     font-size: 14px;
     color: #BBBBBB;

@@ -239,7 +239,7 @@ class BaseUserMsg extends React.Component {
                                 </li>
 
                             </ul>
-                            <div className={style.button1} onClick={this.handle.bind(this)}>
+                            <div disabled={this.state.counting} className={style.button1} onClick={this.handle.bind(this)}>
                                 {/*重新发送*/}
                                 {this.state.extraText}
                             </div>
