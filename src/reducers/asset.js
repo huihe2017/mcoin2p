@@ -1,4 +1,5 @@
-let initialState = {}
+let initialState = {
+}
 
 export default function asset(state = initialState, action = {}) {
     switch (action.type) {
@@ -10,10 +11,20 @@ export default function asset(state = initialState, action = {}) {
             state.friendWard = action.data.data
             return Object.assign({}, state, {})
         case 'GET_ACTIVE_COIN':
-            state.activeCoin = action.data.data
+            if(!state.activeCoin){
+                state.activeCoin = action.data.data
+            }else {
+                let arr = state.activeCoin.list.concat(action.data.data.list)
+                state.activeCoin.list = arr
+            }
             return Object.assign({}, state, {})
         case 'GET_BILLS_LIST':
-            state.bills = action.data.data
+            if(!state.bills){
+                state.bills = action.data.data
+            }else {
+                let arr = state.bills.list.concat(action.data.data.list)
+                state.bills.list = arr
+            }
             return Object.assign({}, state, {})
         case 'GET_AWARD_DETAILS':
             state.awardDetails = action.data.data

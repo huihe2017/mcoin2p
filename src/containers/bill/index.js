@@ -11,81 +11,23 @@ import ReactDOM from "react-dom";
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            page: 1
+        }
     }
 
 
     componentDidMount() {
-        this.props.getBillsList({page: 1}, () => {
+        this.props.getBillsList({page: this.state.page}, () => {
 
         })
-        // if (this.lv) {
-        //
-        //     setTimeout(() => this.setState({
-        //         height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
-        //     }), 0);
-        //
-        //     // handle https://github.com/ant-design/ant-design-mobile/issues/1588
-        //
-        //     this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
-        //         this.tsPageY = e.touches[0].pageY;
-        //     });
-        //     // In chrome61 `document.body.scrollTop` is invalid
-        //     const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
-        //     this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
-        //         this.tmPageY = e.touches[0].pageY;
-        //         if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
-        //             console.log('start pull to refresh');
-        //             this.domScroller.options.preventDefaultOnTouchMove = false;
-        //         } else {
-        //             this.domScroller.options.preventDefaultOnTouchMove = undefined;
-        //         }
-        //     });
-        // }
-    }
-
-    componentWillUnmount() {
-        // if (this.lv) {
-        //     this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
-        //     this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
-        // }
-
     }
 
 
     render() {
-        if(!this.props.asset.bills){
+        if (!this.props.asset.bills) {
             return null
         }
-        const row = (rowData, sectionID, rowID) => {
-            const obj = rowData;
-            return (
-                <div className={style.item} key={rowID}>
-
-                    <div className={style.contentPart}>
-                        <span className={style.contentPart1}>
-                            <img src={require('../friendAward/images/BTC.png')} className={style.contentImg}
-                                 alt=""/>{obj.currency}
-                        </span>
-                        <span className={style.contentPart2}>
-                            <span className={style.contentPart31}>
-                                {obj.week}
-                            </span>
-                            <span className={style.contentPart32}>
-                                {obj.createDate}
-                            </span>
-                        </span>
-                        <div className={style.contentPart3}>
-                            <span className={style.contentPart5}>
-                                {obj.amount}
-                            </span>
-                            <span className={style.contentPart4}>
-                                {obj.remark}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            );
-        };
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -95,23 +37,49 @@ class BaseUserMsg extends React.Component {
                 >账单</NavBar>
                 <div>
                     <div className={style.content}>
-                        {this.props.asset.bills && this.props.asset.bills.list.length === 0 ? <div>
+                        {this.props.asset.bills.list.length === 0 ? <div>
                                 <img className={style.showImg} src={require('../outAddressList/images/zero.png')} alt=""/>
                                 <span className={style.showTip}>
                                     暂无数据
                                 </span>
                             </div> :
                             <ListView
-                                // ref={el => this.lv = el}
+                                ref={el => this.lv = el}
                                 dataSource={(() => {
                                     const dataSource = new ListView.DataSource({
-                                        rowHasChanged: (row1, row2) => row1 !== row2,
+                                        rowHasChanged: (row1, row2) => row1 !== row2
                                     });
                                     return dataSource.cloneWithRows(this.props.asset.bills.list)
                                 })()}
+                                renderRow={(rowData, sectionID, rowID) => {
+                                    const obj = rowData;
+                                    return <div className={style.item} key={rowID}>
+                                        <div className={style.contentPart}>
+                                                    <span className={style.contentPart1}>
+                                                        <img src={require('../friendAward/images/BTC.png')}
+                                                             className={style.contentImg}
+                                                             alt=""/>{obj.currency}
+                                                    </span>
+                                            <span className={style.contentPart2}>
+                                                        <span className={style.contentPart31}>
+                                                            {obj.week}
+                                                        </span>
+                                                        <span className={style.contentPart32}>
+                                                            {obj.createDate}
+                                                        </span>
+                                                    </span>
+                                            <div className={style.contentPart3}>
+                                                        <span className={style.contentPart5}>
+                                                            {obj.amount}
+                                                        </span>
+                                                <span className={style.contentPart4}>
+                                                            {obj.remark}
+                                                        </span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-
-                                renderRow={row}
+                                }}
                                 renderSeparator={(sectionID, rowID) => (
                                     <div
                                         key={`${sectionID}-${rowID}`}
@@ -123,10 +91,9 @@ class BaseUserMsg extends React.Component {
                                         }}
                                     />
                                 )}
-
                                 style={{
                                     height: document.documentElement.clientHeight,
-                                    margin: '0.05rem 0',
+                                    margin: '0.05rem 0'
                                 }}
                                 refreshControl={<RefreshControl
                                     onRefresh={() => {
@@ -140,8 +107,13 @@ class BaseUserMsg extends React.Component {
                                     }}
 
                                 />}
-                                onEndReached={()=>{
-                                   
+                                onEndReached={() => {
+
+                                    this.setState({page: ++this.state.page}, () => {
+                                        this.props.getBillsList({page: this.state.page}, () => {
+                                        })
+                                    })
+
                                 }}
                                 onEndReachedThreshold={10}
                             />}

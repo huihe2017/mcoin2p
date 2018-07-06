@@ -58,7 +58,7 @@ class BaseUserMsg extends React.Component {
                 >产品买入</NavBar>
                 <div className={style.wrapContent}>
                     <div className={style.title}>
-                        基金名称
+                        {this.props.fund.detail.title}
                     </div>
                     <div className={style.input}>
                         买入币额
