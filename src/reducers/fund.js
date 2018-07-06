@@ -11,7 +11,12 @@ export default function fund(state = initialState, action = {}) {
             state.detail = action.data.data
             return Object.assign({}, state, {})
         case 'GET_MY_FUND_LIST':
-            state.myFund = action.data.data
+            if(!state.myFund){
+                state.myFund = action.data.data
+            }else {
+                let arr = state.myFund.userProducts.concat(action.data.data.userProducts)
+                state.myFund.userProducts = arr
+            }
             return Object.assign({}, state, {})
         case 'GET_MY_FUND_DETAILS':
             state.myFundDetails = action.data.data
@@ -36,7 +41,12 @@ export default function fund(state = initialState, action = {}) {
             state.tradeDatails = action.data.data
             return Object.assign({}, state, {})
         case 'GET_PROFIT_LIST':
-            state.profitList = action.data.data
+            if(!state.profitList){
+                state.profitList = action.data.data
+            }else {
+                let arr = state.profitList.profitList.concat(action.data.data.profitList)
+                state.profitList.profitList = arr
+            }
             return Object.assign({}, state, {})
         default:
             return state

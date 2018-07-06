@@ -62,6 +62,9 @@ export default function sign(state = initialState, action = {}) {
             state.userInfo.ristPage = action.data.type
             state.userInfo.ristSelect = action.data.value
             return Object.assign({}, state, {})
+        case 'INVITE_REGIS':
+            state.userInfo.shareUrl = action.data.data.shareInfo.shareUrl
+            return Object.assign({}, state, {})
         default:
             return state
     }

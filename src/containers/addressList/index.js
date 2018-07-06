@@ -13,117 +13,19 @@ import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 
 
-
-
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
-        const dataSource = new ListView.DataSource({
-            rowHasChanged: (row1, row2) => row1 !== row2,
-        });
         this.state = {
-            dataSource,
-            isShowModal: false,
-            refreshing: true,
-            height: document.documentElement.clientHeight,
+            page: 1,
+            ethPage: 0,
+            btcPage: 0
         }
     }
 
     componentDidMount() {
-
-        // Set the appropriate height
-        if (!this.lv) {
-            return false
-        }
-        setTimeout(() => this.setState({
-            height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
-        }), 0);
-
-        // handle https://github.com/ant-design/ant-design-mobile/issues/1588
-
-        this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
-            this.tsPageY = e.touches[0].pageY;
-        });
-        // In chrome61 `document.body.scrollTop` is invalid
-        const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
-        this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
-            this.tmPageY = e.touches[0].pageY;
-            if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
-                console.log('start pull to refresh');
-                this.domScroller.options.preventDefaultOnTouchMove = false;
-            } else {
-                this.domScroller.options.preventDefaultOnTouchMove = undefined;
-            }
-        });
-    }
-
-    componentWillUnmount() {
-        this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
-        this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
-    }
-
-    onScroll = (e) => {
-        this.scrollerTop = e.scroller.getValues().top;
-        this.domScroller = e;
-    };
-
-    onRefresh = () => {
-        console.log('onRefresh');
-        if (!this.manuallyRefresh) {
-            this.setState({refreshing: true});
-        } else {
-            this.manuallyRefresh = false;
-        }
-
-        // simulate initial Ajax
-        this.props.getCommonAddress({ page: 1}, () => {
-            this.rData = this.genData();
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
-                refreshing: false,
-                showFinishTxt: true,
-            });
-            if (this.domScroller) {
-                this.domScroller.scroller.options.animationDuration = 500;
-            }
+        this.props.getCommonAddress({page: this.state.page}, () => {
         })
-    };
-
-    onEndReached = (event) => {return false
-        // load new data
-        // hasMore: from backend data, indicates whether it is the last page, here is false
-        if (this.state.isLoading && !this.state.hasMore) {
-            return;
-        }
-        console.log('reach end', event);
-        this.setState({isLoading: true});
-        this.props.getCommonAddress({ page: 1}, () => {
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
-                isLoading: false,
-            });
-            if (this.domScroller) {
-                this.domScroller.scroller.options.animationDuration = 500;
-            }
-        })
-    };
-
-    scrollingComplete = () => {
-        // In general, this.scrollerTop should be 0 at the end, but it may be -0.000051 in chrome61.
-        if (this.scrollerTop >= -1) {
-            this.setState({showFinishTxt: false});
-        }
-    }
-
-    renderCustomIcon() {
-        return [
-            <div key="0" className="am-refresh-control-pull">
-                <span>{this.state.showFinishTxt ? '刷新完毕' : '下拉可以刷新'}</span>
-            </div>,
-            <div key="1" className="am-refresh-control-release">
-                <span>松开立即刷新</span>
-            </div>,
-        ];
     }
 
     renderTabBar(props) {
@@ -132,86 +34,110 @@ class BaseUserMsg extends React.Component {
         </Sticky>);
     }
 
-    genData(pIndex = 0) {
-        return this.props.wallet.commonAddress;
-    }
-
-
-
     renderList = () => {
-        const row = (rowData, sectionID, rowID) => {
-
-            const obj = rowData;
-            return (
-
-
-                <div className={style.item} key={obj.id}>
-
-                    <div className={style.itemContent}>
-                        <div className={style.itemCoin}>
-                            <img className={style.itemImg} src={require('../activityBalance/images/BTC.png')}
-                                 alt=""/>{obj.currency}
-                        </div>
-                        <div className={style.itemName}>
-                            {obj.tag}
-                        </div>
-                        <div className={style.itemDo}>
-                            <a onClick={(e) => {
-
-                                this.setState({isShowModal: true})
-                                this.setState({delAddressId: obj.id})
-
-                                e.stopPropagation()
-                            }} href="javascript:void (0)">
-                                <img className={style.iconImg} src={require('./images/delete.png')} alt=""/>删除
-                            </a>
-                            <Link to={'/addAddress/' + obj.id}>
-
-                                <img className={style.iconImg} src={require('./images/editor.png')} alt=""/>修改
-                            </Link>
-                        </div>
-                    </div>
-                    <div className={style.itemAdressBox}>
-                        <div className={style.itemAdressT}>
-                            地址
-                        </div>
-                        <div className={style.itemAdress}>
-                            {obj.address}
-                        </div>
-                    </div>
-                </div>
-
-            );
-        };
         return <div className={style.listBox}>
-            {this.props.wallet.commonAddress && this.props.wallet.commonAddress.length == 0 ? <div>
+            {this.props.wallet.commonAddress.list.length == 0 ? <div>
                 <img className={style.showImg} src={require('./images/zero.png')} alt=""/>
                 <span className={style.showTip}>
                         暂无数据
                     </span>
             </div> : <ListView
                 ref={el => this.lv = el}
-                dataSource={this.state.dataSource}
+                dataSource={(() => {
+                    const dataSource = new ListView.DataSource({
+                        rowHasChanged: (row1, row2) => row1 !== row2
+                    });
+                    return dataSource.cloneWithRows(this.props.wallet.commonAddress.list)
+                })()}
+                renderRow={(rowData, sectionID, rowID) => {
 
-                renderFooter={() => (<div style={{padding: '0.3rem', textAlign: 'center'}}>
-                    {this.state.isLoading ? '' : ''}
-                </div>)}
-                renderRow={row}
-                initialListSize={5}
-                pageSize={5}
-                style={{
-                    height: this.state.height,
+                    const obj = rowData;
+                    return (
+
+
+                        <div className={style.item} key={obj.id}>
+
+                            <div className={style.itemContent}>
+                                <div className={style.itemCoin}>
+                                    <img className={style.itemImg} src={require('../activityBalance/images/BTC.png')}
+                                         alt=""/>{obj.currency}
+                                </div>
+                                <div className={style.itemName}>
+                                    {obj.tag}
+                                </div>
+                                <div className={style.itemDo}>
+                                    <a onClick={(e) => {
+
+                                        this.setState({isShowModal: true})
+                                        this.setState({delAddressId: obj.id})
+
+                                        e.stopPropagation()
+                                    }} href="javascript:void (0)">
+                                        <img className={style.iconImg} src={require('./images/delete.png')} alt=""/>删除
+                                    </a>
+                                    <Link to={'/addAddress/' + obj.id}>
+
+                                        <img className={style.iconImg} src={require('./images/editor.png')} alt=""/>修改
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className={style.itemAdressBox}>
+                                <div className={style.itemAdressT}>
+                                    地址
+                                </div>
+                                <div className={style.itemAdress}>
+                                    {obj.address}
+                                </div>
+                            </div>
+                        </div>
+
+                    );
                 }}
-                scrollerOptions={{scrollbars: true, scrollingComplete: this.scrollingComplete}}
+                renderSeparator={(sectionID, rowID) => (
+                    <div
+                        key={`${sectionID}-${rowID}`}
+                        style={{
+                            backgroundColor: '#F5F5F9',
+                            height: 0,
+                            borderTop: '1px solid #ECECED',
+                            borderBottom: '1px solid #ECECED',
+                        }}
+                    />
+                )}
+                style={{
+                    height: document.documentElement.clientHeight,
+                    margin: '0.05rem 0'
+                }}
                 refreshControl={<RefreshControl
-                    refreshing={this.state.refreshing}
-                    onRefresh={this.onRefresh}
-                    icon={this.renderCustomIcon()}
+                    onRefresh={() => {
+                        // this.props.getBillsList({page: 1}, () => {
+                        //     this.setState({
+                        //         dataSource: this.state.dataSource.cloneWithRows(this.props.asset.bills.list),
+                        //         refreshing: false,
+                        //         showFinishTxt: true,
+                        //     });
+                        // })
+                    }}
+
                 />}
-                onScroll={this.onScroll}
-                scrollRenderAheadDistance={200}
-                scrollEventThrottle={20}
-                onEndReached={this.onEndReached}
+                onEndReached={() => {
+                    let page = this.state.page
+                    if(this.state.currency==='BTC'){
+                        this.setState({page: ++this.state.page}, () => {
+
+                            this.props.getCommonAddress({page,currency:this.state.currency?this.state.currency:''}, () => {
+                            })
+                        })
+                    }
+                    if(this.state.currency==='ETH'){
+                        page = this.state.ethPage
+                    }
+                    if(this.state.currency===''){
+                        page = this.state.ethPage
+                    }
+
+
+                }}
                 onEndReachedThreshold={10}
             />}
         </div>
@@ -225,15 +151,15 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
-
+        if (!this.props.wallet.commonAddress) {
+            return null
+        }
         const tabs = [
             {title: '全部'},
             {title: 'BTC'},
             {title: 'ETH'}
 
         ];
-        let pageIndex = 0;
-
 
         return (
             <div className={style.wrap}>
@@ -272,7 +198,22 @@ class BaseUserMsg extends React.Component {
                     <StickyContainer>
                         <Tabs tabs={tabs}
                               initalPage={'t2'}
-                            // onChange={()=>{alert(1)}}
+                              onChange={(a, b) => {
+                                  if(b===1){
+                                      this.setState({btcPage:++this.state.btcPage,currency:'BTC'},()=>{
+                                          this.props.getCommonAddress({page: this.state.btcPage,currency:'BTC'}, () => {
+                                          })
+                                      })
+
+                                  }
+                                  if(b===2){
+                                      this.setState({ethPage:++this.state.ethPage,currency:'ETH'},()=>{
+                                          this.props.getCommonAddress({page: this.state.ethPage,currency:'ETH'}, () => {
+                                          })
+                                      })
+
+                                  }
+                              }}
                               renderTabBar={this.renderTabBar.bind(this)}
                         >
                             <div>

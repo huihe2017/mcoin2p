@@ -139,3 +139,17 @@ export function riskPage(type,value) {
     }
 }
 
+export function inviteRegis(data, callback) {
+    return dispatch => {
+        http({
+            type:'post',
+            data,
+            callback,
+            url:'share/invite',
+            success:(response)=>{
+                dispatch({type: 'INVITE_REGIS',data: response.data})
+            }
+
+        })
+    }
+}

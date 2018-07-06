@@ -20,13 +20,23 @@ export default function wallet(state = initialState, action = {}) {
             state.list = list
             return Object.assign({}, state, {})
         case 'GET_WALLET_TRADE_RECORD':
-            state.current = action.data.data
+            if(!state.current){
+                state.current = action.data.data
+            }else {
+                let arr = state.current.list.concat(action.data.data.list)
+                state.current.list = arr
+            }
             return Object.assign({}, state, {})
         case 'GET_MINER_FEE':
             state.minerFeeList = action.data.data.feeList
             return Object.assign({}, state, {})
         case 'GET_COMMON_ADDRESS':
-            state.commonAddress = action.data.data.list
+            if(!state.commonAddress){
+                state.commonAddress = action.data.data
+            }else {
+                let arr = state.commonAddress.list.concat(action.data.data.list)
+                state.commonAddress.list = arr
+            }
             return Object.assign({}, state, {})
         case 'CONFIRM_WITHDRAW_MSG':
             state.applyId = action.data.data.applyId
