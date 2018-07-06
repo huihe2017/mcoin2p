@@ -37,7 +37,7 @@ class BaseUserMsg extends React.Component {
         let id = this.props.params.id
         let filterData
         if (id !== 'null') {
-            filterData = this.props.wallet.commonAddress.filter((item) => id == item.id);
+            filterData = this.props.wallet.commonAddress.list.filter((item) => id == item.id);
             filterData = filterData[0]
             this.setState({currency: [filterData.currency]})
             this.setState({address: filterData.address})
