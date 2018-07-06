@@ -58,22 +58,15 @@
     margin-top: 60px;
 }
 :local(.button1){
-    display: block;
-    width: 100%;
-    outline: none;
-    border: none;
-    margin: 0 auto;
+    margin: 0 16px;
     height: 40px;
-    line-height: 38px;
+    line-height: 40px;
     text-align: center;
     font-size: 16px;
     color: #fff;
     background: linear-gradient(to right,#3ca3fd,#5262ff);
     border-radius: 5px;
     margin-top: 16px;
-}
-:local(.button1):disabled{
-    opacity: 0.5;
 }
 :local(.itemBoxC){
     font-size: 14px;
