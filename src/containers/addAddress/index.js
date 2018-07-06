@@ -184,7 +184,7 @@ class BaseUserMsg extends React.Component {
                         transparent
                         maskClosable={true}
                         onClose={() => this.setState({modal1: false})}
-                        title="提示"
+                        title="地址确认"
                         closable={true}
                         footer={[
                             {
@@ -200,13 +200,7 @@ class BaseUserMsg extends React.Component {
                         ]}
                         wrapProps={{onTouchStart: this.onWrapTouchStart}}
                     >
-                        <div style={{height: 230}}>
-                            <span className={style.alTip}>
-                                请再次确认消息
-                            </span>
-                            <span className={style.alTip}>
-                                确认无误，请点击完成
-                            </span>
+                        <div style={{height: 130}}>
                             <span className={style.alTip} style={{marginTop: 12}}>
                                 备注名称：
                                 <span style={{color: '#3B3D40'}}>
