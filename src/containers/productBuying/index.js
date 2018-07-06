@@ -68,6 +68,7 @@ class BaseUserMsg extends React.Component {
                         <InputItem
                             placeholder=""
                             clear
+                            style={{paddingLeft:40}}
                             onChange={(v) => { this.setState({amount:v}) }}
                             onBlur={(v) => { console.log('onBlur', v); }}
                         ></InputItem>
