@@ -113,7 +113,7 @@ class BaseUserMsg extends React.Component {
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
                     rightContent={[]}
-                >转出</NavBar>
+                >添加转出地址</NavBar>
                 <div>
                     <ul className={style.itemUl}>
 
@@ -166,9 +166,7 @@ class BaseUserMsg extends React.Component {
                                 okText={<Icon type={'check'}/>}
                                 dismissText={<Icon type={'cross'}/>}
                             >
-                                <List.Item arrow="horizontal"><span className={style.itemBoxC}>
-                                请选择矿工费
-                            </span></List.Item>
+                                <List.Item arrow="horizontal">矿工费</List.Item>
                             </Picker>
                         </li>
                     </ul>

@@ -59,7 +59,7 @@
 }
 :local(.itemBoxC){
     font-size: 14px;
-    color: #BBBBBB;
+    color: #3B3D40;
 }
 :local(.itemBox) .am-list-arrow{
     transform:rotate(90deg);

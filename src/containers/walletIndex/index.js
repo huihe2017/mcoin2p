@@ -54,9 +54,9 @@ class BaseUserMsg extends React.Component {
                     rightContent={[
                         <Link to={'/walletSetting'}>
                             <Icon key="1" size={'xs'} type="ellipsis"/>
-                        </Link>, <Icon key="1" size={'xs'} type="search"/>
+                        </Link>
                     ]}
-                >点点数字基金</NavBar>
+                >点点钱包</NavBar>
                 <div>
                     <div className={style.header}>
                         <div className={style.headerTop}>
@@ -71,7 +71,7 @@ class BaseUserMsg extends React.Component {
                             <a className={style.user} href="javascript:void (0)">
                                 <div className={style.userData}>
                                     <span className={style.userName}>
-                                        可活动资产
+                                        钱包资产总值
                                     </span>
                                     <span className={style.userTime}>
                                         ￥{this.props.wallet.totalAmount}
