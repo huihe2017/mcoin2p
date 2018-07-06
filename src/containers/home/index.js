@@ -80,7 +80,7 @@ class Home extends React.Component {
 
 
                 </div>
-                <div>
+                <div className={style.bannerBox}>
                     {/*轮播banner*/}
                     {/*<Carousel*/}
 
@@ -99,7 +99,7 @@ class Home extends React.Component {
                             {/*}*/}
                         {/*)}*/}
                     {/*</Carousel>*/}
-                    <img className={style.banner} src={''}/>
+                    <a className={style.banner} href="javascript:void (0)"></a>
                 </div>
                 <div className={style.fund}>
                     <div className={style.fundHeader}>
