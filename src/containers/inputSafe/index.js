@@ -61,14 +61,13 @@ class BaseUserMsg extends React.Component {
 
     }
 
-    handle() {
+    handle = () => {
 
         if (this.state.counting) {
             return false
         }
-
+        this.props.sentMobileCode()
         let _this = this
-        alert(1)
         _this.setState({counting: true})
         let seconds = 60
         _this.inter = setInterval(() => {
@@ -175,7 +174,7 @@ class BaseUserMsg extends React.Component {
                     >
                         <div style={{height: 180}}>
                             <span className={style.alTip}>
-                                已向 { this.props.user.userInfo.mobile.replace(/^(\d{3})\d{4}(\d+)/,"$1****$2")} 发送验证码验证码3分钟有效，请注意！
+                                已向 {this.props.user.userInfo.mobile.replace(/^(\d{3})\d{4}(\d+)/, "$1****$2")} 发送验证码验证码3分钟有效，请注意！
                             </span>
                             <ul className={style.inputUl}>
                                 <li className={style.inputLi}>
@@ -239,7 +238,8 @@ class BaseUserMsg extends React.Component {
                                 </li>
 
                             </ul>
-                            <div disabled={this.state.counting} className={style.button1} onClick={this.handle.bind(this)}>
+                            <div disabled={this.state.counting} className={style.button1}
+                                 onClick={this.handle.bind(this)}>
                                 {/*重新发送*/}
                                 {this.state.extraText}
                             </div>

@@ -16,125 +16,58 @@ class BaseUserMsg extends React.Component {
         const dataSource = new ListView.DataSource({
             rowHasChanged: (row1, row2) => row1 !== row2,
         });
-
+        this.type = ''
         this.state = {
-            dataSource,
             type: '',
-            refreshing: true,
-            height: document.documentElement.clientHeight,
-        };
+            height: document.documentElement.clientHeight
+        }
     }
 
 
     componentDidMount() {
 
-        if (this.lv) {
-
-            setTimeout(() => this.setState({
-                height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
-            }), 0);
-
-            // handle https://github.com/ant-design/ant-design-mobile/issues/1588
-
-            this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
-                this.tsPageY = e.touches[0].pageY;
-            });
-            // In chrome61 `document.body.scrollTop` is invalid
-            const scrollNode = document.scrollingElement ? document.scrollingElement : document.body;
-            this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
-                this.tmPageY = e.touches[0].pageY;
-                if (this.tmPageY > this.tsPageY && this.scrollerTop <= 0 && scrollNode.scrollTop > 0) {
-                    console.log('start pull to refresh');
-                    this.domScroller.options.preventDefaultOnTouchMove = false;
-                } else {
-                    this.domScroller.options.preventDefaultOnTouchMove = undefined;
-                }
-            });
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.lv) {
-            this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
-            this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
-        }
-
-    }
-
-    onScroll = (e) => {
-        this.scrollerTop = e.scroller.getValues().top;
-        this.domScroller = e;
-    };
-
-    genData(pIndex = 0) {
-        return this.props.fund.tradeList.list;
-    }
-
-    onRefresh = () => {
-
-        console.log('onRefresh');
-        if (!this.manuallyRefresh) {
-            this.setState({refreshing: true});
-        } else {
-            this.manuallyRefresh = false;
-        }
-
-        // simulate initial Ajax
-
-        this.props.getTradeList({page: 1, type: this.state.type}, () => {
-            this.rData = this.genData();
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
-                refreshing: false,
-                showFinishTxt: true,
-            });
-            if (this.domScroller) {
-                this.domScroller.scroller.options.animationDuration = 500;
-            }
+        this.props.getTradeList({page: 1, type: ''}, () => {
+            // alert(ReactDOM.findDOMNode(this.lv).scrolltop)
+            // this.setState({
+            //     height: document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop
+            // });
         })
-    };
-
-    onEndReached = (event) => {
-        return false
-        // load new data
-        // hasMore: from backend data, indicates whether it is the last page, here is false
-        if (this.state.isLoading && !this.state.hasMore) {
-            console.log(33)
-            return;
-        }
-        console.log('reach end', event);
-        this.setState({isLoading: true});
-        this.props.getTradeList({page: 1, type: this.state.type}, () => {
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.genData()),
-                isLoading: false,
-            });
-            if (this.domScroller) {
-                this.domScroller.scroller.options.animationDuration = 500;
-            }
-        })
-    };
-
-    scrollingComplete = () => {
-        // In general, this.scrollerTop should be 0 at the end, but it may be -0.000051 in chrome61.
-        if (this.scrollerTop >= -1) {
-            this.setState({showFinishTxt: false});
-        }
     }
-
-    renderCustomIcon() {
-        return [
-            <div key="0" className="am-refresh-control-pull">
-                <span>{this.state.showFinishTxt ? '刷新完毕' : '下拉可以刷新'}</span>
-            </div>,
-            <div key="1" className="am-refresh-control-release">
-                <span>松开立即刷新</span>
-            </div>,
-        ];
-    }
-
 
     render() {
+        let list, page
+        if (this.type === '') {
+            if (!this.props.fund.tradeListAll) {
+                return null
+            }
+            list = this.props.fund.tradeListAll
+            page = this.props.fund.tradeListAllPage
+        }
+
+        if (this.type === 0) {
+            if (!this.props.fund.tradeListBuy) {
+                return null
+            }
+            list = this.props.fund.tradeListBuy
+            page = this.props.fund.tradeListBuyPage
+        }
+
+        if (this.type === 1) {
+            if (!this.props.fund.tradeListBack) {
+                return null
+            }
+            list = this.props.fund.tradeListBack
+            page = this.props.fund.tradeListBackPage
+        }
+
+        if (this.type === 2) {
+            if (!this.props.fund.tradeListOn) {
+                return null
+            }
+            list = this.props.fund.tradeListOn
+            page = this.props.fund.tradeListOnPage
+        }
+
         function renderTabBar(props) {
             return (<Sticky>
                 {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
@@ -146,58 +79,14 @@ class BaseUserMsg extends React.Component {
             {title: '进行中'},
         ];
         const tabs1 = [
-            { title: '全部' },
-            { title: '买入' },
-            { title: '赎回' },
-            { title: '续期' },
+            {title: '全部'},
+            {title: '买入'},
+            {title: '赎回'},
+            {title: '续期'},
 
         ];
 
-        let pageIndex = 0;
 
-        const separator = (sectionID, rowID) => (
-            <div
-                key={`${sectionID}-${rowID}`}
-                style={{
-                    backgroundColor: '#f5f4f7',
-                    height: 10,
-                }}
-            />
-        );
-        const row = (rowData, sectionID, rowID) => {
-            const obj = rowData;
-            return (
-                <Link to={'/recordDetail/'+obj.orderId} >
-                <div key={rowID} style={{padding: '0 15px'}} onClick={() => hashHistory.push('/recordDetail')}>
-                    <div className={style.item} key={obj.amount}>
-                        <div className={style.itemLeft}>
-                            <div className={style.itemLeftH}>
-                                <span className={style.itemLeftTime}>
-                                    {obj.createDate}
-                                </span>
-                                <span style={obj.type == '1' ? {color: '#F49193'} : {color: '#5262ff'}}>
-                                    {obj.type}
-                                </span>
-                            </div>
-                            <div className={style.itemLeftB}>
-                                <span>
-                                    {obj.productTitle}
-                                </span>
-                            </div>
-                        </div>
-                        <div className={style.itemRight}>
-                            <span className={style.itemRightT}>
-                                币额
-                            </span>
-                            <span className={style.itemRightC}>
-                                {obj.amount}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                </Link>
-            );
-        };
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -214,45 +103,38 @@ class BaseUserMsg extends React.Component {
                             <div className={style.tagBox}>
                                 <Tabs tabs={tabs1}
                                       initalPage={'t2'}
-                                      onChange={(a,b)=>{
-                                          if(b===1){
-                                              this.setState({type:0},()=>{
-                                                  this.props.getTradeList({page: 1, type: this.state.type}, () => {
-                                                      this.setState({
-                                                          dataSource: this.state.dataSource.cloneWithRows(this.genData()),
-                                                          isLoading: false,
-                                                      });
-                                                      if (this.domScroller) {
-                                                          this.domScroller.scroller.options.animationDuration = 500;
-                                                      }
-                                                  })
-                                              })
+                                      onChange={(a, b) => {
+                                          this.lv.getInnerViewNode().style.transform = 'translate3d(0px, 0px, 0px) scale(1)'
+                                          if (b === 0) {
+                                              this.type = ''
+                                              this.setState({type: ''})
                                           }
-                                          if(b===2){
-                                              this.setState({type:1},()=>{
-                                                  this.props.getTradeList({page: 1, type: this.state.type}, () => {
-                                                      this.setState({
-                                                          dataSource: this.state.dataSource.cloneWithRows(this.genData()),
-                                                          isLoading: false,
-                                                      });
-                                                      if (this.domScroller) {
-                                                          this.domScroller.scroller.options.animationDuration = 500;
-                                                      }
+                                          if (b === 1) {
+                                              this.type = 0
+                                              if (!this.props.fund.tradeListBuyPage) {
+                                                  this.props.getTradeList({page: 1, type: 0}, () => {
                                                   })
-                                              })
+                                              } else {
+                                                  this.setState({type: 0})
+                                              }
                                           }
-                                          if(b===3){
-                                              this.setState({type:2},()=>{
-                                                  this.props.getTradeList({page: 1, type: this.state.type}, () => {
-                                                      this.setState({
-                                                          dataSource: this.state.dataSource.cloneWithRows(this.genData()),
-                                                          isLoading: false,
-                                                      });
-                                                      if (this.domScroller) {
-                                                          this.domScroller.scroller.options.animationDuration = 500;
-                                                      }
+                                          if (b === 2) {
+                                              this.type = 1
+                                              if (!this.props.fund.tradeListBack) {
+                                                  this.props.getTradeList({page: 1, type: 1}, () => {
                                                   })
-                                              })
+                                              } else {
+                                                  this.setState({type: 1})
+                                              }
+                                          }
+                                          if (b === 3) {
+                                              this.type = 2
+                                              if (!this.props.fund.tradeListOn) {
+                                                  this.props.getTradeList({page: 1, type: 2}, () => {
+                                                  })
+                                              } else {
+                                                  this.setState({type: 2})
+                                              }
                                           }
                                       }}
                                       renderTabBar={renderTabBar}
@@ -261,7 +143,7 @@ class BaseUserMsg extends React.Component {
                                 </Tabs>
                             </div>
                             <div>
-                                {this.props.fund.tradeList && this.props.fund.tradeList.length === 0 ?
+                                {list.length === 0 ?
                                     <div>
                                         <img className={style.showImg}
                                              src={require('../outAddressList/images/zero.png')} alt=""/>
@@ -270,29 +152,92 @@ class BaseUserMsg extends React.Component {
                     </span>
                                     </div> : <ListView
                                         ref={el => this.lv = el}
-                                        dataSource={this.state.dataSource}
-
-                                        renderFooter={() => (<div style={{padding: '0.3rem', textAlign: 'center'}}>
-                                            {this.state.isLoading ? '' : ''}
-                                        </div>)}
-                                        renderRow={row}
-                                        renderSeparator={separator}
-                                        initialListSize={5}
-                                        pageSize={5}
-                                        style={{
-                                            height: this.state.height,
+                                        dataSource={(() => {
+                                            const dataSource = new ListView.DataSource({
+                                                rowHasChanged: (row1, row2) => row1 !== row2
+                                            });
+                                            return dataSource.cloneWithRows(list)
+                                        })()}
+                                        renderRow={(rowData, sectionID, rowID) => {
+                                            const obj = rowData;
+                                            return (
+                                                <Link to={'/recordDetail/' + obj.orderId}>
+                                                    <div key={rowID} style={{padding: '0 15px'}}
+                                                    >
+                                                        <div className={style.item} key={obj.amount}>
+                                                            <div className={style.itemLeft}>
+                                                                <div className={style.itemLeftH}>
+                                <span className={style.itemLeftTime}>
+                                    {obj.createDate}
+                                </span>
+                                                                    <span
+                                                                        style={obj.type == '1' ? {color: '#F49193'} : {color: '#5262ff'}}>
+                                    {obj.typeName}
+                                </span>
+                                                                </div>
+                                                                <div className={style.itemLeftB}>
+                                <span>
+                                    {obj.productTitle}
+                                </span>
+                                                                </div>
+                                                            </div>
+                                                            <div className={style.itemRight}>
+                            <span className={style.itemRightT}>
+                                币额
+                            </span>
+                                                                <span className={style.itemRightC}>
+                                {obj.amount}
+                            </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            );
                                         }}
-                                        scrollerOptions={{scrollbars: true, scrollingComplete: this.scrollingComplete}}
+                                        renderSeparator={(sectionID, rowID) => (
+                                            <div
+                                                key={`${sectionID}-${rowID}`}
+                                                style={{
+                                                    backgroundColor: '#F5F5F9',
+                                                    height: 0,
+                                                    borderTop: '1px solid #ECECED',
+                                                    borderBottom: '1px solid #ECECED',
+                                                }}
+                                            />
+                                        )}
+                                        style={{
+                                            height: document.documentElement.clientHeight,
+
+                                        }}
                                         refreshControl={<RefreshControl
-                                            refreshing={this.state.refreshing}
-                                            onRefresh={this.onRefresh}
-                                            icon={this.renderCustomIcon()}
+                                            onRefresh={() => {
+                                                // this.props.getBillsList({page: 1}, () => {
+                                                //     this.setState({
+                                                //         dataSource: this.state.dataSource.cloneWithRows(this.props.asset.bills.list),
+                                                //         refreshing: false,
+                                                //         showFinishTxt: true,
+                                                //     });
+                                                // })
+                                            }}
+
                                         />}
-                                        onScroll={this.onScroll}
-                                        scrollRenderAheadDistance={200}
-                                        scrollEventThrottle={20}
-                                        onEndReached={this.onEndReached}
-                                        onEndReachedThreshold={10}
+                                        onScroll={(e) => {
+                                            console.log(e.scroller.getValues().top);
+                                            this.scrollerTop = e.scroller.getValues().top;
+                                            this.domScroller = e;
+                                        }}
+                                        onEndReached={() => {
+                                            if (this.lv.getInnerViewNode().offsetHeight < (document.documentElement.clientHeight + 150)) {
+                                                return false
+                                            }
+                                            ++page
+                                            this.props.getTradeList({
+                                                page,
+                                                type: this.type
+                                            }, () => {
+                                            })
+
+                                        }}
                                     />}
                             </div>
                         </div>

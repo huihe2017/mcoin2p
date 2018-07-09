@@ -126,7 +126,6 @@ class BaseUserMsg extends React.Component {
                                     )}
                                     style={{
                                         height: document.documentElement.clientHeight,
-                                        margin: '0.05rem 0'
                                     }}
                                     refreshControl={<RefreshControl
                                         onRefresh={() => {
@@ -141,7 +140,9 @@ class BaseUserMsg extends React.Component {
 
                                     />}
                                     onEndReached={() => {
-
+                                        if (this.lv.getInnerViewNode().offsetHeight < (document.documentElement.clientHeight + 150)) {
+                                            return false
+                                        }
                                         this.setState({page: ++this.state.page}, () => {
                                             this.props.getActiveCoin({page: this.state.page}, () => {
                                             })

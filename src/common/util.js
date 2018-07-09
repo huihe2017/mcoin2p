@@ -51,7 +51,7 @@ export function setUrlK(ojson) {
 
 export function http(option) {
     let url
-    if (option.url === 'login/userlogin' || option.url === 'reg/findpassword' || option.url === 'reg/reguser' || option.url === 'fund/getmorefund' || option.url === 'fund/getdetail' || option.url === 'fund/index' || option.url === 'profit/getrate' || option.url === 'info/infos') {
+    if (option.url === 'login/userlogin' || option.url === 'reg/findpassword' || option.url === 'reg/reguser' || option.url === 'fund/getmorefund' || option.url === 'fund/getdetail' || option.url === 'fund/index' || option.url === 'profit/getrate' || option.url === 'info/infos'|| option.url === 'info/type'|| option.url === 'info/infodetail'|| option.url === 'info/noticedetail') {
         url = config.noauth_url + option.url
     } else {
         url = config.api_url + option.url

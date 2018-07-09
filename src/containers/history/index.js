@@ -284,7 +284,6 @@ class History extends React.Component {
                     style={{
                         height: this.state.height,
                         border: '1px solid #ddd',
-                        margin: '0.05rem 0',
                     }}
                     scrollerOptions={{ scrollbars: true, scrollingComplete: this.scrollingComplete }}
                     refreshControl={<RefreshControl

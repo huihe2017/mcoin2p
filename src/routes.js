@@ -48,6 +48,7 @@ import ProductDetails from './containers/productDetails/'
 import ProductBuying from './containers/productBuying/'
 import BuyResult from './containers/buyResult/'
 import InformationDetails from './containers/informationDetails/'
+import noticDetails from './containers/noticDetails/'
 import SelectedFunds from './containers/selectedFunds/'
 import InformationIndex from './containers/informationIndex/'
 import InputSafe from './containers/inputSafe/'
@@ -107,7 +108,8 @@ export default () => {
             <Route path="/productDetails/:id" component={ProductDetails}/>
             <Route path="/productBuying" component={ProductBuying}/>
             <Route path="/buyResult" component={BuyResult}/>
-            <Route path="/informationDetails" component={InformationDetails}/>
+            <Route path="/informationDetails/:id" component={InformationDetails}/>
+            <Route path="/noticDetails/:id" component={noticDetails}/>
             <Route path="/selectedFunds" component={SelectedFunds}/>
             <Route path="/informationIndex" component={InformationIndex}/>
             <Route path="/inputSafe" component={InputSafe}/>

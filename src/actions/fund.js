@@ -6,53 +6,56 @@ import {http} from '../common/util'
 export function getFundList(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'fund/getmorefund',
-            success:(response)=>{
+            url: 'fund/getmorefund',
+            success: (response) => {
                 dispatch({type: 'GET_FUND_LIST', data: response.data})
             }
 
         })
     }
 }
+
 export function getFundDetail(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'fund/getdetail',
-            success:(response)=>{
+            url: 'fund/getdetail',
+            success: (response) => {
                 dispatch({type: 'GET_FUND_DETAIL', data: response.data})
             }
 
         })
     }
 }
+
 export function buyFund(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'fund/buy',
-            success:(response)=>{
+            url: 'fund/buy',
+            success: (response) => {
                 dispatch({type: 'BUY_FUND', data: response.data})
             }
 
         })
     }
 }
+
 export function getMyFundList(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'userfund/index',
-            success:(response)=>{
+            url: 'userfund/index',
+            success: (response) => {
                 dispatch({type: 'GET_MY_FUND_LIST', data: response.data})
             }
 
@@ -63,11 +66,11 @@ export function getMyFundList(data, callback) {
 export function getMyFundDetails(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'userfund/detail',
-            success:(response)=>{
+            url: 'userfund/detail',
+            success: (response) => {
                 dispatch({type: 'GET_MY_FUND_DETAILS', data: response.data})
             }
 
@@ -78,11 +81,11 @@ export function getMyFundDetails(data, callback) {
 export function getFundChart(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'profit/getrate',
-            success:(response)=>{
+            url: 'profit/getrate',
+            success: (response) => {
                 dispatch({type: 'GET_FUND_CHART', data: response.data})
             }
 
@@ -93,11 +96,11 @@ export function getFundChart(data, callback) {
 export function setAutoRenew(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'userfund/setAutoRenew',
-            success:(response)=>{
+            url: 'userfund/setAutoRenew',
+            success: (response) => {
                 //dispatch({type: 'SET_AUTO_RENEW', data: data})
             }
 
@@ -108,12 +111,12 @@ export function setAutoRenew(data, callback) {
 export function getTradeList(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'order/tradelist',
-            success:(response)=>{
-                dispatch({type: 'GET_TRADE_LIST', data: response.data})
+            url: 'order/tradelist',
+            success: (response) => {
+                dispatch({type: 'GET_TRADE_LIST', data: response.data, listType: data.type})
             }
 
         })
@@ -123,11 +126,11 @@ export function getTradeList(data, callback) {
 export function getTradeListIng(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'order/inprogress',
-            success:(response)=>{
+            url: 'order/inprogress',
+            success: (response) => {
                 dispatch({type: 'GET_TRADE_LIST_ING', data: response.data})
             }
 
@@ -139,11 +142,11 @@ export function getTradeListIng(data, callback) {
 export function getTradeDetails(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'order/tradedetail',
-            success:(response)=>{
+            url: 'order/tradedetail',
+            success: (response) => {
                 dispatch({type: 'GET_TRADE_DETAILS', data: response.data})
             }
 
@@ -154,11 +157,11 @@ export function getTradeDetails(data, callback) {
 export function getProfitList(data, callback) {
     return dispatch => {
         http({
-            type:'post',
+            type: 'post',
             data,
             callback,
-            url:'userfund/totalprofitdetail',
-            success:(response)=>{
+            url: 'userfund/totalprofitdetail',
+            success: (response) => {
                 dispatch({type: 'GET_PROFIT_LIST', data: response.data})
             }
 

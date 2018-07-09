@@ -30,7 +30,7 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => this.props.history.goBack(-1)}
+                    onLeftClick={() => this.props.history.goBack()}
                     rightContent={[]}
                 >记录详情</NavBar>
                 <div className={style.header}>

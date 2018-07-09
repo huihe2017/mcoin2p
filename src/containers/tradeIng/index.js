@@ -95,7 +95,7 @@ class BaseUserMsg extends React.Component {
     };
 
     onEndReached = (event) => {
-        return false
+
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false
         if (this.state.isLoading && !this.state.hasMore) {
@@ -203,7 +203,6 @@ class BaseUserMsg extends React.Component {
                                 pageSize={5}
                                 style={{
                                     height: this.state.height,
-                                    margin: '0.05rem 0',
                                 }}
                                 scrollerOptions={{scrollbars: true, scrollingComplete: this.scrollingComplete}}
                                 refreshControl={<RefreshControl

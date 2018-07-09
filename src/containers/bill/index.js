@@ -12,12 +12,16 @@ class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 1
+            page: 1,
+            height: document.documentElement.clientHeight
         }
     }
 
 
     componentDidMount() {
+        // setTimeout(() => this.setState({
+        //     height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
+        // }), 0);
         this.props.getBillsList({page: this.state.page}, () => {
 
         })
@@ -92,8 +96,8 @@ class BaseUserMsg extends React.Component {
                                     />
                                 )}
                                 style={{
+                                    // height:this.state.height,
                                     height: document.documentElement.clientHeight,
-                                    margin: '0.05rem 0'
                                 }}
                                 refreshControl={<RefreshControl
                                     onRefresh={() => {
@@ -108,7 +112,9 @@ class BaseUserMsg extends React.Component {
 
                                 />}
                                 onEndReached={() => {
-
+                                    if (this.lv.getInnerViewNode().offsetHeight < (document.documentElement.clientHeight - 45)) {
+                                        return false
+                                    }
                                     this.setState({page: ++this.state.page}, () => {
                                         this.props.getBillsList({page: this.state.page}, () => {
                                         })

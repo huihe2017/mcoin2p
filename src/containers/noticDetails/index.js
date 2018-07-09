@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getInformationDetails} from '../../actions/information'
+import {getNoticDetails} from '../../actions/notice'
 import ReactDOM from "react-dom";
 
 
@@ -19,14 +19,14 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getInformationDetails({
+        this.props.getNoticDetails({
             id: this.props.params.id
         })
     }
 
     render() {
-
-        if (!this.props.information.infosDetails) {
+debugger
+        if (!this.props.notice.noticeDetails) {
             return null
         }
         const {percent} = this.state;
@@ -37,15 +37,15 @@ class BaseUserMsg extends React.Component {
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
 
-                >{this.props.information.infosDetails.title}</NavBar>
+                >{this.props.notice.noticeDetails.title}</NavBar>
                 {/*<span className={style.header}>*/}
                     {/*八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...*/}
                 {/*</span>*/}
                 <span className={style.time}>
-                    {this.props.information.infosDetails.author} {this.props.information.infosDetails.createTime}
+                    {this.props.notice.noticeDetails.author} {this.props.notice.noticeDetails.createTime}
                 </span>
                 <span className={style.content}>
-                {this.props.information.infosDetails.content}
+                {this.props.notice.noticeDetails.content}
                 </span>
             </div>
         )
@@ -54,13 +54,13 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        information: state.information
+        notice: state.notice
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getInformationDetails: bindActionCreators(getInformationDetails, dispatch)
+        getNoticDetails: bindActionCreators(getNoticDetails, dispatch)
     }
 }
 
