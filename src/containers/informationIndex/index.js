@@ -70,7 +70,7 @@ class BaseUserMsg extends React.Component {
             })()}
             renderRow={(rowData, sectionID, rowID) => {
                 const i = rowData;
-                return <Link to={'/informationDetails/id='+rowData.id}><div className={style.itemBox}>
+                return <Link to={'/informationDetails/'+rowData.id}><div className={style.itemBox}>
 
 
                     <div className={style.item}>
