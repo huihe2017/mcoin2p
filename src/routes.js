@@ -54,7 +54,6 @@ import InformationIndex from './containers/informationIndex/'
 import InputSafe from './containers/inputSafe/'
 import ImportSafe from './containers/importSafe/'
 import Bill from './containers/bill/'
-
 import SetName from './containers/setName/'
 
 export default () => {

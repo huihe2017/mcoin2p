@@ -94,7 +94,7 @@ class BaseUserMsg extends React.Component {
                     name: '买入价格',
                     type: 'line',
                     // data: [11, 13, 13.5, 14, 140.5],
-                    data:this.state.option.type===1? toChartData(this.props.fund.detail.chart).rateSeven:toChartData(this.props.fund.detail.chart).profitWan,
+                    data: this.state.option.type === 1 ? toChartData(this.props.fund.detail.chart).rateSeven : toChartData(this.props.fund.detail.chart).profitWan,
                     markPoint: {
                         data: [
                             {type: 'max', name: '最大值'},
@@ -201,7 +201,7 @@ class BaseUserMsg extends React.Component {
                         <StickyContainer>
                             <Tabs tabs={tabs}
                                   onChange={(tab, index) => {
-                                      this.setState({option:{...this.state.option,...{type:index===0?1:2}}},()=>{
+                                      this.setState({option: {...this.state.option, ...{type: index === 0 ? 1 : 2}}}, () => {
                                           this.getChart()
                                       })
 
@@ -288,28 +288,28 @@ class BaseUserMsg extends React.Component {
                             <StickyContainer>
                                 <Tabs tabs={dataTabs}
                                       onChange={(tab, index) => {
-                                          let n,unit
-                                          if(index===0){
+                                          let n, unit
+                                          if (index === 0) {
                                               n = 1
-                                              unit='month'
+                                              unit = 'month'
                                           }
-                                          if(index===1){
+                                          if (index === 1) {
                                               n = 3
-                                              unit='month'
+                                              unit = 'month'
                                           }
-                                          if(index===2){
+                                          if (index === 2) {
                                               n = 6
-                                              unit='month'
+                                              unit = 'month'
                                           }
-                                          if(index===3){
+                                          if (index === 3) {
                                               n = 1
-                                              unit='year'
+                                              unit = 'year'
                                           }
-                                          if(index===4){
+                                          if (index === 4) {
                                               n = 3
-                                              unit='year'
+                                              unit = 'year'
                                           }
-                                          this.setState({option:{...this.state.option,...{n,unit}}},()=>{
+                                          this.setState({option: {...this.state.option, ...{n, unit}}}, () => {
                                               this.getChart()
                                           })
 
@@ -435,7 +435,14 @@ class BaseUserMsg extends React.Component {
 
                     </div>
                 </div>
-                <div className={style.button} onClick={() => hashHistory.push('/productBuying')}>
+                <div className={style.button} onClick={() => {
+                    if(this.props.user.token){
+                        hashHistory.push('/productBuying')
+                    }else {
+                        hashHistory.push('/auth')
+                    }
+
+                }}>
                     立即申购
                 </div>
 
@@ -446,7 +453,9 @@ class BaseUserMsg extends React.Component {
 
 function mapStateToProps(state, props) {
     return {
-        fund: state.fund
+        fund: state.fund,
+        user: state.user
+
     }
 }
 

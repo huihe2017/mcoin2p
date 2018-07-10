@@ -28,10 +28,27 @@ class Auth extends React.Component {
 
     getPicImg() {
         return <img onClick={(e) => {
-            e.target.src = config.noauth_url+'captcha/getcaptcha?tm=' + Math.random()
+            e.target.src = config.noauth_url + 'captcha/getcaptcha?tm=' + Math.random()
         }}
                     className={style.tuxing}
-                    src={config.noauth_url+'captcha/getcaptcha?tm=' + Math.random()}/>
+                    src={config.noauth_url + 'captcha/getcaptcha?tm=' + Math.random()}/>
+    }
+
+    urlParse() {
+        var url = window.location.href;
+        var obj = {};
+        var reg = /[?&][^?&]+=[^?&]+/g;
+        var arr = url.match(reg);
+
+        if (arr) {
+            arr.forEach(function (item) {
+                var tempArr = item.substring(1).split('=');
+                var key = decodeURIComponent(tempArr[0]);
+                var val = decodeURIComponent(tempArr[1]);
+                obj[key] = val;
+            });
+        }
+        return obj;
     }
 
     submitFn() {
@@ -60,8 +77,8 @@ class Auth extends React.Component {
             // }
             Toast.loading('登录中', 3, null, false)
             this.props.login({
-                type:1,
-                mobile: this.state.areaCode+this.state.phone,
+                type: 1,
+                mobile: this.state.areaCode + this.state.phone,
                 password: this.state.pwd,
                 checkCode: this.state.picCode
             }, (errorText) => {
@@ -79,7 +96,7 @@ class Auth extends React.Component {
             })
         } else {
             if (!/^[a-zA-Z0-9]{6,20}$/.test(this.state.nickName)) {
-                Toast.fail('请输入正确的手机格式', 3, null, false)
+                Toast.fail('请输入正确的昵称格式', 3, null, false)
                 return false
             }
             if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[1-9]{1})|(18[0-9]{1})|(19[8-9]{1}))+\d{8})$/.test(this.state.phone)) {
@@ -103,44 +120,40 @@ class Auth extends React.Component {
                 Toast.fail('密码格式错误', 3, null, false)
                 return false
             }
-            if (this.state.pwd!==this.state.repwd) {
+            if (this.state.pwd !== this.state.repwd) {
                 Toast.fail('请再次确认密码', 3, null, false)
                 return false
             }
             Toast.loading('注册中', 3, null, false)
-            this.props.register({
-                regType:1,
-                mobile: this.state.areaCode+ this.state.phone,
+
+            let params = {
+                regType: 1,
+                mobile: this.state.areaCode + this.state.phone,
                 userName: this.state.nickName,
                 password: this.state.pwd,
                 validateCode: this.state.code
-            }, (errorText) => {
+            }
+            let inviter = this.urlParse().username
+
+            if(inviter){
+                params.inviter = inviter
+            }
+
+            this.props.register(params, () => {
                 this.setState({picImg: this.getPicImg()})
                 Toast.hide()
-                if (errorText) {
-                    Toast.fail(errorText, 3, null, false)
-
-                } else {
-                    if (this.props.authFrom.path&&this.props.authFrom.path === '/speedAccount') {
-                            hashHistory.push(this.props.authFrom.path)
-                    } else {
-                        this.props.setResultsPage({
-                            title:'注册成功',
-                            path:'/',
-                            status:1
-                        },()=>{
-                            hashHistory.push('/resultsPage')
-                        })
-                    }
-
-                }
+                this.props.setResultsPage({
+                    title: '注册成功',
+                    path: '/',
+                    status: 1
+                }, () => {
+                    hashHistory.push('/resultsPage')
+                })
             })
         }
 
 
     }
-
-
 
 
     render() {
@@ -165,11 +178,11 @@ class Auth extends React.Component {
         }
         return (
             <div className={style.wrap}>
-                <a className={style.toHome} href="javascript:void (0)" onClick={()=>hashHistory.push('/')}>
+                <a className={style.toHome} href="javascript:void (0)" onClick={() => hashHistory.push('/')}>
                     返回首页
                 </a>
                 <div className={style.logo}>
-                    
+
                 </div>
                 <nav className={style.nav}>
                     <div>
@@ -229,11 +242,15 @@ class Auth extends React.Component {
                             <List>
                                 <Countdown
                                     beforeClick={checkPhone.bind(this)}
-                                    phone={this.state.areaCode+this.state.phone}
+                                    phone={this.state.areaCode + this.state.phone}
                                     picCode={this.state.picCode}
                                     business='REGISTER'
-                                    failCallback={()=>{this.setState({picImg: this.getPicImg()})}}
-                                    onChange={(value) => {this.setState({code: value})}}
+                                    failCallback={() => {
+                                        this.setState({picImg: this.getPicImg()})
+                                    }}
+                                    onChange={(value) => {
+                                        this.setState({code: value})
+                                    }}
                                 />
                             </List>
 
@@ -253,7 +270,7 @@ class Auth extends React.Component {
 
                         </div>
                     </div>
-                    <div className={style.selphone} hidden={this.state.login}  >
+                    <div className={style.selphone} hidden={this.state.login}>
                         <div className={style.tu}>
                             <List>
                                 <InputItem type="password"
@@ -273,7 +290,7 @@ class Auth extends React.Component {
                         </Button>
 
                     </div>
-                    <div className={style.fp} hidden={this.state.login?false:true}>
+                    <div className={style.fp} hidden={this.state.login ? false : true}>
                         <Link to='/forgetPwd'>
                             忘记密码?
                         </Link>
@@ -309,7 +326,7 @@ function mapDispatchToProps(dispatch) {
     return {
         login: bindActionCreators(login, dispatch),
         register: bindActionCreators(register, dispatch),
-        setResultsPage:bindActionCreators(setResultsPage,dispatch)
+        setResultsPage: bindActionCreators(setResultsPage, dispatch)
     }
 }
 

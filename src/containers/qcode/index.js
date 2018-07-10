@@ -14,14 +14,14 @@ class AboutUs extends React.Component {
     }
 
     componentDidMount() {
-        this.props.inviteRegis()
+        //this.props.inviteRegis()
     }
 
     render() {
-        debugger
-        if(!this.props.user.userInfo.shareUrl){
-            return null
-        }
+
+        // if(!this.props.user.userInfo.shareUrl){
+        //     return null
+        // }
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -37,7 +37,8 @@ class AboutUs extends React.Component {
                             <span className={style.name}>{this.props.user.userInfo.userName}</span>
                         </div>
                         <div className={style.qcode}>
-                            <QRCode renderAs={'svg'} size={'100%'} value={'http://fund.coin2p.com/#/auth?_k='+this.props.user.userInfo.shareUrl}/>
+                            {/*<QRCode renderAs={'svg'} size={'100%'} value={'http://fund.coin2p.com/#/auth?_k='+this.props.user.userInfo.shareUrl}/>*/}
+                            <QRCode renderAs={'svg'} size={'100%'} value={'http://fund.coin2p.com/#/auth?username='+this.props.user.userInfo.userName}/>
                         </div>
                         <div className={style.footer}>
                             扫一扫二维码图案，在点点数字基金关注我
