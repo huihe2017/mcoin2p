@@ -64,9 +64,9 @@ class BaseUserMsg extends React.Component {
                             <span className={style.headerTopW}>
                                 我的账户
                             </span>
-                            <a className={style.headerTopI} href="javascript:void (0)">
-                                <img className={style.headerTopI} src={require('./images/bell.png')} alt=""/>
-                            </a>
+                            {/*<a className={style.headerTopI} href="javascript:void (0)">*/}
+                                {/*<img className={style.headerTopI} src={require('./images/bell.png')} alt=""/>*/}
+                            {/*</a>*/}
                         </div>
                         <div className={style.headerBottom}>
                             <Link to={'/setPerson'}>
