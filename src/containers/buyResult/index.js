@@ -39,7 +39,8 @@ class BaseUserMsg extends React.Component {
                 <NavBar
                     mode="light"
                     icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('/productDetails/'+this.props.fund.detail.id)}
+                    onLeftClick={() => this.props.history.go(-2)}
+                    // onLeftClick={() => hashHistory.push('/productDetails/'+this.props.fund.detail.id)}
                     rightContent={[
 
 

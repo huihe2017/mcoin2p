@@ -51,7 +51,7 @@ export function setUrlK(ojson) {
 
 export function http(option) {
     let url
-    if (option.url === 'login/userlogin' || option.url === 'reg/findpassword' || option.url === 'reg/reguser' || option.url === 'fund/getmorefund' || option.url === 'fund/getdetail' || option.url === 'fund/index' || option.url === 'profit/getrate' || option.url === 'info/infos'|| option.url === 'info/type'|| option.url === 'info/infodetail'|| option.url === 'info/noticedetail') {
+    if (option.url === 'login/userlogin' || option.url === 'reg/findpassword' || option.url === 'reg/reguser' || option.url === 'fund/getmorefund' || option.url === 'fund/getdetail' || option.url === 'fund/index' || option.url === 'profit/getrate' || option.url === 'info/infos' || option.url === 'info/type' || option.url === 'info/infodetail' || option.url === 'info/noticedetail') {
         url = config.noauth_url + option.url
     } else {
         url = config.api_url + option.url
@@ -66,7 +66,14 @@ export function http(option) {
         .then(function (response) {
             if (response.data.code === 0) {
                 option.success(response)
-                option.callback && option.callback()
+
+                try {
+                    option.callback && option.callback()
+                }
+                catch (err) {
+                    console.log('回调错误', err);
+                }
+
             } else if (response.data.code === 501) {
                 // Toast.fail(response.data.msg, 2, null, false)
                 hashHistory.push('/auth')
