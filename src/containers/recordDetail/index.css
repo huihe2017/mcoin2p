@@ -1,5 +1,5 @@
 :local(.wrap){
-    margin-bottom: 52px;
+    /*margin-bottom: 52px;*/
     height: 100%;
 }
 :local(.headerTop):after,:local(.headerBottom):after{
@@ -49,7 +49,7 @@
 :local(.content){
     padding-left: 16px;
     background-color: #fff;
-    height: 100%;
+    /*height: 100%;*/
 }
 :local(.contentItem){
     padding-top: 20px;

@@ -1,5 +1,5 @@
 :local(.wrap){
-    margin-bottom: 52px;
+    /*margin-bottom: 52px;*/
 }
 :local(.part){
     margin-bottom: 10px;
@@ -170,6 +170,9 @@
 }
 :local(.title){
     font-size: 18px;
+}
+:local(.contentContent){
+    height: 100%;
 }
 :local(.icontent){
     display: flex;

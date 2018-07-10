@@ -1,5 +1,5 @@
 :local(.wrap){
-    margin-bottom: 52px;
+
 }
 :local(.part){
     margin-bottom: 10px;
@@ -18,7 +18,7 @@
     color: #3B3D40;
     padding: 6px 16px;
     border-bottom: 1px solid #eee;
-
+    justify-content: space-between;
 }
 :local(.ensure1){
     display: block;
@@ -59,7 +59,6 @@
 :local(.arrow){
     width: 6px;
     height: 10px;
-    float: right;
     margin-top: 22px;
 }
 :local(.ico){

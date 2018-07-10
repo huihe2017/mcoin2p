@@ -85,7 +85,7 @@ class BaseUserMsg extends React.Component {
                                     <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                                 </a>
                             </Link>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <img className={style.itemEmoji} src={require('./images/know.png')} alt=""/><span
                                 className={style.itemWord}>安全知识百科</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>

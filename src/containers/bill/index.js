@@ -34,11 +34,14 @@ class BaseUserMsg extends React.Component {
         }
         return (
             <div className={style.wrap}>
-                <NavBar
-                    mode="light"
-                    icon={<Icon type="left"/>}
-                    onLeftClick={() => hashHistory.push('/baseUserMsg')}
-                >账单</NavBar>
+                <div className={style.header}>
+                    <NavBar
+                        mode="light"
+                        icon={<Icon type="left"/>}
+                        onLeftClick={() => hashHistory.push('/baseUserMsg')}
+                    >账单</NavBar>
+                </div>
+
                 <div>
                     <div className={style.content}>
                         {this.props.asset.bills.list.length === 0 ? <div>

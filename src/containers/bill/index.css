@@ -1,8 +1,14 @@
 :local(.wrap){
-    margin-bottom: 52px;
+    padding-top: 47px;
 }
 
-
+:local(.header){
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    display: block;
+    width: 100%;
+}
 :local(.item){
     background-color: #fff;
 }

@@ -66,7 +66,7 @@ class BaseUserMsg extends React.Component {
                                     <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                                 </a>
                             </Link>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <img className={style.itemEmoji} src={require('./images/coin.png')} alt=""/><span className={style.itemWord}>币种设置</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                             </a>
@@ -81,7 +81,7 @@ class BaseUserMsg extends React.Component {
                                     <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                                 </a>
                             </Link>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <img className={style.itemEmoji} src={require('./images/safe.png')} alt=""/><span className={style.itemWord}>安全保障</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                             </a>
@@ -89,7 +89,7 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <img className={style.itemEmoji} src={require('./images/help.png')} alt=""/><span className={style.itemWord}>帮助中心
 </span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
