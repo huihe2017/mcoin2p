@@ -69,7 +69,8 @@ export function register(data, callback) {
             callback,
             url:'reg/reguser',
             success:(response)=>{
-                dispatch({type: 'REGISTER'})
+                debugger
+                dispatch({type: 'REGISTER',data: response.data})
             }
 
         })

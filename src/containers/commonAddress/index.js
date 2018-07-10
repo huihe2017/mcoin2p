@@ -22,14 +22,15 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
-        this.props.getCommonAddress({page: this.state.page,currency: 'BTC'}, () => {
+
+        this.props.getCommonAddress({page: this.state.page,currency: this.props.wallet.current.balance.currency}, () => {
 
         })
     }
 
 
     render() {
-        if (!this.props.wallet.commonAddress) {
+        if (!this.props.wallet.commonAddress[this.props.wallet.current.balance.currency]) {
             return null
         }
         return (
@@ -51,7 +52,7 @@ class BaseUserMsg extends React.Component {
                                     const dataSource = new ListView.DataSource({
                                         rowHasChanged: (row1, row2) => row1 !== row2
                                     });
-                                    return dataSource.cloneWithRows(this.props.wallet.commonAddress.list)
+                                    return dataSource.cloneWithRows(this.props.wallet.commonAddress[this.props.wallet.current.balance.currency])
                                 })()}
                                 renderRow={(rowData, sectionID, rowID) => {
 
@@ -116,7 +117,7 @@ class BaseUserMsg extends React.Component {
                                         return false
                                     }
                                     this.setState({page: ++this.state.page}, () => {
-                                        this.props.getCommonAddress({page: this.state.page,currency: 'BTC'}, () => {
+                                        this.props.getCommonAddress({page: this.state.page,currency: this.props.wallet.current.balance.currency}, () => {
                                         })
                                     })
 

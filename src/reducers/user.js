@@ -22,9 +22,8 @@ export default function sign(state = initialState, action = {}) {
             return Object.assign({}, state, {})
 
         case 'REGISTER':
-            let {token1} = action.data.data
-            sessionStorage.setItem('token', token1)
-            state.token = token
+            sessionStorage.setItem('token', action.data.data.token)
+            state.token = action.data.data.token
             return Object.assign({}, state, {})
 
         case 'GET_BASEUSERMSG':
