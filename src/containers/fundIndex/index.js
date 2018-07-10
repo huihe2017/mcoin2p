@@ -42,7 +42,7 @@ class BaseUserMsg extends React.Component {
                             <span className={style.headerTopW}>
                                 总币额
                             </span>
-                            <a className={style.headerTopR} href="javascript:void (0)">
+                            <a className={style.headerTopR} href="javascript:void (0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 切换币种 >
                             </a>
                         </div>

@@ -56,7 +56,7 @@ class BaseUserMsg extends React.Component {
 
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensureH} href="javascript:void(0)">
+                            <a className={style.ensureH} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                <span className={style.itemWordH}>我的头像</span>
                                 <img className={style.arrowH} src={require('./images/arrow.png')} alt=""/>
                                 <img src={this.props.user.userInfo.portraitUrl} className={style.avator} alt=""/>
@@ -96,7 +96,7 @@ class BaseUserMsg extends React.Component {
                                     <span className={style.itemWordR}>{this.showType(this.props.user.userInfo.riskTypeInfo.riskType)}</span>
                                 </a>
                             </Link>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <span className={style.itemWord}>我的客服
 </span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>

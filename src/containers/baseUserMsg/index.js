@@ -119,29 +119,23 @@ class BaseUserMsg extends React.Component {
                         </List>
                         <List className={style.partUl}>
 
-                                <a className={style.partLi} href="javascript:void(0)">
-                                    <Link to={'/activityBalance'}>
-                                    <span className={style.itemTitle}>活动余币</span>
-                                    <span className={style.itemContent}>￥{this.props.user.activeAmount}</span>
-                                    </Link>
+                            <a className={style.partLi} href="javascript:void(0)" onClick={()=>hashHistory.push('/activityBalance')}>
+                                <span className={style.itemTitle}>活动余币</span>
+                                <span className={style.itemContent}>￥{this.props.user.activeAmount}</span>
                             </a>
 
-                            <a className={style.partLi} href="javascript:void(0)">
+                            <a className={style.partLi} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <span className={style.itemTitle}>活期存币</span>
                                 <span className={style.itemContent}>￥{this.props.user.currentAmount}</span>
                             </a>
-                            <a className={style.partLi} href="javascript:void(0)">
-                                <Link to={'/fundIndex'}>
+                            <a className={style.partLi} href="javascript:void(0)" onClick={()=>hashHistory.push('/fundIndex')}>
                                 <span className={style.itemTitle}>基金</span>
                                 <span className={style.itemContent}>￥{this.props.user.fundAmount}</span>
-                                </Link>
                             </a>
 
-                                <a className={style.partLi} href="javascript:void(0)">
-                                    <Link to={'/friendAward'}>
+                                <a className={style.partLi} href="javascript:void(0)" onClick={()=>hashHistory.push('/friendAward')}>
                                     <span className={style.itemTitle}>累计好友奖励</span>
                                     <span className={style.itemContent}>￥{this.props.user.totalAward}</span>
-                                    </Link>
                                 </a>
 
                         </List>
@@ -161,7 +155,7 @@ class BaseUserMsg extends React.Component {
                                     <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                                 </a>
                             </Link>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <img className={style.itemEmoji} src={require('./images/lock.png')} alt=""/><span className={style.itemWord}>安全设置</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                             </a>
@@ -169,11 +163,11 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <img className={style.itemEmoji} src={require('./images/hear.png')} alt=""/><span className={style.itemWord}>帮助中心</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                             </a>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <img className={style.itemEmoji} src={require('./images/home.png')} alt=""/><span className={style.itemWord}>公众号</span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
                             </a>
@@ -181,7 +175,7 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.part}>
                         <List>
-                            <a className={style.ensure} href="javascript:void(0)">
+                            <a className={style.ensure} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                 <img className={style.itemEmoji} src={require('./images/enter.png')} alt=""/><span className={style.itemWord}>APP下载与入口找回
 </span>
                                 <img className={style.arrow} src={require('./images/arrow.png')} alt=""/>
