@@ -12,27 +12,6 @@ import {StickyContainer, Sticky} from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
 
 let currentId = 0;
-const data = [
-    {
-        title: '八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...',
-        terrace: '点点平台',
-        bottom: true,
-    },
-    {
-        title: '八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...',
-        terrace: '点点平台',
-        bottom: false,
-        img: require('./images/small.png')
-    },
-    {
-        title: '八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...',
-        terrace: '点点平台',
-        bottom: true,
-        img: require('./images/big.png')
-    },
-
-
-];
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
@@ -69,52 +48,6 @@ class BaseUserMsg extends React.Component {
         return json;
     }
 
-    show() {
-        if (data.length == 0) {
-            return (
-                <div>
-                    <img className={style.showImg} src={require('../addressList/images/zero.png')} alt=""/>
-                    <span className={style.showTip}>
-                        暂无数据
-                    </span>
-                </div>
-            )
-        } else {
-            return (
-                <div className={style.itemBox}>
-                    {this.props.information.infos.map(i => (
-
-                        <div className={style.item}>
-                            {false ?
-                                <div>
-                                    <p className={style.itemTitle1}>
-                                        {i.title}
-                                    </p>
-                                    {i.img ? <img className={style.itemImgB} src={i.img} alt=""/> : ''}
-
-                                    <span className={style.itemTerrace}>
-                                {i.terrace}
-                            </span></div>
-                                : <div className={style.Lbox}>
-                                    <div className={style.Left}>
-                                        <p className={style.itemTitle1}>
-                                            {i.title}
-                                        </p>
-                                        <span className={style.itemTerrace}>
-                                            {i.author}
-                                        </span>
-                                    </div>
-                                    <img className={style.itemImgB1} src={i.coverUrl} alt=""/>
-                                </div>}
-                        </div>
-
-                    ))}
-                </div>
-            )
-        }
-
-
-    }
 
     renderList = (currentId) => {
         if (!this.props.information[currentId]) {
@@ -205,7 +138,7 @@ class BaseUserMsg extends React.Component {
                 // })
                 this.props.getInformationList({
                     typeId: currentId,
-                    page: ++this.props.information[currentId].page
+                    page: ++this.props.information[currentId+'page']
                 })
 
             }}

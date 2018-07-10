@@ -10,7 +10,7 @@ export default function information(state = initialState, action = {}) {
             }else {
                 state[action.id] = action.data.data.infos
             }
-            state[action.id].page = action.data.data.pager.page
+            state[action.id+'page'] = action.data.data.pager.page
 
 
             return Object.assign({}, state, {})

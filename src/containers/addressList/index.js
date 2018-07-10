@@ -12,19 +12,26 @@ import {StickyContainer, Sticky} from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 
+let currentId = 0;
+
+const tabs = [
+    {title: 'all'},
+    {title: 'BTC'},
+    {title: 'ETH'}
+
+];
 
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            page: 1,
-            ethPage: 0,
-            btcPage: 0
-        }
+        this.state = {}
     }
 
     componentDidMount() {
-        this.props.getCommonAddress({page: this.state.page}, () => {
+
+        currentId = tabs[0].title
+
+        this.props.getCommonAddress({page: 1, currency: currentId}, () => {
         })
     }
 
@@ -34,9 +41,10 @@ class BaseUserMsg extends React.Component {
         </Sticky>);
     }
 
-    renderList = () => {
+    renderList = (currentId) => {
+
         return <div className={style.listBox}>
-            {this.props.wallet.commonAddress.list.length == 0 ? <div>
+            {!this.props.wallet.commonAddress[currentId]? <div>
                 <img className={style.showImg} src={require('./images/zero.png')} alt=""/>
                 <span className={style.showTip}>
                         暂无数据
@@ -47,7 +55,7 @@ class BaseUserMsg extends React.Component {
                     const dataSource = new ListView.DataSource({
                         rowHasChanged: (row1, row2) => row1 !== row2
                     });
-                    return dataSource.cloneWithRows(this.props.wallet.commonAddress.list)
+                    return dataSource.cloneWithRows(this.props.wallet.commonAddress[currentId])
                 })()}
                 renderRow={(rowData, sectionID, rowID) => {
 
@@ -75,7 +83,7 @@ class BaseUserMsg extends React.Component {
                                     }} href="javascript:void (0)">
                                         <img className={style.iconImg} src={require('./images/delete.png')} alt=""/>删除
                                     </a>
-                                    <Link to={'/addAddress/' + obj.id}>
+                                    <Link to={'/addAddress/' + obj.id+'/'+currentId}>
 
                                         <img className={style.iconImg} src={require('./images/editor.png')} alt=""/>修改
                                     </Link>
@@ -123,20 +131,25 @@ class BaseUserMsg extends React.Component {
                     if (this.lv.getInnerViewNode().offsetHeight < (document.documentElement.clientHeight + 150)) {
                         return false
                     }
-                    let page = this.state.page
-                    if(this.state.currency==='BTC'){
-                        this.setState({page: ++this.state.page}, () => {
-
-                            this.props.getCommonAddress({page,currency:this.state.currency?this.state.currency:''}, () => {
-                            })
-                        })
-                    }
-                    if(this.state.currency==='ETH'){
-                        page = this.state.ethPage
-                    }
-                    if(this.state.currency===''){
-                        page = this.state.ethPage
-                    }
+                    // let page = this.state.page
+                    // if(this.state.currency==='BTC'){
+                    //     this.setState({page: ++this.state.page}, () => {
+                    //
+                    //         this.props.getCommonAddress({page,currency:this.state.currency?this.state.currency:''}, () => {
+                    //         })
+                    //     })
+                    // }
+                    // if(this.state.currency==='ETH'){
+                    //     page = this.state.ethPage
+                    // }
+                    // if(this.state.currency===''){
+                    //     page = this.state.ethPage
+                    // }
+                    this.props.getCommonAddress({
+                        page: ++this.props.wallet.commonAddress[currentId+'page'],
+                        currency: currentId
+                    }, () => {
+                    })
 
 
                 }}
@@ -153,16 +166,9 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
-        if (!this.props.wallet.commonAddress) {
+        if (!this.props.wallet.commonAddress[currentId]) {
             return null
         }
-        const tabs = [
-            {title: '全部'},
-            {title: 'BTC'},
-            {title: 'ETH'}
-
-        ];
-
         return (
             <div className={style.wrap}>
                 <Modal
@@ -192,7 +198,7 @@ class BaseUserMsg extends React.Component {
                     onLeftClick={() => hashHistory.push('/walletIndex')}
                     rightContent={[
 
-                        <Link to={'/addAddress/null'}>+
+                        <Link to={'/addAddress/null/null'}>+
                         </Link>,
                     ]}
                 >添加常用地址</NavBar>
@@ -201,39 +207,43 @@ class BaseUserMsg extends React.Component {
                         <Tabs tabs={tabs}
                               initalPage={'t2'}
                               onChange={(a, b) => {
-                                  if(b===1){
-                                      this.setState({btcPage:++this.state.btcPage,currency:'BTC'},()=>{
-                                          this.props.getCommonAddress({page: this.state.btcPage,currency:'BTC'}, () => {
-                                          })
+                                  currentId = a.title
+                                  if (!this.props.wallet.commonAddress[a.title]) {
+                                      this.props.getCommonAddress({page: 1, currency: a.title}, () => {
                                       })
-
-                                  }
-                                  if(b===2){
-                                      this.setState({ethPage:++this.state.ethPage,currency:'ETH'},()=>{
-                                          this.props.getCommonAddress({page: this.state.ethPage,currency:'ETH'}, () => {
-                                          })
-                                      })
-
                                   }
                               }}
+                            // onChange={(a, b) => {
+                            //     if (b === 1) {
+                            //         this.setState({btcPage: ++this.state.btcPage, currency: 'BTC'}, () => {
+                            //             this.props.getCommonAddress({
+                            //                 page: this.state.btcPage,
+                            //                 currency: 'BTC'
+                            //             }, () => {
+                            //             })
+                            //         })
+                            //
+                            //     }
+                            //     if (b === 2) {
+                            //         this.setState({ethPage: ++this.state.ethPage, currency: 'ETH'}, () => {
+                            //             this.props.getCommonAddress({
+                            //                 page: this.state.ethPage,
+                            //                 currency: 'ETH'
+                            //             }, () => {
+                            //             })
+                            //         })
+                            //
+                            //     }
+                            // }}
                               renderTabBar={this.renderTabBar.bind(this)}
                         >
-                            <div>
-                                {
-                                    this.renderList()
-                                }
-                            </div>
-                            <div>
-                                {
-                                    this.renderList('BTC')
-                                }
-                            </div>
-                            <div>
-                                {
-                                    this.renderList('ETH')
-                                }
-                            </div>
-
+                            {
+                                tabs.map((obj) => {
+                                    return <div>
+                                        {this.renderList(obj.title)}
+                                    </div>
+                                })
+                            }
 
                         </Tabs>
                     </StickyContainer>

@@ -57,7 +57,7 @@ export function getCommonAddress(data, callback) {
             callback,
             url: 'wallet/addresslist',
             success: (response) => {
-                dispatch({type: 'GET_COMMON_ADDRESS', data: response.data})
+                dispatch({type: 'GET_COMMON_ADDRESS', data: response.data,id:data.currency})
             }
 
         })

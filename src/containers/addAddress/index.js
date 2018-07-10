@@ -37,7 +37,7 @@ class BaseUserMsg extends React.Component {
         let id = this.props.params.id
         let filterData
         if (id !== 'null') {
-            filterData = this.props.wallet.commonAddress.list.filter((item) => id == item.id);
+            filterData = this.props.wallet.commonAddress[this.props.params.currency].filter((item) => id == item.id);
             filterData = filterData[0]
             this.setState({currency: [filterData.currency]})
             this.setState({address: filterData.address})
@@ -126,7 +126,7 @@ class BaseUserMsg extends React.Component {
                         hashHistory.push('addressList')
                     }}
                     rightContent={[]}
-                >转出</NavBar>
+                >添加转出地址</NavBar>
                 <div>
                     <ul className={style.itemUl}>
                         <li className={style.itemBox}>
@@ -144,7 +144,7 @@ class BaseUserMsg extends React.Component {
                                 }}
                                 onOk={v => this.setState({currency: v})}
                             >
-                                <List.Item arrow="horizontal"><span className={style.itemBoxC}>
+                                <List.Item  arrow="horizontal"><span className={style.itemBoxC}>
                                 请选择币种
                             </span></List.Item>
                             </Picker>

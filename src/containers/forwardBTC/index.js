@@ -51,7 +51,7 @@ class BaseUserMsg extends React.Component {
             return
         }
         this.props.confirmWithdrawMsg({
-            currency:'BTC',
+            currency:this.props.wallet.current.balance.currency,
             amount:this.state.amount,
             minerFee:this.state.sValue,
             address:this.state.classNumber
@@ -144,7 +144,7 @@ class BaseUserMsg extends React.Component {
 
                             <InputItem onChange={(value) => {
                                 this.setState({amount: value})
-                            }} placeholder="请填写数额" type="text" extra="BTC"></InputItem>
+                            }} placeholder="请填写数额" type="text" extra={this.props.wallet.current.balance.currency}></InputItem>
                         </li>
                         <li className={style.itemBox}>
                             <span className={style.itemBoxT}>
@@ -196,8 +196,7 @@ class BaseUserMsg extends React.Component {
                             <span className={style.alTip} style={{marginTop:12}}>
                                 转出币种：
                                 <span style={{color:'#3B3D40'}}>
-                                    BTC
-                                </span>
+                                    {this.props.wallet.current.balance.currency}                                </span>
                             </span>
                             <span className={style.alTip}>
                                 转出币量：

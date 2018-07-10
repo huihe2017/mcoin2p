@@ -20,7 +20,7 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
-        this.props.getProfitList({page: this.state.page,currency: 'BTC', uid: this.props.user.userInfo.uid}, () => {
+        this.props.getProfitList({page: this.state.page,currency: this.props.fund.myFund.currency, uid: this.props.user.userInfo.uid}, () => {
 
         })
     }
@@ -128,7 +128,7 @@ class BaseUserMsg extends React.Component {
                                             return false
                                         }
                                         this.setState({page: ++this.state.page}, () => {
-                                            this.props.getProfitList({page: this.state.page,currency: 'BTC', uid: this.props.user.userInfo.uid}, () => {
+                                            this.props.getProfitList({page: this.state.page,currency: this.props.fund.myFund.currency, uid: this.props.user.userInfo.uid}, () => {
                                             })
                                         })
 

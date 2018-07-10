@@ -39,7 +39,7 @@ class BaseUserMsg extends React.Component {
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
                     rightContent={[
-                        <Link to={'/addAddress/null'} >添加</Link>,
+                        <Link to={'/addAddress/null/null'} >添加</Link>,
 
                     ]}
                 >常用地址</NavBar>

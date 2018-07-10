@@ -1,5 +1,6 @@
 let initialState = {
     loading: true,
+    commonAddress: {}
 }
 
 export default function wallet(state = initialState, action = {}) {
@@ -13,16 +14,16 @@ export default function wallet(state = initialState, action = {}) {
             return Object.assign({}, state, {})
 
         case  'GET_WALLET_INDEX_DATA':
-            let {totalAmount,list} = action.data.data
+            let {totalAmount, list} = action.data.data
             state.loading = false
             state.isSetSaveCode = true
             state.totalAmount = totalAmount
             state.list = list
             return Object.assign({}, state, {})
         case 'GET_WALLET_TRADE_RECORD':
-            if(!state.current){
+            if (!state.current) {
                 state.current = action.data.data
-            }else {
+            } else {
                 let arr = state.current.list.concat(action.data.data.list)
                 state.current.list = arr
             }
@@ -31,12 +32,25 @@ export default function wallet(state = initialState, action = {}) {
             state.minerFeeList = action.data.data.feeList
             return Object.assign({}, state, {})
         case 'GET_COMMON_ADDRESS':
-            if(!state.commonAddress){
-                state.commonAddress = action.data.data
-            }else {
-                let arr = state.commonAddress.list.concat(action.data.data.list)
-                state.commonAddress.list = arr
+
+            // if (action.id === '') {
+            //     action.id = 'all'
+            // }
+
+            if (state.commonAddress[action.id]) {
+                let arr = state.commonAddress[action.id].concat(action.data.data.list)
+                state.commonAddress[action.id] = arr
+            } else {
+                state.commonAddress[action.id] = action.data.data.list
             }
+            state.commonAddress[action.id+'page'] = action.data.data.pager.page
+            //
+            // if (!state.commonAddress) {
+            //     state.commonAddress = action.data.data
+            // } else {
+            //     let arr = state.commonAddress.list.concat(action.data.data.list)
+            //     state.commonAddress.list = arr
+            // }
             return Object.assign({}, state, {})
         case 'CONFIRM_WITHDRAW_MSG':
             state.applyId = action.data.data.applyId
