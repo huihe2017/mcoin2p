@@ -26,6 +26,42 @@ class BaseUserMsg extends React.Component {
 
     componentDidMount() {
 
+
+
+        let list, page
+        if (this.type === '') {
+            if (this.props.fund.tradeListAll) {
+                return null
+            }
+            list = this.props.fund.tradeListAll
+            page = this.props.fund.tradeListAllPage
+        }
+
+        if (this.type === 0) {
+            if (this.props.fund.tradeListBuy) {
+                return null
+            }
+            list = this.props.fund.tradeListBuy
+            page = this.props.fund.tradeListBuyPage
+        }
+
+        if (this.type === 1) {
+            if (this.props.fund.tradeListBack) {
+                return null
+            }
+            list = this.props.fund.tradeListBack
+            page = this.props.fund.tradeListBackPage
+        }
+
+        if (this.type === 2) {
+            if (this.props.fund.tradeListOn) {
+                return null
+            }
+            list = this.props.fund.tradeListOn
+            page = this.props.fund.tradeListOnPage
+        }
+
+
         this.props.getTradeList({page: 1, type: ''}, () => {
             // alert(ReactDOM.findDOMNode(this.lv).scrolltop)
             // this.setState({
