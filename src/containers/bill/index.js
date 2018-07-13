@@ -19,6 +19,9 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
+        if (this.props.asset.bills) {
+            return null
+        }
         // setTimeout(() => this.setState({
         //     height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
         // }), 0);

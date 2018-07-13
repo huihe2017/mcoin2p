@@ -20,6 +20,9 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
+        if (this.props.fund.profitList) {
+            return null
+        }
         this.props.getProfitList({page: this.state.page,currency: this.props.fund.myFund.currency, uid: this.props.user.userInfo.uid}, () => {
 
         })

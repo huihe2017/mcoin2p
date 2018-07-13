@@ -21,6 +21,9 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
+        if (this.props.asset.activeCoin) {
+            return null
+        }
         this.props.getActiveCoin({page: this.state.page}, () => {
 
         })

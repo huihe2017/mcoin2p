@@ -22,7 +22,9 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
-
+        if (this.props.wallet.commonAddress[this.props.wallet.current.balance.currency]) {
+            return null
+        }
         this.props.getCommonAddress({page: this.state.page,currency: this.props.wallet.current.balance.currency}, () => {
 
         })

@@ -20,6 +20,9 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
+        if (this.props.asset.awardDetails) {
+            return null
+        }
         this.props.getAwardDetails({page: this.state.page,currency:'BTC'}, () => {
 
         })

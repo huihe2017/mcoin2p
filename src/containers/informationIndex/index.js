@@ -20,7 +20,9 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount() {
-
+        if (this.props.information[currentId]) {
+            return false
+        }
         this.props.getInformationType({}, () => {
 
 

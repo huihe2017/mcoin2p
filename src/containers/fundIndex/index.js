@@ -19,6 +19,9 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
+        if (this.props.fund.myFund) {
+            return null
+        }
         this.props.getMyFundList({page: this.state.page,uid: this.props.user.userInfo.uid, currency: 'BTC'}, () => {
 
         })

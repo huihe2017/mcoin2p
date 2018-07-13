@@ -21,6 +21,9 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
+        if (this.props.asset.friendWard) {
+            return null
+        }
         this.props.getFriendAward({page: this.state.page}, () => {
 
         })
