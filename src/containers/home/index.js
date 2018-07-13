@@ -73,7 +73,7 @@ class Home extends React.Component {
                             公告
                         </span>
                             <span className={style.headerItemContent}>
-                                <Link to={'/noticDetails/id='+obj.id}><b>{obj.title}</b></Link>
+                                <Link to={'/noticDetails/'+obj.id}><b>{obj.title}</b></Link>
                         </span>
                         </div>
                     })}

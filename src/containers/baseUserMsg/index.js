@@ -94,7 +94,7 @@ class BaseUserMsg extends React.Component {
                                         <span className={style.totalLT}>
                                             总资产<img className={style.see} src={require('./images/wen.png')} onClick={(e)=>{
                                             e.stopPropagation();
-                                                Toast.info('tip tip', 3)}
+                                                Toast.info('总资产为用户所有的数字货币资产总额乘以对应的数字货币市场价。资产总额包括：活动余币额，基金币额，活期币额，好友奖励币额（注意，市场价为波动价，因此总金额会随市场总是波动）', 3)}
                                             } alt=""/>
                                         </span>
                                             <span className={style.totalLB}>

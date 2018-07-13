@@ -38,7 +38,7 @@ class AboutUs extends React.Component {
                         </div>
                         <div className={style.qcode}>
                             {/*<QRCode renderAs={'svg'} size={'100%'} value={'http://fund.coin2p.com/#/auth?_k='+this.props.user.userInfo.shareUrl}/>*/}
-                            <QRCode renderAs={'svg'} size={'100%'} value={'http://fund.coin2p.com/#/auth?username='+this.props.user.userInfo.userName}/>
+                            <QRCode renderAs={'svg'} size={'100%'} value={'https://fund.coin2p.com/#/auth?username='+this.props.user.userInfo.userName}/>
                         </div>
                         <div className={style.footer}>
                             扫一扫二维码图案，在点点数字基金关注我
