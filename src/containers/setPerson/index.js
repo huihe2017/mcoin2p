@@ -59,7 +59,7 @@ class BaseUserMsg extends React.Component {
                             <a className={style.ensureH} href="javascript:void(0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
                                <span className={style.itemWordH}>我的头像</span>
                                 <img className={style.arrowH} src={require('./images/arrow.png')} alt=""/>
-                                <img src={this.props.user.userInfo.portraitUrl} className={style.avator} alt=""/>
+                                <img src={require('../baseUserMsg/images/ava.png')} className={style.avator} alt=""/>
                             </a>
 
                         </List>

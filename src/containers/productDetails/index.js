@@ -61,10 +61,14 @@ class BaseUserMsg extends React.Component {
                 subtext: `2018/03/24                   近七日年化：${'+4.7720%'}`
             },
             tooltip: {
-                trigger: 'axis'
+                trigger: 'axis',
+                formatter:'{b}<br />{c}%'
             },
             legend: {
-                data: ['最高气温', '最低气温']
+                data: ['最高价格', '最低价格'],
+                formatter: function (name) {
+                    return  name+'%';
+                }
             },
             toolbox: {
                 show: true,
@@ -86,26 +90,33 @@ class BaseUserMsg extends React.Component {
             },
             yAxis: {
                 type: 'value',
+                axisLabel: {
+                    show: true,
+                    interval: 'auto',
+                    formatter: '{value}%'
+                },
                 boundaryGap: false,
 
             },
+            lineStyle:{
+                color:'#5262ff'
+            },
             series: [
                 {
-                    name: '买入价格',
+                    // name: '买入价格',
                     type: 'line',
-                    // data: [11, 13, 13.5, 14, 140.5],
-                    data: this.state.option.type === 1 ? toChartData(this.props.fund.detail.chart).rateSeven : toChartData(this.props.fund.detail.chart).profitWan,
-                    markPoint: {
-                        data: [
-                            {type: 'max', name: '最大值'},
-                            {type: 'min', name: '最小值'}
-                        ]
-                    },
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
-                    }
+                    // itemStyle: {
+                    //     normal: {
+                    //         label: {
+                    //             show: true,
+                    //             // position: 'top',
+                    //             formatter: '{c}%'
+                    //         }
+                    //     }
+                    // },
+
+                    // data: [0.11, 0.13, 0.135, 0.14, 0.1405],
+                    data: this.state.option.type === 1 ? toChartData(this.props.fund.detail.chart).rateSeven: toChartData(this.props.fund.detail.chart).profitWan,
                 },
 
             ]
@@ -147,7 +158,7 @@ class BaseUserMsg extends React.Component {
         ];
         const tabs = [
             {title: '七日年化收益走势'},
-            {title: '万分收益'},
+            {title: '万份收益'},
         ];
 
         function renderTabBar(props) {
@@ -191,7 +202,7 @@ class BaseUserMsg extends React.Component {
                             <div className={style.userMoney}>
 
                                 <span className={style.userMoneyT}>
-                                    万分收益<span className={style.userMoneyC}>{this.props.fund.detail.profitWan}</span>
+                                    万份收益 <span className={style.userMoneyC}> ￥{this.props.fund.detail.profitWan}</span>
                                 </span>
                             </div>
                         </div>

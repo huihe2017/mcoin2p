@@ -92,23 +92,37 @@ export function http(option) {
 }
 
 export function toChartData(e) {
+    // console.log(e);
     let arr1 = [];
     let dataArr = new Array(e.length);
     for (var key in e[1]) {
         if (e[1].hasOwnProperty(key))
             arr1.push(key);
     }
-    console.log(arr1);
+    // console.log(arr1);
     let obj1 = new Object();
     for (let i = 0; i < dataArr.length; i++) {
         dataArr[i] = new Array();
         e.map(function (val, ind) {
             let obj = new Object();
+
             dataArr[i].push(val[arr1[i]])
         })
     }
     arr1.map(function (v, i) {
+        // console.log(v);
+        // dataArr[1]=dataArr[1].map(function(v){
+        //     // console.log(v);
+        //     return (v/10)
+        // })
+
         obj1[arr1[i]] = dataArr[i]
+
+
+        // return
+
+
     })
+    // console.log(arr1);
     return obj1
 }

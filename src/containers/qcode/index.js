@@ -33,7 +33,7 @@ class AboutUs extends React.Component {
                 <div className={style.content}>
                     <div className={style.qcodeBox}>
                         <div className={style.header}>
-                            <img src="" className={style.avator} alt=""/>
+                            <img src={require('../baseUserMsg/images/ava.png')} className={style.avator} alt=""/>
                             <span className={style.name}>{this.props.user.userInfo.userName}</span>
                         </div>
                         <div className={style.qcode}>
