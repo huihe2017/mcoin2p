@@ -76,7 +76,7 @@ class BaseUserMsg extends React.Component {
                             </span>
                             <div className={style.itemCircle}></div>
                             <span className={style.itemTime}>
-                                预期时间 {this.props.fund.detail.startTime.buyTime}
+                                预计时间 {this.props.fund.detail.startTime.buyTime}
                             </span>
                         </div>
                         <div className={style.contentItem2}>

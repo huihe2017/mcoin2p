@@ -163,9 +163,22 @@
 
 :local(.banner){
     width: 100%;
-    height: 127px;
+
     background-color: #fff;
     padding-bottom: 10px;
+}
+
+:local(.list) .slider-list{
+     height: auto!important;
+
+}
+:local(.banner) .slider-slide{
+     /*position: relative!important;*/
+
+}
+:local(.banner) .slider-frame{
+     padding-bottom: 10px!important;
+
 }
 :local(.bannerA){
     width: 100%;
@@ -203,6 +216,10 @@
 :local(.chart){
     margin-top: 10px;
 }
+:local(.chartBox){
+    padding-bottom: 30px;
+}
+
 :local(.box){
     background-color: #FFF;
     padding-bottom: 20px;
@@ -210,12 +227,15 @@
 :local(.bottomA){
     text-align: center;
     display: block;
-    line-height: 18px;
+    width: 100%;
+    line-height: 48px;
     font-size: 18px;
     color: #5262ff;
     font-weight: bold;
     background-color: #fff;
-    padding-bottom: 30px;
+
+    position: fixed;
+    bottom: 0;
 }
 :local(.chart) .am-tabs-default-bar-tab{
     color: #989898!important;

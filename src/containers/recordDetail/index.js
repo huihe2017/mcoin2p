@@ -42,12 +42,12 @@ class BaseUserMsg extends React.Component {
                     <div className={style.headerBottom}>
                         <a className={style.user} href="javascript:void (0)">
                             <div className={style.userData}>
-                                    <span className={style.userName}>
-                                        买入成功
-                                    </span>
+                                <span className={style.userName}>
+                                    买入成功
+                                </span>
                                 <span className={style.userTime}>
-                                        ￥{this.props.fund.tradeDatails.realAmount}
-                                    </span>
+                                    {this.props.fund.tradeDatails.currency} {this.props.fund.tradeDatails.realAmount}
+                                </span>
                             </div>
                         </a>
                     </div>
@@ -85,7 +85,7 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.contentItem}>
                             <span className={style.contentItemT}>
-                                确认消息
+                                确认信息
                             </span>
                         <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>

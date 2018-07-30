@@ -62,7 +62,7 @@ class BaseUserMsg extends React.Component {
             },
             tooltip: {
                 trigger: 'axis',
-                formatter:'{b}<br />{c}%'
+                formatter:this.state.option.type === 1 ?'{b}<br />{c}%':'{b}<br />{c}'
             },
             legend: {
                 data: ['最高价格', '最低价格'],
@@ -93,7 +93,7 @@ class BaseUserMsg extends React.Component {
                 axisLabel: {
                     show: true,
                     interval: 'auto',
-                    formatter: '{value}%'
+                    formatter: this.state.option.type === 1 ?'{value}%':'{value}'
                 },
                 boundaryGap: false,
 
@@ -114,6 +114,10 @@ class BaseUserMsg extends React.Component {
                     //         }
                     //     }
                     // },
+
+                    itemStyle:{
+                        borderColor:'#5262ff'
+                    },
 
                     // data: [0.11, 0.13, 0.135, 0.14, 0.1405],
                     data: this.state.option.type === 1 ? toChartData(this.props.fund.detail.chart).rateSeven: toChartData(this.props.fund.detail.chart).profitWan,
@@ -385,7 +389,7 @@ class BaseUserMsg extends React.Component {
                                     起购份额
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    {this.props.fund.detail.limitLowAmount}
+                                    {this.props.fund.detail.limitLowAmount} {this.props.fund.detail.currency}
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>

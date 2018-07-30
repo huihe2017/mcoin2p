@@ -138,7 +138,7 @@ class BaseUserMsg extends React.Component {
                 trigger: 'axis'
             },
             legend: {
-                data: ['最高气温', '最低气温']
+                data: ['最高价格', '最低价格']
             },
             toolbox: {
                 show: true,
@@ -265,7 +265,7 @@ class BaseUserMsg extends React.Component {
                             交易记录
                         </a>
                     </div>
-                    <div className={style.banner}>
+                    <div className={this.props.fund.myFundDetails.activeUserOrderInfoList.length<3?(style.banner + ' '+style.list):(style.banner)}>
                         <Carousel
                             autoplay={false}
                             infinite
@@ -316,56 +316,60 @@ class BaseUserMsg extends React.Component {
                         </Carousel>
                     </div>
                     <div className={style.chart}>
-                        <StickyContainer>
-                            <Tabs tabs={tabs}
-                                  initalPage={'t2'}
-                                  renderTabBar={renderTabBar}
-                                  onChange={(v, i) => {
-                                      if (i === 1) {
-                                          let option = {
-                                              productId: this.props.params.id,
-                                              unit: 'month',
-                                              n: 1,
-                                              type: 1,
+                        <div className={style.chartBox}>
+                            <StickyContainer>
+                                <Tabs tabs={tabs}
+                                      initalPage={'t2'}
+                                      renderTabBar={renderTabBar}
+                                      onChange={(v, i) => {
+                                          if (i === 1) {
+                                              let option = {
+                                                  productId: this.props.params.id,
+                                                  unit: 'month',
+                                                  n: 1,
+                                                  type: 1,
+                                              }
+                                              this.props.getFundChart({...option}, () => {
+                                                  this.renderChat()
+                                              })
                                           }
-                                          this.props.getFundChart({...option}, () => {
-                                              this.renderChat()
-                                          })
-                                      }
-                                  }}
-                            >
-                                <div className={style.box}>
-                                    <div id="main" style={{
-                                        width: '100%',
-                                        height: 230,
-                                        padding: '0 16px',
-                                        marginBottom: '-20px',
-                                        paddingTop: 10
-                                    }}></div>
+                                      }}
+                                >
+                                    <div className={style.box}>
+                                        <div id="main" style={{
+                                            width: '100%',
+                                            height: 230,
+                                            padding: '0 16px',
+                                            marginBottom: '-20px',
+                                            paddingTop: 10
+                                        }}></div>
 
-                                </div>
-                                <div style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    height: '250px',
-                                    backgroundColor: '#fff'
-                                }}>
-                                    <div id="main2" style={{
-                                        width: '100%',
-                                        height: 230,
-                                        padding: '0 16px',
-                                        marginBottom: '-20px',
-                                        paddingTop: 10
-                                    }}></div>
-                                </div>
-                            </Tabs>
-                        </StickyContainer>
-                        <Link to={'/productDetails/' + this.props.fund.myFundDetails.productId}>
-                            <div className={style.bottomA} onClick={() => hashHistory.push('/productDetails')}>
+                                    </div>
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        height: '250px',
+                                        backgroundColor: '#fff'
+                                    }}>
+                                        <div id="main2" style={{
+                                            width: '100%',
+                                            height: 230,
+                                            padding: '0 16px',
+                                            marginBottom: '-20px',
+                                            paddingTop: 10
+                                        }}></div>
+                                    </div>
+                                </Tabs>
+                            </StickyContainer>
+                        </div>
+
+                        <div className={style.bottomA}>
+                            <Link to={'/productDetails/' + this.props.fund.myFundDetails.productId}>
                                 查看基金详情
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
+
                     </div>
                 </div>
 
