@@ -24,7 +24,7 @@ class BaseUserMsg extends React.Component {
         if (this.props.wallet.current) {
             return null
         }
-        this.props.getWalletTradeRecord({page: this.state.page, currency: 'BTC'}, () => {
+        this.props.getWalletTradeRecord({page: this.state.page, currency: this.props.params.currency}, () => {
 
         })
     }
@@ -107,7 +107,7 @@ class BaseUserMsg extends React.Component {
                                                                 </div>}
                                                             {obj.minerFee ?
                                                                 <span className={style.commission}>
-                手续费：{obj.minerFee}BTC
+                手续费：{obj.minerFee}{obj.currency}
                             </span> : ''
                                                             }
                                                         </div>
@@ -190,7 +190,7 @@ class BaseUserMsg extends React.Component {
                                         this.setState({page: ++this.state.page}, () => {
                                             this.props.getWalletTradeRecord({
                                                 page: this.state.page,
-                                                currency: 'BTC'
+                                                currency: this.props.params.currency
                                             }, () => {
                                             })
                                         })
