@@ -72,7 +72,7 @@ class BaseUserMsg extends React.Component {
                                         总金额
                                     </span>
                                     <span className={style.userTime}>
-                                        ￥{this.props.asset.totalAmount}
+                                        <span style={{fontSize:16}}>￥</span>{this.props.asset.totalAmount}
                                     </span>
                                 </div>
                             </a>

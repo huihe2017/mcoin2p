@@ -134,7 +134,7 @@
     color: #fff;
 }
 :local(.userMoney){
-    width: 166px;
+    /*width: 166px;*/
     float: right;
     color: #fff;
     padding-top: 12px;

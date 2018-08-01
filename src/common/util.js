@@ -35,7 +35,7 @@ export function setUrlK(ojson) {
     var s = '', name, key;
     for (var p in ojson) {
         if (!ojson[p] && ojson[p] !== 0 && ojson[p] !== '') {
-            return null;
+            // return null;
         }
         if (ojson.hasOwnProperty(p)) {
             name = p

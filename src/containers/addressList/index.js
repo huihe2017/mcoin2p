@@ -203,7 +203,7 @@ class BaseUserMsg extends React.Component {
                         <Link to={'/addAddress/null/null'}>+
                         </Link>,
                     ]}
-                >添加常用地址</NavBar>
+                >常用地址</NavBar>
                 <div className={style.tab}>
                     <StickyContainer>
                         <Tabs tabs={tabs}

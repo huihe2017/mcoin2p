@@ -206,7 +206,7 @@ class BaseUserMsg extends React.Component {
                             <div className={style.userMoney}>
 
                                 <span className={style.userMoneyT}>
-                                    万份收益 <span className={style.userMoneyC}> ￥{this.props.fund.detail.profitWan}</span>
+                                    万份收益 <span className={style.userMoneyC}> {this.props.fund.detail.currency} {this.props.fund.detail.profitWan}</span>
                                 </span>
                             </div>
                         </div>
