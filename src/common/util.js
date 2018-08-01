@@ -34,15 +34,15 @@ export function changeJson(json, label, value) {
 export function setUrlK(ojson) {
     var s = '', name, key;
     for (var p in ojson) {
-        if (!ojson[p] && ojson[p] !== 0 && ojson[p] !== '') {
-            // return null;
+        if (ojson[p] !== undefined && ojson[p] !== null) {
+            if (ojson.hasOwnProperty(p)) {
+                name = p
+            }
+            ;
+            key = ojson[p];
+            s += "&" + name + "=" + encodeURIComponent(key);
         }
-        if (ojson.hasOwnProperty(p)) {
-            name = p
-        }
-        ;
-        key = ojson[p];
-        s += "&" + name + "=" + encodeURIComponent(key);
+
     }
     ;
     return s.substring(1, s.length);

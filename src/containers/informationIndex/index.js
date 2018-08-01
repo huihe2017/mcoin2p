@@ -29,7 +29,7 @@ class BaseUserMsg extends React.Component {
             currentId = this.props.information.infosType[0].id
 
             this.props.getInformationList({
-                typeId: this.props.information.infosType[0].id,
+                typeId: currentId,
                 page: 1
             })
         })
@@ -72,35 +72,37 @@ class BaseUserMsg extends React.Component {
             })()}
             renderRow={(rowData, sectionID, rowID) => {
                 const i = rowData;
-                return <Link to={'/informationDetails/'+rowData.id}><div className={style.itemBox}>
+                return <Link to={'/informationDetails/' + rowData.id}>
+                    <div className={style.itemBox}>
 
 
-                    <div className={style.item}>
-                        {false ?
-                            <div>
-                                <p className={style.itemTitle1}>
-                                    {i.title}
-                                </p>
-                                {i.img ? <img className={style.itemImgB} src={i.img} alt=""/> : ''}
-
-                                <span className={style.itemTerrace}>
-                                {i.terrace}
-                            </span></div>
-                            : <div className={style.Lbox}>
-                                <div className={style.Left}>
+                        <div className={style.item}>
+                            {false ?
+                                <div>
                                     <p className={style.itemTitle1}>
                                         {i.title}
                                     </p>
+                                    {i.img ? <img className={style.itemImgB} src={i.img} alt=""/> : ''}
+
                                     <span className={style.itemTerrace}>
+                                {i.terrace}
+                            </span></div>
+                                : <div className={style.Lbox}>
+                                    <div className={style.Left}>
+                                        <p className={style.itemTitle1}>
+                                            {i.title}
+                                        </p>
+                                        <span className={style.itemTerrace}>
                                             {i.author}
                                         </span>
-                                </div>
-                                <img className={style.itemImgB1} src={i.coverUrl} alt=""/>
-                            </div>}
+                                    </div>
+                                    <img className={style.itemImgB1} src={i.coverUrl} alt=""/>
+                                </div>}
+                        </div>
+
+
                     </div>
-
-
-                </div></Link>
+                </Link>
 
             }}
             renderSeparator={(sectionID, rowID) => (
@@ -116,7 +118,7 @@ class BaseUserMsg extends React.Component {
             )}
             style={{
                 // height:this.state.height,
-                height: document.documentElement.clientHeight-93,
+                height: document.documentElement.clientHeight - 93,
             }}
             refreshControl={<RefreshControl
                 onRefresh={() => {
@@ -140,7 +142,7 @@ class BaseUserMsg extends React.Component {
                 // })
                 this.props.getInformationList({
                     typeId: currentId,
-                    page: ++this.props.information[currentId+'page']
+                    page: ++this.props.information[currentId + 'page']
                 })
 
             }}

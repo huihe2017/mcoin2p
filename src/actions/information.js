@@ -7,7 +7,7 @@ export function getInformationList(data, callback) {
     return dispatch => {
         http({
             type: 'post',
-            data,
+            data:{typeId:data.typeId==='all'?'':data.typeId,page:data.page},
             callback,
             url: 'info/infos',
             success: (response) => {
@@ -26,6 +26,7 @@ export function getInformationType(data, callback) {
             callback,
             url: 'info/type',
             success: (response) => {
+                response.data.data.infotypes[0].id = 'all'
                 dispatch({type: 'GET_INFORMATION_TYPE', data: response.data})
             }
 
