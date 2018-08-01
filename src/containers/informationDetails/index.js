@@ -44,9 +44,9 @@ class BaseUserMsg extends React.Component {
                 <span className={style.time}>
                     {this.props.information.infosDetails.author} {this.props.information.infosDetails.createTime}
                 </span>
-                <span className={style.content}>
-                {this.props.information.infosDetails.content}
-                </span>
+                <div className={style.content} dangerouslySetInnerHTML = {{ __html:this.props.information.infosDetails.content }}>
+
+                </div>
             </div>
         )
     }
