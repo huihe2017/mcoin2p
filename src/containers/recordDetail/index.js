@@ -6,8 +6,6 @@ import {bindActionCreators} from 'redux'
 import {getTradeDetails} from '../../actions/fund'
 
 
-
-
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
@@ -18,6 +16,22 @@ class BaseUserMsg extends React.Component {
 
     componentDidMount() {
         this.props.getTradeDetails({orderId: this.props.params.id})
+    }
+
+    getOrderStatus = (num) => {
+        if (num === 0) {
+            return '待确认'
+        }
+        if (num === 1) {
+            return '正常收益'
+        }
+        if (num === 2) {
+            return '到期待赎回'
+        }
+        if (num === 3) {
+            return '已经赎回'
+        }
+
     }
 
     render() {
@@ -43,7 +57,7 @@ class BaseUserMsg extends React.Component {
                         <a className={style.user} href="javascript:void (0)">
                             <div className={style.userData}>
                                 <span className={style.userName}>
-                                    买入成功
+                                    {this.getOrderStatus(this.props.fund.tradeDatails.status)}
                                 </span>
                                 <span className={style.userTime}>
                                     {this.props.fund.tradeDatails.currency} {this.props.fund.tradeDatails.realAmount}
@@ -62,8 +76,9 @@ class BaseUserMsg extends React.Component {
                                     产品名称
                                 </span>
                             <span className={style.contentItemBoxC}>
-                                    {this.props.fund.tradeDatails.title} <img className={style.contentItemBoxCI} src={require('./images/arrow.png')}
-                                              alt=""/>
+                                    {this.props.fund.tradeDatails.title} <img className={style.contentItemBoxCI}
+                                                                              src={require('./images/arrow.png')}
+                                                                              alt=""/>
                                 </span>
                         </div>
                         <div className={style.contentItemBox}>
