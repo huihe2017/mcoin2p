@@ -194,3 +194,9 @@ export function getRechargeAddress(data, callback) {
         })
     }
 }
+
+export function clearWalletIndexData(data, callback) {
+    return dispatch => {
+        dispatch({type: 'CLEAR_WALLET_INDEX_DATA'})
+    }
+}

@@ -64,6 +64,9 @@ export default function wallet(state = initialState, action = {}) {
         case 'GET_RECHARGE_ADDRESS':
             state.current.address = action.data.data.address
             return Object.assign({}, state, {})
+        case 'CLEAR_WALLET_INDEX_DATA':
+            state.list = undefined
+            return Object.assign({}, state, {})
         default:
             return state
     }

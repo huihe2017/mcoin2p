@@ -29,7 +29,6 @@ class AboutUs extends React.Component {
         if(!this.state.address){
             return null
         }
-        console.log(2222,this.state.address);
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -37,7 +36,7 @@ class AboutUs extends React.Component {
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
 
-                >BTC</NavBar>
+                >{this.props.wallet.current.balance.currency}</NavBar>
                 <div className={style.content}>
                     <div className={style.qcodeBox}>
                         <div className={style.header}>

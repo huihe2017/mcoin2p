@@ -15,9 +15,9 @@ import ReactDOM from "react-dom";
 let currentId = 0;
 
 const tabs = [
-    {title: 'all'},
-    {title: 'BTC'},
-    {title: 'ETH'}
+    {title: 'all',id:''},
+    {title: 'BTC',id:'BTC'},
+    {title: 'ETH',id:'ETH'}
 
 ];
 
@@ -31,7 +31,7 @@ class BaseUserMsg extends React.Component {
         if (this.props.wallet.commonAddress[currentId]) {
             return null
         }
-        currentId = tabs[0].title
+        currentId = tabs[0].id
 
         this.props.getCommonAddress({page: 1, currency: currentId}, () => {
         })
@@ -211,7 +211,7 @@ class BaseUserMsg extends React.Component {
                               onChange={(a, b) => {
                                   currentId = a.title
                                   if (!this.props.wallet.commonAddress[a.title]) {
-                                      this.props.getCommonAddress({page: 1, currency: a.title}, () => {
+                                      this.props.getCommonAddress({page: 1, currency: a.id}, () => {
                                       })
                                   }
                               }}

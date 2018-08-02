@@ -7,7 +7,7 @@ import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
 import {logout} from '../../actions/user'
-import {getWalletIndexData} from '../../actions/wallet'
+import {getWalletIndexData,clearWalletIndexData} from '../../actions/wallet'
 import SafeSet from '../../containers/safeSet'
 
 class BaseUserMsg extends React.Component {
@@ -38,13 +38,20 @@ class BaseUserMsg extends React.Component {
 
     }
 
+    componentWillUnmount(){
+        this.props.clearWalletIndexData()
+    }
+
     render() {
         if (this.props.wallet.loading) {
             return null
         }
-        if (!this.props.wallet.isSetSaveCode) {
-            return <SafeSet></SafeSet>
+        if(!this.props.wallet.list){
+            return null
         }
+        // if (!this.props.wallet.isSetSaveCode) {
+        //     return <SafeSet></SafeSet>
+        // }
         return (
             <div className={style.wrap}>
                 {/*<Header/>*/}
@@ -147,6 +154,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        clearWalletIndexData: bindActionCreators(clearWalletIndexData, dispatch),
         logout: bindActionCreators(logout, dispatch),
         getWalletIndexData: bindActionCreators(getWalletIndexData, dispatch)
     }

@@ -126,3 +126,14 @@ export function toChartData(e) {
     // console.log(arr1);
     return obj1
 }
+
+export function filter(list, id,idName='id') {
+    let data
+    list.filter((item, index) => {
+        if (id - 0 === item[idName] - 0) {
+            data = item
+        }
+    })
+
+    return data
+}

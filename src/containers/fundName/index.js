@@ -10,6 +10,7 @@ import {getMyFundDetails, setAutoRenew, getFundChart} from '../../actions/fund'
 import ReactDOM from "react-dom";
 import {StickyContainer, Sticky} from 'react-sticky';
 import echarts from 'echarts/lib/echarts';
+import {filter} from "../../common/util";
 
 import 'echarts/lib/chart/line';
 import 'echarts/lib/component/tooltip';
@@ -205,7 +206,9 @@ class BaseUserMsg extends React.Component {
                 {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
             </Sticky>);
         }
+        let filterData = filter(this.props.fund.myFund.userProducts, this.props.fund.myFundDetails.productId,'productId')
 
+        console.log(44444,this.props.fund)
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -213,7 +216,7 @@ class BaseUserMsg extends React.Component {
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
 
-                >BTC</NavBar>
+                >{filterData.title}</NavBar>
                 <div>
                     <div className={style.header}>
                         <div className={style.headerTop}>
