@@ -92,7 +92,6 @@ class Footer extends React.Component {
                         }
                         title={<span style={this.props.information?{color:'#5262ff'}:{}}>资讯</span>}
                         key="Friend"
-                        dot
                         selected={this.state.selectedTab === 'greenTab'}
                         onPress={() => {
                             this.setState({
