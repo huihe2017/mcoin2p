@@ -60,7 +60,7 @@ class BaseUserMsg extends React.Component {
                                     {this.getOrderStatus(this.props.fund.tradeDatails.status)}
                                 </span>
                                 <span className={style.userTime}>
-                                    {this.props.fund.tradeDatails.currency} {this.props.fund.tradeDatails.mount}
+                                    {this.props.fund.tradeDatails.currency} {this.props.fund.tradeDatails.amount}
                                 </span>
                             </div>
                         </a>
