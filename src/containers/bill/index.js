@@ -22,9 +22,6 @@ class BaseUserMsg extends React.Component {
         if (this.props.asset.bills) {
             return null
         }
-        // setTimeout(() => this.setState({
-        //     height: this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop,
-        // }), 0);
         this.props.getBillsList({page: this.state.page}, () => {
 
         })

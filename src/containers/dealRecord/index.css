@@ -66,7 +66,7 @@
 :local(.tagBox){
     display: flex;
     justify-content: space-between;
-    padding: 10px 16px;
+    padding: 10px 0px;
 }
 :local(.tagBoxS){
     display: block;
@@ -81,6 +81,8 @@
 }
 :local(.tagBox) .am-tabs-default-bar-top, .am-tabs-default-bar-bottom{
     background-color: transparent!important;
+    padding: 0 10px;
+    padding-bottom: 10px;
 }
 :local(.tagBox) .am-tabs-default-bar-top .am-tabs-default-bar-content, .am-tabs-default-bar-bottom .am-tabs-default-bar-content{
     justify-content: space-between!important;

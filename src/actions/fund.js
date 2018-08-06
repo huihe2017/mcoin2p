@@ -109,10 +109,11 @@ export function setAutoRenew(data, callback) {
 }
 
 export function getTradeList(data, callback) {
+
     return dispatch => {
         http({
             type: 'post',
-            data,
+            data:{type:data.type==='all'?'':data.type,page:data.page},
             callback,
             url: 'order/tradelist',
             success: (response) => {

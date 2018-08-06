@@ -162,7 +162,6 @@ class BaseUserMsg extends React.Component {
                 <div className={style.tab}>
                     <StickyContainer>
                         <Tabs tabs={this.changeDate(this.props.information.infosType)}
-                              initalPage={'t2'}
                               onChange={(a, b) => {
                                   currentId = a.id
                                   if (!this.props.information[a.id]) {
