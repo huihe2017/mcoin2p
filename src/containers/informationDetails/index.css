@@ -22,7 +22,7 @@
 :local(.content){
     display: block;
     padding: 0 16px;
-    font-size: 12px;
-    line-height: 18px;
-    color: #989898;
+}
+:local(.content) img{
+    width: 100%!important;
 }
