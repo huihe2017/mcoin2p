@@ -405,7 +405,7 @@ class BaseUserMsg extends React.Component {
                                     封闭天数
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    {this.props.fund.detail.rateSeven}天
+                                    {this.props.fund.detail.period}天
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>

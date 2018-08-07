@@ -95,7 +95,7 @@ class BaseUserMsg extends React.Component {
                         />
                     )}
                     style={{
-                        height: document.documentElement.clientHeight,
+                        height: document.documentElement.clientHeight-134,
 
                     }}
                     refreshControl={<RefreshControl

@@ -22,6 +22,7 @@
 :local(.content){
     display: block;
     padding: 0 16px;
+    line-height:normal!important;
 }
 :local(.content) img{
     width: 100%!important;

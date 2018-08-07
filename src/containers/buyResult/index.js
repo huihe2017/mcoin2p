@@ -100,7 +100,7 @@ class BaseUserMsg extends React.Component {
                             </span>
                         </div>
                     </div>
-                    <div className={style.button} onClick={()=>{hashHistory.push('/dealRecord')}}>
+                    <div className={style.button} onClick={()=>{hashHistory.push('/fundName/'+this.props.fund.detail.id)}}>
                         查看基金明细
                     </div>
                 </div>
