@@ -11,7 +11,7 @@ export function getNoticDetails(data, callback) {
             callback,
             url: 'info/noticedetail',
             success: (response) => {
-                dispatch({type: 'GET_NOTIC_DETAILS', data: response.data})
+                dispatch({type: 'GET_NOTIC_DETAILS', data: response.data,id:data.id})
             }
 
         })

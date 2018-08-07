@@ -25,8 +25,8 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
-debugger
-        if (!this.props.notice.noticeDetails) {
+
+        if (!this.props.notice.noticeDetails[this.props.params.id]) {
             return null
         }
         const {percent} = this.state;
@@ -37,15 +37,15 @@ debugger
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
 
-                >{this.props.notice.noticeDetails.title}</NavBar>
+                >{this.props.notice.noticeDetails[this.props.params.id].title}</NavBar>
                 {/*<span className={style.header}>*/}
                     {/*八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...*/}
                 {/*</span>*/}
                 <span className={style.time}>
-                    {this.props.notice.noticeDetails.author} {this.props.notice.noticeDetails.createTime}
+                    {this.props.notice.noticeDetails.author} {this.props.notice.noticeDetails[this.props.params.id].createTime}
                 </span>
                 <span className={style.content}>
-                {this.props.notice.noticeDetails.content}
+                {this.props.notice.noticeDetails[this.props.params.id].content}
                 </span>
             </div>
         )

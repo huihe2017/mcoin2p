@@ -1,4 +1,6 @@
-let initialState = {}
+let initialState = {
+    noticeDetails:{}
+}
 
 export default function notic(state = initialState, action = {}) {
 
@@ -6,7 +8,7 @@ export default function notic(state = initialState, action = {}) {
 
         case 'GET_NOTIC_DETAILS':
 
-            state.noticeDetails = action.data.data
+            state.noticeDetails[action.id] = action.data.data
             return Object.assign({}, state, {})
         default:
             return state

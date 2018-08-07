@@ -1,4 +1,6 @@
-let initialState = {}
+let initialState = {
+    infosDetails:{}
+}
 
 export default function information(state = initialState, action = {}) {
 
@@ -20,7 +22,7 @@ export default function information(state = initialState, action = {}) {
             return Object.assign({}, state, {})
         case 'GET_INFORMATION_DETAILS':
 
-            state.infosDetails = action.data.data
+            state.infosDetails[action.id] = action.data.data
             return Object.assign({}, state, {})
         default:
             return state

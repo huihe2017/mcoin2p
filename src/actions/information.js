@@ -42,7 +42,7 @@ export function getInformationDetails(data, callback) {
             callback,
             url: 'info/infodetail',
             success: (response) => {
-                dispatch({type: 'GET_INFORMATION_DETAILS', data: response.data})
+                dispatch({type: 'GET_INFORMATION_DETAILS', data: response.data,id:data.id})
             }
 
         })
