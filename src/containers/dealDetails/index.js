@@ -21,9 +21,7 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
-        if (this.props.wallet.current) {
-            return null
-        }
+
         this.props.getWalletTradeRecord({page: this.state.page, currency: this.props.params.currency}, () => {
 
         })

@@ -24,8 +24,13 @@ export default function wallet(state = initialState, action = {}) {
             if (!state.current) {
                 state.current = action.data.data
             } else {
-                let arr = state.current.list.concat(action.data.data.list)
-                state.current.list = arr
+                if (action.data.data.pager.page === 1) {
+                    state.current = action.data.data
+                } else {
+                    let arr = state.current.list.concat(action.data.data.list)
+                    state.current.list = arr
+                }
+
             }
             return Object.assign({}, state, {})
         case 'GET_MINER_FEE':
@@ -38,12 +43,17 @@ export default function wallet(state = initialState, action = {}) {
             // }
 
             if (state.commonAddress[action.id]) {
-                let arr = state.commonAddress[action.id].concat(action.data.data.list)
-                state.commonAddress[action.id] = arr
+
+                if (action.data.data.pager.page === 1) {
+                    state.commonAddress[action.id] = action.data.data.list
+                } else {
+                    let arr = state.commonAddress[action.id].concat(action.data.data.list)
+                    state.commonAddress[action.id] = arr
+                }
             } else {
                 state.commonAddress[action.id] = action.data.data.list
             }
-            state.commonAddress[action.id+'page'] = action.data.data.pager.page
+            state.commonAddress[action.id + 'page'] = action.data.data.pager.page
             //
             // if (!state.commonAddress) {
             //     state.commonAddress = action.data.data
