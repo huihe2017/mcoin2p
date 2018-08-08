@@ -179,7 +179,7 @@ class BaseUserMsg extends React.Component {
                     maskClosable={true}
                     onClose={() => this.setState({isShowModal: false})}
                     title="确定要删除"
-                    closable={true}
+                    // closable={true}
                     footer={[
                         {
                             text: '取消', onPress: () => {

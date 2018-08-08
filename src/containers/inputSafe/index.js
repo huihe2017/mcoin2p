@@ -66,7 +66,6 @@ class BaseUserMsg extends React.Component {
         if (this.state.counting) {
             return false
         }
-        debugger
         this.props.sentMobileCode()
         let _this = this
         _this.setState({counting: true})

@@ -34,15 +34,13 @@ export default function fund(state = initialState, action = {}) {
         case 'GET_TRADE_LIST':
 
 
-            if(state['tradeList'+action.listType]){
-                let arr = state['tradeList'+action.listType].concat(action.data.data.list)
-                state['tradeList'+action.listType] = arr
-            }else {
-                state['tradeList'+action.listType] = action.data.data.list
+            if (state['tradeList' + action.listType]) {
+                let arr = state['tradeList' + action.listType].concat(action.data.data.list)
+                state['tradeList' + action.listType] = arr
+            } else {
+                state['tradeList' + action.listType] = action.data.data.list
             }
-            state['tradeList'+action.listType+'page'] = action.data.data.pager.page
-
-
+            state['tradeList' + action.listType + 'page'] = action.data.data.pager.page
 
 
             // let type = action.listType
@@ -100,6 +98,18 @@ export default function fund(state = initialState, action = {}) {
             } else {
                 let arr = state.profitList.profitList.concat(action.data.data.profitList)
                 state.profitList.profitList = arr
+            }
+            return Object.assign({}, state, {})
+        case 'GET_ONE_PROFIT_LIST':
+            if (!state[action.id + 'Profit']) {
+                state[action.id + 'Profit'] = action.data.data
+            }else {
+                if(state[action.id + 'Profit'].pager.page===1){
+                    state[action.id + 'Profit'] = action.data.data
+                }else {
+                    let arr = state[action.id + 'Profit'].profitList.concat(action.data.data.profitList)
+                    state[action.id + 'Profit'].profitList = arr
+                }
             }
             return Object.assign({}, state, {})
         default:

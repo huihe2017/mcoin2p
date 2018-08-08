@@ -207,8 +207,6 @@ class BaseUserMsg extends React.Component {
             </Sticky>);
         }
         let filterData = filter(this.props.fund.myFund.userProducts, this.props.fund.myFundDetails.productId,'productId')
-
-        console.log(44444,this.props.fund)
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -255,7 +253,7 @@ class BaseUserMsg extends React.Component {
                     <div className={style.partHeader}>
 
                         <a className={style.partA} href="javascript:void(0)"
-                           onClick={() => hashHistory.push('/earningsDetail')}><img className={style.partImg}
+                           onClick={() => hashHistory.push('/earningsDetail/'+this.props.params.id)}><img className={style.partImg}
                                                                                     src={require('./images/list.png')}
                                                                                     alt=""/>
                             收益明细

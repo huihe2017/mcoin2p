@@ -169,3 +169,18 @@ export function getProfitList(data, callback) {
         })
     }
 }
+
+export function getOneProfitList(data, callback) {
+    return dispatch => {
+        http({
+            type: 'post',
+            data,
+            callback,
+            url: 'userfund/productprofitdetail',
+            success: (response) => {
+                dispatch({type: 'GET_ONE_PROFIT_LIST',id:data.id, data: response.data})
+            }
+
+        })
+    }
+}

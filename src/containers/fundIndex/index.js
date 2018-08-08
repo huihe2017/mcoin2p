@@ -24,7 +24,7 @@ class BaseUserMsg extends React.Component {
         }
         this.props.getMyFundList({
             page: this.state.page,
-            //uid: this.props.user.userInfo.uid,
+            // uid: this.props.user.userInfo.uid,
             currency: 'BTC'
         }, () => {
 
@@ -80,7 +80,7 @@ class BaseUserMsg extends React.Component {
                     <div className={style.partHeader}>
 
                         <a className={style.partA} href="javascript:void(0)"
-                           onClick={() => hashHistory.push('/earningsDetail')}>
+                           onClick={() => hashHistory.push('/earningsDetail/null')}>
                             <img className={style.partImg} src={require('./images/list.png')} alt=""/>
                             收益明细
                         </a>
@@ -172,7 +172,7 @@ class BaseUserMsg extends React.Component {
                                     this.props.getMyFundList({
                                         page: this.state.page,
                                         currency: 'BTC',
-                                        //uid: this.props.user.userInfo.uid
+                                        // uid: this.props.user.userInfo.uid
                                     }, () => {
                                     })
                                 })

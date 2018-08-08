@@ -99,7 +99,7 @@ export default () => {
             <Route path="/commonAddress" component={CommonAddress}/>
             <Route path="/amendSafe" component={AmendSafe}/>
             <Route path="/fundIndex" component={FundIndex}/>
-            <Route path="/earningsDetail" component={EarningsDetail}/>
+            <Route path="/earningsDetail/:id" component={EarningsDetail}/>
             <Route path="/recordDetail/:id" component={RecordDetail}/>
             <Route path="/dealRecord" component={DealRecord}/>
             <Route path="/fundName/:id" component={FundName}/>

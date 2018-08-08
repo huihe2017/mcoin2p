@@ -6,7 +6,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
-import {getProfitList} from '../../actions/fund'
+import {getProfitList,getOneProfitList} from '../../actions/fund'
 import ReactDOM from "react-dom";
 
 
@@ -18,25 +18,49 @@ class BaseUserMsg extends React.Component {
         }
     }
 
-
+    componentWillUnmount(){
+        this.props.fund.profitList=null
+    }
     componentDidMount() {
         if (this.props.fund.profitList) {
             return null
         }
-        this.props.getProfitList({
-            page: this.state.page,
-            currency: this.props.fund.myFund.currency,
-            //uid: this.props.user.userInfo.uid
-        }, () => {
+        if(this.props.params.id==='null'){
+            this.props.getProfitList({
+                page: this.state.page,
+                // id: this.props.fund.myFund.currency,
+                //uid: this.props.user.userInfo.uid
+            }, () => {
 
-        })
+            })
+        }else {
+            this.props.getOneProfitList({
+                page: this.state.page,
+                id: this.props.params.id,
+                //uid: this.props.user.userInfo.uid
+            }, () => {
+
+            })
+        }
+
     }
 
 
     render() {
-        if (!this.props.fund.profitList) {
-            return null
+
+        if(this.props.params.id==='null'){
+            if (!this.props.fund.profitList) {
+                return null
+            }
+        }else {
+            if (!this.props.fund[this.props.params.id+'Profit']) {
+                return null
+            }else {
+                this.props.fund.profitList = this.props.fund[this.props.params.id+'Profit']
+            }
         }
+
+
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -135,12 +159,25 @@ class BaseUserMsg extends React.Component {
                                         return false
                                     }
                                     this.setState({page: ++this.state.page}, () => {
-                                        this.props.getProfitList({
-                                            page: this.state.page,
-                                            currency: this.props.fund.myFund.currency,
-                                            //uid: this.props.user.userInfo.uid
-                                        }, () => {
-                                        })
+
+                                        if(this.props.params.id==='null'){
+                                            this.props.getProfitList({
+                                                page: this.state.page,
+                                                // currency: this.props.fund.myFund.currency,
+                                                //uid: this.props.user.userInfo.uid
+                                            }, () => {
+
+                                            })
+                                        }else {
+                                            this.props.getOneProfitList({
+                                                page: this.state.page,
+                                                id: this.props.params.id,
+                                                //uid: this.props.user.userInfo.uid
+                                            }, () => {
+
+                                            })
+                                        }
+
                                     })
 
                                 }}
@@ -163,7 +200,8 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getProfitList: bindActionCreators(getProfitList, dispatch)
+        getProfitList: bindActionCreators(getProfitList, dispatch),
+        getOneProfitList: bindActionCreators(getOneProfitList, dispatch)
     }
 }
 
