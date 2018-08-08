@@ -23,7 +23,11 @@ class BaseUserMsg extends React.Component {
         if (this.props.fund.profitList) {
             return null
         }
-        this.props.getProfitList({page: this.state.page,currency: this.props.fund.myFund.currency, uid: this.props.user.userInfo.uid}, () => {
+        this.props.getProfitList({
+            page: this.state.page,
+            currency: this.props.fund.myFund.currency,
+            //uid: this.props.user.userInfo.uid
+        }, () => {
 
         })
     }
@@ -67,81 +71,85 @@ class BaseUserMsg extends React.Component {
                         </div>
                     </div>
 
-                        <div className={style.contentContent}>
-                            {this.props.fund.profitList.profitList.length === 0 ? <div>
-                                    <img className={style.showImg} src={require('../outAddressList/images/zero.png')}
-                                         alt=""/>
-                                    <span className={style.showTip}>
+                    <div className={style.contentContent}>
+                        {this.props.fund.profitList.profitList.length === 0 ? <div>
+                                <img className={style.showImg} src={require('../outAddressList/images/zero.png')}
+                                     alt=""/>
+                                <span className={style.showTip}>
                                     暂无数据
                                 </span>
-                                </div> :
-                                <ListView
-                                    ref={el => this.lv = el}
-                                    dataSource={(() => {
-                                        const dataSource = new ListView.DataSource({
-                                            rowHasChanged: (row1, row2) => row1 !== row2
-                                        });
-                                        return dataSource.cloneWithRows(this.props.fund.profitList.profitList)
-                                    })()}
-                                    renderRow={(rowData, sectionID, rowID) => {
-                                        const obj = rowData;
-                                        return (
-                                            <div className={style.item} key={rowID}>
-                                                <div className={style.icontent}>
-                                                    <div className={style.state}>
-                                                        <span style={{color: '#3b3d40'}}>{obj.profit}</span>
-                                                    </div>
-                                                    <div className={style.number}>
+                            </div> :
+                            <ListView
+                                ref={el => this.lv = el}
+                                dataSource={(() => {
+                                    const dataSource = new ListView.DataSource({
+                                        rowHasChanged: (row1, row2) => row1 !== row2
+                                    });
+                                    return dataSource.cloneWithRows(this.props.fund.profitList.profitList)
+                                })()}
+                                renderRow={(rowData, sectionID, rowID) => {
+                                    const obj = rowData;
+                                    return (
+                                        <div className={style.item} key={rowID}>
+                                            <div className={style.icontent}>
+                                                <div className={style.state}>
+                                                    <span style={{color: '#3b3d40'}}>{obj.profit}</span>
+                                                </div>
+                                                <div className={style.number}>
                             <span
                                 style={obj.state > 0 ? {color: '#5262FF'} : {color: '#3B3D40'}}>{obj.profitDate}</span>
-                                                    </div>
-
                                                 </div>
+
                                             </div>
-                                        );
-                                    }}
-                                    renderSeparator={(sectionID, rowID) => (
-                                        <div
-                                            key={`${sectionID}-${rowID}`}
-                                            style={{
-                                                backgroundColor: '#F5F5F9',
-                                                height: 0,
-                                                borderTop: '1px solid #ECECED',
-                                                borderBottom: '1px solid #ECECED',
-                                            }}
-                                        />
-                                    )}
-                                    style={{
-                                        height: document.documentElement.clientHeight,
-                                    }}
-                                    refreshControl={<RefreshControl
-                                        onRefresh={() => {
-                                            // this.props.getBillsList({page: 1}, () => {
-                                            //     this.setState({
-                                            //         dataSource: this.state.dataSource.cloneWithRows(this.props.asset.bills.list),
-                                            //         refreshing: false,
-                                            //         showFinishTxt: true,
-                                            //     });
-                                            // })
+                                        </div>
+                                    );
+                                }}
+                                renderSeparator={(sectionID, rowID) => (
+                                    <div
+                                        key={`${sectionID}-${rowID}`}
+                                        style={{
+                                            backgroundColor: '#F5F5F9',
+                                            height: 0,
+                                            borderTop: '1px solid #ECECED',
+                                            borderBottom: '1px solid #ECECED',
                                         }}
-
-                                    />}
-                                    onEndReached={() => {
-                                        if (this.lv.getInnerViewNode().offsetHeight < (document.documentElement.clientHeight + 150)) {
-                                            return false
-                                        }
-                                        this.setState({page: ++this.state.page}, () => {
-                                            this.props.getProfitList({page: this.state.page,currency: this.props.fund.myFund.currency, uid: this.props.user.userInfo.uid}, () => {
-                                            })
-                                        })
-
+                                    />
+                                )}
+                                style={{
+                                    height: document.documentElement.clientHeight,
+                                }}
+                                refreshControl={<RefreshControl
+                                    onRefresh={() => {
+                                        // this.props.getBillsList({page: 1}, () => {
+                                        //     this.setState({
+                                        //         dataSource: this.state.dataSource.cloneWithRows(this.props.asset.bills.list),
+                                        //         refreshing: false,
+                                        //         showFinishTxt: true,
+                                        //     });
+                                        // })
                                     }}
-                                    onEndReachedThreshold={10}
-                                />}
-                        </div>
 
+                                />}
+                                onEndReached={() => {
+                                    if (this.lv.getInnerViewNode().offsetHeight < (document.documentElement.clientHeight + 150)) {
+                                        return false
+                                    }
+                                    this.setState({page: ++this.state.page}, () => {
+                                        this.props.getProfitList({
+                                            page: this.state.page,
+                                            currency: this.props.fund.myFund.currency,
+                                            //uid: this.props.user.userInfo.uid
+                                        }, () => {
+                                        })
+                                    })
+
+                                }}
+                                onEndReachedThreshold={10}
+                            />}
                     </div>
+
                 </div>
+            </div>
         )
     }
 }

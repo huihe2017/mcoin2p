@@ -142,6 +142,10 @@ class BaseUserMsg extends React.Component {
                                         <Button type="primary" onClick={()=>{this.setState({
                                             modal3: false,
                                         },()=>{
+                                            if(this.state.amount>this.props.fund.detail.limitHighAmount){
+                                                Toast.fail('超出最大购买额度', 3, null, false)
+                                                return false
+                                            }
 
                                             this.props.buyFund({
                                                 productId:this.props.fund.detail.id,

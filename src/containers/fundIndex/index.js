@@ -22,7 +22,11 @@ class BaseUserMsg extends React.Component {
         if (this.props.fund.myFund) {
             return null
         }
-        this.props.getMyFundList({page: this.state.page,uid: this.props.user.userInfo.uid, currency: 'BTC'}, () => {
+        this.props.getMyFundList({
+            page: this.state.page,
+            //uid: this.props.user.userInfo.uid,
+            currency: 'BTC'
+        }, () => {
 
         })
     }
@@ -45,7 +49,8 @@ class BaseUserMsg extends React.Component {
                             <span className={style.headerTopW}>
                                 总币额
                             </span>
-                            <a className={style.headerTopR} href="javascript:void (0)" onClick={()=>Toast.info('敬请期待', 2, null, false)}>
+                            <a className={style.headerTopR} href="javascript:void (0)"
+                               onClick={() => Toast.info('敬请期待', 2, null, false)}>
                                 切换币种 >
                             </a>
                         </div>
@@ -94,89 +99,90 @@ class BaseUserMsg extends React.Component {
                         </span>
                     </div>
                     <div hidden={!(this.props.fund.myFund && this.props.fund.myFund.userProducts.length) > 0}>
-                                <ListView
-                                    ref={el => this.lv = el}
-                                    dataSource={(() => {
-                                        const dataSource = new ListView.DataSource({
-                                            rowHasChanged: (row1, row2) => row1 !== row2
-                                        });
-                                        return dataSource.cloneWithRows(this.props.fund.myFund.userProducts)
-                                    })()}
-                                    renderRow={(rowData, sectionID, rowID) => {
+                        <ListView
+                            ref={el => this.lv = el}
+                            dataSource={(() => {
+                                const dataSource = new ListView.DataSource({
+                                    rowHasChanged: (row1, row2) => row1 !== row2
+                                });
+                                return dataSource.cloneWithRows(this.props.fund.myFund.userProducts)
+                            })()}
+                            renderRow={(rowData, sectionID, rowID) => {
 
-                                        const obj = rowData;
-                                        return (
-                                            <div className={style.item} key={rowID} onClick={() => hashHistory.push('/fundName/' + obj.productId)}>
+                                const obj = rowData;
+                                return (
+                                    <div className={style.item} key={rowID}
+                                         onClick={() => hashHistory.push('/fundName/' + obj.productId)}>
                     <span className={style.title}>
                         {obj.title}
                         <div className={style.time}>
 
                         </div>
                     </span>
-                                                <div className={style.icontent}>
+                                        <div className={style.icontent}>
 
-                                                    <div className={style.state}>
-                                                        <span>币额</span>
-                                                        <span style={{color: '#3b3d40'}}>{obj.coinCount}</span>
-                                                    </div>
-                                                    <div className={style.number}>
-                                                        <span>昨日收益</span>
-                                                        <span style={{color: '#F49193'}}>{obj.yesterdayProfit}</span>
-                                                    </div>
-                                                    <div className={style.way}>
-                                                        <span>七日年化</span>
-                                                        <span style={{color: '#F49193'}}>{obj.rateSeven}</span>
-                                                    </div>
-                                                    <img className={style.arrImg} src={require('./images/arrow.png')} alt=""/>
-                                                </div>
+                                            <div className={style.state}>
+                                                <span>币额</span>
+                                                <span style={{color: '#3b3d40'}}>{obj.coinCount}</span>
                                             </div>
-                                        );
-                                    }}
-                                    renderSeparator={(sectionID, rowID) => (
-                                        <div
-                                            key={`${sectionID}-${rowID}`}
-                                            style={{
-                                                backgroundColor: '#F5F5F9',
-                                                height: 0,
-                                                borderTop: '1px solid #ECECED',
-                                                borderBottom: '1px solid #ECECED',
-                                            }}
-                                        />
-                                    )}
+                                            <div className={style.number}>
+                                                <span>昨日收益</span>
+                                                <span style={{color: '#F49193'}}>{obj.yesterdayProfit}</span>
+                                            </div>
+                                            <div className={style.way}>
+                                                <span>七日年化</span>
+                                                <span style={{color: '#F49193'}}>{obj.rateSeven}</span>
+                                            </div>
+                                            <img className={style.arrImg} src={require('./images/arrow.png')} alt=""/>
+                                        </div>
+                                    </div>
+                                );
+                            }}
+                            renderSeparator={(sectionID, rowID) => (
+                                <div
+                                    key={`${sectionID}-${rowID}`}
                                     style={{
-                                        height: document.documentElement.clientHeight-201,
+                                        backgroundColor: '#F5F5F9',
+                                        height: 0,
+                                        borderTop: '1px solid #ECECED',
+                                        borderBottom: '1px solid #ECECED',
                                     }}
-                                    refreshControl={<RefreshControl
-                                        onRefresh={() => {
-                                            // this.props.getBillsList({page: 1}, () => {
-                                            //     this.setState({
-                                            //         dataSource: this.state.dataSource.cloneWithRows(this.props.asset.bills.list),
-                                            //         refreshing: false,
-                                            //         showFinishTxt: true,
-                                            //     });
-                                            // })
-                                        }}
-
-                                    />}
-                                    onEndReached={() => {
-                                        if (this.lv.getInnerViewNode().offsetHeight < (document.documentElement.clientHeight + 150)) {
-                                            return false
-                                        }
-                                        this.setState({page: ++this.state.page}, () => {
-                                            this.props.getMyFundList({
-                                                page: this.state.page,
-                                                currency: 'BTC',
-                                                uid: this.props.user.userInfo.uid
-                                            }, () => {
-                                            })
-                                        })
-
-                                    }}
-                                    onEndReachedThreshold={10}
                                 />
-                        </div>
+                            )}
+                            style={{
+                                height: document.documentElement.clientHeight - 201,
+                            }}
+                            refreshControl={<RefreshControl
+                                onRefresh={() => {
+                                    // this.props.getBillsList({page: 1}, () => {
+                                    //     this.setState({
+                                    //         dataSource: this.state.dataSource.cloneWithRows(this.props.asset.bills.list),
+                                    //         refreshing: false,
+                                    //         showFinishTxt: true,
+                                    //     });
+                                    // })
+                                }}
+
+                            />}
+                            onEndReached={() => {
+                                if (this.lv.getInnerViewNode().offsetHeight < (document.documentElement.clientHeight + 150)) {
+                                    return false
+                                }
+                                this.setState({page: ++this.state.page}, () => {
+                                    this.props.getMyFundList({
+                                        page: this.state.page,
+                                        currency: 'BTC',
+                                        //uid: this.props.user.userInfo.uid
+                                    }, () => {
+                                    })
+                                })
+
+                            }}
+                            onEndReachedThreshold={10}
+                        />
                     </div>
                 </div>
+            </div>
 
         )
     }

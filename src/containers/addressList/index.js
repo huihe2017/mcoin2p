@@ -12,10 +12,10 @@ import {StickyContainer, Sticky} from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 
-let currentId = 0;
+let currentId = 'all';
 
 const tabs = [
-    {title: 'all',id:''},
+    {title: 'all',id:'all'},
     {title: 'BTC',id:'BTC'},
     {title: 'ETH',id:'ETH'}
 

@@ -53,7 +53,8 @@ export function getCommonAddress(data, callback) {
     return dispatch => {
         http({
             type: 'post',
-            data,
+            // data,
+            data:{type:data.currency==='all'?'':data.currency,page:data.page},
             callback,
             url: 'wallet/addresslist',
             success: (response) => {
@@ -102,7 +103,7 @@ export function sentMobileCode(data, callback) {
             callback,
             url: 'wallet/sendmobilecode',
             success: (response) => {
-                axios.post(config.api_url + 'wallet/sendmobilecode', {...data})
+                //axios.post(config.api_url + 'wallet/sendmobilecode', {...data})
             }
 
         })

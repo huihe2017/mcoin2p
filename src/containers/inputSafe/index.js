@@ -66,10 +66,11 @@ class BaseUserMsg extends React.Component {
         if (this.state.counting) {
             return false
         }
+        debugger
         this.props.sentMobileCode()
         let _this = this
         _this.setState({counting: true})
-        let seconds = 60
+        let seconds = 6
         _this.inter = setInterval(() => {
 
             _this.setState({extraText: (seconds--) + 's'}, () => {
