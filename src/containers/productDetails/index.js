@@ -410,7 +410,7 @@ class BaseUserMsg extends React.Component {
                             </div>
                             <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
-                                    订单确认
+                                    购买信息
                                 </span>
                                 <span className={style.contentItemBoxC}>
                                     {this.props.fund.detail.confirmDesc}
@@ -439,7 +439,7 @@ class BaseUserMsg extends React.Component {
                             </div>
                             <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
-                                    到账时间
+                                    赎回信息
                                 </span>
                                 <span className={style.contentItemBoxC}>
                                     {this.props.fund.detail.redeemDesc}
