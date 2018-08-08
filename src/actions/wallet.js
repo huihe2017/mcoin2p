@@ -54,7 +54,7 @@ export function getCommonAddress(data, callback) {
         http({
             type: 'post',
             // data,
-            data:{type:data.currency==='all'?'':data.currency,page:data.page},
+            data:{currency:data.currency==='all'?'':data.currency,page:data.page},
             callback,
             url: 'wallet/addresslist',
             success: (response) => {
