@@ -59,7 +59,7 @@ class BaseUserMsg extends React.Component {
                                     hashHistory.push('/walletIndex')
                                 })
                             }else {
-                                Toast.fail('请确认安全码', 3, null, false)
+                                Toast.fail('请输入6位数字的安全码', 3, null, false)
                             }
 
                         }} >完成</div>,

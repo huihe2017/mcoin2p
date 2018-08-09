@@ -93,7 +93,7 @@ class BaseUserMsg extends React.Component {
                         >
                             <List className="popup-list">
                                 {[<div onClick={()=>{this.setState({xu:true
-                                })}}><div className={style.ititle}>自动续期 <span hidden={!this.state.xu} className={style.ititle1}>当前选择</span></div><div className={style.icontent}>到期后本金及收益自动买入下一期，收益不间断。到期前一天15：00前均可更改。</div></div>, <div onClick={()=>{this.setState({xu:false})}}><div className={style.ititle}>自动续回 <span hidden={this.state.xu} className={style.ititle1}>当前选择</span></div><div className={style.icontent}>到期后本金及收益回到活动余币。到期前一天15：00前均可改。</div></div>].map((i, index) => (
+                                })}}><div className={style.ititle}>自动续期 <span hidden={!this.state.xu} className={style.ititle1}>当前选择</span></div><div className={style.icontent}>到期后本金及收益自动买入下一期，收益不间断。到期前一天15：00前均可更改。</div></div>, <div onClick={()=>{this.setState({xu:false})}}><div className={style.ititle}>自动赎回 <span hidden={this.state.xu} className={style.ititle1}>当前选择</span></div><div className={style.icontent}>到期后本金及收益回到活动余币。到期前一天15：00前均可改。</div></div>].map((i, index) => (
                                     <List.Item key={index}>{i}</List.Item>
                                 ))}
                                 <List.Item>

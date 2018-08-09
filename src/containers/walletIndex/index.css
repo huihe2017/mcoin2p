@@ -148,7 +148,7 @@
 }
 :local(.contentTitle1){
     float: left;
-    width: 27%;
+    width: 22%;
 }
 :local(.contentTitle2){
     float: left;
@@ -156,7 +156,7 @@
 }
 :local(.contentTitle3){
     float: left;
-    width: 27%;
+    width: 34%;
     text-align: right;
     padding-right: 10px;
 }

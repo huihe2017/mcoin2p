@@ -61,11 +61,15 @@ class BaseUserMsg extends React.Component {
             alert('勾选阅读后才可提交')
             return
         }
-        this.props.addOrEditAddress({
+        let params = {
             currency: this.state.currency[0],
             address: this.state.address,
             tag: this.state.tag
-        }, () => {
+        }
+        if(this.props.params.id!=='null'){
+            params.id = this.props.params.id
+        }
+        this.props.addOrEditAddress(params, () => {
             this.props.history.goBack()
         })
     }

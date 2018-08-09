@@ -131,7 +131,7 @@ class BaseUserMsg extends React.Component {
                                             </div>
                                             <div className={style.way}>
                                                 <span>七日年化</span>
-                                                <span style={{color: '#F49193'}}>{obj.rateSeven}</span>
+                                                <span style={{color: '#F49193'}}>{obj.rateSeven}%</span>
                                             </div>
                                             <img className={style.arrImg} src={require('./images/arrow.png')} alt=""/>
                                         </div>

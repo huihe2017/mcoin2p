@@ -54,6 +54,14 @@ class BaseUserMsg extends React.Component {
 // 基于准备好的dom，初始化echarts实例
             var myChart = echarts.init(document.getElementById('main'));
             // 绘制图表
+            console.log(4444,this.props.fund)
+            let pp = toChartData(this.props.fund.myFundDetails.userProfitChartList).profitDate
+            let pp1 = toChartData(this.props.fund.myFundDetails.userProfitChartList).totalProfit
+            let pp3 = toChartData(this.props.fund.myFundDetails.userProfitChartList)
+            console.log(4443334,pp)
+            console.log(4441114,pp1)
+            console.log(4441113334,pp3)
+            debugger
             myChart.setOption({
                 title: {
                     text: '累计盈亏',
@@ -93,7 +101,7 @@ class BaseUserMsg extends React.Component {
                         name: '买入价格',
                         type: 'line',
                         // data: [11, 13, 13.5, 14, 14.5],
-                        data:toChartData(this.props.fund.myFundDetails.userProfitChartList).profit,
+                        data:toChartData(this.props.fund.myFundDetails.userProfitChartList).totalProfit,
                         markPoint: {
                             data: [
                                 {type: 'max', name: '最大值'},
@@ -402,7 +410,7 @@ class BaseUserMsg extends React.Component {
                                 }
                             })
                         }}>
-                            <div className={style.ititle}>自动续回 <span
+                            <div className={style.ititle}>自动赎回 <span
                                 hidden={(this.state.current.autoRenew === 0 ? false : true)}
                                 className={style.ititle1}>当前选择</span></div>
                             <div className={style.icontent}>到期后本金及收益回到活动余币。到期前一天15：00前均可改。</div>

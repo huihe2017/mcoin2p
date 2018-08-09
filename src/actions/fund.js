@@ -178,7 +178,7 @@ export function getOneProfitList(data, callback) {
             callback,
             url: 'userfund/productprofitdetail',
             success: (response) => {
-                dispatch({type: 'GET_ONE_PROFIT_LIST',id:data.id, data: response.data})
+                dispatch({type: 'GET_ONE_PROFIT_LIST',id:data.productId, data: response.data})
             }
 
         })

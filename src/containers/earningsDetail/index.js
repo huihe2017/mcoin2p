@@ -36,7 +36,7 @@ class BaseUserMsg extends React.Component {
         }else {
             this.props.getOneProfitList({
                 page: this.state.page,
-                id: this.props.params.id,
+                productId: this.props.params.id,
                 //uid: this.props.user.userInfo.uid
             }, () => {
 
@@ -171,7 +171,7 @@ class BaseUserMsg extends React.Component {
                                         }else {
                                             this.props.getOneProfitList({
                                                 page: this.state.page,
-                                                id: this.props.params.id,
+                                                productId: this.props.params.id,
                                                 //uid: this.props.user.userInfo.uid
                                             }, () => {
 

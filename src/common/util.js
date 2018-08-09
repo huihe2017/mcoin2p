@@ -95,13 +95,17 @@ export function toChartData(e) {
     // console.log(e);
     let arr1 = [];
     let dataArr = new Array(e.length);
-    for (var key in e[1]) {
-        if (e[1].hasOwnProperty(key))
+    // for (var key in e[1]) {
+    //     if (e[1].hasOwnProperty(key))
+    //         arr1.push(key);
+    // }
+    for (var key in e[0]) {
+        if (e[0].hasOwnProperty(key))
             arr1.push(key);
     }
     // console.log(arr1);
     let obj1 = new Object();
-    for (let i = 0; i < dataArr.length; i++) {
+    for (let i = 0; i < arr1.length; i++) {
         dataArr[i] = new Array();
         e.map(function (val, ind) {
             let obj = new Object();

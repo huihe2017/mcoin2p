@@ -125,14 +125,14 @@
     color: #3B3D40;
     display: block;
     float: right;
-    width: 110px;
+    width: 120px;
     margin-left: 6px;
 }
 :local(.itemRightC1){
     color: #5262ff;
     display: block;
     float: right;
-    width: 110px;
+    width: 120px;
     margin-left: 6px;
 }
 :local(.commission){

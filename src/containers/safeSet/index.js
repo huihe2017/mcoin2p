@@ -59,7 +59,7 @@ class BaseUserMsg extends React.Component {
                                     hashHistory.push('/walletIndex')
                                 })
                             }else {
-                                Toast.fail('请确认安全码', 3, null, false)
+                                Toast.fail('请输入6位数字的安全码', 3, null, false)
                             }
 
                         }} >完成</div>,
@@ -76,14 +76,14 @@ class BaseUserMsg extends React.Component {
                                 this.setState({saveCode: value},()=>{
                                     this.check()
                                 })
-                            }} placeholder="安全码（6位数字）" type="text"></InputItem>
+                            }} placeholder="安全码（6位数字）" type="password"></InputItem>
                         </li>
                         <li className={style.itemBox}>
                             <InputItem onChange={(value) => {
                                 this.setState({saveCodeConfirm: value},()=>{
                                     this.check()
                                 })
-                            }} placeholder="请再次输入" type="text"></InputItem>
+                            }} placeholder="请再次输入" type="password"></InputItem>
                         </li>
                     </ul>
 
