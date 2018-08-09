@@ -15,7 +15,8 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getTradeDetails({orderId: this.props.params.id})
+        // let id = this.props.fund['tradeList' + type].filter((item) => item.orderId == this.props.params.id)
+        this.props.getTradeDetails({orderId: this.props.params.id.split('?')[0],id:this.props.params.id.split('?')[1]})
     }
 
     getOrderStatus = (num) => {

@@ -54,14 +54,6 @@ class BaseUserMsg extends React.Component {
 // 基于准备好的dom，初始化echarts实例
             var myChart = echarts.init(document.getElementById('main'));
             // 绘制图表
-            console.log(4444,this.props.fund)
-            let pp = toChartData(this.props.fund.myFundDetails.userProfitChartList).profitDate
-            let pp1 = toChartData(this.props.fund.myFundDetails.userProfitChartList).totalProfit
-            let pp3 = toChartData(this.props.fund.myFundDetails.userProfitChartList)
-            console.log(4443334,pp)
-            console.log(4441114,pp1)
-            console.log(4441113334,pp3)
-            debugger
             myChart.setOption({
                 title: {
                     text: '累计盈亏',
@@ -269,7 +261,7 @@ class BaseUserMsg extends React.Component {
                         <div className={style.line}>
                         </div>
                         <a className={style.partA} href="javascript:void(0)"
-                           onClick={() => hashHistory.push('/dealRecord')}>
+                           onClick={() => hashHistory.push('/dealRecord/'+this.props.params.id)}>
                             <img className={style.partImg} src={require('./images/record.png')} alt=""/>
                             交易记录
                         </a>

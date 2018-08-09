@@ -47,6 +47,7 @@ export default function wallet(state = initialState, action = {}) {
                 if (action.data.data.pager.page === 1) {
                     state.commonAddress[action.id] = action.data.data.list
                 } else {
+                    debugger
                     let arr = state.commonAddress[action.id].concat(action.data.data.list)
                     state.commonAddress[action.id] = arr
                 }

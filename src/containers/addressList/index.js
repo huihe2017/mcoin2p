@@ -28,9 +28,9 @@ class BaseUserMsg extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.wallet.commonAddress[currentId]) {
-            return null
-        }
+        // if (this.props.wallet.commonAddress[currentId]) {
+        //     return null
+        // }
         currentId = tabs[0].id
 
         this.props.getCommonAddress({page: 1, currency: currentId}, () => {

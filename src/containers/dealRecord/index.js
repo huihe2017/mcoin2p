@@ -23,10 +23,15 @@ class BaseUserMsg extends React.Component {
         if (this.props.fund['tradeList' + type]) {
             return false
         }
-        this.props.getTradeList({
+        let params = {
             type: type,
             page: 1
-        })
+        }
+        if(this.props.params.id!=='null'){
+            params.productId = this.props.params.id
+        }
+
+        this.props.getTradeList(params)
     }
 
     renderList = (type) => {
@@ -50,7 +55,7 @@ class BaseUserMsg extends React.Component {
                     renderRow={(rowData, sectionID, rowID) => {
                         const obj = rowData;
                         return (
-                            <Link to={'/recordDetail/' + obj.orderId}>
+                            <Link to={'/recordDetail/' + obj.orderId+'?'+obj.id}>
                                 <div key={rowID} style={{padding: '0 15px'}}
                                 >
                                     <div className={style.item} key={obj.amount}>

@@ -87,7 +87,7 @@ class BaseUserMsg extends React.Component {
                         <div className={style.line}>
                         </div>
                         <a className={style.partA} href="javascript:void(0)"
-                           onClick={() => hashHistory.push('/dealRecord')}>
+                           onClick={() => hashHistory.push('/dealRecord/null')}>
                             <img className={style.partImg} src={require('./images/record.png')} alt=""/>
                             交易记录
                         </a>
