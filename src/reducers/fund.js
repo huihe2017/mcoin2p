@@ -14,6 +14,10 @@ export default function fund(state = initialState, action = {}) {
             if (!state.myFund) {
                 state.myFund = action.data.data
             } else {
+                if(action.data.data.pager.page === 1){
+                    state.myFund = action.data.data
+                    return Object.assign({}, state, {})
+                }
                 let arr = state.myFund.userProducts.concat(action.data.data.userProducts)
                 state.myFund.userProducts = arr
             }

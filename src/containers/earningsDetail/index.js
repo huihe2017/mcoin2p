@@ -25,10 +25,10 @@ class BaseUserMsg extends React.Component {
         if (this.props.fund.profitList) {
             return null
         }
-        if(this.props.params.id==='null'){
+        if(this.props.params.id.indexOf('all')!==-1){
             this.props.getProfitList({
                 page: this.state.page,
-                // id: this.props.fund.myFund.currency,
+                currency: this.props.params.id.split('*')[1],
                 //uid: this.props.user.userInfo.uid
             }, () => {
 
@@ -48,7 +48,7 @@ class BaseUserMsg extends React.Component {
 
     render() {
 
-        if(this.props.params.id==='null'){
+        if(this.props.params.id.indexOf('all')!==-1){
             if (!this.props.fund.profitList) {
                 return null
             }
@@ -160,10 +160,10 @@ class BaseUserMsg extends React.Component {
                                     }
                                     this.setState({page: ++this.state.page}, () => {
 
-                                        if(this.props.params.id==='null'){
+                                        if(this.props.params.id.indexOf('all')!==-1){
                                             this.props.getProfitList({
                                                 page: this.state.page,
-                                                // currency: this.props.fund.myFund.currency,
+                                                currency: this.props.params.id.split('?')[1],
                                                 //uid: this.props.user.userInfo.uid
                                             }, () => {
 

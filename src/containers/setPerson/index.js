@@ -24,6 +24,7 @@ class BaseUserMsg extends React.Component {
                 Toast.fail(errorText, 3, null, false)
             } else {
                 hashHistory.push('/')
+                window.location.reload()
             }
         })
     }

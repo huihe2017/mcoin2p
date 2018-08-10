@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast, Icon, RefreshControl, ListView, NavBar} from 'antd-mobile';
+import {List, InputItem, Toast, Icon, RefreshControl, ListView, NavBar, Picker} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
@@ -9,11 +9,23 @@ import {hashHistory, Link} from 'react-router'
 import {getMyFundList} from '../../actions/fund'
 import ReactDOM from "react-dom";
 
+const quhao = [
+    {
+        value: "BTC",
+        label: "BTC"
+    }, {
+        value: "ETH",
+        label: "ETH"
+    }
+
+]
+
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 1
+            page: 1,
+            currency: 'BTC'
         }
     }
 
@@ -25,7 +37,7 @@ class BaseUserMsg extends React.Component {
         this.props.getMyFundList({
             page: this.state.page,
             // uid: this.props.user.userInfo.uid,
-            currency: 'BTC'
+            currency: this.state.currency
         }, () => {
 
         })
@@ -36,6 +48,7 @@ class BaseUserMsg extends React.Component {
         if (!this.props.fund.myFund) {
             return null
         }
+
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -49,10 +62,29 @@ class BaseUserMsg extends React.Component {
                             <span className={style.headerTopW}>
                                 总币额
                             </span>
-                            <a className={style.headerTopR} href="javascript:void (0)"
-                               onClick={() => Toast.info('敬请期待', 2, null, false)}>
-                                切换币种 >
-                            </a>
+                            {/*<a className={style.headerTopR} href="javascript:void (0)"*/}
+                            {/*onClick={() => Toast.info('敬请期待', 2, null, false)}>*/}
+                            {/*切换币种 >*/}
+                            {/*</a>*/}
+
+                            <div>
+                                <Picker onChange={(value) => {
+                                    this.setState({currency: value[0]},()=>{
+                                        this.props.getMyFundList({
+                                            page: 1,
+                                            // uid: this.props.user.userInfo.uid,
+                                            currency: this.state.currency
+                                        }, () => {
+
+                                        })
+                                    })
+                                }}
+
+
+                                        data={quhao} cols={1} value={[this.state.currency]}>
+                                    <span className={style.headerTopR} >切换币种{this.state.currency}></span>
+                                </Picker>
+                            </div>
                         </div>
                         <div className={style.headerBottom}>
                             <a className={style.user} href="javascript:void (0)">
@@ -80,7 +112,7 @@ class BaseUserMsg extends React.Component {
                     <div className={style.partHeader}>
 
                         <a className={style.partA} href="javascript:void(0)"
-                           onClick={() => hashHistory.push('/earningsDetail/null')}>
+                           onClick={() => hashHistory.push('/earningsDetail/all*'+this.state.currency)}>
                             <img className={style.partImg} src={require('./images/list.png')} alt=""/>
                             收益明细
                         </a>
