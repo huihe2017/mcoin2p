@@ -39,55 +39,16 @@ export default function fund(state = initialState, action = {}) {
 
 
             if (state['tradeList' + action.listType]) {
+                if(action.data.data.pager.page===1){
+                    state['tradeList' + action.listType] = action.data.data.list
+                    return Object.assign({}, state, {})
+                }
                 let arr = state['tradeList' + action.listType].concat(action.data.data.list)
                 state['tradeList' + action.listType] = arr
             } else {
                 state['tradeList' + action.listType] = action.data.data.list
             }
             state['tradeList' + action.listType + 'page'] = action.data.data.pager.page
-
-
-            // let type = action.listType
-            // if (type === '') {
-            //     state.tradeListAllPage = action.data.data.pager.page
-            //     if (!state.tradeListAll) {
-            //         state.tradeListAll = action.data.data.list
-            //     } else {
-            //         let arr = state.tradeListAll.concat(action.data.data.list)
-            //         state.tradeListAll = arr
-            //     }
-            // }
-            //
-            // if (type === 0) {
-            //     state.tradeListBuyPage = action.data.data.pager.page
-            //     if (!state.tradeListBuy) {
-            //         state.tradeListBuy = action.data.data.list
-            //     } else {
-            //         let arr = state.tradeListBuy.concat(action.data.data.list)
-            //         state.tradeListBuy = arr
-            //     }
-            // }
-            //
-            // if (type === 1) {
-            //     state.tradeListBackPage = action.data.data.pager.page
-            //     if (!state.tradeListBack) {
-            //         state.tradeListBack = action.data.data.list
-            //     } else {
-            //         let arr = state.tradeListBack.concat(action.data.data.list)
-            //         state.tradeListBack = arr
-            //     }
-            // }
-            //
-            // if (type === 2) {
-            //     state.tradeListOnPage = action.data.data.pager.page
-            //     if (!state.tradeListOn) {
-            //         state.tradeListOn = action.data.data.list
-            //     } else {
-            //         let arr = state.tradeListOn.concat(action.data.data.list)
-            //         state.tradeListOn = arr
-            //     }
-            // }
-
 
             return Object.assign({}, state, {})
         case 'GET_TRADE_LIST_ING':

@@ -197,7 +197,7 @@
 }
 :local(.contentPart1){
     float: left;
-    width: 27%;
+    width: 22%;
 }
 :local(.contentPart2){
     float: left;
@@ -205,7 +205,7 @@
 }
 :local(.contentPart3){
     float: left;
-    width: 27%;
+    width: 34%;
     position: relative;
     text-align: right;
 }

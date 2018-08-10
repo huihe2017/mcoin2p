@@ -206,7 +206,7 @@ class BaseUserMsg extends React.Component {
                 {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
             </Sticky>);
         }
-        let filterData = filter(this.props.fund.myFund.userProducts, this.props.fund.myFundDetails.productId,'productId')
+        // let filterData = filter(this.props.fund.myFund.userProducts, this.props.fund.myFundDetails.productId,'productId')
         return (
             <div className={style.wrap}>
                 <NavBar
@@ -214,7 +214,7 @@ class BaseUserMsg extends React.Component {
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
 
-                >{filterData.title}</NavBar>
+                >{this.props.fund.myFundDetails.title}</NavBar>
                 <div>
                     <div className={style.header}>
                         <div className={style.headerTop}>

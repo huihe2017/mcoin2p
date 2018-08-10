@@ -76,7 +76,7 @@ class BaseUserMsg extends React.Component {
                                     this.setState({saveCode: value},()=>{
                                         this.check()
                                     })
-                                }} placeholder="安全码（6位数字）" type="text"></InputItem>
+                                }} placeholder="安全码（6位数字）" ></InputItem>
                             </List>
 
                         </li>

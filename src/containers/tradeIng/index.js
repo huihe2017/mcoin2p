@@ -158,9 +158,9 @@ class BaseUserMsg extends React.Component {
                                 <span className={style.itemLeftTime}>
                                     {obj.createDate}
                                 </span>
-                                    <span style={obj.type == '1' ? {color: '#F49193'} : {color: '#5262ff'}}>
-                                    {obj.type}
-                                </span>
+                                    {/*<span style={obj.type == '1' ? {color: '#F49193'} : {color: '#5262ff'}}>*/}
+                                    {/*{obj.type}*/}
+                                {/*</span>*/}
                                 </div>
                                 <div className={style.itemLeftB}>
                                 <span>

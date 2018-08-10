@@ -116,13 +116,14 @@ class BaseUserMsg extends React.Component {
                                     return (
                                         <div className={style.item} key={rowID}>
                                             <div className={style.icontent}>
-                                                <div className={style.state}>
-                                                    <span style={{color: '#3b3d40'}}>{obj.profit}</span>
-                                                </div>
                                                 <div className={style.number}>
                             <span
                                 style={obj.state > 0 ? {color: '#5262FF'} : {color: '#3B3D40'}}>{obj.profitDate}</span>
                                                 </div>
+                                                <div className={style.state}>
+                                                    <span style={{color: '#3b3d40'}}>{obj.profit}</span>
+                                                </div>
+
 
                                             </div>
                                         </div>

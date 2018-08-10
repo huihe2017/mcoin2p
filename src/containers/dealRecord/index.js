@@ -20,9 +20,9 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
-        if (this.props.fund['tradeList' + type]) {
-            return false
-        }
+        // if (this.props.fund['tradeList' + type]) {
+        //     return false
+        // }
         let params = {
             type: type,
             page: 1
