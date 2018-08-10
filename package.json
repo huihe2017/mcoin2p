@@ -11,6 +11,7 @@
     "rc-form": "^2.2.0",
     "react": "15.5.4",
     "react-circle": "^1.0.3",
+    "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "15.5.0",
     "react-fileupload": "^2.4.0",
     "react-redux": "^5.0.6",

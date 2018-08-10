@@ -224,7 +224,7 @@ class BaseUserMsg extends React.Component {
                             </span>
 
                             <div className={style.checkTip}>
-                                <span className={style.alertTip}>
+                                <span onClick={()=>{this.can()}} className={style.alertTip}>
                                     <img className={style.footerI} onClick={()=>{this.can()}} src={require(`../productBuying/images/${this.state.can}.png`)} alt=""/>数字货币转入其他地址后，将无法取消和追回，请保证目标地址的安全性与正确性
                                 </span>
                             </div>

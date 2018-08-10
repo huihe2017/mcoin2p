@@ -27,6 +27,7 @@ class BaseUserMsg extends React.Component {
             type: type,
             page: 1
         }
+        debugger
         if(this.props.params.id!=='null'){
             params.productId = this.props.params.id
         }

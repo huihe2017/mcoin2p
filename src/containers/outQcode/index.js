@@ -5,6 +5,8 @@ import {List, InputItem, Button, NavBar, Icon, Modal} from 'antd-mobile';
 import {getRechargeAddress} from '../../actions/wallet'
 import {bindActionCreators} from "redux";
 import QRCode from 'qrcode.react';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import {Toast} from "antd-mobile/lib/index";
 
 const prompt = Modal.prompt;
 
@@ -64,7 +66,16 @@ class AboutUs extends React.Component {
                                 {this.props.wallet.current.address}
                             </span>
                             <span className={style.addressDo}>
-                                复制
+
+                                <CopyToClipboard onCopy={()=>{ Toast.info('复制成功', 2, null, false)}} text={this.state.address}
+                                >
+                                                {/*<button className={style.but}>复制地址并关闭*/}
+                                                {/*</button>*/}
+                                    <span>复制</span>
+                                            </CopyToClipboard>
+
+
+
                             </span>
 
                         </div>

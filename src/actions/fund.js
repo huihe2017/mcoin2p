@@ -113,7 +113,7 @@ export function getTradeList(data, callback) {
     return dispatch => {
         http({
             type: 'post',
-            data:{type:data.type==='all'?'':data.type,page:data.page},
+            data:{type:data.type==='all'?'':data.type,page:data.page,productId:data.productId},
             callback,
             url: 'order/tradelist',
             success: (response) => {

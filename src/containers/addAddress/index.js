@@ -204,7 +204,7 @@ class BaseUserMsg extends React.Component {
                         ]}
                         wrapProps={{onTouchStart: this.onWrapTouchStart}}
                     >
-                        <div style={{height: 130}}>
+                        <div style={{height: 150}}>
                             <span className={style.alTip} style={{marginTop: 12}}>
                                 备注名称：
                                 <span style={{color: '#3B3D40'}}>
@@ -225,10 +225,10 @@ class BaseUserMsg extends React.Component {
                             </span>
 
                             <div className={style.checkTip}>
-                                <span className={style.alertTip}>
-                                    <img className={style.footerI} onClick={() => {
-                                        this.can()
-                                    }} src={require(`../productBuying/images/${this.state.can}.png`)} alt=""/>数字货币转入其他地址后，将无法取消和追回，请保证目标地址的安全性与正确性
+                                <span onClick={() => {
+                                    this.can()
+                                }} className={style.alertTip}>
+                                    <img className={style.footerI}  src={require(`../productBuying/images/${this.state.can}.png`)} alt=""/>数字货币转入其他地址后，将无法取消和追回，请保证目标地址的安全性与正确性
                                 </span>
                             </div>
                         </div>
