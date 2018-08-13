@@ -204,7 +204,7 @@ class BaseUserMsg extends React.Component {
                         ]}
                         wrapProps={{onTouchStart: this.onWrapTouchStart}}
                     >
-                        <div style={{height: 150}}>
+                        <div>
                             <span className={style.alTip} style={{marginTop: 12}}>
                                 备注名称：
                                 <span style={{color: '#3B3D40'}}>

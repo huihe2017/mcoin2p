@@ -151,6 +151,7 @@ class BaseUserMsg extends React.Component {
         const row = (rowData, sectionID, rowID) => {
             const obj = rowData;
             return (
+                <Link to={'/recordDetail/' + obj.orderId+'?'+obj.id}>
                     <div key={rowID} style={{padding: '0 15px'}} onClick={() => hashHistory.push('/recordDetail')}>
                         <div className={style.item} key={obj.amount}>
                             <div className={style.itemLeft}>
@@ -178,6 +179,7 @@ class BaseUserMsg extends React.Component {
                             </div>
                         </div>
                     </div>
+                </Link>
             );
         };
         return (

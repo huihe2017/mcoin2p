@@ -16,7 +16,10 @@ class BaseUserMsg extends React.Component {
 
     componentDidMount() {
         // let id = this.props.fund['tradeList' + type].filter((item) => item.orderId == this.props.params.id)
-        this.props.getTradeDetails({orderId: this.props.params.id.split('?')[0],id:this.props.params.id.split('?')[1]})
+        this.props.getTradeDetails({
+            orderId: this.props.params.id.split('?')[0],
+            id: this.props.params.id.split('?')[1]
+        })
     }
 
     getOrderStatus = (num) => {
@@ -127,6 +130,20 @@ class BaseUserMsg extends React.Component {
                                     {this.props.fund.tradeDatails.shoppingFee} {this.props.fund.tradeDatails.currency}
                                 </span>
                         </div>
+
+
+                        {
+                            this.props.fund.tradeDatails.status === 0 ? <div className={style.contentItemBox}>
+                                <span className={style.contentItemBoxT}>
+                                    预计时间
+                                </span>
+                                <span className={style.contentItemBoxC}>
+                                    {this.props.fund.tradeDatails.confirmTime}
+                                </span>
+                            </div> : ''
+                        }
+
+
                         <div className={style.contentItemBox}>
                                 <span className={style.contentItemBoxT}>
                                     确认时间

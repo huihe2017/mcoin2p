@@ -229,6 +229,18 @@ class Auth extends React.Component {
                     <div className={style.selphone}>
                         <div className={style.tu}>
                             <List>
+                                <InputItem type="password"
+                                           onChange={(value) => {
+                                               this.setState({pwd: value})
+                                           }}
+                                           placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码（数字+字母+特殊字符组合）'}></InputItem>
+                            </List>
+
+                        </div>
+                    </div>
+                    <div className={style.selphone}>
+                        <div className={style.tu}>
+                            <List>
                                 <InputItem onChange={(value) => {
                                     this.setState({picCode: value})
                                 }} placeholder="请输入图形验证码" type="text"></InputItem>
@@ -237,6 +249,7 @@ class Auth extends React.Component {
                         </div>
                         {this.state.picImg}
                     </div>
+
                     <div className={style.selphone} style={show}>
                         <div className={style.tu}>
                             <List>
@@ -258,18 +271,7 @@ class Auth extends React.Component {
                         <div className={style.lline}></div>
 
                     </div>
-                    <div className={style.selphone}>
-                        <div className={style.tu}>
-                            <List>
-                                <InputItem type="password"
-                                           onChange={(value) => {
-                                               this.setState({pwd: value})
-                                           }}
-                                           placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码（数字+字母+特殊字符组合）'}></InputItem>
-                            </List>
 
-                        </div>
-                    </div>
                     <div className={style.selphone} hidden={this.state.login}>
                         <div className={style.tu}>
                             <List>

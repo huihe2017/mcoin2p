@@ -1,13 +1,13 @@
 import React from 'react'
 import style from "./index.css"
 import {connect} from 'react-redux'
-import {List, InputItem, Toast, Picker, Icon,Modal,NavBar} from 'antd-mobile';
+import {List, InputItem, Toast, Picker, Icon, Modal, NavBar} from 'antd-mobile';
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
 import {logout} from '../../actions/user'
-import {getMinerFee,confirmWithdrawMsg} from '../../actions/wallet'
+import {getMinerFee, confirmWithdrawMsg} from '../../actions/wallet'
 import {changeJson} from '../../common/util'
 
 function closest(el, selector) {
@@ -27,9 +27,9 @@ class BaseUserMsg extends React.Component {
         super(props);
         this.state = {
             modal1: false,
-            can:false,
-            classNumber:'',
-            amount:'',
+            can: false,
+            classNumber: '',
+            amount: '',
             sValue: [],
         }
     }
@@ -37,25 +37,25 @@ class BaseUserMsg extends React.Component {
 
     componentDidMount() {
 
-        if(this.props.wallet.current){
-            this.props.getMinerFee({currency:this.props.wallet.current.balance.currency})
+        if (this.props.wallet.current) {
+            this.props.getMinerFee({currency: this.props.wallet.current.balance.currency})
         }
-        if(this.props.params.address!=='null'){
-            this.setState({classNumber:this.props.params.address})
+        if (this.props.params.address !== 'null') {
+            this.setState({classNumber: this.props.params.address})
         }
     }
 
     submit = key => () => {
-        if(!this.state.can){
+        if (!this.state.can) {
             Toast.fail('阅读后方可', 3, null, false)
             return
         }
         this.props.confirmWithdrawMsg({
-            currency:this.props.wallet.current.balance.currency,
-            amount:this.state.amount,
-            minerFee:this.state.sValue,
-            address:this.state.classNumber
-        },()=>{
+            currency: this.props.wallet.current.balance.currency,
+            amount: this.state.amount,
+            minerFee: this.state.sValue,
+            address: this.state.classNumber
+        }, () => {
             hashHistory.push('/inputSafe')
         })
 
@@ -72,25 +72,25 @@ class BaseUserMsg extends React.Component {
         }
     }
 
-    can(){
-        if(this.state.can){
+    can() {
+        if (this.state.can) {
             this.setState({
-                can:false
+                can: false
             })
             return false
         }
         this.setState({
-            can:true
+            can: true
         })
     }
 
-    next(){
+    next() {
         console.log(this.state.classNumber);
-        if(this.state.classNumber&&this.state.amount&&this.state.sValue.length){
+        if (this.state.classNumber && this.state.amount && this.state.sValue.length) {
             this.setState({
                 modal1: true,
             })
-        }else {
+        } else {
             Toast.fail('请完善资料', 3, null, false);
         }
 
@@ -98,7 +98,7 @@ class BaseUserMsg extends React.Component {
 
 
     render() {
-        if(!this.props.wallet.current){
+        if (!this.props.wallet.current) {
             hashHistory.push('/walletIndex')
         }
         if (!this.props.wallet.minerFeeList) {
@@ -113,7 +113,7 @@ class BaseUserMsg extends React.Component {
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
                     rightContent={[]}
-                >添加转出地址</NavBar>
+                >转账</NavBar>
                 <div>
                     <ul className={style.itemUl}>
 
@@ -138,94 +138,111 @@ class BaseUserMsg extends React.Component {
                                     填写数额
                                 </span>
                                 <span className={style.itemBoxTT1}>
-                                    可转 <span style={{color: '#5262FF'}}>{this.props.wallet.current.balance.amount} {this.props.wallet.current.balance.currency}</span>
+                                    可转 <span
+                                    style={{color: '#5262FF'}}>{this.props.wallet.current.balance.amount} {this.props.wallet.current.balance.currency}</span>
                                 </span>
                             </div>
 
                             <InputItem onChange={(value) => {
                                 this.setState({amount: value})
-                            }} placeholder="请填写数额" type="text" extra={this.props.wallet.current.balance.currency}></InputItem>
+                            }} placeholder="请填写数额" type="text"
+                                       extra={this.props.wallet.current.balance.currency}></InputItem>
                         </li>
-                        <li className={style.itemBox}>
-                            <span className={style.itemBoxT}>
-                                矿工费
-                            </span>
-                            <Picker
-                                data={changeJson(this.props.wallet.minerFeeList, 'tips', 'minerFee')}
-                                title="选择矿工费"
-                                cascade={false}
-                                extra=" "
-                                cols={1}
-                                value={this.state.sValue}
-                                onChange={v => this.setState({sValue: v})}
-                                onOk={v => this.setState({sValue: v}, () => {
-                                    if (this.state.sValue == 'custom') {
-                                        hashHistory.push('/customCost')
-                                    }
-                                })}
-                                okText={<Icon type={'check'}/>}
-                                dismissText={<Icon type={'cross'}/>}
-                            >
-                                <List.Item arrow="horizontal">矿工费</List.Item>
-                            </Picker>
+                        {/*<li className={style.itemBox}>*/}
+                        {/*<span className={style.itemBoxT}>*/}
+                        {/*矿工费*/}
+                        {/*</span>*/}
+                        {/*<Picker*/}
+                        {/*data={changeJson(this.props.wallet.minerFeeList, 'tips', 'minerFee')}*/}
+                        {/*title="选择矿工费"*/}
+                        {/*cascade={false}*/}
+                        {/*extra=" "*/}
+                        {/*cols={1}*/}
+                        {/*value={this.state.sValue}*/}
+                        {/*onChange={v => this.setState({sValue: v})}*/}
+                        {/*onOk={v => this.setState({sValue: v}, () => {*/}
+                        {/*if (this.state.sValue == 'custom') {*/}
+                        {/*hashHistory.push('/customCost')*/}
+                        {/*}*/}
+                        {/*})}*/}
+                        {/*okText={<Icon type={'check'}/>}*/}
+                        {/*dismissText={<Icon type={'cross'}/>}*/}
+                        {/*>*/}
+                        {/*<List.Item arrow="horizontal">矿工费</List.Item>*/}
+                        {/*</Picker>*/}
+                        {/*</li>*/}
+                        <li>
+                            <span className={style.itemBoxT1}>
+                                    转出手续费 0.00010000
+                                </span>
                         </li>
                     </ul>
-                    <div className={style.button} onClick={()=>this.next()}>
+                    <div className={style.button} onClick={() => this.next()}>
                         下一步
                     </div>
                     <Modal
                         visible={this.state.modal1}
                         transparent
                         maskClosable={true}
-                        onClose={()=>this.setState({modal1: false})}
+                        onClose={() => this.setState({modal1: false})}
                         title="提示"
                         closable={true}
                         footer={[
-                            { text: '取消', onPress: () => { this.setState({modal1: false}) } }
-                            ,{ text: '完成', onPress: () => {  this.submit('modal1')(); }}
+                            {
+                                text: '取消', onPress: () => {
+                                    this.setState({modal1: false})
+                                }
+                            }
+                            , {
+                                text: '完成', onPress: () => {
+                                    this.submit('modal1')();
+                                }
+                            }
                         ]}
-                        wrapProps={{ onTouchStart: this.onWrapTouchStart }}
+                        wrapProps={{onTouchStart: this.onWrapTouchStart}}
                     >
-                        <div style={{ height: 256}}>
+                        <div style={{height: 256}}>
                             <span className={style.alTip}>
                                 请再次确认消息
                             </span>
                             <span className={style.alTip}>
                                 确认无误，请点击完成
                             </span>
-                            <span className={style.alTip} style={{marginTop:12}}>
+                            <span className={style.alTip} style={{marginTop: 12}}>
                                 转出币种：
-                                <span style={{color:'#3B3D40'}}>
+                                <span style={{color: '#3B3D40'}}>
                                     {this.props.wallet.current.balance.currency}                                </span>
                             </span>
                             <span className={style.alTip}>
                                 转出币量：
-                                <span style={{color:'#3B3D40'}}>
+                                <span style={{color: '#3B3D40'}}>
                                     {this.state.amount}
                                 </span>
                             </span>
                             <span className={style.alTip}>
                                 &nbsp;&nbsp; 矿工费：
-                                <span style={{color:'#3B3D40'}}>
+                                <span style={{color: '#3B3D40'}}>
                                     {this.state.sValue}
                                 </span>
                             </span>
                             {/*<span className={style.alTip}>*/}
-                                {/*备注名称：*/}
-                                {/*<span style={{color:'#3B3D40'}}>*/}
-                                    {/*飞机*/}
-                                {/*</span>*/}
+                            {/*备注名称：*/}
+                            {/*<span style={{color:'#3B3D40'}}>*/}
+                            {/*飞机*/}
+                            {/*</span>*/}
                             {/*</span>*/}
                             <span className={style.alTip}>
                                 <span className={style.alTip1}>钱包地址：</span>
-                                <span className={style.alTip2} style={{color:'#3B3D40'}}>
+                                <span className={style.alTip2} style={{color: '#3B3D40'}}>
                                     {this.state.classNumber}
                                 </span>
                             </span>
 
                             <div className={style.checkTip}>
-                                <span onClick={()=>{this.can()}} className={style.alertTip}>
-                                    <img className={style.footerI} onClick={()=>{this.can()}} src={require(`../productBuying/images/${this.state.can}.png`)} alt=""/>数字货币转入其他地址后，将无法取消和追回，请保证目标地址的安全性与正确性
+                                <span className={style.alertTip}>
+                                    <img className={style.footerI} onClick={() => {
+                                        this.can()
+                                    }} src={require(`../productBuying/images/${this.state.can}.png`)} alt=""/>数字货币转入其他地址后，将无法取消和追回，请保证目标地址的安全性与正确性
                                 </span>
                             </div>
                         </div>

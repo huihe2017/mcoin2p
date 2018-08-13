@@ -82,7 +82,8 @@
 :local(.tagBox) .am-tabs-default-bar-top, .am-tabs-default-bar-bottom{
     background-color: transparent!important;
     /*padding: 0 10px;*/
-    padding-bottom: 10px;
+    padding: 10px;
+    padding-top: 0px;
 }
 :local(.tagBox) .am-tabs-default-bar-top .am-tabs-default-bar-content, .am-tabs-default-bar-bottom .am-tabs-default-bar-content{
     justify-content: space-between!important;
