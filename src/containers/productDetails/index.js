@@ -413,7 +413,7 @@ class BaseUserMsg extends React.Component {
                                     购买信息
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    {this.props.fund.detail.confirmDesc}
+                                    <pre>{this.props.fund.detail.confirmDesc}</pre>
                                 </span>
                             </div>
                             {/*<div className={style.contentItemBox}>*/}
@@ -434,7 +434,7 @@ class BaseUserMsg extends React.Component {
                                     赎回费率
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    {this.props.fund.detail.redeemFeeRate}%
+                                   {this.props.fund.detail.redeemFeeRate}%
                                 </span>
                             </div>
                             <div className={style.contentItemBox}>
@@ -442,7 +442,7 @@ class BaseUserMsg extends React.Component {
                                     赎回信息
                                 </span>
                                 <span className={style.contentItemBoxC}>
-                                    {this.props.fund.detail.redeemDesc}
+                                    <pre>{this.props.fund.detail.redeemDesc}</pre>
                                 </span>
                             </div>
 

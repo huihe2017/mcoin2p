@@ -171,7 +171,7 @@ class BaseUserMsg extends React.Component {
                         {/*<List.Item arrow="horizontal">矿工费</List.Item>*/}
                         {/*</Picker>*/}
                         {/*</li>*/}
-                        <li>
+                        <li  className={style.itemBox}>
                             <span className={style.itemBoxT1}>
                                     转出手续费 0.00010000
                                 </span>

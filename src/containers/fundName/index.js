@@ -80,7 +80,10 @@ class BaseUserMsg extends React.Component {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data:toChartData(this.props.fund.myFundDetails.userProfitChartList).profitDate
+                    data:toChartData(this.props.fund.myFundDetails.userProfitChartList).profitDate.map(function (str) {
+                        return str
+                        //return str.slice(5)
+                    })
                     // data: ['05-01', '05-05', '05-10', '05-15', '05-20']
                 },
                 yAxis: {
