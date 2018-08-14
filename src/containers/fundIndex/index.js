@@ -31,6 +31,7 @@ class BaseUserMsg extends React.Component {
 
 
     componentDidMount() {
+
         if (this.props.fund.myFund) {
             return null
         }

@@ -148,6 +148,7 @@ class BaseUserMsg extends React.Component {
                                                     return false
                                                 }
                                             }
+
                                             this.props.buyFund({
                                                 productId:this.props.fund.detail.id,
                                                 amount:this.state.amount,

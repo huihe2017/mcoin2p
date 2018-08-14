@@ -33,6 +33,10 @@ class BaseUserMsg extends React.Component {
     }
 
     render() {
+        if(!this.props.fund.detail.startTime){
+            this.props.history.go(-2)
+            return null
+        }
         const { percent } = this.state;
         return (
             <div className={style.wrap}>
