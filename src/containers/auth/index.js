@@ -226,14 +226,14 @@ class Auth extends React.Component {
                             </List>
                         </div>
                     </div>
-                    <div className={style.selphone}>
+                    <div className={style.selphone} hidden={!this.state.login}>
                         <div className={style.tu}>
                             <List>
                                 <InputItem type="password"
                                            onChange={(value) => {
                                                this.setState({pwd: value})
                                            }}
-                                           placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码（数字+字母+特殊字符组合）'}></InputItem>
+                                           placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码(数字+字母+特殊字符组合)'}></InputItem>
                             </List>
 
                         </div>
@@ -271,7 +271,18 @@ class Auth extends React.Component {
                         <div className={style.lline}></div>
 
                     </div>
+                    <div className={style.selphone} hidden={this.state.login}>
+                        <div className={style.tu}>
+                            <List>
+                                <InputItem type="password"
+                                           onChange={(value) => {
+                                               this.setState({pwd: value})
+                                           }}
+                                           placeholder={this.state.login ? '请输入密码' : '请设置6-20位密码（数字+字母+特殊字符组合）'}></InputItem>
+                            </List>
 
+                        </div>
+                    </div>
                     <div className={style.selphone} hidden={this.state.login}>
                         <div className={style.tu}>
                             <List>

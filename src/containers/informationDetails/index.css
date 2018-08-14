@@ -23,6 +23,7 @@
     display: block;
     padding: 0 16px;
     line-height:normal!important;
+    color: #3B3D40;
 }
 :local(.content) img{
     width: 100%!important;

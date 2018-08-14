@@ -44,9 +44,9 @@ class BaseUserMsg extends React.Component {
                 <span className={style.time}>
                     {this.props.notice.noticeDetails.author} {this.props.notice.noticeDetails[this.props.params.id].createTime}
                 </span>
-                <span className={style.content}>
-                {this.props.notice.noticeDetails[this.props.params.id].content}
-                </span>
+
+                <div className={style.content} dangerouslySetInnerHTML = {{ __html:this.props.notice.noticeDetails[this.props.params.id].content }}>
+                </div>
             </div>
         )
     }
