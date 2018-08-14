@@ -4,9 +4,6 @@
     <list default="true" id="9eaf612a-ca36-4e75-a6b7-2f658dbec1a9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/config/index.js" afterPath="$PROJECT_DIR$/src/config/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/buyResult/index.js" afterPath="$PROJECT_DIR$/src/containers/buyResult/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/fundIndex/index.js" afterPath="$PROJECT_DIR$/src/containers/fundIndex/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/productBuying/index.js" afterPath="$PROJECT_DIR$/src/containers/productBuying/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -82,7 +79,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/fundIndex/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="203">
@@ -92,11 +89,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+            <state relative-caret-position="754">
+              <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-876">
+              <caret line="73" column="10" lean-forward="false" selection-start-line="73" selection-start-column="10" selection-end-line="73" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -119,16 +126,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="879">
               <caret line="150" column="33" lean-forward="false" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/dealRecord/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="58" column="81" lean-forward="false" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -257,8 +254,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2173" />
-    <option name="y" value="148" />
+    <option name="x" value="2233" />
+    <option name="y" value="14" />
     <option name="width" value="1342" />
     <option name="height" value="977" />
   </component>
@@ -291,26 +288,6 @@
               <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
               <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="buyResult" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mcoin2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mcoin2p" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="fundIndex" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -367,23 +344,22 @@
       <workItem from="1528440200648" duration="8371000" />
       <workItem from="1528680390754" duration="60573000" />
       <workItem from="1529371745071" duration="184458000" />
-      <workItem from="1533519849759" duration="86371000" />
+      <workItem from="1533519849759" duration="88862000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="635510000" />
+    <option name="totallyTimeSpent" value="638001000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2173" y="148" width="1342" height="977" extended-state="0" />
-    <editor active="true" />
+    <frame x="2233" y="14" width="1342" height="977" extended-state="0" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22261904" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44166666" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20398773" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -551,14 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="102" column="54" lean-forward="true" selection-start-line="102" selection-start-column="54" selection-end-line="102" selection-end-column="54" />
           <folding />
         </state>
       </provider>
@@ -807,36 +775,35 @@
             <element signature="e#8308#8565#0" expanded="false" />
             <element signature="e#8347#8529#0" expanded="false" />
             <element signature="e#8379#8480#0" expanded="false" />
-            <element signature="e#8644#9229#0" expanded="false" />
-            <element signature="e#8886#9007#0" expanded="false" />
-            <element signature="e#9250#9724#0" expanded="false" />
-            <element signature="e#9307#9653#0" expanded="false" />
-            <element signature="e#9362#9621#0" expanded="false" />
-            <element signature="e#9401#9585#0" expanded="false" />
-            <element signature="e#9433#9536#0" expanded="false" />
-            <element signature="e#9746#10733#0" expanded="false" />
-            <element signature="e#9816#10645#0" expanded="false" />
-            <element signature="e#9871#10613#0" expanded="false" />
-            <element signature="e#9910#10577#0" expanded="false" />
-            <element signature="e#10253#10374#0" expanded="false" />
-            <element signature="e#10433#10541#0" expanded="false" />
-            <element signature="e#10755#11320#0" expanded="false" />
-            <element signature="e#10838#11293#0" expanded="false" />
-            <element signature="e#10893#11261#0" expanded="false" />
-            <element signature="e#10932#11225#0" expanded="false" />
-            <element signature="e#11023#11146#0" expanded="false" />
-            <element signature="e#11341#11643#0" expanded="false" />
-            <element signature="e#11396#11615#0" expanded="false" />
-            <element signature="e#11664#11871#0" expanded="false" />
-            <element signature="e#11756#11844#0" expanded="false" />
+            <element signature="e#8913#9034#0" expanded="false" />
+            <element signature="e#9277#9751#0" expanded="false" />
+            <element signature="e#9334#9680#0" expanded="false" />
+            <element signature="e#9389#9648#0" expanded="false" />
+            <element signature="e#9428#9612#0" expanded="false" />
+            <element signature="e#9460#9563#0" expanded="false" />
+            <element signature="e#9773#10760#0" expanded="false" />
+            <element signature="e#9843#10672#0" expanded="false" />
+            <element signature="e#9898#10640#0" expanded="false" />
+            <element signature="e#9937#10604#0" expanded="false" />
+            <element signature="e#10280#10401#0" expanded="false" />
+            <element signature="e#10460#10568#0" expanded="false" />
+            <element signature="e#11413#11978#0" expanded="false" />
+            <element signature="e#11496#11951#0" expanded="false" />
+            <element signature="e#11551#11919#0" expanded="false" />
+            <element signature="e#11590#11883#0" expanded="false" />
+            <element signature="e#11681#11804#0" expanded="false" />
+            <element signature="e#11999#12301#0" expanded="false" />
+            <element signature="e#12054#12273#0" expanded="false" />
+            <element signature="e#12322#12529#0" expanded="false" />
+            <element signature="e#12414#12502#0" expanded="false" />
             <element signature="n#!!block;n#toreg#0;n#Auth#0" expanded="false" />
-            <element signature="e#11972#12007#0" expanded="false" />
+            <element signature="e#12630#12665#0" expanded="false" />
             <element signature="n#!!block;n#tolog#0;n#Auth#0" expanded="false" />
-            <element signature="e#12052#12088#0" expanded="false" />
+            <element signature="e#12710#12746#0" expanded="false" />
             <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
-            <element signature="e#12153#12193#0" expanded="false" />
+            <element signature="e#12811#12851#0" expanded="false" />
             <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
-            <element signature="e#12248#12434#0" expanded="false" />
+            <element signature="e#12906#13092#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -853,14 +820,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="879">
           <caret line="150" column="33" lean-forward="false" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -931,6 +890,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-876">
+          <caret line="73" column="10" lean-forward="false" selection-start-line="73" selection-start-column="10" selection-end-line="73" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
           <folding />
         </state>
       </provider>
