@@ -133,7 +133,7 @@ class Home extends React.Component {
                                                 {i.title}
                                             </span>
                                             <div className={style.yieldRateTip}>
-                                                最低申购份额 {i.limitLowAmount} BTC
+                                                最低申购份额 {i.limitLowAmount} {i.currency}
                                             </div>
                                         </div>
                                     </div>

@@ -66,7 +66,7 @@ class Home extends React.Component {
                                         <span className={style.fundHeaderBox}>
                                             <div className={style.fundHeaderT}>{i.title}</div>
                                             <div className={style.span}>
-                                                {i.limitLowAmount}BTC起购
+                                                {i.limitLowAmount}{i.currency}起购
                                             </div>
 
                                         </span>
