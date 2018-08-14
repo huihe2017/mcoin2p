@@ -148,11 +148,11 @@
 }
 :local(.contentTitle1){
     float: left;
-    width: 22%;
+    width: 25%;
 }
 :local(.contentTitle2){
     float: left;
-    width: 44%
+    width: 41%
 }
 :local(.contentTitle3){
     float: left;
@@ -197,11 +197,11 @@
 }
 :local(.contentPart1){
     float: left;
-    width: 22%;
+    width: 25%;
 }
 :local(.contentPart2){
     float: left;
-    width: 44%;
+    width: 41%;
 }
 :local(.contentPart3){
     float: left;
@@ -212,7 +212,7 @@
 :local(.contentImg){
     width: 16px;
     height: 16px;
-    margin-right: 10px;
+    margin-right: 4px;
     margin-top: 24px;
     float: left;
 }
