@@ -9,6 +9,7 @@
     font-size: 16px;
     line-height: 25px;
     color: #3B3D40;
+    font-weight: bold;
 }
 :local(.time){
     display: block;
@@ -24,6 +25,7 @@
     padding: 0 16px;
     line-height:normal!important;
     color: #3B3D40;
+    padding-bottom: 40px;
 }
 :local(.content) img{
     width: 100%!important;
