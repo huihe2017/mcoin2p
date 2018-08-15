@@ -16,7 +16,9 @@ let currentId = 0;
 class BaseUserMsg extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            type:'推荐'
+        }
     }
 
     componentDidMount() {
@@ -70,9 +72,9 @@ class BaseUserMsg extends React.Component {
                 });
                 return dataSource.cloneWithRows(this.props.information[currentId])
             })()}
-            renderRow={(rowData, sectionID, rowID) => {
+            renderRow={(rowData, sectionID, rowID) => {//alert(this.state.type)
                 const i = rowData;
-                return <Link to={'/informationDetails/' + rowData.id}>
+                return <Link to={'/informationDetails/' + rowData.id+'!'+this.state.type}>
                     <div className={style.itemBox}>
 
 
@@ -164,6 +166,7 @@ class BaseUserMsg extends React.Component {
                         <Tabs tabs={this.changeDate(this.props.information.infosType)}
                               onChange={(a, b) => {
                                   currentId = a.id
+                                  this.setState({type:a.name})
                                   if (!this.props.information[a.id]) {
                                       this.props.getInformationList({
                                           typeId: a.id,

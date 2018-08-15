@@ -20,13 +20,12 @@ class BaseUserMsg extends React.Component {
 
     componentDidMount() {
         this.props.getInformationDetails({
-            id: this.props.params.id
+            id: this.props.params.id.split('!')[0]
         })
     }
 
     render() {
-
-        if (!this.props.information.infosDetails[this.props.params.id]) {
+        if (!this.props.information.infosDetails[this.props.params.id.split('!')[0]]) {
             return null
         }
         const {percent} = this.state;
@@ -37,14 +36,14 @@ class BaseUserMsg extends React.Component {
                     icon={<Icon type="left"/>}
                     onLeftClick={() => this.props.history.goBack()}
 
-                >{this.props.information.infosDetails[this.props.params.id].title}</NavBar>
+                >{this.props.params.id.split('!')[1]}</NavBar>
                 <span className={style.header}>
-                    {this.props.information.infosDetails[this.props.params.id].title}
+                    {this.props.information.infosDetails[this.props.params.id.split('!')[0]].title}
                 </span>
                 <span className={style.time}>
-                    {this.props.information.infosDetails[this.props.params.id].author} {this.props.information.infosDetails.createTime}
+                    {this.props.information.infosDetails[this.props.params.id.split('!')[0]].author} {this.props.information.infosDetails.createTime}
                 </span>
-                <div className={style.content} dangerouslySetInnerHTML = {{ __html:this.props.information.infosDetails[this.props.params.id].content }}>
+                <div className={style.content} dangerouslySetInnerHTML = {{ __html:this.props.information.infosDetails[this.props.params.id.split('!')[0]].content }}>
 
                 </div>
             </div>
