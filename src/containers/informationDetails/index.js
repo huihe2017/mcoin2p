@@ -38,9 +38,9 @@ class BaseUserMsg extends React.Component {
                     onLeftClick={() => this.props.history.goBack()}
 
                 >{this.props.information.infosDetails[this.props.params.id].title}</NavBar>
-                {/*<span className={style.header}>*/}
-                    {/*八成私募认为CDR对市场抽血效应有限，点赞数字点点基金，字数超过的时候用...代替...*/}
-                {/*</span>*/}
+                <span className={style.header}>
+                    {this.props.information.infosDetails[this.props.params.id].title}
+                </span>
                 <span className={style.time}>
                     {this.props.information.infosDetails[this.props.params.id].author} {this.props.information.infosDetails.createTime}
                 </span>
