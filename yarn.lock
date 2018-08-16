@@ -5587,13 +5587,6 @@ react-router@2.7.0:
     loose-envify "^1.2.0"
     warning "^3.0.0"
 
-react-sticky@^6.0.2:
-  version "6.0.2"
-  resolved "http://registry.npm.taobao.org/react-sticky/download/react-sticky-6.0.2.tgz#d301c1b5307649220dbc045fcbacd077885c5ede"
-  dependencies:
-    prop-types "^15.5.8"
-    raf "^3.3.0"
-
 react-timer-mixin@^0.13.3:
   version "0.13.3"
   resolved "http://registry.npm.taobao.org/react-timer-mixin/download/react-timer-mixin-0.13.3.tgz#0da8b9f807ec07dc3e854d082c737c65605b3d22"

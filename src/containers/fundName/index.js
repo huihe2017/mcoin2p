@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
 import {getMyFundDetails, setAutoRenew, getFundChart} from '../../actions/fund'
 import ReactDOM from "react-dom";
-import {StickyContainer, Sticky} from 'react-sticky';
+// import {StickyContainer, Sticky} from 'react-sticky';
 import echarts from 'echarts/lib/echarts';
 import {filter} from "../../common/util";
 
@@ -205,9 +205,10 @@ class BaseUserMsg extends React.Component {
         ];
 
         function renderTabBar(props) {
-            return (<Sticky>
-                {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
-            </Sticky>);
+            // return (<Sticky>
+            //     {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
+            // </Sticky>);
+            return (<div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>);
         }
         // let filterData = filter(this.props.fund.myFund.userProducts, this.props.fund.myFundDetails.productId,'productId')
         return (
@@ -321,7 +322,7 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.chart}>
                         <div className={style.chartBox}>
-                            <StickyContainer>
+                            {/*<StickyContainer>*/}
                                 <Tabs tabs={tabs}
                                       initalPage={'t2'}
                                       renderTabBar={renderTabBar}
@@ -365,7 +366,7 @@ class BaseUserMsg extends React.Component {
                                         }}></div>
                                     </div>
                                 </Tabs>
-                            </StickyContainer>
+                            {/*</StickyContainer>*/}
                         </div>
 
                         <div className={style.bottomA}>

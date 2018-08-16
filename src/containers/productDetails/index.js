@@ -10,7 +10,7 @@ import {hashHistory} from 'react-router'
 import {getAssetDetail} from '../../actions/asset'
 import {getFundDetail, getFundChart} from '../../actions/fund'
 import ReactDOM from "react-dom";
-import {StickyContainer, Sticky} from 'react-sticky';
+// import {StickyContainer, Sticky} from 'react-sticky';
 import echarts from 'echarts/lib/echarts';
 
 import 'echarts/lib/chart/line';
@@ -166,9 +166,10 @@ class BaseUserMsg extends React.Component {
         ];
 
         function renderTabBar(props) {
-            return (<Sticky>
-                {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
-            </Sticky>);
+            // return (<Sticky>
+            //     {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
+            // </Sticky>);
+            return ( <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>);
         }
 
         if (!this.props.fund.detail) {
@@ -213,7 +214,7 @@ class BaseUserMsg extends React.Component {
                     </div>
                     <div className={style.chart}>
 
-                        <StickyContainer>
+                        {/*<StickyContainer>*/}
                             <Tabs tabs={tabs}
                                   onChange={(tab, index) => {
                                       this.setState({option: {...this.state.option, ...{type: index === 0 ? 1 : 2}}}, () => {
@@ -288,7 +289,7 @@ class BaseUserMsg extends React.Component {
                                 {/*Content of second tab*/}
                                 {/*</div>*/}
                             </Tabs>
-                        </StickyContainer>
+                        {/*</StickyContainer>*/}
 
                         <div id="main" style={{
                             width: '100%',
@@ -300,7 +301,7 @@ class BaseUserMsg extends React.Component {
 
 
                         <div className={style.box}>
-                            <StickyContainer>
+                            {/*<StickyContainer>*/}
                                 <Tabs tabs={dataTabs}
                                       onChange={(tab, index) => {
                                           let n, unit
@@ -375,7 +376,7 @@ class BaseUserMsg extends React.Component {
                                     {/*Content of second tab5*/}
                                     {/*</div>*/}
                                 </Tabs>
-                            </StickyContainer>
+                            {/*</StickyContainer>*/}
                         </div>
 
                     </div>

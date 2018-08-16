@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
 import {getCommonAddress, delAddress} from '../../actions/wallet'
 import {createForm} from 'rc-form';
-import {StickyContainer, Sticky} from 'react-sticky';
+// import {StickyContainer, Sticky} from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 
@@ -38,9 +38,10 @@ class BaseUserMsg extends React.Component {
     }
 
     renderTabBar(props) {
-        return (<Sticky>
-            {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
-        </Sticky>);
+        // return (<Sticky>
+        //     {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
+        // </Sticky>);
+        return (<div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>);
     }
 
     renderList = (currentId) => {
@@ -205,7 +206,7 @@ class BaseUserMsg extends React.Component {
                     ]}
                 >常用地址</NavBar>
                 <div className={style.tab}>
-                    <StickyContainer>
+                    {/*<StickyContainer>*/}
                         <Tabs tabs={tabs}
                               initalPage={'t2'}
                               onChange={(a, b) => {
@@ -248,7 +249,7 @@ class BaseUserMsg extends React.Component {
                             }
 
                         </Tabs>
-                    </StickyContainer>
+                    {/*</StickyContainer>*/}
                 </div>
 
 

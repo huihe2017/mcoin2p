@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
 import {createForm} from 'rc-form';
 import {getInformationList, getInformationType} from '../../actions/information';
-import {StickyContainer, Sticky} from 'react-sticky';
+// import {StickyContainer, Sticky} from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
 
 let currentId = 0;

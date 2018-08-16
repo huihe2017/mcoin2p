@@ -5,7 +5,7 @@ import {List, RefreshControl, Toast, Tabs, Tag, NavBar, Icon} from 'antd-mobile'
 import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
 import {getTradeList} from '../../actions/fund'
-import {StickyContainer, Sticky} from 'react-sticky';
+// import {StickyContainer, Sticky} from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 import TradeIng from "../../containers/tradeIng";
@@ -149,9 +149,10 @@ class BaseUserMsg extends React.Component {
     }
 
     renderTabBar(props) {
-        return (<Sticky>
-            {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
-        </Sticky>);
+        // return (<Sticky>
+        //     {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
+        // </Sticky>);
+        return ( <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>);
     }
 
     render() {
@@ -178,7 +179,7 @@ class BaseUserMsg extends React.Component {
                     onLeftClick={() => this.props.history.goBack()}
                     rightContent={[]}
                 >交易记录</NavBar>
-                <StickyContainer>
+                {/*<StickyContainer>*/}
                     <Tabs tabs={tabs} renderTabBar={this.renderTabBar.bind(this)}
                     >
 
@@ -257,7 +258,7 @@ class BaseUserMsg extends React.Component {
 
                         <TradeIng id={this.props.params.id} ></TradeIng>
                     </Tabs>
-                </StickyContainer>
+                {/*</StickyContainer>*/}
 
             </div>
         )

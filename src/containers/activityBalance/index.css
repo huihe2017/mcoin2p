@@ -172,7 +172,7 @@
 }
 :local(.contentPart1){
     float: left;
-    width: 22%;
+    width: 26%;
 }
 :local(.contentPart2){
     float: left;
@@ -198,7 +198,7 @@
 :local(.contentImg){
     width: 16px;
     height: 16px;
-    margin-right: 10px;
+    margin-right: 4px;
     margin-top: 24px;
     float: left;
 }

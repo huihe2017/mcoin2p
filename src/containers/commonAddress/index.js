@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux'
 import {hashHistory, Link} from 'react-router'
 import {getCommonAddress} from '../../actions/wallet'
 import {createForm} from 'rc-form';
-import {StickyContainer, Sticky} from 'react-sticky';
+// import {StickyContainer, Sticky} from 'react-sticky';
 import {ListView} from "antd-mobile/lib/index";
 import ReactDOM from "react-dom";
 

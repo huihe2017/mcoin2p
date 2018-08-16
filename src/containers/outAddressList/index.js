@@ -7,7 +7,7 @@ import Footer from '../../components/footer'
 import {bindActionCreators} from 'redux'
 import {hashHistory} from 'react-router'
 import { createForm } from 'rc-form';
-import { StickyContainer, Sticky } from 'react-sticky';
+// import { StickyContainer, Sticky } from 'react-sticky';
 import ReactDOM from "react-dom";
 import {ListView} from "antd-mobile/lib/index";
 
@@ -152,9 +152,10 @@ class BaseUserMsg extends React.Component {
     }
 
     renderTabBar(props) {
-        return (<Sticky>
-            {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
-        </Sticky>);
+        // return (<Sticky>
+        //     {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
+        // </Sticky>);
+        return (<div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>);
     }
     genData(pIndex = 0) {
         const NUM_ROWS = data.length;
