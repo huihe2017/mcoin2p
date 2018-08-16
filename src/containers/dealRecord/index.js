@@ -27,8 +27,7 @@ class BaseUserMsg extends React.Component {
             type: type,
             page: 1
         }
-        debugger
-        if(this.props.params.id!=='null'){
+        if (this.props.params.id !== 'null') {
             params.productId = this.props.params.id
         }
 
@@ -56,7 +55,7 @@ class BaseUserMsg extends React.Component {
                     renderRow={(rowData, sectionID, rowID) => {
                         const obj = rowData;
                         return (
-                            <Link to={'/recordDetail/' + obj.orderId+'?'+obj.id}>
+                            <Link to={'/recordDetail/' + obj.orderId + '?' + obj.id}>
                                 <div key={rowID} style={{padding: '0 15px'}}
                                 >
                                     <div className={style.item} key={obj.amount}>
@@ -101,7 +100,7 @@ class BaseUserMsg extends React.Component {
                         />
                     )}
                     style={{
-                        height: document.documentElement.clientHeight-134,
+                        height: document.documentElement.clientHeight - 134,
 
                     }}
                     refreshControl={<RefreshControl
@@ -125,11 +124,24 @@ class BaseUserMsg extends React.Component {
                         if (this.lv.getInnerViewNode().offsetHeight < (document.documentElement.clientHeight + 150)) {
                             return false
                         }
-                        this.props.getTradeList({
+
+
+                        let params = {
                             type: type,
                             page: ++this.props.fund['tradeList' + type + 'page']
-                        }, () => {
-                        })
+                        }
+                        if (this.props.params.id !== 'null') {
+                            params.productId = this.props.params.id
+                        }
+
+                        this.props.getTradeList(params)
+
+
+                        // this.props.getTradeList({
+                        //     type: type,
+                        //     page: ++this.props.fund['tradeList' + type + 'page']
+                        // }, () => {
+                        // })
 
                     }}
                 />}
@@ -175,13 +187,25 @@ class BaseUserMsg extends React.Component {
                                 <Tabs tabs={tabs1}
                                       onChange={(a, b) => {
 
-                                          type = a.type
-                                          if (!this.props.fund['tradeList' + a.type]) {
-                                              this.props.getTradeList({
-                                                  type: a.type,
-                                                  page: 1
-                                              })
+                                          let params = {
+                                              type: a.type,
+                                              page: 1
                                           }
+                                          if (this.props.params.id !== 'null') {
+                                              params.productId = this.props.params.id
+                                          }
+                                          if (!this.props.fund['tradeList' + a.type]) {
+                                              this.props.getTradeList(params)
+                                          }
+
+
+                                          // type = a.type
+                                          // if (!this.props.fund['tradeList' + a.type]) {
+                                          //     this.props.getTradeList({
+                                          //         type: a.type,
+                                          //         page: 1
+                                          //     })
+                                          // }
 
 
                                           // this.lv.getInnerViewNode().style.transform = 'translate3d(0px, 0px, 0px) scale(1)'
@@ -231,7 +255,7 @@ class BaseUserMsg extends React.Component {
 
                         </div>
 
-                        <TradeIng></TradeIng>
+                        <TradeIng id={this.props.params.id} ></TradeIng>
                     </Tabs>
                 </StickyContainer>
 

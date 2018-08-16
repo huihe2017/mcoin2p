@@ -82,6 +82,7 @@ export function http(option) {
             } else if (response.data.code === 3008) {
                 hashHistory.push('/importSafe')
             } else {
+                option.error&&option.error()
                 Toast.fail(response.data.msg, 2, null, false)
             }
         })

@@ -39,9 +39,10 @@ class BaseUserMsg extends React.Component {
     }
 
     renderTabBar(props) {
-        return (<Sticky>
-            {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
-        </Sticky>);
+        // return (<Sticky>
+        //     {({style}) => <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>}
+        // </Sticky>);
+        return <div style={{...style, zIndex: 1}}><Tabs.DefaultTabBar {...props} /></div>
     }
 
     changeDate = (json) => {
@@ -162,7 +163,7 @@ class BaseUserMsg extends React.Component {
         return (
             <div className={style.wrap}>
                 <div className={style.tab}>
-                    <StickyContainer>
+
                         <Tabs tabs={this.changeDate(this.props.information.infosType)}
                               onChange={(a, b) => {
                                   currentId = a.id
@@ -187,7 +188,7 @@ class BaseUserMsg extends React.Component {
 
 
                         </Tabs>
-                    </StickyContainer>
+
                 </div>
                 <Footer information={true}/>
             </div>

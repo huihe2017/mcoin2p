@@ -6,7 +6,7 @@ import {Toast} from "antd-mobile/lib/index";
 
 
 
-export function login(data, callback) {
+export function login(data, callback,error) {
     return dispatch => {
         http({
             type:'post',
@@ -15,7 +15,8 @@ export function login(data, callback) {
             url:'login/userlogin',
             success:(response)=>{
                 dispatch({type: 'LOGIN', data: response.data})
-            }
+            },
+            error
 
         })
     }

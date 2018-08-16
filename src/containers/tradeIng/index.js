@@ -81,7 +81,12 @@ class BaseUserMsg extends React.Component {
 
         // simulate initial Ajax
 
-        this.props.getTradeListIng({page: 1}, () => {
+        let params = {page: 1}
+        if (this.props.id !== 'null') {
+            params.productId = this.props.id
+        }
+
+        this.props.getTradeListIng(params, () => {
             this.rData = this.genData();
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
@@ -104,7 +109,12 @@ class BaseUserMsg extends React.Component {
         }
         console.log('reach end', event);
         this.setState({isLoading: true});
-        this.props.getTradeListIng({page: 1}, () => {
+
+        let params = {page: 1}
+        if (this.props.id !== 'null') {
+            params.productId = this.props.id
+        }
+        this.props.getTradeListIng(params, () => {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.genData()),
                 isLoading: false,

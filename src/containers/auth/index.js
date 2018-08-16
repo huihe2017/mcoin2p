@@ -81,18 +81,21 @@ class Auth extends React.Component {
                 mobile: this.state.areaCode + this.state.phone,
                 password: this.state.pwd,
                 checkCode: this.state.picCode
-            }, (errorText) => {
-                this.setState({picImg: this.getPicImg()})
-                Toast.hide()
-                if (errorText) {
-                    Toast.fail(errorText, 3, null, false)
-                } else {
-                    if (this.props.authFrom.path) {
-                        hashHistory.push(this.props.authFrom.path)
-                    } else {
-                        hashHistory.push('/')
-                    }
-                }
+            }, () => {
+                hashHistory.push('/')
+                // this.setState({picImg: this.getPicImg()})
+                // Toast.hide()
+                // if (errorText) {
+                //     Toast.fail(errorText, 3, null, false)
+                // } else {
+                //     if (this.props.authFrom.path) {
+                //         hashHistory.push(this.props.authFrom.path)
+                //     } else {
+                //         hashHistory.push('/')
+                //     }
+                // }
+            },()=>{
+                this.setState({picImg: this.getPicImg(),picCode:''})
             })
         } else {
             if (!/^[a-zA-Z0-9]{6,20}$/.test(this.state.nickName)) {
@@ -241,7 +244,7 @@ class Auth extends React.Component {
                     <div className={style.selphone}>
                         <div className={style.tu}>
                             <List>
-                                <InputItem onChange={(value) => {
+                                <InputItem value={this.state.picCode} onChange={(value) => {
                                     this.setState({picCode: value})
                                 }} placeholder="请输入图形验证码" type="text"></InputItem>
                             </List>
