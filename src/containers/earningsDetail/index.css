@@ -198,3 +198,15 @@
     height: 10px;
     margin-top: 20px;
 }
+:local(.showImg){
+    width: 90px;
+    height: 110px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+:local(.showTip){
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
