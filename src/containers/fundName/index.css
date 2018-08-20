@@ -224,6 +224,9 @@
     background-color: #FFF;
     padding-bottom: 20px;
 }
+:local(.box)>div>div{
+    margin-top: -28px!important;
+}
 :local(.bottomA){
     text-align: center;
     display: block;

@@ -116,7 +116,7 @@ class BaseUserMsg extends React.Component {
                                     return <Link to={'/dealDetails/'+value.currency}>
                                         <div className={style.contentPart}>
                                             <span className={style.contentPart1}>
-                                                <img src={require('./images/BTC.png')} className={style.contentImg}
+                                                <img src={require(`./images/${value.currency}.png`)} className={style.contentImg}
                                                      alt=""/>{value.currency}
                                             </span>
                                             <span className={style.contentPart2}>

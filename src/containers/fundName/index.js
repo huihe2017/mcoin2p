@@ -56,8 +56,8 @@ class BaseUserMsg extends React.Component {
             // 绘制图表
             myChart.setOption({
                 title: {
-                    text: '累计盈亏',
-                    subtext: `累计收益：` + this.props.fund.myFundDetails.totalProfit
+                    // text: '累计盈亏',
+                    // subtext: `累计收益：` + this.props.fund.myFundDetails.totalProfit
                 },
                 tooltip: {
                     trigger: 'axis'
@@ -81,8 +81,8 @@ class BaseUserMsg extends React.Component {
                     type: 'category',
                     boundaryGap: false,
                     data:toChartData(this.props.fund.myFundDetails.userProfitChartList).profitDate.map(function (str) {
-                        return str
-                        //return str.slice(5)
+                        // return str
+                        return str.slice(5)
                     })
                     // data: ['05-01', '05-05', '05-10', '05-15', '05-20']
                 },

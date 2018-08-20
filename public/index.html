@@ -11,28 +11,12 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" type="image/ico" >
     <title>点点数字基金</title>
-    <script>
-        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            // 发送给好友
-            WeixinJSBridge.on('menu:share:appmessage', function(argv){
-                WeixinJSBridge.invoke('sendAppMessage',{
-                    "img_url": '%PUBLIC_URL%/ico.png',
-                    "img_width": "200",
-                    "img_height": "200",
-                    "link": 'https://fund.coin2p.com',
-                    "desc": '点点收益 · 不止点点',
-                    "title": '数字基金,BTC,ETH',
-                })
-            });
-
-        }, false);
-    </script>
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    <img src="./ico.png" style='width: 300px; height: 300px;display: none' alt="">
     <div id="root"></div>
-
   </body>
 </html>

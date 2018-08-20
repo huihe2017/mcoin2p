@@ -261,11 +261,20 @@
 :local(.box) .am-tabs-tab-bar-wrap>div>div{
     padding-bottom: 0!important;
 }
+:local(.box) .am-tabs-default-bar-bottom{
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
 :local(.chart) .am-tabs-tab-bar-wrap>div>div{
     padding-bottom: 0!important;
 }
 :local(.chart) .am-tabs-tab-bar-wrap>div>div:nth-child(2){
     position: relative!important;
 }
-
+:local(.chartBox){
+    height: 210px;
+}
+:local(.chartBox)>div{
+    margin-top: -28px!important;
+}
 

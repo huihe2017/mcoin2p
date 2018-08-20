@@ -58,7 +58,7 @@ class BaseUserMsg extends React.Component {
         let option = {
             title: {
                 text: '',
-                subtext: `2018/03/24                   近七日年化：${'+4.7720%'}`
+                // subtext: `2018/03/24                   近七日年化：${'+4.7720%'}`
             },
             tooltip: {
                 trigger: 'axis',
@@ -85,7 +85,11 @@ class BaseUserMsg extends React.Component {
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
-                data: toChartData(this.props.fund.detail.chart).profitDate
+                // data: toChartData(this.props.fund.detail.chart).profitDate
+                data:toChartData(this.props.fund.detail.chart).profitDate.map(function (str) {
+                    // return str
+                    return str.slice(5)
+                })
                 // data: ['05-01', '05-05', '05-10', '09-15', '05-20']
             },
             yAxis: {
@@ -291,7 +295,7 @@ class BaseUserMsg extends React.Component {
                             </Tabs>
                         {/*</StickyContainer>*/}
 
-                        <div id="main" style={{
+                        <div id="main" className={style.chartBox} style={{
                             width: '100%',
                             height: 240,
                             padding: '0 16px',
